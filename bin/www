@@ -8,7 +8,7 @@ var app = require('../server')
 var debug = require('debug')('mern-starter-kit:server')
 var http = require('http')
 var mongoose = require('mongoose')
-var dbName = 'mern-starter-kit'
+var dbName = 'GitHubFolioDB'
 var MONGODB_URI = process.env.MONGODB_URI || `mongodb://localhost/${dbName}`
 
 /**
@@ -30,12 +30,12 @@ var server = http.createServer(app)
 
 mongoose.connect(MONGODB_URI)
   .then(() => {
-    console.log(`Successful connection to Mongo database '${dbName}'`)
+    console.log(`\n***\nSuccessful connection to Mongo database '${dbName}'\n***\n`)
     server.listen(port)
     server.on('error', onError)
     server.on('listening', onListening)
   })
-  .catch(err => console.log(`Error connecting to Mongo Database:`, err))
+  .catch(err => console.log(`\n***\nError connecting to Mongo Database:\n***\n`, err))
 
 /**
  * Normalize a port into a number, string, or false.
