@@ -1,7 +1,39 @@
 {
-  "name": "mern-starter-kit",
-  "version": "0.0.0",
+  "name": "githubfolio",
+  "description": "Automated Developer Portfolio",
+  "version": "0.1.0",
+  "license": "MIT",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BenRGarcia/GitHubFolio"
+  },
+  "contributors": [
+    {
+      "name": "Jason Aron",
+      "email": "jasonaronart@gmail.com",
+      "url": "http://jasonaronart.com"
+    },
+    {
+      "name": "Melissa Burnham",
+      "email": "melissarburnham@gmail.com",
+      "url": "http://melissarburnham.com/"
+    },
+    {
+      "name": "Davis Troxler",
+      "email": "dtroxler21@gmail.com",
+      "url": "https://github.com/dtroxler21"
+    },
+    {
+      "name": "Ben Garcia",
+      "email": "ben@seebenprogram.com",
+      "url": "http://seebenprogram.com"
+    }
+  ],
+  "bugs": {
+    "url": "https://github.com/BenRGarcia/GitHubFolio/issues",
+    "email": "ben@seebenprogram.com"
+  },
   "scripts": {
     "start": "node ./bin/www",
     "dev": "concurrently \"npm run dev-server\" \"npm run dev-client\"",
