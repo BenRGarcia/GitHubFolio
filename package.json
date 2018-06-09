@@ -37,16 +37,24 @@
   "scripts": {
     "start": "node ./bin/www",
     "dev": "concurrently \"npm run dev-server\" \"npm run dev-client\"",
-    "dev-server": "concurrently \"mongod\" \"nodemon ./bin/www\"",
+    "dev-server": "concurrently \"redis-server\" \"mongod\" \"nodemon ./bin/www\"",
     "dev-client": "cd client && yarn start",
     "dev-server-prod": "concurrently \"mongod\" \"node ./bin/www\""
   },
   "dependencies": {
+    "connect-redis": "^3.3.3",
+    "csurf": "^1.9.0",
     "debug": "~2.6.9",
+    "dotenv": "^6.0.0",
     "express": "~4.16.0",
+    "express-limiter": "^1.6.1",
+    "express-session": "^1.15.6",
+    "helmet": "^3.12.1",
     "http-errors": "~1.6.2",
     "mongoose": "^5.1.4",
-    "morgan": "~1.9.0"
+    "morgan": "~1.9.0",
+    "passport": "^0.4.0",
+    "passport-github2": "^0.1.11"
   },
   "devDependencies": {
     "concurrently": "^3.5.1",
@@ -56,6 +64,7 @@
     "eslint-plugin-node": "^6.0.1",
     "eslint-plugin-promise": "^3.8.0",
     "eslint-plugin-standard": "^3.1.0",
+    "express-generator": "^4.16.0",
     "nodemon": "^1.17.5"
   }
 }
