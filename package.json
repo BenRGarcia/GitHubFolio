@@ -37,7 +37,7 @@
   "scripts": {
     "start": "node ./bin/www",
     "dev": "concurrently \"npm run dev-server\" \"npm run dev-client\"",
-    "dev-server": "concurrently \"redis-server\" \"mongod\" \"nodemon ./bin/www\"",
+    "dev-server": "concurrently \"mongod\" \"nodemon ./bin/www\" \"redis-server\" ",
     "dev-client": "cd client && yarn start",
     "dev-server-prod": "concurrently \"mongod\" \"node ./bin/www\""
   },
