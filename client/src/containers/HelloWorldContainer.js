@@ -8,7 +8,7 @@ export class HelloWorldContainer extends Component {
   };
 
   componentDidMount() {
-    fetch('/api/example')
+    fetch('/api/user/data')
       .then(resp => resp.json())
       .then(data => this.setState({ apiServerStatus: data.status }))
       .catch(err => console.error(err));
