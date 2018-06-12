@@ -6,11 +6,11 @@ import PublicViewPage from "./pages/PublicView/publicView";
 import {HelloWorld} from "./components/HelloWorld.js";
 import {NavBar} from "./components/NavBar/NavBar";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Wrapper } from './components/Wrapper/Wrapper';
 
 const App = () => (
   <Router>
     <div>
-      <NavBar />
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route exact path="/dashboard" component={Dashboard} />

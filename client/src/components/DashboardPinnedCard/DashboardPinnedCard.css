@@ -1,8 +1,8 @@
 .card {
   background: #fff;
   border-radius: 2px;
-  width: 325px;
-  height: 325px;
+  width: 225px;
+  height: 225px;
   margin: 1rem;
   position: relative;
   box-shadow: 0 3px 6px #999, 0 3px 6px #999;
@@ -22,7 +22,7 @@
 .card > .content {
   padding-left: 1rem;
   padding-right: 1rem;
-  font-size: 15px;
+  font-size: 10px;
 }
 
 .card > .content > ul {
@@ -30,6 +30,6 @@
 }
 
 .card > .content > ul > li {
-  margin-top: 18px;
+  margin-top: 10px;
 }
 

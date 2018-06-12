@@ -2,8 +2,14 @@ import React from "react";
 import "./DashboardSidebar.css";
 
 export const DashboardSidebar = props => (
-  <div>
-    <h1>DASHBOARD SIDEBAR</h1>
+  <div className="sidenav">
+    <a href="#">Templates</a>
+    <a href="#">My Portfolio</a>
+    <a href="#">Git Pinned Repos</a>
+    <a href="#">Edit Portfolio</a>
+    <a href="#">Logout</a>  
   </div>
 );
+
+
 
