@@ -1,3 +1,8 @@
-import {PublicViewContainer} from "../../containers/PublicViewContainer/PublicViewContainer";
+import React, { Component } from 'react';
+import { PublicViewContainer } from "../../containers/PublicViewContainer/PublicViewContainer.js";
 
-export default PublicViewContainer;
+const PublicViewPage = () => (
+  <PublicViewContainer />
+);
+
+export default PublicViewPage

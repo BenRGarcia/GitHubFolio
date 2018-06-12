@@ -52,24 +52,21 @@ export class DashboardContainer extends Component {
         githubLink: 'www.github.com',
         deployedLink:'www.google.com'
       }
-    ],
-
-
+    ]
   };
-
-  componentDidMount() {
-    fetch('/api/user/data')
-      .then(resp => resp.json())
-      .then(data => this.setState({ apiServerStatus: data.status }))
-      .catch(err => console.error(err));
-  }
 
   render() {
     return (
       <div style={{ textAlign: 'center' }}>
+        {/* <DashboardSidebar />
+        <DashboardUserInfo
+          username={this.state.name}
+        />
+        <DashboardPinnedCard
+          pinnedRepos={this.state.pins}
+        /> */}
         <HelloWorld
           title= {this.state.name}
-          // apiServerStatus={this.state.apiServerStatus}
         />
       </div>
     );
