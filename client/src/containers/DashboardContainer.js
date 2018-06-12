@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { HelloWorld } from '../components/HelloWorld';
 
-export class HelloWorldContainer extends Component {
+export class DashboardContainer extends Component {
   state = {
     title: 'Hello World!',
     apiServerStatus: 'Unable to connect to api server'
