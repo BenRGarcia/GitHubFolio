@@ -1,5 +1,4 @@
 import React from "react";
-import "./Footer.css";
 
 export const Footer = props => (
 <footer class="footer navbar-bottom">

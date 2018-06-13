@@ -1,5 +1,4 @@
 import React from "react";
-import "./DashboardEdit.css";
 
 
 export const DashboardEdit = ({userInfo, pinnedRepos})  => {

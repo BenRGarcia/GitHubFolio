@@ -1,1 +1,1 @@
-export { default } from "./DashboardPinnedCard";
+export { default } from "./StylizedPinnedCard";

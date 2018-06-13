@@ -1,6 +1,4 @@
 import React from "react";
-import "./TempNavBar.css";
-
 
 export const TempNavBar = props => (
   <div>
