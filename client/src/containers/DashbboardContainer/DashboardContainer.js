@@ -8,6 +8,8 @@ import { DashboardEdit } from '../../components/DashboardEdit/DashboardEdit';
 import  DashboardEditRepos from '../../components/DashboardEdit/DashboardEdit';
 import { DashboardEditSidebar } from '../../components/DashboardEditSidebar/DashboardEditSidebar';
 import { TemplateSidebar } from '../../components/TemplateSidebar/TemplateSidebar';
+import { MinimalistPage } from '../../components/MinimalistPage/MinimalistPage';
+import { MinimalistPinnedCard } from '../../components/MinimalistPinnedCard/MinimalistPinnedCard';
 import { Footer } from '../../components/Footer/Footer';
 import { HelloWorld } from '../../components/HelloWorld';
 
@@ -96,6 +98,27 @@ export class DashboardContainer extends Component {
     } else if (window.location.pathname=='/dashboard/templates'){
       return(
       <TemplateSidebar />
+      )
+    } else if (window.location.pathname=='/dashboard/templates/minimalist'){
+      return(
+          // I DON'T LIKE ALL OF THIS IN HERE        
+        <div style={{ textAlign: 'center' }}>   
+        <a href='/dashboard/templates'><button>GO BACK</button></a>
+        <a href='/dashboard/templates'><button>USE THIS TEMPLATE</button></a>      
+        <DashboardUserInfo userInfo={this.state.userInfo} />           
+        <MinimalistPinnedCard pinnedRepos={this.state.pins} />
+      {/* <MinimalistPage userInfo={this.state.userInfo} pinnedRepos={this.state.pins} /> */}
+      </div>
+      )
+    } else if(window.location.pathname=='/dashboard/templates/stylized'){
+      return(
+          // I DON'T LIKE ALL OF THIS IN HERE
+          <div style={{ textAlign: 'center' }}>
+          <a href='/dashboard/templates'><button>GO BACK</button></a>
+          <a href='/dashboard/templates'><button>USE THIS TEMPLATE</button></a>          
+          <DashboardUserInfo userInfo={this.state.userInfo} />           
+          <DashboardPinnedCard pinnedRepos={this.state.pins} />
+          </div>
       )
     }else {
       return (

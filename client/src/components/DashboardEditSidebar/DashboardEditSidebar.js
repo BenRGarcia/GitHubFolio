@@ -6,6 +6,6 @@ export const DashboardEditSidebar = props => (
     <a href="#">Text</a>
     <a href="#">Thumbnails</a>
     <a href="/dashboard">Go Back</a>
-    <a href="#">Logout</a>  
+    <a href="/">Logout</a>  
   </div>
 );
