@@ -1,4 +1,5 @@
 import React from "react";
+import "./MinimalistPage.css";
 import { DashboardPinnedCard } from '../../components/DashboardPinnedCard/DashboardPinnedCard';
 import { DashboardUserInfo } from '../../components/DashboardUserInfo/DashboardUserInfo';
 

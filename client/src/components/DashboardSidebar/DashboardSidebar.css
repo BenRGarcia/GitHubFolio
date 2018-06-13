@@ -1,0 +1,23 @@
+  .sidenav {
+    background: #F2F2F2;
+    z-index: 1;
+    overflow-x: hidden;
+    height: 100%;
+    width: 200px;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+
+  .sidenavText {
+    font-family: Roboto-Regular;
+    font-size: 18px;
+    color: #666666;
+    letter-spacing: -0.04px;
+    display: block;
+    text-align: left;
+    padding-bottom: -15px;
+    text-decoration: none;
+  }
+
+  

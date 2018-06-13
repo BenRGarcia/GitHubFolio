@@ -1,4 +1,5 @@
 import React from "react";
+import "./TemplateSidebar.css";
 
 export const TemplateSidebar = props => (
   <div className="sidenav">
