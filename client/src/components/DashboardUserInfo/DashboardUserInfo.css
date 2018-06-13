@@ -1,0 +1,13 @@
+.userImage {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%
+}
+
+.userContent li{
+  list-style: none;
+}
+
+.userCard {
+  margin-top: 50px;
+}
