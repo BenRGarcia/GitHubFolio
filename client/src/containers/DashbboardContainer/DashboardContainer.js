@@ -4,7 +4,7 @@ import { Wrapper } from '../../components/Wrapper/Wrapper';
 import { DashboardSidebar } from '../../components/DashboardSidebar/DashboardSidebar';
 import { DashboardUserInfo } from '../../components/DashboardUserInfo/DashboardUserInfo';
 import { DashboardPinnedCard } from '../../components/DashboardPinnedCard/DashboardPinnedCard';
-import { Footer } from '../../components/Footer';
+import { Footer } from '../../components/Footer/Footer';
 import { HelloWorld } from '../../components/HelloWorld';
 
 
