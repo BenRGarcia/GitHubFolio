@@ -2,7 +2,21 @@ export const githubAPI = async (queryString) => {
   // GitHub token
   const token = process.env.GITHUB_API_TOKEN
   // GraphQL query string
-  const query = `{ viewer { bio name email pinnedRepositories(first: 6) { edges { node { name description homepageUrl url } } } } }`
+  const query = `
+  query {
+    viewer {
+      pinnedRepositories(first:6) {
+        edges {
+          node {
+            name
+            description
+            homepageUrl
+            url
+          }
+        }
+      }
+    }
+  }`
   // Fetch data from GitHub
   const resp = await fetch('https://api.github.com/graphql', {
     method: 'POST',
