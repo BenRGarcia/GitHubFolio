@@ -1,4 +1,5 @@
 import React from "react";
+import "./DashboardEditSidebar.css";
 
 export const DashboardEditSidebar = props => (
   <div className="sidenav">

@@ -1,4 +1,5 @@
 import React from "react";
+import "./StylizedPinnedCard.css";
 
 export const StylizedPinnedCard = props => {
   const pinnedRepos = props.pinnedRepos.map(repo => (
