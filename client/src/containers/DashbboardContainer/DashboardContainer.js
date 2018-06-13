@@ -4,17 +4,22 @@ import { Wrapper } from '../../components/Wrapper/Wrapper';
 import { DashboardSidebar } from '../../components/DashboardSidebar/DashboardSidebar';
 import { DashboardUserInfo } from '../../components/DashboardUserInfo/DashboardUserInfo';
 import { DashboardPinnedCard } from '../../components/DashboardPinnedCard/DashboardPinnedCard';
-import { Footer } from '../../components/Footer';
+import { DashboardEdit } from '../../components/DashboardEdit/DashboardEdit';
+import  DashboardEditRepos from '../../components/DashboardEdit/DashboardEdit';
+import { DashboardEditSidebar } from '../../components/DashboardEditSidebar/DashboardEditSidebar';
+import { Footer } from '../../components/Footer/Footer';
 import { HelloWorld } from '../../components/HelloWorld';
 
 
 
 export class DashboardContainer extends Component {
   state = {
-    name: 'Ben Garcia',
-    email: 'bgarcia@gmail.com',
-    bio: 'Really cool dude who knows a lot about coding',
-    userImage: 'https://www.veterantv.com/wp-content/uploads/2017/08/f5d784aa1eabbde15ba5e2d90c3ba828.jpg',
+    userInfo: {
+      name: 'Ben Garcia',
+      email: 'bgarcia@gmail.com',
+      bio: 'Really cool dude who knows a lot about coding',
+      userImage: 'https://www.veterantv.com/wp-content/uploads/2017/08/f5d784aa1eabbde15ba5e2d90c3ba828.jpg'
+    },
     pins: [
       {
         id: 1,
@@ -62,30 +67,40 @@ export class DashboardContainer extends Component {
     ]
   };
 
-  render() {
-    return (
-      <div style={{ textAlign: 'center' }}>
-        <Wrapper>
-          <DashboardUserInfo
-             name={this.state.name}
-             email={this.state.email}
-             bio={this.state.bio}
-             userImage={this.state.userImage}/>          
-          <DashboardSidebar />
-           
-       
-          {this.state.pins.map(pin => (
-            <DashboardPinnedCard
-              key={pin.id}
-              title={pin.title}
-              image={pin.image}
-              description={pin.description}
-              githubLink={pin.githubLink}
-              deployedLink={pin.deployedLink}
-            />
-          ))}
-        </Wrapper>   
+  whichRoute = () => {
+    if(window.location.pathname=="/dashboard"){
+      return (
+        <div>
+          <div style={{ textAlign: 'center' }}>
+            <DashboardSidebar />    
+            <DashboardUserInfo userInfo={this.state.userInfo} />           
+            <DashboardPinnedCard pinnedRepos={this.state.pins} /> 
+          </div>
       </div>
-    );
+      )
+    } else if ( window.location.pathname=='/dashboard/edit'){
+      return(
+        <div>
+        <DashboardEditSidebar />
+        <DashboardEdit userInfo={this.state.userInfo} pinnedRepos={this.state.pins}/>
+      </div>
+    )
+    } else {
+      return (
+        <div>
+          No paths matched! {window.location.pathname}
+        </div>
+      )
+    }
+  }
+
+  render() {
+
+    return(
+      this.whichRoute()
+    )
+   
   }
 }
+
+      
