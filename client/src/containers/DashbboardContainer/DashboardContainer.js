@@ -92,7 +92,7 @@ export class DashboardContainer extends Component {
       return(
         <div>
           <a href='/dashboard'><button>BACK</button></a>
-          THIS WILL BE A PORTFOLIO 
+          THIS WILL BE A PORTFOLIO THAT WE GET FROM THE DATABASE, CORRECT?
         </div>
       )
     } else if (window.location.pathname=='/dashboard/templates'){
