@@ -101,14 +101,7 @@ export class DashboardContainer extends Component {
       )
     } else if (window.location.pathname=='/dashboard/templates/minimalist'){
       return(
-          // I DON'T LIKE ALL OF THIS IN HERE        
-        <div style={{ textAlign: 'center' }}>   
-        <a href='/dashboard/templates'><button>GO BACK</button></a>
-        <a href='/dashboard/templates'><button>USE THIS TEMPLATE</button></a>      
-        <DashboardUserInfo userInfo={this.state.userInfo} />           
-        <MinimalistPinnedCard pinnedRepos={this.state.pins} />
-      {/* <MinimalistPage userInfo={this.state.userInfo} pinnedRepos={this.state.pins} /> */}
-      </div>
+      <MinimalistPage userInfo={this.state.userInfo} pinnedRepos={this.state.pins} />
       )
     } else if(window.location.pathname=='/dashboard/templates/stylized'){
       return(
