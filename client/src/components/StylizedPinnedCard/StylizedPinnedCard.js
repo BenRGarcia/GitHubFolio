@@ -1,8 +1,6 @@
 import React from "react";
-import "./DashboardPinnedCard.css";
 
-
-export const DashboardPinnedCard = props => {
+export const StylizedPinnedCard = props => {
   const pinnedRepos = props.pinnedRepos.map(repo => (
     <div className="card">
       <div className="img-container">

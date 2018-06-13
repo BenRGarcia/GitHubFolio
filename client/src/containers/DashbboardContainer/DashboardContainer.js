@@ -3,7 +3,7 @@ import { NavBar } from '../../components/NavBar/NavBar';
 import { Wrapper } from '../../components/Wrapper/Wrapper';
 import { DashboardSidebar } from '../../components/DashboardSidebar/DashboardSidebar';
 import { DashboardUserInfo } from '../../components/DashboardUserInfo/DashboardUserInfo';
-import { DashboardPinnedCard } from '../../components/DashboardPinnedCard/DashboardPinnedCard';
+import { StylizedPinnedCard } from '../../components/StylizedPinnedCard/StylizedPinnedCard';
 import { DashboardEdit } from '../../components/DashboardEdit/DashboardEdit';
 import  DashboardEditRepos from '../../components/DashboardEdit/DashboardEdit';
 import { DashboardEditSidebar } from '../../components/DashboardEditSidebar/DashboardEditSidebar';
@@ -77,7 +77,7 @@ export class DashboardContainer extends Component {
           <div style={{ textAlign: 'center' }}>
             <DashboardSidebar />    
             <DashboardUserInfo userInfo={this.state.userInfo} />           
-            <DashboardPinnedCard pinnedRepos={this.state.pins} /> 
+            <StylizedPinnedCard pinnedRepos={this.state.pins} /> 
           </div>
       </div>
       )
@@ -117,7 +117,7 @@ export class DashboardContainer extends Component {
           <a href='/dashboard/templates'><button>GO BACK</button></a>
           <a href='/dashboard/templates'><button>USE THIS TEMPLATE</button></a>          
           <DashboardUserInfo userInfo={this.state.userInfo} />           
-          <DashboardPinnedCard pinnedRepos={this.state.pins} />
+          <StylizedPinnedCard pinnedRepos={this.state.pins} />
           </div>
       )
     }else {
