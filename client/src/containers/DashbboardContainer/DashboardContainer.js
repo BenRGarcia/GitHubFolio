@@ -74,10 +74,10 @@ export class DashboardContainer extends Component {
     if(window.location.pathname=="/dashboard"){
       return (
         <div>
-          <div style={{ textAlign: 'center' }}>
+          <div>
             <DashboardSidebar />    
-            <DashboardUserInfo userInfo={this.state.userInfo} />           
-            <StylizedPinnedCard pinnedRepos={this.state.pins} /> 
+            {/* <DashboardUserInfo userInfo={this.state.userInfo} />            */}
+            {/* <StylizedPinnedCard pinnedRepos={this.state.pins} />  */}
           </div>
       </div>
       )

@@ -1,6 +1,6 @@
 import React from "react";
 import "./MinimalistPage.css";
-import { DashboardPinnedCard } from '../../components/DashboardPinnedCard/DashboardPinnedCard';
+import { StylizedPinnedCard } from '../../components/StylizedPinnedCard/StylizedPinnedCard';
 import { DashboardUserInfo } from '../../components/DashboardUserInfo/DashboardUserInfo';
 
 
@@ -12,7 +12,7 @@ export const MinimalistPage = props => {
        <a href='/dashboard/templates'><button>GO BACK</button></a>
        <a href='/dashboard/templates'><button>USE THIS TEMPLATE</button></a>
       <DashboardUserInfo userInfo={userInfo} />           
-      <DashboardPinnedCard pinnedRepos={pinnedRepos} />
+      <StylizedPinnedCard pinnedRepos={pinnedRepos} />
     </div>
   )
 }

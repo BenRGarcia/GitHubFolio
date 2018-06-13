@@ -8,7 +8,6 @@ import {HelloWorld} from "./components/HelloWorld.js";
 import {NavBar} from "./components/NavBar/NavBar";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Wrapper } from './components/Wrapper/Wrapper';
-import { TempNavBar } from "./components/TempNavBar/TempNavBar";
 
 
 const App = () => (
