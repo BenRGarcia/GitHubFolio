@@ -10,7 +10,7 @@ const HomePage = () => (
     <div className="text-center">
       <h2 className="text-center">Introducing GitHubFolio</h2>
       <h4 >Create a beautiful portfolio to showcase your best work with GitHubFolio</h4>
-      <button type="button" class="btn btn-dark" href='#'>Login with GitHub</button>
+      <a href='/dashboard'><button type="button" class="btn btn-dark">Login with GitHub</button></a>
     </div>
     <Footer />
   </div>

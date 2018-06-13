@@ -7,6 +7,7 @@ import { DashboardPinnedCard } from '../../components/DashboardPinnedCard/Dashbo
 import { DashboardEdit } from '../../components/DashboardEdit/DashboardEdit';
 import  DashboardEditRepos from '../../components/DashboardEdit/DashboardEdit';
 import { DashboardEditSidebar } from '../../components/DashboardEditSidebar/DashboardEditSidebar';
+import { TemplateSidebar } from '../../components/TemplateSidebar/TemplateSidebar';
 import { Footer } from '../../components/Footer/Footer';
 import { HelloWorld } from '../../components/HelloWorld';
 
@@ -78,14 +79,25 @@ export class DashboardContainer extends Component {
           </div>
       </div>
       )
-    } else if ( window.location.pathname=='/dashboard/edit'){
+    } else if (window.location.pathname=='/dashboard/edit'){
       return(
         <div>
         <DashboardEditSidebar />
         <DashboardEdit userInfo={this.state.userInfo} pinnedRepos={this.state.pins}/>
       </div>
     )
-    } else {
+    } else if (window.location.pathname=='/dashboard/myportfolio'){
+      return(
+        <div>
+          <a href='/dashboard'><button>BACK</button></a>
+          THIS WILL BE A PORTFOLIO 
+        </div>
+      )
+    } else if (window.location.pathname=='/dashboard/templates'){
+      return(
+      <TemplateSidebar />
+      )
+    }else {
       return (
         <div>
           No paths matched! {window.location.pathname}

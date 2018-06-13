@@ -14,7 +14,6 @@ import { TempNavBar } from "./components/TempNavBar/TempNavBar";
 const App = () => (
   <Router>
     <div>
-      <TempNavBar />      
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route path="/dashboard" component={Dashboard} />

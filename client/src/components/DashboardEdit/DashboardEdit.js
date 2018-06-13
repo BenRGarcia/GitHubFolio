@@ -24,8 +24,11 @@ export const DashboardEdit = ({userInfo, pinnedRepos})  => {
   
   
   return (
-    editName,
+    // editName,
     editPinnedRepos
+    // <div>
+    //   <button type='submit'>submit</button>
+    // </div>
   )
 }
 
