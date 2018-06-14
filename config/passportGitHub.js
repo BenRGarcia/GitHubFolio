@@ -7,7 +7,7 @@ const User = require('../controllers/UserController')
 const strategyConfig = {
   clientID: process.env.GITHUB_CLIENT_ID,
   clientSecret: process.env.GITHUB_CLIENT_SECRET,
-  callbackURL: process.env.GITHUB_CALLBACK_URL || 'http://localhost:3001/api/auth/github/callback'
+  callbackURL: process.env.GITHUB_CALLBACK_URL
 }
 
 const verifyCb = (accessToken, refreshToken, profile, cb) => {
