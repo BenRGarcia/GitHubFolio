@@ -1,7 +1,11 @@
 const express = require('express')
 const router = express.Router()
-var db = require('../../models')
 var isAuthenticated = require('../../utils/isAuthenticated')
+
+/**
+ *  Helpful hint:
+ *    `req.user` is the user's MongoDB `_id`
+ */
 
 // API Routes - '/api/user'
 router.route('/data')
