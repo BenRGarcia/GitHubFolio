@@ -1,0 +1,43 @@
+  .sidenav {
+    background: #F2F2F2;
+    z-index: 1;
+    overflow-x: hidden;
+    height: 100%;
+    width: 200px;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+
+  .sidenavText {
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    color: #666666;
+    letter-spacing: -0.04px;
+    display: block;
+    text-align: left;
+    padding-bottom: -15px;    
+  }
+
+  .sidenavText:hover {
+    text-decoration: none;    
+    color: black;
+  }
+
+  .arrowPad {
+    position: absolute;
+    right: 0px;
+    padding-right: 15px;  
+    padding-top: 5px;
+  }
+
+  .githubfoliologo{
+    width:30px;
+    height:auto;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    display:block;
+    margin:auto;
+  }
+
+  

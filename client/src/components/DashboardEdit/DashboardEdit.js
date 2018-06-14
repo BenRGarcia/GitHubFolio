@@ -1,4 +1,5 @@
 import React from "react";
+import "./DashboardEdit.css";
 
 
 export const DashboardEdit = ({userInfo, pinnedRepos})  => {
@@ -8,7 +9,7 @@ export const DashboardEdit = ({userInfo, pinnedRepos})  => {
   const {id, title, image, description, githubLink, deployedLink} = pinnedRepos;
 
   const editPinnedRepos = pinnedRepos.map(repo => (
-    <div>
+    <div className='editPinForm'>
       <form>
         <div className='form-group'>
           <label>Project Name</label>
@@ -20,14 +21,14 @@ export const DashboardEdit = ({userInfo, pinnedRepos})  => {
 
   const editName = (<h1>TESTING</h1>);
   
-  
-  
   return (
-    // editName,
-    editPinnedRepos
-    // <div>
-    //   <button type='submit'>submit</button>
-    // </div>
+    <div>
+    {editName}
+    {editPinnedRepos} 
+    <div>
+      <button type='submit'>submit</button>
+    </div>
+    </div>
   )
 }
 

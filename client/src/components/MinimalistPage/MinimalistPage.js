@@ -1,11 +1,18 @@
 import React from "react";
-import { StylizedPinnedCard } from '../../components/StylizedPinnedCard/StylizedPinnedCard';
+import "./MinimalistPage.css";
+import { MinimalistPinnedCard } from '../../components/MinimalistPinnedCard/MinimalistPinnedCard';
 import { DashboardUserInfo } from '../../components/DashboardUserInfo/DashboardUserInfo';
 
-export const MinimalistPage = props => (
-  <div>
-    {/* <button>USE THIS TEMPLATE</button>
-   <DashboardUserInfo userInfo={props.userInfo} />           
-    <DashboardPinnedCard pinnedRepos={props.pins} /> */}
-  </div>
-);
+
+
+export const MinimalistPage = props => {
+  const {userInfo, pinnedRepos} = props;
+  return(
+    <div>
+       <a href='/dashboard/templates'><button>GO BACK</button></a>
+       <a href='/dashboard/templates'><button>USE THIS TEMPLATE</button></a>
+      <DashboardUserInfo userInfo={userInfo} />           
+      <MinimalistPinnedCard pinnedRepos={pinnedRepos} />
+    </div>
+  )
+}
