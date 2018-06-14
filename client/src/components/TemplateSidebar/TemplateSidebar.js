@@ -8,8 +8,9 @@ export const TemplateSidebar = props => (
       <a href="/dashboard/templates/minimalist" className='sidenavText'>Minimalist<i className="fas fa-caret-right arrowPad"></i></a><hr />
       <a href="/dashboard/templates/stylized" className='sidenavText'>Stylized<i className="fas fa-caret-right arrowPad"></i></a><hr />
       <a href="#" className='sidenavText'>Color 1<i className="fas fa-caret-right arrowPad"></i></a><hr />
-      <a href="#" className='sidenavText'>Color 2<i className="fas fa-caret-right arrowPad"></i></a><hr />      
-      <a href="/" className='btn btn-secondary center-block logout'>Logout</a>
+      <a href="#" className='sidenavText'>Color 2<i className="fas fa-caret-right arrowPad"></i></a><hr />  
+      <a href="/dashboard" className='sidenavText'><i className="fas fa-caret-left arrowPad"></i>Go Back</a><hr />                
+      <a href="/" className='sidenavText'>Logout</a><hr />
     </div>
   </div>
 );
