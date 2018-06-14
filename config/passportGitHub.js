@@ -1,5 +1,5 @@
 require('dotenv').config()
-var GitHubStrategy = require('passport-github').Strategy
+const GitHubStrategy = require('passport-github').Strategy
 const User = require('../controllers/UserController')
 
 // https://github.com/jaredhanson/passport-github
@@ -7,20 +7,25 @@ const User = require('../controllers/UserController')
 const strategyConfig = {
   clientID: process.env.GITHUB_CLIENT_ID,
   clientSecret: process.env.GITHUB_CLIENT_SECRET,
-  callbackURL: process.env.GITHUB_CALLBACK_URL || 'http://localhost:3001/api/auth/github/callback'
+  callbackURL: process.env.GITHUB_CALLBACK_URL
 }
 
-const verifyCb = (accessToken, refreshToken, profile, cb) => {
-  const {
-    gitHubId,
-    displayName,
-    profileUrl } = profile
-  const email = profile.emails[0].value
-  const photo = profile.photos[0].value
-  const { bio, location } = profile._json
-  User.findOrCreate({ gitHubId, displayName, profileUrl, accessToken, email, photo, bio, location }, (err, user) => {
-    return cb(err, user)
-  })
+const verifyCb = async (accessToken, refreshToken, profile, cb) => {
+  // Compose user object from GitHub oAuth `profile` response
+  const userProfile = {
+    gitHubId: profile.id,
+    displayName: profile.displayName,
+    profileUrl: profile.profileUrl,
+    accessToken: accessToken,
+    email: profile.emails[0].value,
+    photo: profile.photos[0].value,
+    bio: profile._json.bio,
+    location: profile._json.location
+  }
+  // Find or create user with destructured data
+  const user = await User.loginFindOrCreate(userProfile)
+  // Passport.js callback
+  return cb(null, user._id)
 }
 
 const gitHubStrategy = new GitHubStrategy(strategyConfig, verifyCb)
