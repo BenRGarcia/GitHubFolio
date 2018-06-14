@@ -16,3 +16,9 @@ GITHUB_CLIENT_SECRET=...
 GITHUB_CALLBACK_URL=...
 EXPRESS_SESSION_SECRET=...
 ```
+
+## Heroku Deploy Checklist
+
+* add `.env` variables
+* provision redis, mongolab
+* update homepage and callback url on GitHub developer settings
