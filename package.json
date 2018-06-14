@@ -42,6 +42,7 @@
     "dev-server-prod": "concurrently \"mongod\" \"node ./bin/www\""
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "connect-redis": "^3.3.3",
     "csurf": "^1.9.0",
     "debug": "~2.6.9",
@@ -51,7 +52,6 @@
     "express-session": "^1.15.6",
     "helmet": "^3.12.1",
     "http-errors": "~1.6.2",
-    "isomorphic-fetch": "^2.2.1",
     "mongoose": "^5.1.4",
     "morgan": "~1.9.0",
     "passport": "^0.4.0",
