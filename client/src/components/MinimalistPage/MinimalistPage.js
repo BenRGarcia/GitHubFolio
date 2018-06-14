@@ -1,5 +1,5 @@
 import React from "react";
-import { DashboardPinnedCard } from '../../components/DashboardPinnedCard/DashboardPinnedCard';
+import { StylizedPinnedCard } from '../../components/StylizedPinnedCard/StylizedPinnedCard';
 import { DashboardUserInfo } from '../../components/DashboardUserInfo/DashboardUserInfo';
 
 export const MinimalistPage = props => (

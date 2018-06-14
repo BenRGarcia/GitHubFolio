@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { NavBar } from '../../components/NavBar';
 import { DashboardSidebar } from '../../components/DashboardSidebar';
 import { DashboardUserInfo } from '../../components/DashboardUserInfo';
-import { DashboardPinnedCard } from '../../components/DashboardPinnedCard';
+import { StylizedPinnedCard } from '../../components/StylizedPinnedCard';
 import { Footer } from '../../components/Footer';
 import { HelloWorld } from '../../components/HelloWorld';
 
