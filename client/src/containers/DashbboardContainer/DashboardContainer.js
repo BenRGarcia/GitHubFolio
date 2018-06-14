@@ -101,19 +101,25 @@ export class DashboardContainer extends Component {
       )
     } else if (window.location.pathname=='/dashboard/templates/minimalist'){
       return(
-      <MinimalistPage userInfo={this.state.userInfo} pinnedRepos={this.state.pins} />
+        <div>
+          <TemplateSidebar />
+          <MinimalistPage userInfo={this.state.userInfo} pinnedRepos={this.state.pins} />
+        </div>
       )
     } else if(window.location.pathname=='/dashboard/templates/stylized'){
       return(
-          // I DON'T LIKE ALL OF THIS IN HERE
+        <div>
+          <TemplateSidebar />
+          {/* I DON'T LIKE ALL OF THIS IN HERE */}
           <div style={{ textAlign: 'center' }}>
-          <a href='/dashboard/templates'><button>GO BACK</button></a>
-          <a href='/dashboard/templates'><button>USE THIS TEMPLATE</button></a>          
-          <DashboardUserInfo userInfo={this.state.userInfo} />           
-          <StylizedPinnedCard pinnedRepos={this.state.pins} />
+            <a href='/dashboard/templates'><button>GO BACK</button></a>
+            <a href='/dashboard/templates'><button>USE THIS TEMPLATE</button></a>
+            <DashboardUserInfo userInfo={this.state.userInfo} />
+            <StylizedPinnedCard pinnedRepos={this.state.pins} />
           </div>
+        </div>
       )
-    }else {
+    } else {
       return (
         <div>
           No paths matched! {window.location.pathname}
@@ -123,12 +129,6 @@ export class DashboardContainer extends Component {
   }
 
   render() {
-
-    return(
-      this.whichRoute()
-    )
-   
+    return this.whichRoute()
   }
 }
-
-      
