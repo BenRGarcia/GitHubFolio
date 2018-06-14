@@ -3,10 +3,13 @@ import "./TemplateSidebar.css";
 
 export const TemplateSidebar = props => (
   <div className="sidenav">
-    <a href="/dashboard/templates/minimalist">Minimalist</a>
-    <a href="/dashboard/templates/stylized">Stylized</a>
-    <a href="#">Color 1</a>
-    <a href="#">Color 2</a>
-    <a href="/dashboard">Go Back</a>  
+    <div className='container'>
+      <img className='githubfoliologo'src='/images/githubfoliologo.png'/>
+      <a href="/dashboard/templates/minimalist" className='sidenavText'>Minimalist<i className="fas fa-caret-right arrowPad"></i></a><hr />
+      <a href="/dashboard/templates/stylized" className='sidenavText'>Stylized<i className="fas fa-caret-right arrowPad"></i></a><hr />
+      <a href="#" className='sidenavText'>Color 1<i className="fas fa-caret-right arrowPad"></i></a><hr />
+      <a href="#" className='sidenavText'>Color 2<i className="fas fa-caret-right arrowPad"></i></a><hr />      
+      <a href="/" className='btn btn-secondary center-block logout'>Logout</a>
+    </div>
   </div>
 );
