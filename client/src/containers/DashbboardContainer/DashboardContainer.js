@@ -9,7 +9,9 @@ import  DashboardEditRepos from '../../components/DashboardEdit/DashboardEdit';
 import { DashboardEditSidebar } from '../../components/DashboardEditSidebar/DashboardEditSidebar';
 import { TemplateSidebar } from '../../components/TemplateSidebar/TemplateSidebar';
 import { MinimalistPage } from '../../components/MinimalistPage/MinimalistPage';
+import { SaveTemplateBtn } from '../../components/SaveTemplateBtn/SaveTemplateBtn';
 import { MinimalistPinnedCard } from '../../components/MinimalistPinnedCard/MinimalistPinnedCard';
+import { ClientSidePage } from '../../components/ClientSidePage/ClientSidePage';
 import { Footer } from '../../components/Footer/Footer';
 import { HelloWorld } from '../../components/HelloWorld';
 
@@ -103,6 +105,7 @@ export class DashboardContainer extends Component {
       return(
         <div>
           <TemplateSidebar />
+          <SaveTemplateBtn />
           <MinimalistPage userInfo={this.state.userInfo} pinnedRepos={this.state.pins} />
         </div>
       )
