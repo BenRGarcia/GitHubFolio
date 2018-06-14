@@ -3,19 +3,19 @@ export const githubAPI = async (queryString) => {
   const token = process.env.GITHUB_API_TOKEN
   // GraphQL query string
   const query = `
-  query {
-    viewer {
-      pinnedRepositories(first:6) {
-        edges {
-          node {
-            name
-            description
-            homepageUrl
-            url
+    query {
+      viewer {
+        pinnedRepositories(first:6) {
+          edges {
+            node {
+              name
+              description
+              homepageUrl
+              url
+            }
           }
         }
       }
-    }
   }`
   // Fetch data from GitHub
   const resp = await fetch('https://api.github.com/graphql', {

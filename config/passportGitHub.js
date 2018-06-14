@@ -18,7 +18,7 @@ const verifyCb = (accessToken, refreshToken, profile, cb) => {
   const email = profile.emails[0].value
   const photo = profile.photos[0].value
   const { bio, location } = profile._json
-  User.findOrCreate({ gitHubId, displayName, profileUrl, accessToken, email, photo, bio, location }, (err, user) => {
+  User.loginFindOrCreate({ gitHubId, displayName, profileUrl, accessToken, email, photo, bio, location }, (err, user) => {
     return cb(err, user)
   })
 }

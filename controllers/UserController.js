@@ -1,6 +1,6 @@
 const db = require('../models')
 
-const findOrCreate = async ({
+const loginFindOrCreate = async ({
   gitHubId,
   accessToken,
   photo = 'https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png',
@@ -21,9 +21,8 @@ const findOne = async ({ gitHubId }) => {
     .populate('pinnedRepositories')
 }
 
-const findOneAndUpdate = async ({
-  gitHubId,
-  photo,
+const findOneAndUpdate = async ({ gitHubId },
+  { photo,
   profileUrl,
   bio,
   location,
@@ -33,7 +32,7 @@ const findOneAndUpdate = async ({
 }
 
 module.exports = {
-  findOrCreate,
+  loginFindOrCreate,
   findOne,
   findOneAndUpdate
 }
