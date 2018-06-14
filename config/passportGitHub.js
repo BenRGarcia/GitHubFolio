@@ -10,16 +10,20 @@ const strategyConfig = {
   callbackURL: process.env.GITHUB_CALLBACK_URL
 }
 
-const verifyCb = (accessToken, refreshToken, profile, cb) => {
+const verifyCb = async (accessToken, refreshToken, profile, cb) => {
   // Destructure GitHub profile oAuth response object
-  const { gitHubId, displayName, profileUrl } = profile
+  const { displayName, profileUrl } = profile
+  const gitHubId = profile.id
   const email = profile.emails[0].value
   const photo = profile.photos[0].value
   const { bio, location } = profile._json
+  console.log(`\n=====stuff:\n`, gitHubId, displayName, profileUrl, email, photo, bio, location)
   // Find or create user with destructured data
-  User.LoginFindOrCreate({ gitHubId, displayName, profileUrl, accessToken, email, photo, bio, location }, (err, user) => {
-    return cb(err, user)
-  })
+  User.loginFindOrCreate({ gitHubId, displayName, profileUrl, accessToken, email, photo, bio, location })
+    .then(user => {
+      console.log(`user:`, user)
+      return cb(null, user)
+    })
 }
 
 const gitHubStrategy = new GitHubStrategy(strategyConfig, verifyCb)
