@@ -1,6 +1,6 @@
 const db = require('../models')
 
-const findOrCreate = async ({
+const loginFindOrCreate = async ({
   gitHubId,
   accessToken,
   photo = 'https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png',
@@ -33,7 +33,7 @@ const findOneAndUpdate = async ({
 }
 
 module.exports = {
-  findOrCreate,
+  loginFindOrCreate,
   findOne,
   findOneAndUpdate
 }
