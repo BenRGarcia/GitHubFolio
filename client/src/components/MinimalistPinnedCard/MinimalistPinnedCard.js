@@ -3,23 +3,23 @@ import "./MinimalistPinnedCard.css";
 
 export const MinimalistPinnedCard = props => {
   const pinnedRepos = props.pinnedRepos.map(repo => (
+
+  <div className="col-sm-4 mb-4 mt-4  text-center">
     <a href={repo.githubLink}>    
-      <div className="card minCard">
-        <div className="img-container">
-          <img className= "pinnedImages" alt={repo.title} src={repo.image} />
+      <div className="mt-4">
+          <img className= "tn-size" alt={repo.title} src={repo.image} />
         </div>
-          <div className="content">
-            <ul>
-              <li>
-                <strong>{repo.title}</strong> 
-              </li>
-            </ul>
-          </div>
-      </div>
-    </a>
+
+        <div className="descriptionfont mt-2">
+            <strong>{repo.title}</strong>
+        </div>
+      </a>
+  </div>
       
   ))
   return(
-    pinnedRepos
+    <div className="row">
+      {pinnedRepos}
+    </div>
   );
 } 
