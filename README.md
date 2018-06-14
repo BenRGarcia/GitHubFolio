@@ -23,3 +23,4 @@ EXPRESS_SESSION_SECRET=...
 * provision redis, mongolab
 * update homepage and callback url on GitHub developer settings
 * remove `/build` from `.gitignore` file
+* then, add/commit and deploy
