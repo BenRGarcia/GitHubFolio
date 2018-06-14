@@ -1,4 +1,3 @@
-const createError = require('http-errors')
 const express = require('express')
 const helmet = require('helmet')
 const session = require('express-session')
@@ -10,7 +9,7 @@ const limiterConfig = require('./config/limiter.js')
 const sessionConfig = require('./config/session')(RedisStore, client)
 const path = require('path')
 const logger = require('morgan')
-var favicon = require('serve-favicon')
+const favicon = require('serve-favicon')
 const app = express()
 const routes = require('./routes')
 const limiter = require('express-limiter')(app, client)
@@ -34,9 +33,6 @@ app.use(routes)
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, './build/index.html'))
 })
-
-// catch 404 and forward to error handler
-app.use((req, res, next) => next(createError(404)))
 
 // error handler
 app.use((err, req, res) => {
