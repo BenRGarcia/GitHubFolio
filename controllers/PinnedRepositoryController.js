@@ -7,16 +7,16 @@ const db = require('../models')
 const bulkCreate = async (arrayOfObjects) => {
   const mongoDeliverable = arrayOfObjects.map(pinnedRepo => {
     const { name, description, homepageUrl, url } = pinnedRepo
-    return { 
+    return {
       insertOne: {
         document: { name, description, homepageUrl, url }
       }
     }
-  });
-  
+  })
+
   return PinnedRepository.bulkWrite(mongoDeliverable)
 }
-  
+
 const bulkUpdate = async (arrayOfObjects) => {
   const mongoDeliverable = arrayOfObjects.map(pinnedRepo => {
     const { _id, name, description, homepageUrl, url } = pinnedRepo
@@ -26,13 +26,13 @@ const bulkUpdate = async (arrayOfObjects) => {
         update: { name, description, homepageUrl, url }
       }
     }
-  });
-  
+  })
+
   return PinnedRepository.bulkWrite(mongoDeliverable)
 }
 
 module.exports = {
-    // findOneAndUpdate,
-    bulkCreate,
-    bulkUpdate
+  // findOneAndUpdate,
+  bulkCreate,
+  bulkUpdate
 }

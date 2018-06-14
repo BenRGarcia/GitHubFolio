@@ -12,12 +12,12 @@ const UserSchema = new Schema({
   displayName: {
     type: String,
     required: true,
-    trim: true,
+    trim: true
   },
   profileUrl: {
     type: String,
     required: true,
-    trim: true,
+    trim: true
   },
   email: {
     type: String,
@@ -28,17 +28,17 @@ const UserSchema = new Schema({
   photo: {
     type: String,
     required: true,
-    trim: true,
+    trim: true
   },
   bio: {
     type: String,
     required: true,
-    trim: true,
+    trim: true
   },
   location: {
     type: String,
     required: true,
-    trim: true,
+    trim: true
   },
   template: {
     type: String,

@@ -1,9 +1,11 @@
 const express = require('express')
 const router = express.Router()
-var db = require('../../models')
-const userController = require('../../controllers/UserController')
-const pinnedRepositoryController = require('../../controllers/PinnedRepositoryController')
 var isAuthenticated = require('../../utils/isAuthenticated')
+
+/**
+ *  Helpful hint:
+ *    `req.user` is the user's MongoDB `_id`
+ */
 
 // API Routes - '/api/user'
 router.route('/data')
@@ -33,8 +35,8 @@ router.route('/data')
 router.route('/pinnedrepos')
   .post(/* isAuthenticated, */(req, res, next) => {
     const { gitHubId } = req.user
-    const repoData = await pinnedRepositoryController.bulkUpdate({//some array})
-    res.json(userData)
+    const repoData = await pinnedRepositoryController.bulkUpdate()
+    res.json(repoData)
   })
   
 module.exports = router
