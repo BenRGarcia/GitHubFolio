@@ -11,14 +11,13 @@ const strategyConfig = {
 }
 
 const verifyCb = (accessToken, refreshToken, profile, cb) => {
-  const {
-    gitHubId,
-    displayName,
-    profileUrl } = profile
+  // Destructure GitHub profile oAuth response object
+  const { gitHubId, displayName, profileUrl } = profile
   const email = profile.emails[0].value
   const photo = profile.photos[0].value
   const { bio, location } = profile._json
-  User.findOrCreate({ gitHubId, displayName, profileUrl, accessToken, email, photo, bio, location }, (err, user) => {
+  // Find or create user with destructured data
+  User.LoginFindOrCreate({ gitHubId, displayName, profileUrl, accessToken, email, photo, bio, location }, (err, user) => {
     return cb(err, user)
   })
 }
