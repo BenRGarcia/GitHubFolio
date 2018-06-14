@@ -31,12 +31,13 @@
     padding-top: 5px;
   }
 
-  .logout {
-    position: absolute;
-    bottom: 50px;
-    width: 70%;
-    font-family: 'Roboto', sans-serif;
-    font-size: 18px;
+  .githubfoliologo{
+    width:30px;
+    height:auto;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    display:block;
+    margin:auto;
   }
 
   
