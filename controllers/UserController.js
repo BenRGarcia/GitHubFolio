@@ -20,7 +20,7 @@ const findOne = async ({ _id }) => {
   return db.User.findOne({ _id }).populate('pinnedRepositories')
 }
 
-const findOneAndUpdate = async ({ _id, photo, profileUrl, bio, location, displayName, email }) => {
+const findOneAndUpdate = async ({ _id }, { photo, profileUrl, bio, location, displayName, email }) => {
   const userData = { displayName, profileUrl, email, photo, bio, location }
   return db.User.findOneAndUpdate({ _id }, userData)
 }

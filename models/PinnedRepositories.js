@@ -17,14 +17,12 @@ const PinnedRepositoriesSchema = new Schema({
     type: String,
     required: false,
     trim: true,
-    unique: true
   },
   url: {
     type: String,
     required: true,
     minlength: 1,
     trim: true,
-    unique: true
   }
 })
 

@@ -40,6 +40,18 @@ const UserSchema = new Schema({
     required: true,
     trim: true
   },
+  template: {
+    type: String,
+    required: false,
+    trim: true,
+    default: 'Stylized'
+  },
+  color: {
+    type: String,
+    required: false,
+    trim: true,
+    default: 'Light'
+  },
   accessToken: {
     type: String,
     required: true,
