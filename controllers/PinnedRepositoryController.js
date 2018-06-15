@@ -22,7 +22,7 @@ const bulkCreate = async ({ _id }, arrayOfObjects) => {
       return ids
     })
     // Compose array of Object ID's
-    .then(arrayOfIds => User.findOneAndUpdate({ _id }, { $set: { pinnedRepositories: arrayOfObjectIds } }))
+    .then(arrayOfIds => User.findOneAndUpdate({ _id }, { $set: { pinnedRepositories: arrayOfIds } }))
     .catch(err => console.error(err))
 }
 
