@@ -15,18 +15,7 @@ export const DashboardPage = () => (
     <div className=''>
     <DashboardSidebar />
     </div>
-    <div className='ml-auto p-2'>
-    <Router>
-      <Switch>
-      <Route exact path='/dashboard' component={GitPinnedReposPage} />
-      <Route exact path='/dashboard/template' component={TemplatePage}/>
-      <Route exact path='/dashboard/user' component={DashboardEditUser}/>
-      <Route exact path='/dashboard/repos' component={DashboardEditRepos}/>      
-      <Route exact path='/dashboard/preview' component={PreviewPage} />
-      <Route component={HelloWorld} />
-      </Switch>
-    </Router>
-    </div>
+    <DashboardContainer />
  </div>
 );
 

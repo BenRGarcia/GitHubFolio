@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import { NavBar } from '../../components/NavBar/NavBar';
 import { Wrapper } from '../../components/Wrapper/Wrapper';
 import { DashboardSidebar } from '../../components/DashboardSidebar/DashboardSidebar';
 import { DashboardUserInfo } from '../../components/DashboardUserInfo/DashboardUserInfo';
 import { StylizedPinnedCard } from '../../components/StylizedPinnedCard/StylizedPinnedCard';
-import { DashboardEdit } from '../../components/DashboardEdit/DashboardEdit';
-import  DashboardEditRepos from '../../components/DashboardEdit/DashboardEdit';
 import { MinimalistPage } from '../../components/MinimalistPage/MinimalistPage';
 import { StylizedPage } from '../../components/StylizedPage/StylizedPage';
 import { SaveTemplateBtn } from '../../components/SaveTemplateBtn/SaveTemplateBtn';
@@ -13,7 +12,13 @@ import { MinimalistPinnedCard } from '../../components/MinimalistPinnedCard/Mini
 import { ClientSidePageMin } from '../../components/ClientSidePageMin/ClientSidePageMin';
 import { ClientSidePageSty } from '../../components/ClientSidePageSty/ClientSidePageSty';
 import { Footer } from '../../components/Footer/Footer';
-import { HelloWorld } from '../../components/HelloWorld';
+import { PreviewPage } from '../../components/PreviewPage/PreviewPage.js';
+import { TemplatePage } from '../../components/TemplatePage/TemplatePage.js';
+import { GitPinnedReposPage } from '../../components/GitPinnedReposPage/GitPinnedReposPage.js';
+import { DashboardEditUser } from '../../components/DashboardEditUser/DashboardEditUser.js';
+import { DashboardEditRepos } from '../../components/DashboardEditRepos/DashboardEditRepos.js';
+import {HelloWorld} from "../../components/HelloWorld.js";
+
 
 
 
@@ -72,7 +77,9 @@ export class DashboardContainer extends Component {
     ]
   };
 
-  whichRoute = () => {
+  
+
+  // whichRoute = () => {
     // if(window.location.pathname=="/dashboard"){
     //   return (
     //     <div>
@@ -124,9 +131,39 @@ export class DashboardContainer extends Component {
     //     </div>
     //   )
     // }
-  }
+  // }
+    EditUserInfo = (props) => {
+      return (
+        <DashboardEditUser 
+        userInfo={this.state.userInfo}
+        />
+      );
+    }
+
+    EditRepoInfo = (props) => {
+      return (
+        <DashboardEditRepos
+        pinnedRepos={this.state.pins}
+        />
+      );
+    }
+
 
   render() {
-    return this.whichRoute()
+    return(
+    <div className='ml-auto p-2'>
+      <Router>
+        <Switch>
+          <Route exact path='/dashboard' component={GitPinnedReposPage} />
+          <Route exact path='/dashboard/template' component={TemplatePage}/>
+          <Route exact path='/dashboard/user' render={this.EditUserInfo}/>
+          <Route exact path='/dashboard/repos' render={this.EditRepoInfo}/>      
+          <Route exact path='/dashboard/preview' component={PreviewPage} />
+          <Route component={HelloWorld} />
+        </Switch>
+      </Router>
+    </div>
+    )
   }
 }
+
