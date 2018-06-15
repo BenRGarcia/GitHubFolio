@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { ClientSidePage } from '../../components/ClientSidePage/ClientSidePage';
+import { ClientSidePageMin } from '../../components/ClientSidePageMin/ClientSidePageMin';
+import { ClientSidePageSty } from '../../components/ClientSidePageSty/ClientSidePageSty';
 import { MinimalistPinnedCard } from '../../components/MinimalistPinnedCard/MinimalistPinnedCard';
 import { Footer } from '../../components/Footer';
 
@@ -62,8 +63,9 @@ export class PublicViewContainer extends Component {
   };
 
   render() {
-    return (   
-        <ClientSidePage userInfo={this.state.userInfo} pinnedRepos={this.state.pins} />
+    return (
+        <ClientSidePageMin userInfo={this.state.userInfo} pinnedRepos={this.state.pins} />
+        // <ClientSidePageSty userInfo={this.state.userInfo} pinnedRepos={this.state.pins} />   
     );
   }
 }
