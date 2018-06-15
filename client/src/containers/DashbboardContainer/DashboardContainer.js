@@ -12,7 +12,8 @@ import { MinimalistPage } from '../../components/MinimalistPage/MinimalistPage';
 import { StylizedPage } from '../../components/StylizedPage/StylizedPage';
 import { SaveTemplateBtn } from '../../components/SaveTemplateBtn/SaveTemplateBtn';
 import { MinimalistPinnedCard } from '../../components/MinimalistPinnedCard/MinimalistPinnedCard';
-import { ClientSidePage } from '../../components/ClientSidePage/ClientSidePage';
+import { ClientSidePageMin } from '../../components/ClientSidePageMin/ClientSidePageMin';
+import { ClientSidePageSty } from '../../components/ClientSidePageSty/ClientSidePageSty';
 import { Footer } from '../../components/Footer/Footer';
 import { HelloWorld } from '../../components/HelloWorld';
 

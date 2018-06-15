@@ -63,8 +63,9 @@ export class PublicViewContainer extends Component {
   };
 
   render() {
-    return (   
+    return (
         <ClientSidePageMin userInfo={this.state.userInfo} pinnedRepos={this.state.pins} />
+        // <ClientSidePageSty userInfo={this.state.userInfo} pinnedRepos={this.state.pins} />   
     );
   }
 }

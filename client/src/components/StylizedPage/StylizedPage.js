@@ -16,6 +16,9 @@ export const StylizedPage = props => {
         <div className="titlefont pt-4 pb-4">
             <a>Stylized</a>
         </div>
+        <div>
+          <DashboardUserInfo userInfo={userInfo}/>
+        </div>
       </div>
       <StylizedPinnedCard pinnedRepos={pinnedRepos} />
       <div className='pt-4 mt-4'>
