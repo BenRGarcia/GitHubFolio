@@ -44,7 +44,7 @@ const UserSchema = new Schema({
     type: String,
     required: false,
     trim: true,
-    default: 'Stylistic'
+    default: 'Stylized'
   },
   color: {
     type: String,
