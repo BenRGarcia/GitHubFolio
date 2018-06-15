@@ -9,7 +9,11 @@ import  DashboardEditRepos from '../../components/DashboardEdit/DashboardEdit';
 import { DashboardEditSidebar } from '../../components/DashboardEditSidebar/DashboardEditSidebar';
 import { TemplateSidebar } from '../../components/TemplateSidebar/TemplateSidebar';
 import { MinimalistPage } from '../../components/MinimalistPage/MinimalistPage';
+import { StylizedPage } from '../../components/StylizedPage/StylizedPage';
+import { SaveTemplateBtn } from '../../components/SaveTemplateBtn/SaveTemplateBtn';
 import { MinimalistPinnedCard } from '../../components/MinimalistPinnedCard/MinimalistPinnedCard';
+import { ClientSidePageMin } from '../../components/ClientSidePageMin/ClientSidePageMin';
+import { ClientSidePageSty } from '../../components/ClientSidePageSty/ClientSidePageSty';
 import { Footer } from '../../components/Footer/Footer';
 import { HelloWorld } from '../../components/HelloWorld';
 
@@ -101,19 +105,21 @@ export class DashboardContainer extends Component {
       )
     } else if (window.location.pathname=='/dashboard/templates/minimalist'){
       return(
-      <MinimalistPage userInfo={this.state.userInfo} pinnedRepos={this.state.pins} />
+        <div>
+          <TemplateSidebar />
+          <SaveTemplateBtn />
+          <MinimalistPage userInfo={this.state.userInfo} pinnedRepos={this.state.pins} />
+        </div>
       )
     } else if(window.location.pathname=='/dashboard/templates/stylized'){
       return(
-          // I DON'T LIKE ALL OF THIS IN HERE
-          <div style={{ textAlign: 'center' }}>
-          <a href='/dashboard/templates'><button>GO BACK</button></a>
-          <a href='/dashboard/templates'><button>USE THIS TEMPLATE</button></a>          
-          <DashboardUserInfo userInfo={this.state.userInfo} />           
-          <StylizedPinnedCard pinnedRepos={this.state.pins} />
-          </div>
+        <div>
+          <TemplateSidebar />
+          <DashboardUserInfo userInfo={this.state.userInfo} />
+          <StylizedPage userInfo={this.state.userInfo} pinnedRepos={this.state.pins}/>
+        </div>
       )
-    }else {
+    } else {
       return (
         <div>
           No paths matched! {window.location.pathname}
@@ -123,12 +129,6 @@ export class DashboardContainer extends Component {
   }
 
   render() {
-
-    return(
-      this.whichRoute()
-    )
-   
+    return this.whichRoute()
   }
 }
-
-      

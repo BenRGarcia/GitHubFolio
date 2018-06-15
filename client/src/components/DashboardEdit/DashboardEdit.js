@@ -9,7 +9,7 @@ export const DashboardEdit = ({userInfo, pinnedRepos})  => {
   const {id, title, image, description, githubLink, deployedLink} = pinnedRepos;
 
   const editPinnedRepos = pinnedRepos.map(repo => (
-    <div className='editPinForm'>
+    <div className='container editPinForm'>
       <form>
         <div className='form-group'>
           <label>Project Name</label>
@@ -25,7 +25,7 @@ export const DashboardEdit = ({userInfo, pinnedRepos})  => {
     <div>
     {editName}
     {editPinnedRepos} 
-    <div>
+    <div className='container'>
       <button type='submit'>submit</button>
     </div>
     </div>

@@ -1,13 +1,9 @@
 import React from "react";
-import "./MinimalistPage.css";
+import "./ClientSidePageMin.css";
 import { MinimalistPinnedCard } from '../../components/MinimalistPinnedCard/MinimalistPinnedCard';
-import { DashboardUserInfo } from '../../components/DashboardUserInfo/DashboardUserInfo';
 
 
-
-
-
-export const MinimalistPage = props => {
+export const ClientSidePageMin = props => {
   const {userInfo, pinnedRepos} = props;
   return(
   <div className= "minPageContainer">
@@ -25,5 +21,3 @@ export const MinimalistPage = props => {
   </div>
   )
 }
-
-{/* <a href='/dashboard/templates'><button>GO BACK</button></a>  */}

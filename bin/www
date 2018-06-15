@@ -8,8 +8,7 @@ var app = require('../server')
 var debug = require('debug')('githubfolio:server')
 var http = require('http')
 var mongoose = require('mongoose')
-var dbName = 'GitHubFolioDB'
-var MONGODB_URI = process.env.MONGODB_URI || `mongodb://localhost/${dbName}`
+var MONGODB_URI = process.env.MONGODB_URI || `mongodb://localhost/GitHubFolioDB`
 
 /**
  * Get port from environment and store in Express.
