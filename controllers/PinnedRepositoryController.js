@@ -10,13 +10,13 @@ const bulkCreate = async ({ _id }, arrayOfObjects) => {
         document: { name, description, homepageUrl, url }
       }
     }
-  })  
+  })
 
   // Add all repo's to PinnedRepositories Model
   return db.PinnedRepositories.bulkWrite(mongoDeliverable)
     .then(resp => {
-      let ids = [];
-      for (key in resp.insertedIds) {
+      let ids = []
+      for (let key in resp.insertedIds) {
         ids.push(resp.insertedIds[key])
       }
       return ids
@@ -40,7 +40,7 @@ const bulkUpdate = async (arrayOfObjects) => {
   return PinnedRepository.bulkWrite(mongoDeliverable)
 }
 
-/* 
+/*
 async function addComment ({ text, _id }) {
   return db.Comment.create({ text })
     .then(newComment => db.Article.findOneAndUpdate({ _id }, { $push: { comments: newComment._id } }))
