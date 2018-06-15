@@ -77,77 +77,6 @@ export class DashboardContainer extends Component {
     ]
   };
 
-  
-
-  // whichRoute = () => {
-    // if(window.location.pathname=="/dashboard"){
-    //   return (
-    //     <div>
-    //       <div>
-    //         <DashboardSidebar />    
-    //         {/* <DashboardUserInfo userInfo={this.state.userInfo} />            */}
-    //         {/* <StylizedPinnedCard pinnedRepos={this.state.pins} />  */}
-    //       </div>
-    //   </div>
-    //   )
-    // } else if (window.location.pathname=='/dashboard/edit'){
-    //   return(
-    //     <div>
-    //     <DashboardEditSidebar />
-    //     <DashboardEdit userInfo={this.state.userInfo} pinnedRepos={this.state.pins}/>
-    //   </div>
-    // )
-    // } else if (window.location.pathname=='/dashboard/myportfolio'){
-    //   return(
-    //     <div>
-    //       <a href='/dashboard'><button>BACK</button></a>
-    //       THIS WILL BE A PORTFOLIO THAT WE GET FROM THE DATABASE, CORRECT?
-    //     </div>
-    //   )
-    // } else if (window.location.pathname=='/dashboard/templates'){
-    //   return(
-    //   <TemplateSidebar />
-    //   )
-    // } else if (window.location.pathname=='/dashboard/templates/minimalist'){
-    //   return(
-    //     <div>
-    //       <TemplateSidebar />
-    //       <SaveTemplateBtn />
-    //       <MinimalistPage userInfo={this.state.userInfo} pinnedRepos={this.state.pins} />
-    //     </div>
-    //   )
-    // } else if(window.location.pathname=='/dashboard/templates/stylized'){
-    //   return(
-    //     <div>
-    //       <TemplateSidebar />
-    //       <DashboardUserInfo userInfo={this.state.userInfo} />
-    //       <StylizedPage userInfo={this.state.userInfo} pinnedRepos={this.state.pins}/>
-    //     </div>
-    //   )
-    // } else {
-    //   return (
-    //     <div>
-    //       No paths matched! {window.location.pathname}
-    //     </div>
-    //   )
-    // }
-  // }
-    EditUserInfo = (props) => {
-      return (
-        <DashboardEditUser 
-        userInfo={this.state.userInfo}
-        />
-      );
-    }
-
-    EditRepoInfo = (props) => {
-      return (
-        <DashboardEditRepos
-        pinnedRepos={this.state.pins}
-        />
-      );
-    }
-
 
   render() {
     return(
@@ -156,7 +85,8 @@ export class DashboardContainer extends Component {
         <Switch>
           <Route exact path='/dashboard' component={GitPinnedReposPage} />
           <Route exact path='/dashboard/template' component={TemplatePage}/>
-          <Route exact path='/dashboard/user' render={this.EditUserInfo}/>
+          <Route path="/dashboard/user" render={()=><DashboardEditUser userInfo={this.state.userInfo}/>} />
+          <Route path="/dashboard/repos" render={()=><DashboardEditRepos  pinnedRepos={this.state.pins}/>} />          
           <Route exact path='/dashboard/repos' render={this.EditRepoInfo}/>      
           <Route exact path='/dashboard/preview' component={PreviewPage} />
           <Route component={HelloWorld} />
