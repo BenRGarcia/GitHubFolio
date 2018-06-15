@@ -151,7 +151,7 @@ export class DashboardContainer extends Component {
 
   render() {
     return(
-    <div className='ml-auto p-2'>
+    <div className=''>
       <Router>
         <Switch>
           <Route exact path='/dashboard' component={GitPinnedReposPage} />

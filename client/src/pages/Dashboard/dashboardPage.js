@@ -11,7 +11,7 @@ import { DashboardEditRepos } from '../../components/DashboardEditRepos/Dashboar
 import {HelloWorld} from "../../components/HelloWorld.js";
 
 export const DashboardPage = () => (
-  <div className='d-flex'>
+  <div className='col-lg-10 offset-lg-2'>
     <div className=''>
     <DashboardSidebar />
     </div>
