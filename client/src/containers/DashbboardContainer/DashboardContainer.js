@@ -115,7 +115,6 @@ export class DashboardContainer extends Component {
         <div>
           <TemplateSidebar />
           <DashboardUserInfo userInfo={this.state.userInfo} />
-          {/* <StylizedPinnedCard pinnedRepos={this.state.pins} /> */}
           <StylizedPage userInfo={this.state.userInfo} pinnedRepos={this.state.pins}/>
         </div>
       )
