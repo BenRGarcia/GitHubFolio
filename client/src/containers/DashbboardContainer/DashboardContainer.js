@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import { NavBar } from '../../components/NavBar/NavBar';
 import { Wrapper } from '../../components/Wrapper/Wrapper';
 import { DashboardSidebar } from '../../components/DashboardSidebar/DashboardSidebar';
 import { DashboardUserInfo } from '../../components/DashboardUserInfo/DashboardUserInfo';
 import { StylizedPinnedCard } from '../../components/StylizedPinnedCard/StylizedPinnedCard';
-import { DashboardEdit } from '../../components/DashboardEdit/DashboardEdit';
-import  DashboardEditRepos from '../../components/DashboardEdit/DashboardEdit';
-import { DashboardEditSidebar } from '../../components/DashboardEditSidebar/DashboardEditSidebar';
-import { TemplateSidebar } from '../../components/TemplateSidebar/TemplateSidebar';
 import { MinimalistPage } from '../../components/MinimalistPage/MinimalistPage';
 import { StylizedPage } from '../../components/StylizedPage/StylizedPage';
 import { SaveTemplateBtn } from '../../components/SaveTemplateBtn/SaveTemplateBtn';
@@ -15,7 +12,13 @@ import { MinimalistPinnedCard } from '../../components/MinimalistPinnedCard/Mini
 import { ClientSidePageMin } from '../../components/ClientSidePageMin/ClientSidePageMin';
 import { ClientSidePageSty } from '../../components/ClientSidePageSty/ClientSidePageSty';
 import { Footer } from '../../components/Footer/Footer';
-import { HelloWorld } from '../../components/HelloWorld';
+import { PreviewPage } from '../../components/PreviewPage/PreviewPage.js';
+import { TemplatePage } from '../../components/TemplatePage/TemplatePage.js';
+import { GitPinnedReposPage } from '../../components/GitPinnedReposPage/GitPinnedReposPage.js';
+import { DashboardEditUser } from '../../components/DashboardEditUser/DashboardEditUser.js';
+import { DashboardEditRepos } from '../../components/DashboardEditRepos/DashboardEditRepos.js';
+import {HelloWorld} from "../../components/HelloWorld.js";
+
 
 
 
@@ -74,61 +77,23 @@ export class DashboardContainer extends Component {
     ]
   };
 
-  whichRoute = () => {
-    if(window.location.pathname=="/dashboard"){
-      return (
-        <div>
-          <div>
-            <DashboardSidebar />    
-            {/* <DashboardUserInfo userInfo={this.state.userInfo} />            */}
-            {/* <StylizedPinnedCard pinnedRepos={this.state.pins} />  */}
-          </div>
-      </div>
-      )
-    } else if (window.location.pathname=='/dashboard/edit'){
-      return(
-        <div>
-        <DashboardEditSidebar />
-        <DashboardEdit userInfo={this.state.userInfo} pinnedRepos={this.state.pins}/>
-      </div>
-    )
-    } else if (window.location.pathname=='/dashboard/myportfolio'){
-      return(
-        <div>
-          <a href='/dashboard'><button>BACK</button></a>
-          THIS WILL BE A PORTFOLIO THAT WE GET FROM THE DATABASE, CORRECT?
-        </div>
-      )
-    } else if (window.location.pathname=='/dashboard/templates'){
-      return(
-      <TemplateSidebar />
-      )
-    } else if (window.location.pathname=='/dashboard/templates/minimalist'){
-      return(
-        <div>
-          <TemplateSidebar />
-          <SaveTemplateBtn />
-          <MinimalistPage userInfo={this.state.userInfo} pinnedRepos={this.state.pins} />
-        </div>
-      )
-    } else if(window.location.pathname=='/dashboard/templates/stylized'){
-      return(
-        <div>
-          <TemplateSidebar />
-          <DashboardUserInfo userInfo={this.state.userInfo} />
-          <StylizedPage userInfo={this.state.userInfo} pinnedRepos={this.state.pins}/>
-        </div>
-      )
-    } else {
-      return (
-        <div>
-          No paths matched! {window.location.pathname}
-        </div>
-      )
-    }
-  }
 
   render() {
-    return this.whichRoute()
+    return(
+    <div className=''>
+      <Router>
+        <Switch>
+          <Route exact path='/dashboard' component={GitPinnedReposPage} />
+          <Route exact path='/dashboard/template' component={TemplatePage}/>
+          <Route path="/dashboard/user" render={()=><DashboardEditUser userInfo={this.state.userInfo}/>} />
+          <Route path="/dashboard/repos" render={()=><DashboardEditRepos  pinnedRepos={this.state.pins}/>} />          
+          <Route exact path='/dashboard/repos' render={this.EditRepoInfo}/>      
+          <Route exact path='/dashboard/preview' component={PreviewPage} />
+          <Route component={HelloWorld} />
+        </Switch>
+      </Router>
+    </div>
+    )
   }
 }
+

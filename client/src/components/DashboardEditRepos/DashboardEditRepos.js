@@ -1,11 +1,10 @@
 import React from "react";
-import "./DashboardEdit.css";
+import "./DashboardEditRepos.css";
 
 
-export const DashboardEdit = ({userInfo, pinnedRepos})  => {
+export const DashboardEditRepos = ({pinnedRepos})  => {
   // const {id, title, image, description, githubLink, deployedLink} = pinnedRepos;
   // const {pins} = state;
-  const {name, email, bio, userImage} = userInfo;
   const {id, title, image, description, githubLink, deployedLink} = pinnedRepos;
 
   const editPinnedRepos = pinnedRepos.map(repo => (
@@ -14,16 +13,20 @@ export const DashboardEdit = ({userInfo, pinnedRepos})  => {
         <div className='form-group'>
           <label>Project Name</label>
           <input type='text' className='form-control' placeholder={repo.title}></input>
+          <label>Description</label>
+          <input type='text' className='form-control' placeholder={repo.description}></input>
+          <label>GitGub Link</label>
+          <input type='text' className='form-control' placeholder={repo.githubLink}></input>
+          <label>Deployed Link</label>
+          <input type='text' className='form-control' placeholder={repo.deployedLink}></input>
         </div>
       </form>
     </div>
   ))
 
-  const editName = (<h1>TESTING</h1>);
   
   return (
     <div>
-    {editName}
     {editPinnedRepos} 
     <div className='container'>
       <button type='submit'>submit</button>
