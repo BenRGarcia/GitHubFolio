@@ -9,6 +9,7 @@ import  DashboardEditRepos from '../../components/DashboardEdit/DashboardEdit';
 import { DashboardEditSidebar } from '../../components/DashboardEditSidebar/DashboardEditSidebar';
 import { TemplateSidebar } from '../../components/TemplateSidebar/TemplateSidebar';
 import { MinimalistPage } from '../../components/MinimalistPage/MinimalistPage';
+import { StylizedPage } from '../../components/StylizedPage/StylizedPage';
 import { SaveTemplateBtn } from '../../components/SaveTemplateBtn/SaveTemplateBtn';
 import { MinimalistPinnedCard } from '../../components/MinimalistPinnedCard/MinimalistPinnedCard';
 import { ClientSidePage } from '../../components/ClientSidePage/ClientSidePage';
@@ -113,13 +114,8 @@ export class DashboardContainer extends Component {
       return(
         <div>
           <TemplateSidebar />
-          {/* I DON'T LIKE ALL OF THIS IN HERE */}
-          <div style={{ textAlign: 'center' }}>
-            <a href='/dashboard/templates'><button>GO BACK</button></a>
-            <a href='/dashboard/templates'><button>USE THIS TEMPLATE</button></a>
-            <DashboardUserInfo userInfo={this.state.userInfo} />
-            <StylizedPinnedCard pinnedRepos={this.state.pins} />
-          </div>
+          <DashboardUserInfo userInfo={this.state.userInfo} />
+          <StylizedPage userInfo={this.state.userInfo} pinnedRepos={this.state.pins}/>
         </div>
       )
     } else {

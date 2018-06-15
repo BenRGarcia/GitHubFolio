@@ -1,9 +1,9 @@
 import React from "react";
-import "./ClientSidePage.css";
+import "./ClientSidePageMin.css";
 import { MinimalistPinnedCard } from '../../components/MinimalistPinnedCard/MinimalistPinnedCard';
 
 
-export const ClientSidePage = props => {
+export const ClientSidePageMin = props => {
   const {userInfo, pinnedRepos} = props;
   return(
   <div className= "minPageContainer">
