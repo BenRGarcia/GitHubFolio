@@ -77,7 +77,33 @@ export class DashboardContainer extends Component {
     ]
   };
 
+  // componentDidMount(){
+  //   this.getPinnedRepos()
+  //   this.getUserInfo()
+  // }
 
+  // getPinnedRepos = () => {
+  //   fetch('/pinnedrepos')
+  //   .then(resp => resp.json())
+  //     .then(data.map(((d)=> 
+  //       this.setState({
+  //         pins: d.pinnedRepos
+  //       })
+  //    ))
+  //   )
+  // }
+
+  // getUserInfo = () => {
+  //   fetch('/user')
+  //   .then(resp => resp.json())
+  //     .then(data.map(((d)=> 
+  //       this.setState({
+  //         userInfo: d.userInfo
+  //       })
+  //    ))
+  //   )
+  // }
+  
   render() {
     return(
     <div className=''>

@@ -14,3 +14,49 @@ export const PreviewPage = props => {
   </div>
   )
 }
+
+// const stylelistic = {
+//   style: {
+//     // ...
+//   },
+//   layout: {
+//     // ...
+//   }
+// };
+
+// const minimalist = {
+//   style: {
+//     // ...
+//   },
+//   layout: {
+//     // ...
+//   }
+// };
+
+// export class Example extends Component {
+//   this.state = {
+//     chosenStyle: ''
+//   };
+
+//   componentDidMount() {
+//     this.getChosenStyle()
+//   }
+
+//   getChosenStyle = () => {
+//     fetch('/portfolio')
+// 	  .then(resp => resp.json())
+//       .then(data => {
+//       this.setState({
+//         chosenStyle: data.chosenStyle
+//       });
+//     })
+//   };
+
+//   render() {
+//     return (
+//       <SomeComponent 
+//         chosenStyle={this.state.chosenStyle === 'stylistic' ? stylelistic : minimalist}
+//       />
+//     );
+//   }
+// }
