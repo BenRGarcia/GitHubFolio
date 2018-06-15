@@ -1,6 +1,6 @@
 import React from "react";
 import "./ClientSidePageSty.css";
-import { MinimalistPinnedCard } from '../../components/MinimalistPinnedCard/MinimalistPinnedCard';
+import { StylizedPinnedCard } from '../../components/StylizedPinnedCard/StylizedPinnedCard';
 
 
 export const ClientSidePageSty = props => {
@@ -10,10 +10,10 @@ export const ClientSidePageSty = props => {
     <div className="container pt-4">
       <div className="section pt-4 pb-4">
         <div className="titlefont pt-4 pb-4">
-            <a>Minimalist</a>
+            <a>Stylized</a>
         </div>
       </div>
-      <MinimalistPinnedCard pinnedRepos={pinnedRepos} />
+      <StylizedPinnedCard pinnedRepos={pinnedRepos} />
       <div className='pt-4 mt-4'>
         <a>Powered by GitHubFolio</a>
       </div>
