@@ -6,8 +6,6 @@ import { DashboardUserInfo } from '../../components/DashboardUserInfo/DashboardU
 import { StylizedPinnedCard } from '../../components/StylizedPinnedCard/StylizedPinnedCard';
 import { DashboardEdit } from '../../components/DashboardEdit/DashboardEdit';
 import  DashboardEditRepos from '../../components/DashboardEdit/DashboardEdit';
-import { DashboardEditSidebar } from '../../components/DashboardEditSidebar/DashboardEditSidebar';
-import { TemplateSidebar } from '../../components/TemplateSidebar/TemplateSidebar';
 import { MinimalistPage } from '../../components/MinimalistPage/MinimalistPage';
 import { StylizedPage } from '../../components/StylizedPage/StylizedPage';
 import { SaveTemplateBtn } from '../../components/SaveTemplateBtn/SaveTemplateBtn';
@@ -75,57 +73,57 @@ export class DashboardContainer extends Component {
   };
 
   whichRoute = () => {
-    if(window.location.pathname=="/dashboard"){
-      return (
-        <div>
-          <div>
-            <DashboardSidebar />    
-            {/* <DashboardUserInfo userInfo={this.state.userInfo} />            */}
-            {/* <StylizedPinnedCard pinnedRepos={this.state.pins} />  */}
-          </div>
-      </div>
-      )
-    } else if (window.location.pathname=='/dashboard/edit'){
-      return(
-        <div>
-        <DashboardEditSidebar />
-        <DashboardEdit userInfo={this.state.userInfo} pinnedRepos={this.state.pins}/>
-      </div>
-    )
-    } else if (window.location.pathname=='/dashboard/myportfolio'){
-      return(
-        <div>
-          <a href='/dashboard'><button>BACK</button></a>
-          THIS WILL BE A PORTFOLIO THAT WE GET FROM THE DATABASE, CORRECT?
-        </div>
-      )
-    } else if (window.location.pathname=='/dashboard/templates'){
-      return(
-      <TemplateSidebar />
-      )
-    } else if (window.location.pathname=='/dashboard/templates/minimalist'){
-      return(
-        <div>
-          <TemplateSidebar />
-          <SaveTemplateBtn />
-          <MinimalistPage userInfo={this.state.userInfo} pinnedRepos={this.state.pins} />
-        </div>
-      )
-    } else if(window.location.pathname=='/dashboard/templates/stylized'){
-      return(
-        <div>
-          <TemplateSidebar />
-          <DashboardUserInfo userInfo={this.state.userInfo} />
-          <StylizedPage userInfo={this.state.userInfo} pinnedRepos={this.state.pins}/>
-        </div>
-      )
-    } else {
-      return (
-        <div>
-          No paths matched! {window.location.pathname}
-        </div>
-      )
-    }
+    // if(window.location.pathname=="/dashboard"){
+    //   return (
+    //     <div>
+    //       <div>
+    //         <DashboardSidebar />    
+    //         {/* <DashboardUserInfo userInfo={this.state.userInfo} />            */}
+    //         {/* <StylizedPinnedCard pinnedRepos={this.state.pins} />  */}
+    //       </div>
+    //   </div>
+    //   )
+    // } else if (window.location.pathname=='/dashboard/edit'){
+    //   return(
+    //     <div>
+    //     <DashboardEditSidebar />
+    //     <DashboardEdit userInfo={this.state.userInfo} pinnedRepos={this.state.pins}/>
+    //   </div>
+    // )
+    // } else if (window.location.pathname=='/dashboard/myportfolio'){
+    //   return(
+    //     <div>
+    //       <a href='/dashboard'><button>BACK</button></a>
+    //       THIS WILL BE A PORTFOLIO THAT WE GET FROM THE DATABASE, CORRECT?
+    //     </div>
+    //   )
+    // } else if (window.location.pathname=='/dashboard/templates'){
+    //   return(
+    //   <TemplateSidebar />
+    //   )
+    // } else if (window.location.pathname=='/dashboard/templates/minimalist'){
+    //   return(
+    //     <div>
+    //       <TemplateSidebar />
+    //       <SaveTemplateBtn />
+    //       <MinimalistPage userInfo={this.state.userInfo} pinnedRepos={this.state.pins} />
+    //     </div>
+    //   )
+    // } else if(window.location.pathname=='/dashboard/templates/stylized'){
+    //   return(
+    //     <div>
+    //       <TemplateSidebar />
+    //       <DashboardUserInfo userInfo={this.state.userInfo} />
+    //       <StylizedPage userInfo={this.state.userInfo} pinnedRepos={this.state.pins}/>
+    //     </div>
+    //   )
+    // } else {
+    //   return (
+    //     <div>
+    //       No paths matched! {window.location.pathname}
+    //     </div>
+    //   )
+    // }
   }
 
   render() {
