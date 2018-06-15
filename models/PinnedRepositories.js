@@ -16,13 +16,13 @@ const PinnedRepositoriesSchema = new Schema({
   homepageUrl: {
     type: String,
     required: false,
-    trim: true,
+    trim: true
   },
   url: {
     type: String,
     required: true,
     minlength: 1,
-    trim: true,
+    trim: true
   }
 })
 
