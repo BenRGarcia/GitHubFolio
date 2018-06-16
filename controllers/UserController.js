@@ -43,6 +43,7 @@ const findOneAndUpdate = async ({ _id }, { displayName, profileUrl, email, photo
 
 const setPinnedRepos = async ({ _id }, repoIdArray) => {
   return db.User.findOneAndUpdate({ _id }, { $set: { pinnedRepositories: repoIdArray } })
+    .then(res => returnSanitizedObject(res))
 }
 
 module.exports = {
