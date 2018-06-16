@@ -23,6 +23,10 @@ const PinnedRepositoriesSchema = new Schema({
     required: true,
     minlength: 1,
     trim: true
+  },
+  image: {
+    type: Buffer,
+    required: false
   }
 })
 
