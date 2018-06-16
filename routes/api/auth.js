@@ -5,7 +5,7 @@ const isAuthenticated = require('../../utils/isAuthenticated')
 
 /**
  *  Helpful hint:
- *    `req.user` is the user's MongoDB `_id`
+ *    `req.user._id` is the user's MongoDB `_id`
  */
 
 // API Routes - '/api/auth'
