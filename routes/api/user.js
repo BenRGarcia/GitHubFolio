@@ -13,42 +13,35 @@ const PinnedRepos = require('../../controllers/PinnedRepositoryController')
 // API Routes - '/api/user'
 router.route('/data')
   .get(isAuthenticated, (req, res, next) => {
-    const _id = req.user._id
-    User.findOne({ _id })
+    User.findOne({ _id: req.user._id })
       .then(userData => res.json(userData))
       .catch(err => next(err))
   })
 
   .put(isAuthenticated, (req, res, next) => {
-    const _id = req.user._id
     const { displayName, profileUrl, email, photo, bio, location, template, color } = req.body
     const updateObject = { displayName, profileUrl, email, photo, bio, location, template, color }
-    User.findOneAndUpdate({ _id }, updateObject)
+    User.findOneAndUpdate({ _id: req.user._id }, updateObject)
       .then(() => res.status(201).send())
       .catch(err => next(err))
   })
 
 router.route('/pinnedrepos')
   .get(isAuthenticated, (req, res, next) => {
-    // Use githubAPI module to query v4 graphQL endpoint
     getPinnedRepos(req.user.accessToken)
-      .then(resp => {
-        // Send JSON object of pinned repo data
-        res.json(resp)
-      })
+      .then(pinnedRepos => PinnedRepos.bulkCreate({ _id: req.user._id }, pinnedRepos))
+      .then(() => res.status(201).send())
+      .catch(err => next(err))
   })
 
   .post(isAuthenticated, (req, res, next) => {
-    const _id = req.user._id
-    const repos = req.body
-    PinnedRepos.bulkCreate({ _id }, repos)
+    PinnedRepos.bulkCreate({ _id: req.user._id }, req.body)
       .then(repoData => res.json(repoData))
       .catch(err => next(err))
   })
 
   .put(isAuthenticated, (req, res, next) => {
-    const repos = req.body
-    PinnedRepos.bulkUpdate(repos)
+    PinnedRepos.bulkUpdate(req.body)
       .then(repoData => res.json(repoData))
       .catch(err => next(err))
   })
