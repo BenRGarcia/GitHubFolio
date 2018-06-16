@@ -25,8 +25,13 @@ const findOneAndUpdate = async ({ _id }, { displayName, profileUrl, email, photo
   return db.User.findOneAndUpdate({ _id }, userData)
 }
 
+const setPinnedRepos = async ({ _id }, repoIdArray) => {
+  return db.User.findOneAndUpdate({ _id }, { $set: { pinnedRepositories: repoIdArray } })
+}
+
 module.exports = {
   loginFindOrCreate,
   findOne,
-  findOneAndUpdate
+  findOneAndUpdate,
+  setPinnedRepos
 }
