@@ -7,6 +7,11 @@ const returnSanitizedObject = resp => {
   return resp
 }
 
+// Get current pinned repo id's
+const getRepoIds = async ({ _id }) => {
+  return db.User.findOne({ _id }, 'pinnedRepositories')
+}
+
 const loginFindOrCreate = async ({
   gitHubId,
   accessToken,
@@ -42,6 +47,7 @@ const setPinnedRepos = async ({ _id }, repoIdArray) => {
 
 module.exports = {
   loginFindOrCreate,
+  getRepoIds,
   findOne,
   findOneAndUpdate,
   setPinnedRepos
