@@ -37,12 +37,10 @@ router.route('/pinnedrepos')
   })
 
   .put(isAuthenticated, (req, res, next) => {
-    const _id = req.user
-    console.log(JSON.stringify(req.body, null, 2))
-    PinnedRepos.bulkUpdate()
+    const repos = req.body
+    PinnedRepos.bulkUpdate(repos)
       .then(repoData => res.json(repoData))
       .catch(err => next(err))
-    res.status(201).send()
   })
 
 module.exports = router
