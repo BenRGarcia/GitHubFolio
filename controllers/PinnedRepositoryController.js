@@ -28,11 +28,9 @@ const bulkCreate = async ({ _id }, arrayOfObjects) => {
     }
   })
 
-  return db.PinnedRepositories.bulkWrite(mongoDeliverable)
-    .then(resp => {
-      let ids = Object.values(resp.insertedIds)
-      return User.setPinnedRepos({ _id }, ids)
-    })
+  const resp = await db.PinnedRepositories.bulkWrite(mongoDeliverable)
+  const ids = Object.values(resp.insertedIds)
+  return User.setPinnedRepos({ _id }, ids)
 }
 
 const bulkUpdate = async (repos) => {
