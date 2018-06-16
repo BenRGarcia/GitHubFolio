@@ -24,8 +24,9 @@ const bulkCreate = async ({ _id }, arrayOfObjects) => {
     .catch(err => console.error(err))
 }
 
-const bulkUpdate = async (arrayOfObjects) => {
-  const mongoDeliverable = arrayOfObjects.map(pinnedRepo => {
+const bulkUpdate = async (repos) => {
+  const mongoDeliverable = repos.map(pinnedRepo => {
+    console.log(`============\npinnedRepo:\n`, pinnedRepo)
     const { _id, name, description, homepageUrl, url } = pinnedRepo
     return {
       updateOne: {
@@ -34,8 +35,8 @@ const bulkUpdate = async (arrayOfObjects) => {
       }
     }
   })
-
-  return PinnedRepository.bulkWrite(mongoDeliverable)
+  console.log(`mongoDeliverable:\n`, JSON.stringify(mongoDeliverable, null, 2))
+  return db.PinnedRepositories.bulkWrite(mongoDeliverable)
 }
 
 /*
