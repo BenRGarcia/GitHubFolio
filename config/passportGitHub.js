@@ -25,7 +25,7 @@ const verifyCb = async (accessToken, refreshToken, profile, cb) => {
   // Find or create user with destructured data
   const user = await User.loginFindOrCreate(userProfile)
   // Passport.js callback
-  return cb(null, user._id)
+  return cb(null, { _id: user._id, accessToken })
 }
 
 const gitHubStrategy = new GitHubStrategy(strategyConfig, verifyCb)
