@@ -14,7 +14,7 @@ import { TemplatePage } from './TemplatePage/TemplatePage.js';
 import { GitPinnedReposPage } from './GitPinnedReposPage/GitPinnedReposPage.js';
 import { DashboardEditUser } from './DashboardEditUser/DashboardEditUser.js';
 import { DashboardEditRepos } from './DashboardEditRepos/DashboardEditRepos.js';
-import {HelloWorld} from "./HelloWorld.js";
+import { NotFound } from './NotFound/NotFound.js';
 import { DashboardSidebar } from './DashboardSidebar/DashboardSidebar';
 
 
@@ -35,7 +35,7 @@ export {
   GitPinnedReposPage,
   DashboardEditUser,
   DashboardEditRepos,
-  HelloWorld,
+  NotFound,
   DashboardSidebar
 }
 

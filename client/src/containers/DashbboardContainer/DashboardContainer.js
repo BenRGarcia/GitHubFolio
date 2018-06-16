@@ -10,14 +10,13 @@ import{
   MinimalistPinnedCard,
   ClientSidePageMin,
   ClientSidePageSty,
-  Footer,
   PreviewPage,
   TemplatePage,
   GitPinnedReposPage,
   DashboardEditUser,
   DashboardEditRepos,
-  HelloWorld
-} from '../../components';
+  NotFound} 
+ from '../../components';
 
 export class DashboardContainer extends Component {
   state = {
@@ -112,7 +111,7 @@ export class DashboardContainer extends Component {
           <Route path="/dashboard/repos" render={()=><DashboardEditRepos  pinnedRepos={this.state.pins}/>} />          
           <Route exact path='/dashboard/repos' render={this.EditRepoInfo}/>      
           <Route exact path='/dashboard/preview' component={PreviewPage} />
-          <Route component={HelloWorld} />
+          <Route component={NotFound} />
         </Switch>
       </Router>
     </div>
