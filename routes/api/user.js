@@ -40,4 +40,13 @@ router.route('/pinnedrepos')
       .catch(err => next(err))
   })
 
+router.route('/photo/:id')
+  // Add photo to pinned repo
+  .post(isAuthenticated, (req, res, next) => {
+    const _id = req.params.id
+    PinnedRepos.addPhoto({ _id })
+      .then(() => res.status(201).send())
+      .catch(err => next(err))
+  })
+
 module.exports = router
