@@ -14,15 +14,13 @@ const bulkCreate = async ({ _id }, arrayOfObjects) => {
 
   // Add all repo's to PinnedRepositories Model
   return db.PinnedRepositories.bulkWrite(mongoDeliverable)
-    .then(resp => {
-      let ids = []
-      for (let key in resp.insertedIds) {
-        ids.push(resp.insertedIds[key])
-      }
-      return ids
-    })
     // Compose array of Object ID's
-    .then(arrayOfIds => User.findOneAndUpdate({ _id }, { $set: { pinnedRepositories: arrayOfIds } }))
+    .then(resp => {
+      // Compose array of new Object ID's
+      let ids = Object.values(resp.insertedIds)
+      // Associate repos with User
+      return User.setPinnedRepos({ _id }, ids)
+    })
     .catch(err => console.error(err))
 }
 

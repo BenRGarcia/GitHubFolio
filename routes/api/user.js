@@ -46,7 +46,3 @@ router.route('/pinnedrepos')
   })
 
 module.exports = router
-
-/*
-const blah = { displayName, profileUrl, email, photo, bio, location, template, color, pinnedRepositories }
- */
