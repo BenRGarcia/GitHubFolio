@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { ClientSidePageMin } from '../../components/ClientSidePageMin/ClientSidePageMin';
 import { ClientSidePageSty } from '../../components/ClientSidePageSty/ClientSidePageSty';
 import { MinimalistPinnedCard } from '../../components/MinimalistPinnedCard/MinimalistPinnedCard';
-import { Footer } from '../../components/Footer';
+import { Footer } from '../../components/Footer/Footer';
 
 
 

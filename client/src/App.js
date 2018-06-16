@@ -4,7 +4,7 @@ import './App.css';
 import {DashboardPage} from "./pages/Dashboard/dashboardPage";
 import HomePage from "./pages/Home/homePage";
 import PublicViewPage from "./pages/PublicView/publicView";
-import {HelloWorld} from "./components/HelloWorld.js";
+import {NotFound} from "./components/NotFound/NotFound";
 
 
 const App = () => (
@@ -14,7 +14,7 @@ const App = () => (
         <Route exact path="/" component={HomePage} />
         <Route path="/dashboard" component={DashboardPage} />
         <Route exact path="/portfolio/:id" component={PublicViewPage} />
-        <Route component={HelloWorld} />
+        <Route component={NotFound} />
       </Switch>
     </div>
   </Router>

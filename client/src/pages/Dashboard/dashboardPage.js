@@ -8,7 +8,6 @@ import { TemplatePage } from '../../components/TemplatePage/TemplatePage.js';
 import { GitPinnedReposPage } from '../../components/GitPinnedReposPage/GitPinnedReposPage.js';
 import { DashboardEditUser } from '../../components/DashboardEditUser/DashboardEditUser.js';
 import { DashboardEditRepos } from '../../components/DashboardEditRepos/DashboardEditRepos.js';
-import {HelloWorld} from "../../components/HelloWorld.js";
 
 export const DashboardPage = () => (
   <div className='col-lg-10 offset-lg-2'>
