@@ -1,26 +1,23 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
-import { NavBar } from '../../components/NavBar/NavBar';
-import { Wrapper } from '../../components/Wrapper/Wrapper';
-import { DashboardSidebar } from '../../components/DashboardSidebar/DashboardSidebar';
-import { DashboardUserInfo } from '../../components/DashboardUserInfo/DashboardUserInfo';
-import { StylizedPinnedCard } from '../../components/StylizedPinnedCard/StylizedPinnedCard';
-import { MinimalistPage } from '../../components/MinimalistPage/MinimalistPage';
-import { StylizedPage } from '../../components/StylizedPage/StylizedPage';
-import { SaveTemplateBtn } from '../../components/SaveTemplateBtn/SaveTemplateBtn';
-import { MinimalistPinnedCard } from '../../components/MinimalistPinnedCard/MinimalistPinnedCard';
-import { ClientSidePageMin } from '../../components/ClientSidePageMin/ClientSidePageMin';
-import { ClientSidePageSty } from '../../components/ClientSidePageSty/ClientSidePageSty';
-import { Footer } from '../../components/Footer/Footer';
-import { PreviewPage } from '../../components/PreviewPage/PreviewPage.js';
-import { TemplatePage } from '../../components/TemplatePage/TemplatePage.js';
-import { GitPinnedReposPage } from '../../components/GitPinnedReposPage/GitPinnedReposPage.js';
-import { DashboardEditUser } from '../../components/DashboardEditUser/DashboardEditUser.js';
-import { DashboardEditRepos } from '../../components/DashboardEditRepos/DashboardEditRepos.js';
-import {HelloWorld} from "../../components/HelloWorld.js";
 
-
-
+import{
+  DashboardSidebar,
+  DashboardUserInfo,
+  StylizedPinnedCard,
+  MinimalistPage,
+  StylizedPage,
+  MinimalistPinnedCard,
+  ClientSidePageMin,
+  ClientSidePageSty,
+  Footer,
+  PreviewPage,
+  TemplatePage,
+  GitPinnedReposPage,
+  DashboardEditUser,
+  DashboardEditRepos,
+  HelloWorld
+} from '../../components';
 
 export class DashboardContainer extends Component {
   state = {
