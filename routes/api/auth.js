@@ -4,23 +4,20 @@ const passport = require('../../config/passport')
 const isAuthenticated = require('../../utils/isAuthenticated')
 
 /**
- *  Helpful hint:
- *    `req.user._id` is the user's MongoDB `_id`
+ * API Routes - '/api/auth'
  */
 
-// API Routes - '/api/auth'
 router.route('/github/callback')
+  // Login with GitHub - oAuth 2.0 callback
   .get(passport.authenticate('github'), (req, res, next) => {
     res.redirect('/dashboard')
   })
 
 router.route('/logout')
+  // User logout, redirection
   .get(isAuthenticated, (req, res, next) => {
-    // Passport
     req.logout()
-    // Redis/Session
     req.session.destroy()
-    // Client-side
     res
       .clearCookie('sessionId')
       .redirect('/')

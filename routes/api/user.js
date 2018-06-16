@@ -6,18 +6,17 @@ const User = require('../../controllers/UserController')
 const PinnedRepos = require('../../controllers/PinnedRepositoryController')
 
 /**
- *  Helpful hint:
- *    `req.user._id` is the user's MongoDB `_id`
+ * API Routes - '/api/user'
  */
 
-// API Routes - '/api/user'
 router.route('/data')
+  // Retrieve all user data, pinned repos included
   .get(isAuthenticated, (req, res, next) => {
     User.findOne({ _id: req.user._id })
       .then(userData => res.json(userData))
       .catch(err => next(err))
   })
-
+  // Update user data (non-pinned repo data)
   .put(isAuthenticated, (req, res, next) => {
     const { displayName, profileUrl, email, photo, bio, location, template, color } = req.body
     const updateObject = { displayName, profileUrl, email, photo, bio, location, template, color }
@@ -27,22 +26,17 @@ router.route('/data')
   })
 
 router.route('/pinnedrepos')
-  .get(isAuthenticated, (req, res, next) => {
+  // Query GitHub graphQL, store pinned repos in DB
+  .post(isAuthenticated, (req, res, next) => {
     getPinnedRepos(req.user.accessToken)
-      .then(pinnedRepos => PinnedRepos.bulkCreate({ _id: req.user._id }, pinnedRepos))
+      .then(repos => PinnedRepos.bulkCreate({ _id: req.user._id }, repos))
       .then(() => res.status(201).send())
       .catch(err => next(err))
   })
-
-  .post(isAuthenticated, (req, res, next) => {
-    PinnedRepos.bulkCreate({ _id: req.user._id }, req.body)
-      .then(repoData => res.json(repoData))
-      .catch(err => next(err))
-  })
-
+  // Update user pinned repos
   .put(isAuthenticated, (req, res, next) => {
     PinnedRepos.bulkUpdate(req.body)
-      .then(repoData => res.json(repoData))
+      .then(() => res.status(204).send())
       .catch(err => next(err))
   })
 
