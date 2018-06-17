@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 export class UploadImageExample extends Component {
-  state = { file: null, src: null, warning: null }
+  state = { file: null, repoId: null, src: null, warning: null }
 
   handleUploadImage = e => {
     e.preventDefault()
     return this.isValidFile(this.state.file)
       ? this.sendPostRequest()
+      // ? this.sendPostRequest(this.state.repoId)
       : this.resetState()
   }
 
@@ -30,8 +31,7 @@ export class UploadImageExample extends Component {
   }
 
   sendPostRequest = () => {
-    console.log(`file was valid, now sending POST request`)
-    const url = '/api/user/photo'
+    const url = `/api/user/photo/${this.state.repoId}`
     const formData = new FormData()
     formData.append('repoImage', this.state.file)
     const config = { headers: { 'content-type': 'multipart/form-data' } }
@@ -40,24 +40,27 @@ export class UploadImageExample extends Component {
         this.resetState()
         return console.log(`POST success response:`, resp)
       })
-      .catch(err => console.error(err))
+      .catch(err => console.error(`POST request error:\n`, err))
   };
 
   resetState = () => {
-    return this.setState({ file: null, src: null })
+    return this.setState({ file: null, repoId: null, src: null, warning: null })
   }
 
-  handleChooseFile = e => {
+  /****************************************
+   * Fall back parameter used for testing *
+   ****************************************/
+  handleChooseFile = (repoId = '5b2589155b206112b59481db', e) => {
     // clear previous state
-    this.setState({ file: null, src: null, warning: null })
+    this.setState({ file: null, repoId: null, src: null, warning: null })
     // Check if file is valid sized image
     if (this.isValidFile(e.target.files[0])) {
       const reader = new FileReader();
       const file = e.target.files[0]
-
       reader.onloadend = () => {
         this.setState({
           file: file,
+          repoId: repoId,
           src: reader.result,
           warning: null
         })
@@ -75,7 +78,7 @@ export class UploadImageExample extends Component {
       <div className='container'>
         <div className="jumbotron">
           <h1 className="display-4">Hello, Melissa!</h1>
-          <p className="lead">This is an example of how to do a file upload &amp; POST request so user's can save photo's for each repo</p>
+          <p className="lead">This is an example of how to do a file upload &amp; POST request so users can save photos for each repo</p>
           <hr className="my-4" />
           <h2>Pointers</h2>
           <ul>
@@ -89,7 +92,7 @@ export class UploadImageExample extends Component {
         <form onSubmit={this.handleUploadImage}>
           <div className='input-group mb-3'>
             <div className='custom-file'>
-              <input onChange={this.handleChooseFile} type='file' name='repoImage' className='custom-file-input'/>
+              <input onChange={e => this.handleChooseFile(this.props._id, e)} type='file' name='repoImage' className='custom-file-input'/>
               <label className='custom-file-label'>Choose Image</label>
             </div>
             <div className='input-group-append'>
