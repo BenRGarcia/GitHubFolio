@@ -25,7 +25,8 @@ const PinnedRepositoriesSchema = new Schema({
     trim: true
   },
   image: {
-    type: Buffer,
+    type: String,
+    data: Buffer,
     required: false
   }
 })
