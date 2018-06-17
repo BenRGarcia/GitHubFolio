@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import UserInfo from '../../components/DashboardEditUser/DashboardEditUser'
 
 import{
   DashboardSidebar,
@@ -20,12 +21,12 @@ import{
 
 export class DashboardContainer extends Component {
   state = {
-    userInfo: {
-      name: 'Ben Garcia',
-      email: 'bgarcia@gmail.com',
-      bio: 'Really cool dude who knows a lot about coding',
-      userImage: 'https://www.veterantv.com/wp-content/uploads/2017/08/f5d784aa1eabbde15ba5e2d90c3ba828.jpg'
-    },
+    // userInfo: {
+    //   name: 'Ben Garcia',
+    //   email: 'bgarcia@gmail.com',
+    //   bio: 'Really cool dude who knows a lot about coding',
+    //   userImage: 'https://www.veterantv.com/wp-content/uploads/2017/08/f5d784aa1eabbde15ba5e2d90c3ba828.jpg'
+    // },
     pins: [
       {
         id: 1,
@@ -107,7 +108,8 @@ export class DashboardContainer extends Component {
         <Switch>
           <Route exact path='/dashboard' component={GitPinnedReposPage} />
           <Route exact path='/dashboard/template' component={TemplatePage}/>
-          <Route path="/dashboard/user" render={()=><DashboardEditUser userInfo={this.state.userInfo}/>} />
+          {/* <Route path="/dashboard/user" render={()=><DashboardEditUser userInfo={this.state.userInfo}/>} /> */}
+          <Route path="/dashboard/user" render={()=><UserInfo />}/>          
           <Route path="/dashboard/repos" render={()=><DashboardEditRepos  pinnedRepos={this.state.pins}/>} />          
           <Route exact path='/dashboard/repos' render={this.EditRepoInfo}/>      
           <Route exact path='/dashboard/preview' component={PreviewPage} />

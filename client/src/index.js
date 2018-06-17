@@ -10,4 +10,4 @@ require('./vendor/bootstrap/bootstrap.min.css');
 require('bootstrap');
 
 
-render(<Provider><App /></Provider>, document.getElementById('root'));
+render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
