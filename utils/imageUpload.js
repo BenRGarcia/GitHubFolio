@@ -26,10 +26,13 @@ const upload = multer({
 
 // File type validation
 const checkFileType = (file, cb) => {
-  const allowedFileTypes = /jpeg|jpg|png|gif/i
-  const isExtAllowed = allowedFileTypes.test(path.extname(file.originalname))
-  const mimeType = allowedFileTypes.test(file.mimetype)
-  return isExtAllowed && mimeType
+  const allowedFileExt = /^.jpeg$|^.jpg$|^.png$|^.gif$/i
+  const allowedMimeTypes = /^image\/jpeg$|^image\/jpg$|^image\/png$|^image\/gif$/i
+  const isExtAllowed = allowedFileExt.test(path.extname(file.originalname))
+  console.log(path.extname(file.originalname))
+  console.log(isExtAllowed)
+  const isMimeAllowed = allowedMimeTypes.test(file.mimetype)
+  return isExtAllowed && isMimeAllowed
     ? cb(null, true)
     : cb(new Error('Only `.jpeg`, `.jpg`, `.png`, and `.gif` files are accepted'))
 }
