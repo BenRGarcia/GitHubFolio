@@ -41,7 +41,7 @@ First naive thoughts of an image upload form:
 <form action='/api/user/photo' method='POST' enctype='multipart/form-data'>
   <div className='input-group mb-3'>
     <div className='custom-file'>
-      <input type='file' className='custom-file-input' id={`repo-${repo._id}`} />
+      <input type='file' name='repoImage' className='custom-file-input' id={`repo-${repo._id}`} />
       <label className='custom-file-label' htmlFor={`repo-${repo._id}`}>Choose Image</label>
     </div>
     <div className='input-group-append'>
