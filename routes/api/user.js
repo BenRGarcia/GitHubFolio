@@ -4,6 +4,7 @@ const { getPinnedRepos } = require('../../utils/githubAPI')
 const isAuthenticated = require('../../utils/isAuthenticated')
 const User = require('../../controllers/UserController')
 const PinnedRepos = require('../../controllers/PinnedRepositoryController')
+const handleUpload = require('../../utils/imageUpload')
 
 /**
  * API Routes - '/api/user'
@@ -31,12 +32,27 @@ router.route('/pinnedrepos')
     getPinnedRepos(req.user.accessToken)
       .then(repos => PinnedRepos.bulkCreate({ _id: req.user._id }, repos))
       .then(() => res.status(201).send())
-      .catch(err => next(err))
   })
   // Update user pinned repos
   .put(isAuthenticated, (req, res, next) => {
     PinnedRepos.bulkUpdate(req.body)
       .then(() => res.status(204).send())
+      .catch(err => next(err))
+  })
+
+// router.route('/photo/:repoId')
+router.route('/photo/')
+  // Add photo to pinned repo
+  .post(/* isAuthenticated, */ (req, res, next) => {
+    // const repoId = req.params.repoId
+    let fileName
+    handleUpload(req, res)
+      .then(response => {
+        fileName = response.filename
+        return res.json({ response })
+      })
+      .then(() => console.log(`you need to add the image to the database here`))
+      .then(() => console.log(`you need to delete the image from '../../temp/photos'`))
       .catch(err => next(err))
   })
 

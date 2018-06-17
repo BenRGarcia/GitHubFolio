@@ -22,12 +22,13 @@ const loginFindOrCreate = async ({
   displayName = 'Coder',
   email = 'user@example.com'
 }) => {
-  const userDoesExist = await db.User.findOne({ gitHubId })
-  return userDoesExist
-    ? db.User.findOneAndUpdate({ _id: userDoesExist._id }, { displayName, profileUrl, accessToken, email, photo, bio, location })
-      .then(res => returnSanitizedObject(res))
-    : db.User.create({ gitHubId, displayName, profileUrl, accessToken, email, photo, bio, location })
-      .then(res => returnSanitizedObject(res))
+  const res = await db.User.findOneAndUpdate(
+    // Query | Updates | Create if not exists
+    { gitHubId },
+    { displayName, profileUrl, accessToken, email, photo, bio, location },
+    { upsert: true })
+
+  return returnSanitizedObject(res)
 }
 
 const findOne = async ({ _id }) => {
