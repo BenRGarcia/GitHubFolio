@@ -29,8 +29,6 @@ const checkFileType = (file, cb) => {
   const allowedFileExt = /^.jpeg$|^.jpg$|^.png$|^.gif$/i
   const allowedMimeTypes = /^image\/jpeg$|^image\/jpg$|^image\/png$|^image\/gif$/i
   const isExtAllowed = allowedFileExt.test(path.extname(file.originalname))
-  console.log(path.extname(file.originalname))
-  console.log(isExtAllowed)
   const isMimeAllowed = allowedMimeTypes.test(file.mimetype)
   return isExtAllowed && isMimeAllowed
     ? cb(null, true)
