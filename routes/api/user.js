@@ -44,18 +44,17 @@ router.route('/pinnedrepos')
 router.route('/photo')
   // Add photo to pinned repo
   .post(/* isAuthenticated,  */(req, res, next) => {
-    console.log(`POST request received on the backend`, req.body)
-    res.status(200).send()
     // const repoId = req.params.repoId
-    // let fileName
-    // handleUpload(req, res)
-    //   .then(response => {
-    //     fileName = response.filename
-    //     return res.json({ response })
-    //   })
-    //   .then(() => console.log(`you need to add the image to the database here`))
-    //   .then(() => console.log(`you need to delete the image from '../../temp/photos'`))
-    //   .catch(err => next(err))
+    // Put uploaded image in `/temp/photos/`
+    handleUpload(req, res)
+      // Get filename from response
+      .then(resp => resp.filename)
+      // Add image to database
+      .then(() => console.log(`you need to add the image to the database here`))
+      // Delete image from `/temp/photos/` folder
+      .then(() => console.log(`you need to delete the image from '../../temp/photos'`))
+      .then(() => res.status(201).send())
+      .catch(err => next(err))
   })
 
 module.exports = router
