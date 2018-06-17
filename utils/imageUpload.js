@@ -12,7 +12,22 @@ const storage = multer.diskStorage({
 })
 
 // Init upload
-const upload = multer({ storage }).single('repoImage')
+const upload = multer({
+  storage,
+  limits: { fileSize: 100000 }, // 0.1 megabytes
+  fileFilter: (req, file, cb) => {
+    checkFileType(file, cb)
+  }
+}).single('repoImage')
+
+const checkFileType = (file, cb) => {
+  const allowedFileTypes = /jpeg|jpg|png|gif/
+  const isExtAllowed = allowedFileTypes.test(path.extname(file.originalname).toLowerCase())
+  const mimeType = allowedFileTypes.test(file.mimetype)
+  return isExtAllowed && mimeType
+    ? cb(null, true)
+    : cb(new Error('Only `.jpeg`, `.jpg`, `.png`, and `.gif` files are accepted'))
+}
 
 const handleUpload = (req, res) => {
   return new Promise((resolve, reject) => {
