@@ -1,10 +1,13 @@
 import React from "react";
+import { connect } from "react-redux";
 import "./DashboardEditRepos.css";
 
+const mapStateToProps = state => {
+  return { pinnedRepos: state.pinnedRepos };
+};
 
-export const DashboardEditRepos = ({pinnedRepos})  => {
-  // const {id, title, image, description, githubLink, deployedLink} = pinnedRepos;
-  // const {pins} = state;
+
+const DashboardEditRepos = ({pinnedRepos})  => {
   const {id, title, image, description, githubLink, deployedLink} = pinnedRepos;
 
   const editPinnedRepos = pinnedRepos.map(repo => (
@@ -24,7 +27,6 @@ export const DashboardEditRepos = ({pinnedRepos})  => {
     </div>
   ))
 
-  
   return (
     <div>
     {editPinnedRepos} 
@@ -34,5 +36,9 @@ export const DashboardEditRepos = ({pinnedRepos})  => {
     </div>
   )
 }
+
+const PinnedRepos = connect(mapStateToProps)(DashboardEditRepos);
+
+export default PinnedRepos;
 
 

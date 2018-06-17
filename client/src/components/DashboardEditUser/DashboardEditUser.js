@@ -1,7 +1,6 @@
 import React from "react";
-import "./DashboardEditUser.css";
 import { connect } from "react-redux";
-import {initialState} from '../../reducers/index'
+import "./DashboardEditUser.css";
 
 
 const mapStateToProps = state => {
@@ -9,8 +8,6 @@ const mapStateToProps = state => {
 };
 
 const DashboardEditUser = ({userInfo})  => {
-  // const {id, title, image, description, githubLink, deployedLink} = pinnedRepos;
-  // const {pins} = state;
   const {name, email, bio, userImage} = userInfo;
 
   return (
@@ -32,26 +29,3 @@ const DashboardEditUser = ({userInfo})  => {
 const UserInfo = connect(mapStateToProps)(DashboardEditUser);
 
 export default UserInfo;
-
-// import React from "react";
-// import "./DashboardEditUser.css";
-// import { connect } from "react-redux";
-
-// const mapStateToProps = state => {
-//   return ({ userInfo: state.userInfo });
-// };
-
-// const ConnectedUserInfo = ({ userInfo }) => (
-//   <ul className="list-group list-group-flush">
-//     {userInfo.map(el => (
-//       <li className="list-group-item" key={el.id}>
-//         {el.name}
-//       </li>
-//     ))}
-//   </ul>
-// );
-
-// const UserInfo = connect(mapStateToProps)(ConnectedUserInfo);
-
-// export default UserInfo;
-
