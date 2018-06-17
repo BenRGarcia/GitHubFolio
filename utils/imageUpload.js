@@ -1,17 +1,21 @@
 const path = require('path')
 const multer = require('multer')
 const uuidv4 = require('uuid/v4')
+const fs = require('fs')
+
+// Set location in which to save images
+const uploadsFolder = path.join(__dirname, '../temp/photos/')
 
 // Set storage engine
 const storage = multer.diskStorage({
-  destination: path.join(__dirname, '../temp/photos/'),
+  destination: uploadsFolder,
   filename: (req, file, cb) => {
     const fileName = file.fieldname + '-' + uuidv4() + path.extname(file.originalname)
     cb(null, fileName)
   }
 })
 
-// Init upload
+// Initialize upload
 const upload = multer({
   storage,
   limits: { fileSize: 250000 }, // 0.25 megabytes
@@ -20,9 +24,10 @@ const upload = multer({
   }
 }).single('repoImage')
 
+// File type validation
 const checkFileType = (file, cb) => {
-  const allowedFileTypes = /jpeg|jpg|png|gif/
-  const isExtAllowed = allowedFileTypes.test(path.extname(file.originalname).toLowerCase())
+  const allowedFileTypes = /jpeg|jpg|png|gif/i
+  const isExtAllowed = allowedFileTypes.test(path.extname(file.originalname))
   const mimeType = allowedFileTypes.test(file.mimetype)
   return isExtAllowed && mimeType
     ? cb(null, true)
@@ -39,4 +44,16 @@ const handleUpload = (req, res) => {
   })
 }
 
-module.exports = handleUpload
+const deletePhoto = fileName => {
+  return new Promise((resolve, reject) => {
+    fs.unlink(`${uploadsFolder}${fileName}`, err => {
+      if (err) reject(err)
+      resolve(`${fileName} was deleted`)
+    })
+  })
+}
+
+module.exports = {
+  handleUpload,
+  deletePhoto
+}
