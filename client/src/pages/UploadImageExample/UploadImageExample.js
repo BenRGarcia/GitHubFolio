@@ -7,8 +7,8 @@ export class UploadImageExample extends Component {
   handleUploadImage = e => {
     e.preventDefault()
     return this.isValidFile(this.state.file)
-      ? this.sendPostRequest
-      : this.resetState
+      ? this.sendPostRequest()
+      : this.resetState()
   }
 
   isValidFile = ({ name, type, size }) => {
@@ -29,7 +29,7 @@ export class UploadImageExample extends Component {
     return fileExtension
   }
 
-  sendPostRequest = (_repoId) => {
+  sendPostRequest = () => {
     console.log(`file was valid, now sending POST request`)
     const url = '/api/user/photo'
     const formData = new FormData()
@@ -100,7 +100,7 @@ export class UploadImageExample extends Component {
         {
           this.state.warning
           &&
-          <div class="alert alert-danger" role="alert">
+          <div className="alert alert-danger" role="alert">
             {this.state.warning}
           </div>
         }
