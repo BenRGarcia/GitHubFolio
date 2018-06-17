@@ -1,10 +1,13 @@
 import React from "react";
+import { connect } from "react-redux";
 import "./DashboardEditUser.css";
 
 
-export const DashboardEditUser = ({userInfo})  => {
-  // const {id, title, image, description, githubLink, deployedLink} = pinnedRepos;
-  // const {pins} = state;
+const mapStateToProps = state => {
+  return { userInfo: state.userInfo };
+};
+
+const DashboardEditUser = ({userInfo})  => {
   const {name, email, bio, userImage} = userInfo;
 
   return (
@@ -23,3 +26,6 @@ export const DashboardEditUser = ({userInfo})  => {
   )
 }
 
+const UserInfo = connect(mapStateToProps)(DashboardEditUser);
+
+export default UserInfo;

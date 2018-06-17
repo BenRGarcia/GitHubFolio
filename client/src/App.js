@@ -5,8 +5,8 @@ import {DashboardPage} from "./pages/Dashboard/dashboardPage";
 import HomePage from "./pages/Home/homePage";
 import PublicViewPage from "./pages/PublicView/publicView";
 import {NotFound} from "./components/NotFound/NotFound";
+import { DashboardEditUser } from './components';
 import { UploadImageExample } from './pages/UploadImageExample/UploadImageExample';
-
 
 const App = () => (
   <Router>
