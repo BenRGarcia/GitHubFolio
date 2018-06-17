@@ -37,6 +37,7 @@ export const DashboardEditRepos = ({pinnedRepos})  => {
 
 
 /* 
+backend restricts file size to 250,000 bytes = 250 kilobytes = 0.25 megabytes
 First naive thoughts of an image upload form:
 <form action='/api/user/photo' method='POST' enctype='multipart/form-data'>
   <div className='input-group mb-3'>
