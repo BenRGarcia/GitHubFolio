@@ -1,9 +1,23 @@
 const express = require('express')
 const router = express.Router()
+const path = require('path')
+const multer = require('multer')
 const { getPinnedRepos } = require('../../utils/githubAPI')
 const isAuthenticated = require('../../utils/isAuthenticated')
 const User = require('../../controllers/UserController')
 const PinnedRepos = require('../../controllers/PinnedRepositoryController')
+
+// Set storage engine
+const storage = multer.diskStorage({
+  destination: path.join(__dirname, '../../temp/photos/'),
+  filename: (req, file, cb) => {
+    const fileName = file.fieldname + '-' + Date.now() + path.extname(file.originalname)
+    cb(null, fileName)
+  }
+})
+
+// Init upload
+const upload = multer({ storage }).single('profile')
 
 /**
  * API Routes - '/api/user'
@@ -40,13 +54,24 @@ router.route('/pinnedrepos')
       .catch(err => next(err))
   })
 
-router.route('/photo/:id')
+router.route('/photo')
   // Add photo to pinned repo
-  .post(isAuthenticated, (req, res, next) => {
-    const _id = req.params.id
-    PinnedRepos.addPhoto({ _id })
+  .post(/* isAuthenticated, */ (req, res, next) => {
+    upload(req, res, (err) => {
+      if (err) {
+        res.json({ err })
+      } else {
+        console.log(req.file)
+        res.send('test')
+      }
+    })
+    /* PinnedRepos.addPhoto({})
       .then(() => res.status(201).send())
-      .catch(err => next(err))
+      .catch(err => next(err)) */
+    /* res.json({
+      message: 'got it',
+      body: req.body
+    }) */
   })
 
 module.exports = router
