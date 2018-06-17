@@ -4,7 +4,7 @@ const { getPinnedRepos } = require('../../utils/githubAPI')
 const isAuthenticated = require('../../utils/isAuthenticated')
 const User = require('../../controllers/UserController')
 const PinnedRepos = require('../../controllers/PinnedRepositoryController')
-const handleUpload = require('../../utils/imageUpload')
+const { handleUpload, deletePhoto } = require('../../utils/imageUpload')
 
 /**
  * API Routes - '/api/user'
@@ -40,18 +40,24 @@ router.route('/pinnedrepos')
       .catch(err => next(err))
   })
 
-// router.route('/photo/:repoId')
-router.route('/photo')
+router.route('/photo/:repoId')
   // Add photo to pinned repo
-  .post(/* isAuthenticated,  */(req, res, next) => {
-    // const repoId = req.params.repoId
-    // Put uploaded image in `/temp/photos/`
+  .post(/* isAuthenticated, */(req, res, next) => {
+    // Make file name variable accessible in closure
+    let repoId = req.params.repoId
+    console.log(`POST request with req.param.repoId: ${req.params.repoId}`)
+    let fileName
+    // Put uploaded image in `~/temp/photos/`
     handleUpload(req, res)
       // Get filename from response
-      .then(resp => resp.filename)
+      .then(resp => {
+        console.log(resp)
+        fileName = resp.filename
+        return resp
+      })
       // Add image to database
-      .then(() => console.log(`you need to add the image to the database here`))
-      // Delete image from `/temp/photos/` folder
+      .then(resp => PinnedRepos.addPhoto({ _id: repoId }, fileName))
+      // Delete image from `~/temp/photos/` folder
       .then(() => console.log(`you need to delete the image from '../../temp/photos'`))
       .then(() => res.status(201).send())
       .catch(err => next(err))

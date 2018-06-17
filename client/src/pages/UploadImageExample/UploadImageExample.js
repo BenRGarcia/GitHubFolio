@@ -32,6 +32,7 @@ export class UploadImageExample extends Component {
 
   sendPostRequest = () => {
     const url = `/api/user/photo/${this.state.repoId}`
+    console.log(`sending post request to: ${url}`)
     const formData = new FormData()
     formData.append('repoImage', this.state.file)
     const config = { headers: { 'content-type': 'multipart/form-data' } }
@@ -48,7 +49,8 @@ export class UploadImageExample extends Component {
   }
 
   /****************************************
-   * Fall back parameter used for testing *
+   * Fallback parameter used for testing  *
+   * -> Delete fallback before production *
    ****************************************/
   handleChooseFile = (repoId = '5b2589155b206112b59481db', e) => {
     // clear previous state
@@ -85,7 +87,6 @@ export class UploadImageExample extends Component {
             <li>upload file has 'name' attribute set to value 'repoImage'</li>
             <li>backend restricts file size to 250,000 bytes/250 kilobytes/0.25 megabytes</li>
             <li>POST request has special config for the backend, see <code>handleUploadImage()</code></li>
-            <li></li>
           </ul>
         </div>
         {/* Start example */}

@@ -46,7 +46,7 @@ const bulkUpdate = async (repos) => {
   return db.PinnedRepositories.bulkWrite(mongoDeliverable)
 }
 
-const addPhoto = async ({ _id }) => {
+const addPhoto = async ({ _id }, file) => {
 
 }
 
