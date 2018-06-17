@@ -40,11 +40,19 @@ router.route('/pinnedrepos')
       .catch(err => next(err))
   })
 
-router.route('/photo')
+// router.route('/photo/:repoId')
+router.route('/photo/')
   // Add photo to pinned repo
   .post(/* isAuthenticated, */ (req, res, next) => {
+    // const repoId = req.params.repoId
+    let fileName
     handleUpload(req, res)
-      .then(response => res.json(response))
+      .then(response => {
+        fileName = response.filename
+        return res.json({ response })
+      })
+      .then(() => console.log(`you need to add the image to the database here`))
+      .then(() => console.log(`you need to delete the image from '../../temp/photos'`))
       .catch(err => next(err))
   })
 
