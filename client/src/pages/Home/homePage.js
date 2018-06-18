@@ -4,7 +4,7 @@ import { Footer } from '../../components/Footer/Footer';
 
 
 
-const HomePage = () => (
+const HomePage = (props) => (
   <div>
     <NavBar />
     <div className="text-center">
