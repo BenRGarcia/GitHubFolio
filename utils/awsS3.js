@@ -1,27 +1,27 @@
 require('dotenv').config()
-// https://aws.amazon.com/sdk-for-node-js/
+const path = require('path')
 var AWS = require('aws-sdk')
+
+/**
+ * AWS S3 JavaScript SDK Doc's:
+ *   - https://aws.amazon.com/sdk-for-node-js/
+ *   - https://aws.amazon.com/documentation/sdk-for-javascript/
+ *   - https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html
+ */
+
+AWS.config.loadFromPath(path.join(__dirname, '../config/awsS3.json'))
 
 var s3 = new AWS.S3()
 
-// Bucket names must be unique across all S3 users
-
 var myBucket = process.env.AWS_S3_BUCKET
-var myKey = process.env.AWS_S3_KEY
+var myKey = 'Hello_World_Key.txt'
+const params = { Bucket: myBucket, Key: myKey, Body: 'Hello!' }
 
-s3.createBucket({ Bucket: myBucket }, function (err, data) {
+s3.upload(params, function (err, data) {
   if (err) {
     console.log(err)
   } else {
-    let params = { Bucket: myBucket, Key: myKey, Body: 'Hello!' }
-
-    s3.putObject(params, function (err, data) {
-      if (err) {
-        console.log(err)
-      } else {
-        console.log('Successfully uploaded data to myBucket/myKey')
-        console.log(data)
-      }
-    })
+    console.log(`Successfully uploaded data to ${myBucket}/${myKey}`)
+    console.log(data)
   }
 })
