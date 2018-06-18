@@ -43,10 +43,8 @@ class Login extends React.Component{
     }
 
     return (
-      [
-      {HomePage},
-      <button onClick={this.login}>MELISSA Log in</button>
-      ]
+      // <button>MELISSA LOGIN</button>
+      <HomePage />
     )
   } 
 }

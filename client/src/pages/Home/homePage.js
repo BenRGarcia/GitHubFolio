@@ -18,6 +18,7 @@ const HomePage = (props) => (
       >
         X | Actually login with GitHub
       </a>
+      <button>MELISSA LOGIN</button>
     </div>
     <Footer />
   </div>
