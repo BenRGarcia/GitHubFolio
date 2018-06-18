@@ -1,6 +1,9 @@
 require('dotenv').config()
 const path = require('path')
-var AWS = require('aws-sdk')
+const AWS = require('aws-sdk')
+const awsS3Bucket = process.env.AWS_S3_BUCKET
+AWS.config.loadFromPath(path.join(__dirname, '../config/awsS3.json'))
+const s3 = new AWS.S3()
 
 /**
  * AWS S3 JavaScript SDK Doc's:
@@ -9,19 +12,43 @@ var AWS = require('aws-sdk')
  *   - https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html
  */
 
-AWS.config.loadFromPath(path.join(__dirname, '../config/awsS3.json'))
-
-var s3 = new AWS.S3()
-
-var myBucket = process.env.AWS_S3_BUCKET
-var myKey = 'Hello_World_Key.txt'
-const params = { Bucket: myBucket, Key: myKey, Body: 'Hello!' }
-
-s3.upload(params, function (err, data) {
-  if (err) {
-    console.log(err)
-  } else {
-    console.log(`Successfully uploaded data to ${myBucket}/${myKey}`)
-    console.log(data)
+const uploadImage = ({ fileName, stream }) => {
+  // Compose object for POST to AWS S3
+  const params = {
+    Bucket: awsS3Bucket,
+    Key: fileName,
+    Body: stream,
+    ACL: 'public-read'
   }
-})
+  // Send POST to AWS S3
+  try {
+    return new Promise((resolve, reject) => {
+      s3.upload(params, (err, data) => {
+        if (err) reject(err)
+        resolve(data)
+      })
+    })
+  } catch (err) {
+    console.error(err)
+    return err
+  }
+}
+
+const deleteImage = ({ fileName }) => {
+  try {
+    return new Promise((resolve, reject) => {
+      s3.deleteObject({ Key: fileName }, (err, data) => {
+        if (err) reject(err)
+        resolve(data)
+      })
+    })
+  } catch (err) {
+    console.error(err)
+    return err
+  }
+}
+
+module.exports = {
+  uploadImage,
+  deleteImage
+}
