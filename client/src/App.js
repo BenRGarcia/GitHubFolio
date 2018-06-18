@@ -1,7 +1,7 @@
 // import React, { Component } from 'react';
 // import { BrowserRouter as Router, Route, Switch, Redirect, withRouter } from "react-router-dom";
 // import './App.css';
-// import {DashboardPage} from "./pages/Dashboard/dashboardPage";
+import {DashboardPage} from "./pages/Dashboard/dashboardPage";
 // import HomePage from "./pages/Home/homePage";
 // import PublicViewPage from "./pages/PublicView/publicView";
 // import {NotFound} from "./components/NotFound/NotFound";
@@ -100,15 +100,15 @@ const AuthExample = () => (
       <AuthButton />
       <ul>
         <li>
-          <Link to="/public">Public Page</Link>
+          <Link to="/">Public Page</Link>
         </li>
         <li>
-          <Link to="/protected">Protected Page</Link>
+          <Link to="/dashboard">Protected Page</Link>
         </li>
       </ul>
       <Route path="/public" component={Public} />
       <Route path="/login" component={Login} />
-      <PrivateRoute path="/protected" component={Protected} />
+      <PrivateRoute path="/dashboard" component={DashboardPage} />
     </div>
   </Router>
 );
