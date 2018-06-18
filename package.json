@@ -42,6 +42,7 @@
     "dev-server-prod": "concurrently \"mongod\" \"redis-server\" \"node ./bin/www\""
   },
   "dependencies": {
+    "aws-sdk": "^2.259.1",
     "axios": "^0.18.0",
     "connect-redis": "^3.3.3",
     "csurf": "^1.9.0",

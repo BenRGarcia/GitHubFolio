@@ -67,3 +67,5 @@ typings/
 # next.js build output
 .next
 *.rdb
+.aws/credentials
+config/awsS3.json
