@@ -68,3 +68,4 @@ typings/
 .next
 *.rdb
 .aws/credentials
+config/awsS3.json
