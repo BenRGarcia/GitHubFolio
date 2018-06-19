@@ -22,7 +22,7 @@ router.route('/data')
     const { displayName, profileUrl, email, photo, bio, location, template, color } = req.body
     const updateObject = { displayName, profileUrl, email, photo, bio, location, template, color }
     User.findOneAndUpdate({ _id: req.user._id }, updateObject)
-      .then(() => res.status(201).send())
+      .then(repos => res.status(201).json(repos))
       .catch(err => next(err))
   })
 
@@ -32,6 +32,7 @@ router.route('/pinnedrepos')
     getPinnedRepos(req.user.accessToken)
       .then(repos => PinnedRepos.bulkCreate({ _id: req.user._id }, repos))
       .then(() => res.status(201).send())
+      .catch(err => next(err))
   })
   // Update user pinned repos
   .put(isAuthenticated, (req, res, next) => {
