@@ -40,7 +40,10 @@ router.route('/user/:gitHubId')
         )
         res.send(`<!DOCTYPE html>${html}`)
       })
-      .catch(err => res.json({ ssrBroke: err }))
+      .catch(err => {
+        console.error(err)
+        res.json({ ssrBroke: err })
+      })
 
     // const { gitHubId } = req.params
     // findOneByGitHubId({ gitHubId })
