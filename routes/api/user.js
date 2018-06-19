@@ -64,6 +64,8 @@ router.route('/photo/:repoId')
         const imgUrl = awsData.Location
         PinnedRepos.addPhoto({ _id: repoId, imageUrl: imgUrl, imageName: fileName })
       })
+      // Delete photo from local temp folder
+      .then(() => fs.unlink(path.join(__dirname, `../../temp/photos/${fileName}`)))
       .then(resp => res.status(201).json(resp))
       .catch(err => next(err))
     //   // Add image to database
