@@ -1,5 +1,6 @@
 const express = require('express')
 const router = express.Router()
+const { findOneByGitHubId } = require('../../controllers/UserController')
 
 /**
  * Public Routes - '/portfolio'
@@ -18,8 +19,10 @@ const router = express.Router()
 // React Server Side Rendering, send fully rendered page
 router.route('/user/:gitHubId')
   .get((req, res, next) => {
-    const { gitHubId } = req.param
-    res.send(`Got 'emmmmmmmm`)
+    const { gitHubId } = req.params
+    findOneByGitHubId({ gitHubId })
+      .then(userData => res.json(userData))
+      .catch(err => res.json(err))
   })
 
 /**
@@ -33,6 +36,7 @@ router.route('/user/:gitHubId')
  *   7) Send response of zip file
  */
 
+// React Server Side Rendering, send zip file of fully rendered page
 router.route('/ssr/:gitHubId')
   .get((req, res, next) => {
     res.send(`Got 'emmmmmmmm`)
