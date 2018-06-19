@@ -47,12 +47,10 @@ const bulkUpdate = async (repos) => {
   return db.PinnedRepositories.bulkWrite(mongoDeliverable)
 }
 
-const addPhoto = async ({ _id }, filePath) => {
-  const imageData = fs.readFile(filePath)
-  const newImage = new Image({ data: imageData })
+const addPhoto = async ({ _id, imageUrl }) => {
   console.log(`trying to addPhoto()`)
   return db.PinnedRepositories.findOneAndUpdate({ _id }, {
-    $set: { image: newImage }
+    $set: { imageUrl }
   })
 }
 
