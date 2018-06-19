@@ -5,6 +5,12 @@ const React = require('react')
 const { renderToStaticMarkup } = require('react-dom/server')
 
 // Jumble everything into one file to get it working, will modularize later
+class Template extends React.Component {
+  render () {
+    return React.createElement()
+  }
+}
+
 const template = (title) => (
   `<!DOCTYPE html>
 <html lang="en">

@@ -49,11 +49,10 @@ router.route('/photo/:repoId')
       .catch(err => next(err))
   })
 
-  
 router.route('/isauthenticated')
   .get((req, res, next) => {
     const isAuthenticated = isAuthenticatedBoolean()
-    res.json({ isAuthenticated  })
+    res.json({ isAuthenticated })
   })
 
 module.exports = router
