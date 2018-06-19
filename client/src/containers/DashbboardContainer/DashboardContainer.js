@@ -25,9 +25,6 @@ import{
 
 export class DashboardContainer extends Component {
   
-  componentWillMount(){
-    this.props.fetchUserInfo
-  }
 
   // componentDidMount(){
   //   this.props.fetchUserInfo
@@ -73,8 +70,8 @@ export class DashboardContainer extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  userInfo: state.userInfo
-})
+// const mapStateToProps = state => ({
+//   userInfo: state.userInfo
+// })
 
-export default connect(mapStateToProps, {fetchUserInfo})(DashboardContainer)
+// export default connect(mapStateToProps, {fetchUserInfo})(DashboardContainer)
