@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const { getPinnedRepos } = require('../../utils/githubAPI')
-const isAuthenticated = require('../../utils/isAuthenticated')
+const { isAuthenticated, isAuthenticatedBoolean } = require('../../utils/isAuthenticated')
 const User = require('../../controllers/UserController')
 const PinnedRepos = require('../../controllers/PinnedRepositoryController')
 const handleUpload = require('../../utils/imageUpload')
@@ -47,6 +47,13 @@ router.route('/photo/:repoId')
     handleUpload({ req, res, _id: req.params.repoId })
       .then(updatedRepoData => res.status(201).json(updatedRepoData))
       .catch(err => next(err))
+  })
+
+  
+router.route('/isauthenticated')
+  .get((req, res, next) => {
+    const isAuthenticated = isAuthenticatedBoolean()
+    res.json({ isAuthenticated  })
   })
 
 module.exports = router

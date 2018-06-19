@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const passport = require('../../config/passport')
-const isAuthenticated = require('../../utils/isAuthenticated')
+const { isAuthenticated } = require('../../utils/isAuthenticated')
 
 /**
  * API Routes - '/api/auth'
