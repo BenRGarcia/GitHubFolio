@@ -34,10 +34,10 @@ const uploadImage = ({ filename, stream }) => {
   }
 }
 
-const deleteImage = ({ filename }) => {
+const deleteImage = ({ oldFilename }) => {
   try {
     return new Promise((resolve, reject) => {
-      s3.deleteObject({ Key: filename }, (err, data) => {
+      s3.deleteObject({ Bucket: awsS3Bucket, Key: oldFilename }, (err, data) => {
         if (err) reject(err)
         resolve(data)
       })
