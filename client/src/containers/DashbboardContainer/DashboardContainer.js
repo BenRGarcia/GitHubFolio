@@ -47,7 +47,7 @@ export class DashboardContainer extends Component {
 
   getUserInfo = () => {
     fetch('/api/user/data')
-    // .then(resp => resp.json())
+    .then(resp => resp.json())
     //   .then(data.map(((d)=> 
     //     this.setState({
     //       userInfo: d.userInfo
