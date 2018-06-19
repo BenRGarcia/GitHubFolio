@@ -9,17 +9,20 @@ import { DashboardEditUser } from './components';
 import { UploadImageExample } from './pages/UploadImageExample/UploadImageExample';
 import ComposedComponent from './components/Authentication/Authentication'
 
+
 const App = () => (
   <Router>
     <div>
       <Switch>
         <Route exact path="/" component={HomePage} />
-        <Route path="/dashboard" component={ComposedComponent(DashboardPage)} />
+        {/* <Route path="/dashboard" component={ComposedComponent(DashboardPage)} /> */}
+        <Route path="/dashboard" component={DashboardPage} />        
         <Route exact path="/portfolio/:id" component={PublicViewPage} />
         {/* Below is Ben's test component for image uploads */}
         <Route exact path="/upload/photo" component={UploadImageExample}/>
         {/* Above is Ben's test component for image uploads */}
-        <Route component={NotFound} />
+        <Route exact path="/pagenotfound" component={NotFound}/>   
+        <Route render={() => <Redirect to="/pagenotfound"/>}/>
       </Switch>
     </div>
   </Router>
