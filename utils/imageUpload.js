@@ -2,6 +2,8 @@ const path = require('path')
 const multer = require('multer')
 const uuidv4 = require('uuid/v4')
 const fs = require('fs')
+const s3 = require('./awsS3')
+const PinnedRepos = require('../controllers/PinnedRepositoryController')
 
 // Set location in which to save images
 const uploadsFolder = path.join(__dirname, '../temp/photos/')
@@ -35,7 +37,7 @@ const checkFileType = (file, cb) => {
     : cb(new Error('Only `.jpeg`, `.jpg`, `.png`, and `.gif` files are accepted'))
 }
 
-const handleUpload = (req, res) => {
+const saveFileToLocalTempFolder = (req, res) => {
   return new Promise((resolve, reject) => {
     const cb = err => {
       if (err) reject(err)
@@ -45,16 +47,38 @@ const handleUpload = (req, res) => {
   })
 }
 
-const deletePhoto = fileName => {
+const deleteFileFromLocalTempFolder = async ({ filename }) => {
   return new Promise((resolve, reject) => {
-    fs.unlink(`${uploadsFolder}${fileName}`, err => {
+    fs.unlink(path.join(__dirname, `${uploadsFolder}${filename}`), err => {
       if (err) reject(err)
-      resolve(`${fileName} was deleted`)
+      resolve()
     })
   })
 }
 
-module.exports = {
-  handleUpload,
-  deletePhoto
+const handleUpload = async ({ req, res, _id }) => {
+  try {
+    // Save file upload to local temp folder, extract file name
+    const fileData = await saveFileToLocalTempFolder(req, res)
+    const { filename } = fileData
+    // Create stream to upload image to AWS S3, extract public URL from AWS S3 response
+    const stream = fs.createReadStream(path.join(__dirname, `${uploadsFolder}${filename}`))
+    const awsData = await s3.uploadImage({ filename, stream })
+    const imageUrl = awsData.Location
+    // Delete image from local temp folder
+    await deleteFileFromLocalTempFolder({ filename })
+    // Find old image name from DB, delete file from AWS S3 if exists
+    const oldFilename = await PinnedRepos.getOldPhotoFileName({ _id })
+    if (oldFilename) {
+      const deletedImage = await s3.deleteImage({ filename })
+      console.log(`\n=====\nFor curiosity's sake, deletedImage response from AWS S3:\n`, deletedImage)
+    } else { console.log(`previous file name did not exist`) }
+    // Set new public URL and filename in DB
+    return PinnedRepos.addPhoto({ _id, imageUrl, imageName: filename })
+  } catch (err) {
+    console.error(err)
+    return err
+  }
 }
+
+module.exports = handleUpload
