@@ -58,7 +58,6 @@ export const initialState = {
   userInfo: {}
 }
 
-
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_USER_INFO:

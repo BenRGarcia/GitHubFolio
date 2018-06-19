@@ -2,7 +2,6 @@ import React from "react";
 import { connect } from "react-redux";
 import "./DashboardEditUser.css";
 
-
 const mapStateToProps = state => {
   return { userInfo: state.userInfo };
 };

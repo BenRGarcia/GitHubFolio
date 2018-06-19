@@ -25,17 +25,17 @@ import{
 
 export class DashboardContainer extends Component {
   
-  // componentDidMount(){
-  //   this.getPinnedRepos()
-  //   this.getUserInfo()
-  // }
-
-  componentWillMount(){
-    this.props.fetchUserInfo
+  componentDidMount(){
+    // this.getPinnedRepos()
+    this.getUserInfo()
   }
 
+  // componentDidMount(){
+  //   this.props.fetchUserInfo
+  // }
+
   // getPinnedRepos = () => {
-  //   fetch('api/users/pinnedrepos')
+  //   fetch('/api/users/pinnedrepos')
   //   .then(resp => resp.json())
   //     .then(data.map(((d)=> 
   //       this.setState({
@@ -45,16 +45,17 @@ export class DashboardContainer extends Component {
   //   )
   // }
 
-  // getUserInfo = () => {
-  //   fetch('api/users/data')
-  //   .then(resp => resp.json())
-  //     .then(data.map(((d)=> 
-  //       this.setState({
-  //         userInfo: d.userInfo
-  //       })
-  //    ))
-  //   )
-  // }
+  getUserInfo = () => {
+    fetch('/api/user/data')
+    // .then(resp => resp.json())
+    //   .then(data.map(((d)=> 
+    //     this.setState({
+    //       userInfo: d.userInfo
+    //     })
+    //  ))
+    // )
+    .then(resp => console.log(resp))
+  }
 
   render() {
     return(
@@ -65,7 +66,7 @@ export class DashboardContainer extends Component {
           <Route exact path='/dashboard/template' component={TemplatePage}/>
           <Route path="/dashboard/user" render={()=><EditUserInfo />}/>          
           <Route path="/dashboard/repos" render={()=><PinnedRepos/>} />          
-          <Route exact path='/dashboard/repos' render={this.EditRepoInfo}/>      
+          {/* <Route exact path='/dashboard/repos' render={this.EditRepoInfo}/>       */}
           <Route exact path='/dashboard/preview' component={PreviewPage} />
           <Route component={NotFound} />
         </Switch>
