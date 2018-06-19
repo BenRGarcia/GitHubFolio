@@ -2,7 +2,6 @@ import React from "react";
 import { connect } from "react-redux";
 import "./DashboardEditUser.css";
 
-
 const mapStateToProps = state => {
   return { userInfo: state.userInfo };
 };
@@ -26,6 +25,6 @@ const DashboardEditUser = ({userInfo})  => {
   )
 }
 
-const UserInfo = connect(mapStateToProps)(DashboardEditUser);
+const EditUserInfo = connect(mapStateToProps)(DashboardEditUser);
 
-export default UserInfo;
+export default EditUserInfo;
