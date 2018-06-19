@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const { getPinnedRepos } = require('../../utils/githubAPI')
-const isAuthenticated = require('../../utils/isAuthenticated')
+const { isAuthenticated, isAuthenticatedBoolean } = require('../../utils/isAuthenticated')
 const User = require('../../controllers/UserController')
 const PinnedRepos = require('../../controllers/PinnedRepositoryController')
 const { handleUpload, deletePhoto } = require('../../utils/imageUpload')
@@ -61,6 +61,13 @@ router.route('/photo/:repoId')
       .then(() => console.log(`you need to delete the image from '../../temp/photos'`))
       .then(() => res.status(201).send())
       .catch(err => next(err))
+  })
+
+  
+router.route('/isauthenticated')
+  .get((req, res, next) => {
+    const isAuthenticated = isAuthenticatedBoolean()
+    res.json({ isAuthenticated  })
   })
 
 module.exports = router
