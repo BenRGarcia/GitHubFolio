@@ -4,10 +4,7 @@ const { getPinnedRepos } = require('../../utils/githubAPI')
 const isAuthenticated = require('../../utils/isAuthenticated')
 const User = require('../../controllers/UserController')
 const PinnedRepos = require('../../controllers/PinnedRepositoryController')
-const { handleUpload, deletePhoto } = require('../../utils/imageUpload')
-const s3 = require('../../utils/awsS3')
-const fs = require('fs')
-const path = require('path')
+const handleUpload = require('../../utils/imageUpload')
 
 /**
  * API Routes - '/api/user'
@@ -46,35 +43,9 @@ router.route('/pinnedrepos')
 router.route('/photo/:repoId')
   // Add photo to pinned repo
   .post(isAuthenticated, (req, res, next) => {
-    // Make file name variable accessible in closure
-    let repoId = req.params.repoId
-    console.log(`POST request with req.param.repoId: ${repoId}`)
-    let fileName
-    // // Put uploaded image in `~/temp/photos/`
-    handleUpload(req, res)
-      // Get/set filename from response
-      .then(resp => {
-        fileName = resp.filename
-        return resp
-      })
-      // image upload to aws s3
-      .then(() => s3.uploadImage({ fileName, stream: fs.createReadStream(path.join(__dirname, `../../temp/photos/${fileName}`)) }))
-      // set public url in database
-      .then(awsData => {
-        const imgUrl = awsData.Location
-        PinnedRepos.addPhoto({ _id: repoId, imageUrl: imgUrl, imageName: fileName })
-      })
-      // Delete photo from local temp folder
-      .then(() => fs.unlink(path.join(__dirname, `../../temp/photos/${fileName}`)))
-      .then(resp => res.status(201).json(resp))
+    handleUpload({ req, res, _id: req.params.repoId })
+      .then(updatedRepoData => res.status(201).json(updatedRepoData))
       .catch(err => next(err))
-    //   // Add image to database
-    //   .then(resp => PinnedRepos.addPhoto({ _id: repoId }, fileName))
-    //   // Delete image from `~/temp/photos/` folder
-    //   .then(() => console.log(`you need to delete the image from '../../temp/photos'`))
-    //   .then(() => fs.unlink(../../temp/photos/${fileName}))
-    //   .then(() => res.status(201).send())
-    //   .catch(err => next(err))
   })
 
 module.exports = router
