@@ -9,7 +9,7 @@ import { GitPinnedReposPage } from '../../components/GitPinnedReposPage/GitPinne
 import { DashboardEditUser } from '../../components/DashboardEditUser/DashboardEditUser.js';
 import { DashboardEditRepos } from '../../components/DashboardEditRepos/DashboardEditRepos.js';
 
-export const DashboardPage = () => (
+export const DashboardPage = (props) => (
   <div className='col-lg-10 offset-lg-2'>
     <div className=''>
     <DashboardSidebar />

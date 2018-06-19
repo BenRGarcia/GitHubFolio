@@ -4,13 +4,13 @@ import { Footer } from '../../components/Footer/Footer';
 
 
 
-const HomePage = () => (
+const HomePage = (props) => (
   <div>
     <NavBar />
     <div className="text-center">
       <h2 className="text-center">Introducing GitHubFolio</h2>
       <h4 >Create a beautiful portfolio to showcase your best work with GitHubFolio</h4>
-      <a href='/dashboard'><button type="button" class="btn btn-dark">Login with GitHub</button></a>
+      <a href='/dashboard'><button onClick={props.login} type="button" class="btn btn-dark">Login with GitHub</button></a>
       <br /><br />
       <a
         href='https://github.com/login/oauth/authorize?client_id=d704cc5bc30e737c2c31&scope=read:user'
