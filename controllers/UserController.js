@@ -23,7 +23,6 @@ const loginFindOrCreate = async ({
   email = 'user@example.com'
 }) => {
   const res = await db.User.findOneAndUpdate(
-    // Query | Updates | Create if not exists
     { gitHubId },
     { displayName, profileUrl, accessToken, email, photo, bio, location },
     { upsert: true })
