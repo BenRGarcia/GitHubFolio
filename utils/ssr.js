@@ -5,6 +5,7 @@ const createReactClass = require('create-react-class')
 
 module.exports = createReactClass({
   render () {
+    const { template, color, pinnedRepositories, bio, displayName, email, location, photo, profileUrl } = this.props.user
     return (
       <html lang="en">
         <head>
@@ -30,11 +31,34 @@ module.exports = createReactClass({
         <body>
           <div className='container text-center'>
             <h1>
-              Hello World!
+              Name: {displayName}
             </h1>
             <p>
-              {this.props.text}
+              Bio: {bio}
             </p>
+            <p>
+              Email: {email}
+            </p>
+            <p>Template: {template}</p>
+            <p>Color: {color}</p>
+            <p>Location: {location }</p>
+            <a href={profileUrl}>Profile</a>
+            <div>
+              <img src={photo} alt="Profile" className='img-fluid' style={{ width: '150px' }} />
+            </div>
+            {
+              pinnedRepositories &&
+              pinnedRepositories.map(repo => (
+                <div className='border border-secondary'>
+                  <p>Repo Name: {repo.name}</p>
+                  <p>Repo Description: {repo.description}</p>
+                  <p>Repo HomepageUrl: {repo.homepageUrl}</p>
+                  <p>Repo Deployed Site URL: {repo.url}</p>
+                  <p>Repo Image URL: {repo.imageUrl}</p>
+                  <p>Repo Image Name:{repo.imageName}</p>
+                </div>
+              ))
+            }
           </div>
         </body>
       </html>
