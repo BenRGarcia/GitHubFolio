@@ -1,6 +1,5 @@
 const db = require('../models')
 const User = require('./UserController')
-const fs = require('fs')
 
 const deleteOldRepos = async ({ _id }) => {
   const resp = await User.getRepoIds({ _id })
@@ -47,17 +46,21 @@ const bulkUpdate = async (repos) => {
   return db.PinnedRepositories.bulkWrite(mongoDeliverable)
 }
 
-const addPhoto = async ({ _id }, filePath) => {
-  const imageData = fs.readFile(filePath)
-  const newImage = new Image({ data: imageData })
-  console.log(`trying to addPhoto()`)
-  return db.PinnedRepositories.findOneAndUpdate({ _id }, {
-    $set: { image: newImage }
-  })
+const getOldPhotoFileName = async ({ _id }) => {
+  const repoData = await db.PinnedRepositories.findOne({ _id })
+  return repoData.imageName || false
+}
+
+const addPhoto = async ({ _id, imageUrl, imageName }) => {
+  return db.PinnedRepositories.findOneAndUpdate(
+    { _id },
+    { $set: { imageUrl, imageName } },
+    { new: true })
 }
 
 module.exports = {
   bulkCreate,
   bulkUpdate,
+  getOldPhotoFileName,
   addPhoto
 }
