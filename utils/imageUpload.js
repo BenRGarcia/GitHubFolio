@@ -49,7 +49,7 @@ const saveFileToLocalTempFolder = (req, res) => {
 
 const deleteFileFromLocalTempFolder = async ({ filename }) => {
   return new Promise((resolve, reject) => {
-    fs.unlink(path.join(__dirname, `${uploadsFolder}${filename}`), err => {
+    fs.unlink(`${uploadsFolder}${filename}`, err => {
       if (err) reject(err)
       resolve()
     })
@@ -61,18 +61,22 @@ const handleUpload = async ({ req, res, _id }) => {
     // Save file upload to local temp folder, extract file name
     const fileData = await saveFileToLocalTempFolder(req, res)
     const { filename } = fileData
+
     // Create stream to upload image to AWS S3, extract public URL from AWS S3 response
-    const stream = fs.createReadStream(path.join(__dirname, `${uploadsFolder}${filename}`))
+    const stream = fs.createReadStream(`${uploadsFolder}${filename}`)
     const awsData = await s3.uploadImage({ filename, stream })
     const imageUrl = awsData.Location
+
     // Delete image from local temp folder
     await deleteFileFromLocalTempFolder({ filename })
+
     // Find old image name from DB, delete file from AWS S3 if exists
     const oldFilename = await PinnedRepos.getOldPhotoFileName({ _id })
     if (oldFilename) {
-      const deletedImage = await s3.deleteImage({ filename })
+      const deletedImage = await s3.deleteImage({ oldFilename })
       console.log(`\n=====\nFor curiosity's sake, deletedImage response from AWS S3:\n`, deletedImage)
     } else { console.log(`previous file name did not exist`) }
+
     // Set new public URL and filename in DB
     return PinnedRepos.addPhoto({ _id, imageUrl, imageName: filename })
   } catch (err) {
