@@ -52,9 +52,10 @@ const getOldPhotoFileName = async ({ _id }) => {
 }
 
 const addPhoto = async ({ _id, imageUrl, imageName }) => {
-  return db.PinnedRepositories.findOneAndUpdate({ _id }, {
-    $set: { imageUrl, imageName }
-  })
+  return db.PinnedRepositories.findOneAndUpdate(
+    { _id },
+    { $set: { imageUrl, imageName } },
+    { new: true })
 }
 
 module.exports = {
