@@ -25,9 +25,8 @@ import{
 
 export class DashboardContainer extends Component {
   
-  componentDidMount(){
-    // this.getPinnedRepos()
-    this.getUserInfo()
+  componentWillMount(){
+    this.props.fetchUserInfo
   }
 
   // componentDidMount(){
@@ -45,17 +44,15 @@ export class DashboardContainer extends Component {
   //   )
   // }
 
-  getUserInfo = () => {
-    fetch('/api/user/data')
-    .then(resp => resp.json())
-    //   .then(data.map(((d)=> 
-    //     this.setState({
-    //       userInfo: d.userInfo
-    //     })
-    //  ))
-    // )
-    .then(resp => console.log(resp))
-  }
+  // getUserInfo = () => {
+  //   fetch('/api/user/data', { credentials: 'include' })
+  //   .then(resp => resp.json())
+     // .then(data => dispatch({
+      //   type: FETCH_USER_INFO,
+      //   payload: data
+      // }));
+  //   .then(resp => console.log(resp))
+  // }
 
   render() {
     return(
@@ -75,3 +72,9 @@ export class DashboardContainer extends Component {
     )
   }
 }
+
+const mapStateToProps = state => ({
+  userInfo: state.userInfo
+})
+
+export default connect(mapStateToProps, {fetchUserInfo})(DashboardContainer)
