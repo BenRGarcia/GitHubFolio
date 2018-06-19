@@ -52,15 +52,17 @@ router.route('/photo/:repoId')
     let fileName
     // // Put uploaded image in `~/temp/photos/`
     handleUpload(req, res)
-      // Get filename from response
+      // Get/set filename from response
       .then(resp => {
         fileName = resp.filename
         return resp
       })
+      // image upload to aws s3
       .then(() => s3.uploadImage({ fileName, stream: fs.createReadStream(path.join(__dirname, `../../temp/photos/${fileName}`)) }))
+      // set public url in database
       .then(awsData => {
         const imgUrl = awsData.Location
-        PinnedRepos.addPhoto({ _id: repoId, imageUrl: imgUrl })
+        PinnedRepos.addPhoto({ _id: repoId, imageUrl: imgUrl, imageName: fileName })
       })
       .then(resp => res.status(201).json(resp))
       .catch(err => next(err))
