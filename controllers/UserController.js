@@ -36,6 +36,11 @@ const findOne = async ({ _id }) => {
     .then(res => returnSanitizedObject(res))
 }
 
+const findOneByGitHubId = async ({ gitHubId }) => {
+  return db.User.findOne({ gitHubId }).populate('pinnedRepositories')
+    .then(res => returnSanitizedObject(res))
+}
+
 const findOneAndUpdate = async ({ _id }, { displayName, profileUrl, email, photo, bio, location, template, color }) => {
   const userData = { displayName, profileUrl, email, photo, bio, location, template, color }
   return db.User.findOneAndUpdate({ _id }, userData)
@@ -51,6 +56,7 @@ module.exports = {
   loginFindOrCreate,
   getRepoIds,
   findOne,
+  findOneByGitHubId,
   findOneAndUpdate,
   setPinnedRepos
 }
