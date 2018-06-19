@@ -1,32 +1,17 @@
+require('babel-register')({
+  presets: ['react']
+})
 const express = require('express')
 const router = express.Router()
 const { findOneByGitHubId } = require('../../controllers/UserController')
 const React = require('react')
+const ReactDOMServer = require('react-dom/server')
 const { renderToStaticMarkup } = require('react-dom/server')
+const htmlTemplate = require('../../utils/ssr')
+
+// https://www.youtube.com/watch?v=k66bOHX8MnY
 
 // Jumble everything into one file to get it working, will modularize later
-class Template extends React.Component {
-  render () {
-    return React.createElement()
-  }
-}
-
-const template = (title) => (
-  `<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>My Portfolio Site</title>
-</head>
-<body>
-  <div id='app'>
-    ${title}
-  </div>
-</body>
-</html>`
-)
 
 /**
  * Public Routes - '/portfolio'
@@ -45,7 +30,11 @@ const template = (title) => (
 // React Server Side Rendering, send fully rendered page
 router.route('/user/:gitHubId')
   .get((req, res, next) => {
-
+    findOneByGitHubId({ gitHubId })
+    const html = ReactDOMServer.renderToStaticMarkup(
+      React.createElement(htmlTemplate, { text: 'whoaaa' })
+    )
+    res.send(html)
     // const { gitHubId } = req.params
     // findOneByGitHubId({ gitHubId })
     //   .then(userData => res.json(userData))
