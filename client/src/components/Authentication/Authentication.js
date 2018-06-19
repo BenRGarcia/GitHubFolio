@@ -1,12 +1,27 @@
 import React from "react";
 import { connect } from "react-redux";
 
-const isLogin = false;
+// const isLogin = false;
 
 export default ComposedComponent => {
   class RequireAuth extends React.Component {
+
+    state = {
+      isLogin: false
+    }
+
+    componentDidMount(){
+      fetch('/isAuthenticated')
+      .then(resp => resp.json())
+        .then(data =>
+          this.setState(
+            {isLogin: data.isAuthenticated}
+          )
+        )
+    }
+    
     componentWillMount() {
-      if (!isLogin) {
+      if (!this.isLogin) {
         this.props.history.push("/");
       }
     }
@@ -15,6 +30,8 @@ export default ComposedComponent => {
       return <ComposedComponent {...this.props} />;
     }
   }
+  
+
 
   // function mapStateToProps(state) {
   //   return {
