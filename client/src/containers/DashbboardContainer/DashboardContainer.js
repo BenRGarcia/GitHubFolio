@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
-import UserInfo from '../../components/DashboardEditUser/DashboardEditUser';
+import EditUserInfo from '../../components/DashboardEditUser/DashboardEditUser';
 import PinnedRepos from '../../components/DashboardEditRepos/DashboardEditRepos';
+import { fetchUserInfo } from '../../actions/index'
 
 
 import{
@@ -28,8 +30,12 @@ export class DashboardContainer extends Component {
   //   this.getUserInfo()
   // }
 
+  componentWillMount(){
+    this.props.fetchUserInfo
+  }
+
   // getPinnedRepos = () => {
-  //   fetch('/pinnedrepos')
+  //   fetch('api/users/pinnedrepos')
   //   .then(resp => resp.json())
   //     .then(data.map(((d)=> 
   //       this.setState({
@@ -40,7 +46,7 @@ export class DashboardContainer extends Component {
   // }
 
   // getUserInfo = () => {
-  //   fetch('/user')
+  //   fetch('api/users/data')
   //   .then(resp => resp.json())
   //     .then(data.map(((d)=> 
   //       this.setState({
@@ -57,7 +63,7 @@ export class DashboardContainer extends Component {
         <Switch>
           <Route exact path='/dashboard' component={GitPinnedReposPage} />
           <Route exact path='/dashboard/template' component={TemplatePage}/>
-          <Route path="/dashboard/user" render={()=><UserInfo />}/>          
+          <Route path="/dashboard/user" render={()=><EditUserInfo />}/>          
           <Route path="/dashboard/repos" render={()=><PinnedRepos/>} />          
           <Route exact path='/dashboard/repos' render={this.EditRepoInfo}/>      
           <Route exact path='/dashboard/preview' component={PreviewPage} />
@@ -68,4 +74,3 @@ export class DashboardContainer extends Component {
     )
   }
 }
-

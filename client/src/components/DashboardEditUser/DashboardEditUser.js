@@ -26,6 +26,6 @@ const DashboardEditUser = ({userInfo})  => {
   )
 }
 
-const UserInfo = connect(mapStateToProps)(DashboardEditUser);
+const EditUserInfo = connect(mapStateToProps)(DashboardEditUser);
 
-export default UserInfo;
+export default EditUserInfo;
