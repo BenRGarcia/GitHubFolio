@@ -12,11 +12,11 @@ const s3 = new AWS.S3()
  *   - https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html
  */
 
-const uploadImage = ({ fileName, stream }) => {
+const uploadImage = ({ filename, stream }) => {
   // Compose object for POST to AWS S3
   const params = {
     Bucket: awsS3Bucket,
-    Key: fileName,
+    Key: filename,
     Body: stream,
     ACL: 'public-read'
   }
@@ -34,10 +34,10 @@ const uploadImage = ({ fileName, stream }) => {
   }
 }
 
-const deleteImage = ({ fileName }) => {
+const deleteImage = ({ filename }) => {
   try {
     return new Promise((resolve, reject) => {
-      s3.deleteObject({ Key: fileName }, (err, data) => {
+      s3.deleteObject({ Key: filename }, (err, data) => {
         if (err) reject(err)
         resolve(data)
       })
