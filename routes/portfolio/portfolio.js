@@ -5,7 +5,7 @@ const express = require('express')
 const router = express.Router()
 const { findOneByGitHubId } = require('../../controllers/UserController')
 const React = require('react')
-const ReactDOMServer = require('react-dom/server')
+// const ReactDOMServer = require('react-dom/server')
 const { renderToStaticMarkup } = require('react-dom/server')
 const htmlTemplate = require('../../utils/ssr')
 
@@ -30,11 +30,18 @@ const htmlTemplate = require('../../utils/ssr')
 // React Server Side Rendering, send fully rendered page
 router.route('/user/:gitHubId')
   .get((req, res, next) => {
-    findOneByGitHubId({ gitHubId })
-    const html = ReactDOMServer.renderToStaticMarkup(
-      React.createElement(htmlTemplate, { text: 'whoaaa' })
-    )
-    res.send(html)
+    findOneByGitHubId({ gitHubId: req.params.gitHubId })
+      .then(userData => {
+        // Destructure for user data
+        const { template, color, pinnedRepositories, bio, displayName, email, location, photo, profileUrl } = userData
+        const user = { template, color, pinnedRepositories, bio, displayName, email, location, photo, profileUrl }
+        const html = renderToStaticMarkup(
+          React.createElement(htmlTemplate, { user })
+        )
+        res.send(`<!DOCTYPE html>${html}`)
+      })
+      .catch(err => res.json({ ssrBroke: err }))
+
     // const { gitHubId } = req.params
     // findOneByGitHubId({ gitHubId })
     //   .then(userData => res.json(userData))
