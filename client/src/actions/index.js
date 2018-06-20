@@ -2,12 +2,12 @@ import { FETCH_USER_INFO, EDIT_USER_INFO, FETCH_REPOS, EDIT_REPOS  } from "../co
 
 export const fetchUserInfo = () => dispatch => {
   fetch('/api/user/data', { credentials: 'include' })
-    // .then(res => res.json())
+    .then(res => res.json())
       .then(data => dispatch({
         type: FETCH_USER_INFO,
         payload: data
       }))
-      .then("fetch user data worked")
+      .then(console.log("fetch user data worked"))      
 }
 
 
