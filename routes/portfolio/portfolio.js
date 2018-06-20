@@ -5,13 +5,8 @@ const express = require('express')
 const router = express.Router()
 const { findOneByGitHubId } = require('../../controllers/UserController')
 const React = require('react')
-// const ReactDOMServer = require('react-dom/server')
 const { renderToStaticMarkup } = require('react-dom/server')
 const htmlTemplate = require('../../utils/ssr')
-
-// https://www.youtube.com/watch?v=k66bOHX8MnY
-
-// Jumble everything into one file to get it working, will modularize later
 
 /**
  * Public Routes - '/portfolio'
@@ -44,11 +39,6 @@ router.route('/user/:gitHubId')
         console.error(err)
         res.json({ ssrBroke: err })
       })
-
-    // const { gitHubId } = req.params
-    // findOneByGitHubId({ gitHubId })
-    //   .then(userData => res.json(userData))
-    //   .catch(err => res.json(err))
   })
 
 /**
