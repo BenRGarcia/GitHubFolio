@@ -17,6 +17,15 @@ export class PublicPortfolioExample extends Component {
     const html = { __html: this.state.html }
     return (
       <div>
+        <div>
+          <a
+            href={`/portfolio/ssr/${this.props.gitHubId || '26657982'}`}
+            className='btn btn-danger'
+            download='GitHubFolio_Source_Code'
+          >
+            Download Source Code
+          </a>
+        </div>
         {
           this.state.html
           ?
