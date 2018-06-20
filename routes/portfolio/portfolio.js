@@ -7,6 +7,9 @@ const { findOneByGitHubId } = require('../../controllers/UserController')
 const React = require('react')
 const { renderToStaticMarkup } = require('react-dom/server')
 const htmlTemplate = require('../../utils/ssr')
+const fs = require('fs')
+const path = require('path')
+const uuidv4 = require('uuid/v4')
 
 /**
  * Public Routes - '/portfolio'
@@ -33,7 +36,7 @@ router.route('/user/:gitHubId')
         const html = renderToStaticMarkup(
           React.createElement(htmlTemplate, { user })
         )
-        res.send(`<!DOCTYPE html>${html}`)
+        res.send(`${html}`)
       })
       .catch(err => {
         console.error(err)
@@ -55,7 +58,29 @@ router.route('/user/:gitHubId')
 // React Server Side Rendering, send zip file of fully rendered page
 router.route('/ssr/:gitHubId')
   .get((req, res, next) => {
-    res.send(`Got 'emmmmmmmm`)
+    console.log(`request received in the backend`)
+    findOneByGitHubId({ gitHubId: req.params.gitHubId })
+      .then(userData => {
+        console.log(`found User:\n`, userData)
+        // Destructure for user data
+        const { template, color, pinnedRepositories, bio, displayName, email, location, photo, profileUrl } = userData
+        const user = { template, color, pinnedRepositories, bio, displayName, email, location, photo, profileUrl }
+        const html = renderToStaticMarkup(
+          React.createElement(htmlTemplate, { user })
+        )
+        // console.log(`html created:\n`, html)
+        const filepath = path.join(__dirname, '../../temp/ssr/')
+        const filename = `${uuidv4()}.html`
+        const file = `${filepath}${filename}`
+        fs.appendFile(file, `<!DOCTYPE html>${html}`, (err) => {
+          if (err) throw err
+          res.download(file)
+        })
+      })
+      .catch(err => {
+        console.error(err)
+        res.json({ ssrBroke: err })
+      })
   })
 
 module.exports = router
