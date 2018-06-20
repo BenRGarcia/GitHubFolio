@@ -1,10 +1,9 @@
 // import React from "react";
 import { connect } from "react-redux";
-import "./DashboardEditUser.css";
 import React, { Component } from 'react';
 import { fetchUserInfo } from '../../actions/index';
 import { bindActionCreators } from "redux";
-
+import "./DashboardEditUser.css";
 
 export class DashboardEditUser extends Component {
 
@@ -14,7 +13,7 @@ export class DashboardEditUser extends Component {
   
   render() {
     return (
-      <div className='container editPinForm'>
+    <div className='container editPinForm'>
       <form>
         <div className='form-group'>
           <label>Name</label>
@@ -39,9 +38,3 @@ const mapDispatchToProps = dispatch => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(DashboardEditUser);
-
-
-
-// const EditUserInfo = connect(mapStateToProps, {fetchUserInfo})(DashboardEditUser);
-// 
-// export default EditUserInfo;
