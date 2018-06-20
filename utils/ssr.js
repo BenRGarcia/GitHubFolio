@@ -54,14 +54,14 @@ module.exports = createReactClass({
             {
               pinnedRepositories &&
               pinnedRepositories.map(repo => (
-                <div className='border border-secondary rounded my-2 py-2'>
+                <div className='border border-secondary rounded my-2 py-2' key={profileUrl}>
                   <p className='mb-0'><strong className='border-dark border-bottom'></strong>Repo Name: {repo.name}</p>
                   <p className='mb-0'><strong className='border-dark border-bottom'></strong>Repo Description: {repo.description}</p>
                   <p className='mb-0'><strong className='border-dark border-bottom'></strong>Repo Deployed Site: <a target='_blank' href={repo.homepageUrl}>{repo.homepageUrl}</a></p>
                   <p className='mb-0'><strong className='border-dark border-bottom'></strong>Repo Repo Homepage: <a target='_blank' href={repo.url}>{repo.url}</a></p>
                   <p className='mb-0'><strong className='border-dark border-bottom'></strong>Repo Image:</p>
                   <div className='mb-0'>
-                    <img src={ repo.imageUrl || 'https://s3.us-east-2.amazonaws.com/githubfolio.dn7kwp92pdrmtdefnyz6uka5/GitHubFolioThumbnailDefault.jpg' }
+                    <img src={repo.imageUrl || 'https://s3.us-east-2.amazonaws.com/githubfolio.dn7kwp92pdrmtdefnyz6uka5/GitHubFolio_Thumbnail.png' }
                       alt="Profile"
                       className='img-fluid rounded'
                       style={{ width: '150px' }}
