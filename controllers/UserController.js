@@ -23,7 +23,6 @@ const loginFindOrCreate = async ({
   email = 'user@example.com'
 }) => {
   const res = await db.User.findOneAndUpdate(
-    // Query | Updates | Create if not exists
     { gitHubId },
     { displayName, profileUrl, accessToken, email, photo, bio, location },
     { upsert: true })
@@ -33,6 +32,11 @@ const loginFindOrCreate = async ({
 
 const findOne = async ({ _id }) => {
   return db.User.findOne({ _id }).populate('pinnedRepositories')
+    .then(res => returnSanitizedObject(res))
+}
+
+const findOneByGitHubId = async ({ gitHubId }) => {
+  return db.User.findOne({ gitHubId }).populate('pinnedRepositories')
     .then(res => returnSanitizedObject(res))
 }
 
@@ -51,6 +55,7 @@ module.exports = {
   loginFindOrCreate,
   getRepoIds,
   findOne,
+  findOneByGitHubId,
   findOneAndUpdate,
   setPinnedRepos
 }
