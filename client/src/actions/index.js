@@ -7,8 +7,31 @@ export const fetchUserInfo = () => dispatch => {
         type: FETCH_USER_INFO,
         payload: data
       }))
-      .then(console.log("fetch user data worked"))      
+      .then(console.log("fetch user data worked"))
 }
+
+export const editUserInfo = (infoToEdit) => dispatch => {
+	return fetch('/api/user/data', { credentials: 'include' }, { 
+		method: 'PUT',
+		headers: {
+		'Content-Type': 'application/json'
+		 },
+		body: JSON.stringify({  
+		item: infoToEdit
+		  })
+		}).then((response) => {
+		    return response.json() 
+		}).then((infoToEdit) => 
+      dispatch({
+        type: EDIT_USER_INFO,
+        payload: infoToEdit
+    })   
+  )
+  .then(console.log("editUserInfo is being called"))  
+}
+
+
+
 
 
 

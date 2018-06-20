@@ -1,59 +1,84 @@
 import { connect } from "react-redux";
 import React, { Component } from 'react';
-import { fetchUserInfo } from '../../actions/index';
+import { fetchUserInfo, editUserInfo } from '../../actions/index';
 import { bindActionCreators } from "redux";
 import "./DashboardEditRepos.css";
 
 
 export class DashboardEditRepos extends Component {
+
+  state = {
+    name: this.props.userInfo.pinnedRepositories.name,
+    description: this.props.userInfo.pinnedRepositories.name,
+    url: this.props.userInfo.pinnedRepositories.name,
+    homepageUrl: this.props.userInfo.pinnedRepositories.name
+  }
  
   componentDidMount(){
     this.props.fetchUserInfo();
-  }
+    }
 
+  handleSubmit = (e) => {
+      e.preventDefault()
+      this.props.editUserInfo(this.state); 
+      console.log("submit is being read")
+    }
+
+  handleChange = event => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+    });
+  }
+  
   repoMap(){
     console.log(this.props.userInfo.pinnedRepositories)
-    // return this.props.userInfo.pinnedRepositories.map(repo =>   
-    //   <div className='form-group'>
-    //     <label>Project Name</label>
-    //       <input
-    //         key={repo._id} 
-    //         type='text' 
-    //         className='form-control' 
-    //         placeholder={repo.title}>
-    //       </input>
-    //     <label>Description</label>
-    //       <input 
-    //         key={repo._id}
-    //         type='text' 
-    //         className='form-control' 
-    //         placeholder={repo.description}>
-    //       </input>
-    //     <label>GitGub Link</label>
-    //       <input 
-    //         key={repo._id}
-    //         type='text' 
-    //         className='form-control' 
-    //         placeholder={repo.githubLink}>
-    //       </input>
-    //     <label>Deployed Link</label>
-    //       <input 
-    //         key={repo._id} 
-    //         type='text' 
-    //         className='form-control' 
-    //         placeholder={repo.deployedLink}>
-    //       </input>
-    //   </div>
-    // )
+    return this.props.userInfo.pinnedRepositories.map(repo =>   
+      <div className='form-group' key ={repo._id}>
+        <label>Project Name</label>
+          <input
+            value = {this.state.name}
+            onChange={this.handleChange}
+            type='text' 
+            className='form-control' 
+            placeholder={repo.name}
+           >
+          </input>
+        <label>Description</label>
+          <input 
+            value = {this.state.description}
+            onChange={this.handleChange}
+            type='text' 
+            className='form-control' 
+            placeholder={repo.description}>
+          </input>
+        <label>GitHub Link</label>
+          <input 
+            value = {this.state.url}
+            onChange={this.handleChange}
+            type='text' 
+            className='form-control' 
+            placeholder={repo.url}>
+          </input>
+        <label>Deployed Link</label>
+          <input 
+            value = {this.state.homepageUrl}
+            onChange={this.handleChange}
+            type='text' 
+            className='form-control' 
+            placeholder={repo.homepageUrl}>
+          </input>
+      </div>
+    )
   }
-
+  
   render() {
     return (
       <div className='container editPinForm'>
         <form>
           {this.repoMap()} 
           <div className='container'>
-            <button type='submit'>submit</button>
+            <button onClick={this.handleSubmit} type='submit'>submit</button>
           </div>
         </form>
       </div>   
@@ -66,7 +91,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => {
-  return bindActionCreators({ fetchUserInfo: fetchUserInfo }, dispatch);
+  return bindActionCreators({ fetchUserInfo, editUserInfo }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(DashboardEditRepos);

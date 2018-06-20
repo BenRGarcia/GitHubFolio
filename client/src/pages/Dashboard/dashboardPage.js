@@ -12,7 +12,7 @@ import { DashboardEditRepos } from '../../components/DashboardEditRepos/Dashboar
 export const DashboardPage = (props) => (
   <div className='col-lg-10 offset-lg-2'>
     <div className=''>
-    <DashboardSidebar />
+    {/* <DashboardSidebar /> */}
     </div>
     <DashboardContainer />
  </div>
