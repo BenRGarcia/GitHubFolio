@@ -1,7 +1,9 @@
 const React = require('react')
 const createReactClass = require('create-react-class')
 
-// const user = { template, color, pinnedRepositories, bio, displayName, email, location, photo, profileUrl }
+const style = {
+  background: '#ddd'
+}
 
 module.exports = createReactClass({
   render () {
@@ -28,34 +30,43 @@ module.exports = createReactClass({
             My Portfolio Site
           </title>
         </head>
-        <body>
+        <body style={style}>
           <div className='container text-center'>
             <h1>
-              Name: {displayName}
+              <strong className='border-dark border-bottom'>Name: </strong> {displayName}
             </h1>
             <p>
-              Bio: {bio}
+              <strong className='border-dark border-bottom'>Bio: </strong> {bio}
             </p>
             <p>
-              Email: {email}
+              <strong className='border-dark border-bottom'>Email: </strong> <a href={`mailto:${email}`}>{ email }</a>
             </p>
-            <p>Template: {template}</p>
-            <p>Color: {color}</p>
-            <p>Location: {location }</p>
-            <a href={profileUrl}>Profile</a>
+            <p><strong className='border-dark border-bottom'>Template: </strong> {template}</p>
+            <p><strong className='border-dark border-bottom'>Color: </strong> {color}</p>
+            <p><strong className='border-dark border-bottom'>Location: </strong> {location }</p>
+            <p>
+              <strong className='border-dark border-bottom'>GitHub Profile: </strong>
+              <a target='_blank' href={profileUrl}>{profileUrl}</a>
+            </p>
             <div>
               <img src={photo} alt="Profile" className='img-fluid' style={{ width: '150px' }} />
             </div>
             {
               pinnedRepositories &&
               pinnedRepositories.map(repo => (
-                <div className='border border-secondary'>
-                  <p>Repo Name: {repo.name}</p>
-                  <p>Repo Description: {repo.description}</p>
-                  <p>Repo HomepageUrl: {repo.homepageUrl}</p>
-                  <p>Repo Deployed Site URL: {repo.url}</p>
-                  <p>Repo Image URL: {repo.imageUrl}</p>
-                  <p>Repo Image Name:{repo.imageName}</p>
+                <div className='border border-secondary rounded my-2 py-2'>
+                  <p className='mb-0'><strong className='border-dark border-bottom'></strong>Repo Name: {repo.name}</p>
+                  <p className='mb-0'><strong className='border-dark border-bottom'></strong>Repo Description: {repo.description}</p>
+                  <p className='mb-0'><strong className='border-dark border-bottom'></strong>Repo Deployed Site: <a target='_blank' href={repo.homepageUrl}>{repo.homepageUrl}</a></p>
+                  <p className='mb-0'><strong className='border-dark border-bottom'></strong>Repo Repo Homepage: <a target='_blank' href={repo.url}>{repo.url}</a></p>
+                  <p className='mb-0'><strong className='border-dark border-bottom'></strong>Repo Image:</p>
+                  <div className='mb-0'>
+                    <img src={ repo.imageUrl || 'https://s3.us-east-2.amazonaws.com/githubfolio.dn7kwp92pdrmtdefnyz6uka5/GitHubFolioThumbnailDefault.jpg' }
+                      alt="Profile"
+                      className='img-fluid rounded'
+                      style={{ width: '150px' }}
+                    />
+                  </div>
                 </div>
               ))
             }
