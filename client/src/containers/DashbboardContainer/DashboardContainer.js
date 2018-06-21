@@ -1,24 +1,16 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import EditUserInfo from '../../components/DashboardEditUser/DashboardEditUser';
 import PinnedRepos from '../../components/DashboardEditRepos/DashboardEditRepos';
 import { fetchUserInfo } from '../../actions';
 
 import{
-  DashboardSidebar,
-  DashboardUserInfo,
-  StylizedPinnedCard,
-  MinimalistPage,
-  StylizedPage,
-  MinimalistPinnedCard,
-  ClientSidePageMin,
-  ClientSidePageSty,
   PreviewPage,
   TemplatePage,
   GitPinnedReposPage,
-  DashboardEditUser,
-  DashboardEditRepos,
+  // DashboardEditUser,
+  // DashboardEditRepos,
   NotFound} 
  from '../../components';
 

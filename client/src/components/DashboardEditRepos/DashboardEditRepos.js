@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import React, { Component } from 'react';
-import { fetchUserInfo, editUserInfo } from '../../actions/index';
+import { fetchUserInfo, editRepos } from '../../actions/index';
 import { bindActionCreators } from "redux";
 import "./DashboardEditRepos.css";
 
@@ -8,12 +8,7 @@ import "./DashboardEditRepos.css";
 export class DashboardEditRepos extends Component {
 
   state = {
-    pinnedRepositories: {
-      name: this.props.userInfo.pinnedRepositories.name,
-      description: this.props.userInfo.pinnedRepositories.name,
-      url: this.props.userInfo.pinnedRepositories.name,
-      homepageUrl: this.props.userInfo.pinnedRepositories.name
-    }
+    pinnedRepositories: []
   }
 
   initiliazed= false;
@@ -21,26 +16,31 @@ export class DashboardEditRepos extends Component {
   componentWillReceiveProps(nextProps){
     if(!this.initialized){
       this.initialized = true;
-      const {name, description, url, homepageUrl} = nextProps.userInfo.pinnedRepositories
+      const { pinnedRepositories } = nextProps.userInfo
       this.setState({
-        name, 
-        description, 
-        url, 
-        homepageUrl
+        pinnedRepositories
       })
     }
   }
 
   handleSubmit = (e) => {
       e.preventDefault()
-      this.props.editUserInfo(this.state).then(response => {console.log(response)});
-      console.log("submit is being read")
+      console.log(`user just clicked 'save repo data:'`, this.state)
+      this.props.editRepos(this.state);
     }
 
-  handleChange = event => {
+  handleChange = (event, _id) => {
     const { name, value } = event.target;
+    const nextPinnedRepos = this.state.pinnedRepositories.map(repo => {
+      if (_id === repo._id) {
+        const newData = { [name]: value }
+        const nextRepo = { ...repo, ...newData }
+        return nextRepo
+      }
+      return repo
+    })
     this.setState({
-      [name]: value
+      pinnedRepositories: nextPinnedRepos
     });
   }
   
@@ -64,7 +64,7 @@ export class DashboardEditRepos extends Component {
                     name= 'name'                   
                     value = {this.state.name}
                     // onChange={(e)=>this.handleChange(repo._id)}
-                    onChange={this.handleChange}                    
+                    onChange={(e)=>this.handleChange(e, repo._id)}                    
                     className='form-control' 
                     placeholder={repo.name}
                    >
@@ -124,7 +124,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => {
-  return bindActionCreators({ fetchUserInfo, editUserInfo }, dispatch);
+  return bindActionCreators({ fetchUserInfo, editRepos }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(DashboardEditRepos);

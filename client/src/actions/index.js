@@ -10,28 +10,27 @@ export const fetchUserInfo = () => dispatch => {
       .then(console.log("fetch user data worked"))
 }
 
-export const editUserInfo = (infoToEdit) => dispatch => {
+export const editRepos = (infoToEdit) => dispatch => {
   console.log('info to edit****************************', infoToEdit)
-	return fetch('/api/user/data', {
+	return fetch('/api/user/pinnedrepos', {
     credentials: 'include',  
 		method: 'PUT',
 		headers: {
 		'Content-Type': 'application/json'
 		 },
-		body: JSON.stringify(  
-		   infoToEdit
-		  )
-		}).then((response) => {
-		    return response.json() 
-		}).then((newUserInfo) => 
+		body: JSON.stringify(infoToEdit.pinnedRepositories) 
+		}).then(() => {
+		return
       dispatch({
-        type: EDIT_USER_INFO,
-        payload: newUserInfo
+        type: EDIT_REPOS,
+        payload: infoToEdit
     })   
+    }
   )
 }
 
-export const editRepos = (infoToEdit) => dispatch => {
+
+export const editUserInfo = (infoToEdit) => dispatch => {
   console.log('info to edit****************************', infoToEdit)
 	return fetch('/api/user/data', {
     credentials: 'include',  
@@ -46,7 +45,7 @@ export const editRepos = (infoToEdit) => dispatch => {
 		    return response.json() 
 		}).then((newUserInfo) => 
       dispatch({
-        type: EDIT_REPOS,
+        type: EDIT_USER_INFO,
         payload: newUserInfo
     })   
   )
