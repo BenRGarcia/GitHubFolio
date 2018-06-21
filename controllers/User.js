@@ -1,61 +1,78 @@
 const { User } = require('../models')
 
-// Remove accessToken from response object
-const sanitizeObject = resp => {
-  resp = resp.toObject()
-  delete resp.accessToken
-  return resp
+const associateRepositories = ({ _id, repoIds }) => {
+  return User.findOneAndUpdate({ _id }, { $set: { Repositories: repoIds } })
 }
 
-// Get current pinned repo id's
-const getRepoIds = async ({ _id }) => {
-  return User.findOne({ _id }, 'pinnedRepositories')
+const getRepositoryIds = ({ _id }) => {
+  return User.findOne({ _id }, 'Repositories')
 }
 
-const loginUser = async ({
+const getUserDataById = ({ _id }) => {
+  return User.findOne({ _id })
+    .populate('Repositories')
+}
+
+const getUserDataByGitHubId = ({ gitHubId }) => {
+  return User.findOne({ gitHubId })
+    .populate('Repositories')
+}
+
+const loginWithGithub = ({
   gitHubId,
   accessToken,
-  photo = 'https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png',
-  bio = "World's greatest coder",
-  location = 'Undisclosed',
-  profilePageUrl = 'https://github.com/',
-  profileName = 'Coder',
-  email = 'user@example.com'
+  location,
+  bio,
+  photo,
+  profileUrl,
+  displayName,
+  email
 }) => {
-  const res = await User.findOneAndUpdate(
+  return User.findOneAndUpdate(
     { gitHubId },
-    { profileName, profilePageUrl, accessToken, email, photo, bio, location },
+    {
+      profileName: displayName,
+      profilePageUrl: profileUrl,
+      profileImageUrl: photo,
+      accessToken,
+      email,
+      bio,
+      location
+    },
     { upsert: true })
-
-  return sanitizeObject(res)
 }
 
-const getUserDataById = async ({ _id }) => {
-  return User.findOne({ _id }).populate('pinnedRepositories')
-    .then(res => sanitizeObject(res))
-}
-
-const getUserDataByGitHubId = async ({ gitHubId }) => {
-  return User.findOne({ gitHubId }).populate('pinnedRepositories')
-    .then(res => sanitizeObject(res))
-}
-
-const updateUserData = async ({ _id }, { profileName, profilePageUrl, email, photo, bio, location, template, color }) => {
-  const userData = { profileName, profilePageUrl, email, photo, bio, location, template, color }
-  return User.findOneAndUpdate({ _id }, userData)
-    .then(res => sanitizeObject(res))
-}
-
-const addPinnedRepos = async ({ _id }, repoIdArray) => {
-  return User.findOneAndUpdate({ _id }, { $set: { pinnedRepositories: repoIdArray } })
-    .then(res => sanitizeObject(res))
+const updateUserData = ({
+  _id,
+  profileName,
+  profilePageUrl,
+  email,
+  photo,
+  bio,
+  location,
+  chosenTemplate,
+  chosenColor
+}) => {
+  return User.findOneAndUpdate(
+    { _id },
+    {
+      profileName,
+      profilePageUrl,
+      email,
+      photo,
+      bio,
+      location,
+      chosenTemplate,
+      chosenColor
+    }
+  )
 }
 
 module.exports = {
-  loginUser,
-  getRepoIds,
+  loginWithGithub,
+  getRepositoryIds,
   getUserDataById,
   getUserDataByGitHubId,
   updateUserData,
-  addPinnedRepos
+  associateRepositories
 }
