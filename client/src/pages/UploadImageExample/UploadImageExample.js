@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { PublicPortfolioExample } from './PublicPortfolioExample';
 
 export class UploadImageExample extends Component {
   state = { file: null, repoId: null, src: null, warning: null }
@@ -116,6 +117,11 @@ export class UploadImageExample extends Component {
           </div>
         }
         {/* End example */}
+        <div>
+          <PublicPortfolioExample 
+            gitHubId='26657982'
+          />
+        </div>
       </div>
     );
   }

@@ -7,9 +7,6 @@ module.exports = {
     }
   },
   isAuthenticatedBoolean: (req, res, next) => {
-    if (req.isAuthenticated())
-      return true
-    else
-      return false
+    return req.isAuthenticated()
   }
 }
