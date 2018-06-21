@@ -2,8 +2,8 @@ const path = require('path')
 const multer = require('multer')
 const uuidv4 = require('uuid/v4')
 const fs = require('fs')
-const s3 = require('./awsS3')
-const PinnedRepos = require('../controllers/PinnedRepositoryController')
+const s3 = require('../utils/awsS3')
+const { Repository } = require('../controllers')
 
 // Set location in which to save images
 const uploadsFolder = path.join(__dirname, '../temp/photos/')
@@ -18,16 +18,16 @@ const storage = multer.diskStorage({
 })
 
 // Initialize upload
-const upload = multer({
+const uploadImage = multer({
   storage,
   limits: { fileSize: 250000 }, // 0.25 megabytes
   fileFilter: (req, file, cb) => {
-    checkFileType(file, cb)
+    isImageFile(file, cb)
   }
 }).single('repoImage')
 
 // File type validation
-const checkFileType = (file, cb) => {
+const isImageFile = (file, cb) => {
   const allowedFileExt = /^.jpeg$|^.jpg$|^.png$|^.gif$/i
   const allowedMimeTypes = /^image\/jpeg$|^image\/jpg$|^image\/png$|^image\/gif$/i
   const isExtAllowed = allowedFileExt.test(path.extname(file.originalname))
@@ -37,13 +37,13 @@ const checkFileType = (file, cb) => {
     : cb(new Error('Only `.jpeg`, `.jpg`, `.png`, and `.gif` files are accepted'))
 }
 
-const saveFileToLocalTempFolder = (req, res) => {
+const saveImageToLocalTempFolder = (req, res) => {
   return new Promise((resolve, reject) => {
     const cb = err => {
       if (err) reject(err)
       resolve(req.file)
     }
-    upload(req, res, cb)
+    uploadImage(req, res, cb)
   })
 }
 
@@ -56,25 +56,25 @@ const deleteFileFromLocalTempFolder = async ({ filename }) => {
   })
 }
 
-const handleUpload = async ({ req, res, _id }) => {
+const handleImageUpload = async ({ req, res, _id }) => {
   try {
     // Save file upload to local temp folder, extract file name
-    const fileData = await saveFileToLocalTempFolder(req, res)
+    const fileData = await saveImageToLocalTempFolder(req, res)
     const { filename } = fileData
     // Create stream to upload image to AWS S3, extract public URL from AWS S3 response
     const stream = fs.createReadStream(`${uploadsFolder}${filename}`)
-    const awsData = await s3.uploadImage({ filename, stream })
+    const awsData = await s3.uploadFile({ filename, stream })
     const imageUrl = awsData.Location
     // Delete image from local temp folder
     await deleteFileFromLocalTempFolder({ filename })
     // Find old image name from DB, delete file from AWS S3 if exists
-    const oldFilename = await PinnedRepos.getOldPhotoFileName({ _id })
-    if (oldFilename) await s3.deleteImage({ oldFilename })
+    const oldFilename = await Repository.getImageFilename({ _id })
+    if (oldFilename) await s3.deleteFile({ oldFilename })
     // Set new public URL and filename in DB
-    return PinnedRepos.addPhoto({ _id, imageUrl, imageName: filename })
+    return Repository.addImage({ _id, imageUrl, imageName: filename })
   } catch (err) {
     return err
   }
 }
 
-module.exports = handleUpload
+module.exports = handleImageUpload
