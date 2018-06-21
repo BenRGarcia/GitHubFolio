@@ -1,58 +1,27 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import EditUserInfo from '../../components/DashboardEditUser/DashboardEditUser';
 import PinnedRepos from '../../components/DashboardEditRepos/DashboardEditRepos';
-import { fetchUserInfo } from '../../actions/index'
-
+import { fetchUserInfo } from '../../actions';
 
 import{
-  DashboardSidebar,
-  DashboardUserInfo,
-  StylizedPinnedCard,
-  MinimalistPage,
-  StylizedPage,
-  MinimalistPinnedCard,
-  ClientSidePageMin,
-  ClientSidePageSty,
   PreviewPage,
   TemplatePage,
   GitPinnedReposPage,
-  DashboardEditUser,
-  DashboardEditRepos,
+  // DashboardEditUser,
+  // DashboardEditRepos,
   NotFound} 
  from '../../components';
 
+console.log('fetchUserInfo**********************', fetchUserInfo)
+ 
 export class DashboardContainer extends Component {
   
+
   componentWillMount(){
-    this.props.fetchUserInfo
+    this.props.fetchUserInfo();
   }
-
-  // componentDidMount(){
-  //   this.props.fetchUserInfo
-  // }
-
-  // getPinnedRepos = () => {
-  //   fetch('/api/users/pinnedrepos')
-  //   .then(resp => resp.json())
-  //     .then(data.map(((d)=> 
-  //       this.setState({
-  //         pins: d.pinnedRepos
-  //       })
-  //    ))
-  //   )
-  // }
-
-  // getUserInfo = () => {
-  //   fetch('/api/user/data', { credentials: 'include' })
-  //   .then(resp => resp.json())
-     // .then(data => dispatch({
-      //   type: FETCH_USER_INFO,
-      //   payload: data
-      // }));
-  //   .then(resp => console.log(resp))
-  // }
 
   render() {
     return(
@@ -73,8 +42,8 @@ export class DashboardContainer extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  userInfo: state.userInfo
-})
+// const mapStateToProps = state => ({
+//   userInfo: state.userInfo
+// })
 
-export default connect(mapStateToProps, {fetchUserInfo})(DashboardContainer)
+export default connect(null, {fetchUserInfo})(DashboardContainer)

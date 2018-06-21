@@ -36,6 +36,7 @@ router.route('/pinnedrepos')
   })
   // Update user pinned repos
   .put(isAuthenticated, (req, res, next) => {
+    console.log(req.body)
     PinnedRepos.bulkUpdate(req.body)
       .then(() => res.status(204).send())
       .catch(err => next(err))
