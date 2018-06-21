@@ -53,7 +53,7 @@ const UserSchema = new Schema({
     required: true,
     default: 'light'
   },
-  Repositories: [{
+  repositories: [{
     type: Schema.Types.ObjectId,
     ref: 'Repository'
   }]

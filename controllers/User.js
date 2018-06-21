@@ -5,17 +5,17 @@ const associateRepositories = ({ _id, repoIds }) => {
 }
 
 const getRepositoryIds = ({ _id }) => {
-  return User.findOne({ _id }, 'Repositories')
+  return User.findOne({ _id }, 'repositories')
 }
 
-const getUserDataById = ({ _id }) => {
+const getDataById = ({ _id }) => {
   return User.findOne({ _id })
-    .populate('Repositories')
+    .populate('repositories')
 }
 
-const getUserDataByGitHubId = ({ gitHubId }) => {
+const getDataByGitHubId = ({ gitHubId }) => {
   return User.findOne({ gitHubId })
-    .populate('Repositories')
+    .populate('repositories')
 }
 
 const loginWithGithub = ({
@@ -23,17 +23,17 @@ const loginWithGithub = ({
   accessToken,
   location,
   bio,
-  photo,
-  profileUrl,
-  displayName,
+  profileImageUrl,
+  profilePageUrl,
+  profileName,
   email
 }) => {
   return User.findOneAndUpdate(
     { gitHubId },
     {
-      profileName: displayName,
-      profilePageUrl: profileUrl,
-      profileImageUrl: photo,
+      profileName,
+      profilePageUrl,
+      profileImageUrl,
       accessToken,
       email,
       bio,
@@ -42,7 +42,7 @@ const loginWithGithub = ({
     { upsert: true })
 }
 
-const updateUserData = ({
+const updateData = ({
   _id,
   profileName,
   profilePageUrl,
@@ -71,8 +71,8 @@ const updateUserData = ({
 module.exports = {
   loginWithGithub,
   getRepositoryIds,
-  getUserDataById,
-  getUserDataByGitHubId,
-  updateUserData,
+  getDataById,
+  getDataByGitHubId,
+  updateData,
   associateRepositories
 }

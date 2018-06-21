@@ -1,9 +1,7 @@
 const express = require('express')
 const router = express.Router()
-const { getPinnedRepos } = require('../../utils/githubAPI')
 const { isAuthenticated, isAuthenticatedBoolean } = require('../../utils/isAuthenticated')
-const User = require('../../controllers/UserController')
-const PinnedRepos = require('../../controllers/PinnedRepositoryController')
+const { User, Repository, gitHubAPI } = require('../../controllers')
 const handleUpload = require('../../utils/imageUpload')
 
 /**
@@ -13,15 +11,14 @@ const handleUpload = require('../../utils/imageUpload')
 router.route('/data')
   // Retrieve all user data, pinned repos included
   .get(isAuthenticated, (req, res, next) => {
-    User.findOne({ _id: req.user._id })
+    User.getDataById({ _id: req.user._id })
       .then(userData => res.json(userData))
       .catch(err => next(err))
   })
   // Update user data (non-pinned repo data)
   .put(isAuthenticated, (req, res, next) => {
-    const { displayName, profileUrl, email, photo, bio, location, template, color } = req.body
-    const updateObject = { displayName, profileUrl, email, photo, bio, location, template, color }
-    User.findOneAndUpdate({ _id: req.user._id }, updateObject)
+    const { profileName, profilePageUrl, email, profileImageUrl, bio, location, chosenTemplate, chosenColor } = req.body
+    User.updateData({ _id: req.user._id, profileName, profilePageUrl, email, profileImageUrl, bio, location, chosenTemplate, chosenColor })
       .then(repos => res.status(201).json(repos))
       .catch(err => next(err))
   })
@@ -29,8 +26,8 @@ router.route('/data')
 router.route('/pinnedrepos')
   // Query GitHub graphQL, store pinned repos in DB
   .post(isAuthenticated, (req, res, next) => {
-    getPinnedRepos(req.user.accessToken)
-      .then(repos => PinnedRepos.bulkCreate({ _id: req.user._id }, repos))
+    gitHubAPI.getPinnedRepos(req.user.accessToken)
+      .then(repositories => Repository.addNew({ _id: req.user._id, repositories }))
       .then(() => res.status(201).send())
       .catch(err => next(err))
   })

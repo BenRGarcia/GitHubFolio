@@ -1,6 +1,6 @@
 require('dotenv').config()
 const GitHubStrategy = require('passport-github').Strategy
-const User = require('../controllers/UserController')
+const { User } = require('../controllers')
 
 // https://github.com/jaredhanson/passport-github
 
@@ -14,16 +14,16 @@ const verifyCb = async (accessToken, refreshToken, profile, cb) => {
   // Compose user object from GitHub oAuth `profile` response
   const userProfile = {
     gitHubId: profile.id,
-    displayName: profile.displayName,
-    profileUrl: profile.profileUrl,
+    profileName: profile.displayName,
+    profilePageUrl: profile.profileUrl,
     accessToken: accessToken,
     email: profile.emails[0].value,
-    photo: profile.photos[0].value,
+    profileImageUrl: profile.photos[0].value,
     bio: profile._json.bio,
     location: profile._json.location
   }
   // Find or create user with destructured data
-  const user = await User.loginFindOrCreate(userProfile)
+  const user = await User.loginWithGitHub(userProfile)
   // Passport.js callback
   return cb(null, { _id: user._id, accessToken })
 }

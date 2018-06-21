@@ -12,7 +12,7 @@ const s3 = new AWS.S3()
  *   - https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html
  */
 
-const uploadImage = ({ filename, stream }) => {
+const uploadFile = ({ filename, stream }) => {
   // Compose object for POST to AWS S3
   const params = {
     Bucket: awsS3Bucket,
@@ -34,7 +34,7 @@ const uploadImage = ({ filename, stream }) => {
   }
 }
 
-const deleteImage = ({ oldFilename }) => {
+const deleteFile = ({ oldFilename }) => {
   try {
     return new Promise((resolve, reject) => {
       s3.deleteObject({ Bucket: awsS3Bucket, Key: oldFilename }, (err, data) => {
@@ -49,6 +49,6 @@ const deleteImage = ({ oldFilename }) => {
 }
 
 module.exports = {
-  uploadImage,
-  deleteImage
+  uploadFile,
+  deleteFile
 }
