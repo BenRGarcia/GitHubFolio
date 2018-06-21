@@ -8,9 +8,9 @@ import "./DashboardEditUser.css";
 export class DashboardEditUser extends Component {
 
   state = {
-    displayName: this.props.userInfo.displayName,
-    email: this.props.userInfo.email,
-    bio: this.props.userInfo.bio
+    displayName: "" ,
+    email: " ",
+    bio: " "
   }
   
   initialized = false;
