@@ -12,33 +12,14 @@ const path = require('path')
 // React Server Side Rendering, send fully rendered page
 router.route('/user/:gitHubId')
   .get((req, res, next) => {
+    // Get user data from the database
     User.getDataByGitHubId({ gitHubId: req.params.gitHubId })
-      .then(userData => {
-        // Destructure for user data
-        const { template, color, pinnedRepositories, bio, displayName, email, location, photo, profileUrl } = userData
-        const user = { template, color, pinnedRepositories, bio, displayName, email, location, photo, profileUrl }
-        const html = renderToStaticMarkup(
-          React.createElement(htmlTemplate, { userData })
-        )
-        res.send(html)
-      })
-      .catch(err => {
-        console.error(err)
-        res.json({ ssrBroke: err })
-      })
+      // Create SSR html page
+      .then(userData => ssr.renderPortfolioPage(userData))
+      // Send rendered html to client
+      .then(html => res.send(html))
+      .catch(err => next(err))
   })
-
-/**
- * Psuedocode:
- *   1) Endpoint receives a GET request
- *   2) Extract req param
- *   3) Grab data about user from DB
- *   4) Feed data into component
- *   5) Work some SSR magic
- *   6) Send SSR file as download to client
- *   7) Delete file <- Still need to implement this
- *   8) Still need to implement handling of nonexistent users
- */
 
 // React Server Side Rendering, send file of fully rendered page
 router.route('/ssr/:gitHubId')

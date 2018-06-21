@@ -6,11 +6,6 @@ const { renderToStaticMarkup } = require('react-dom/server')
 const htmlShell = require('./ssrHtmlShell')
 const minimalistTemplate = require('./ssrMinimalistTemplate')
 const stylizedTemplate = require('./ssrStylizedTemplate')
-const fs = require('fs')
-const path = require('path')
-const uuidv4 = require('uuid/v4')
-
-const tempFolder = path.join(__dirname, '../temp/ssr/')
 
 const wrapInHtmlShell = ({ body }) => {
   return React.createElement(htmlShell, { body })

@@ -6,16 +6,14 @@ const s3 = require('../utils/awsS3')
 const { Repository } = require('../controllers')
 
 // Set location in which to save images
-const imageUploadsFolder = path.join(__dirname, '../temp/photos/')
-// Set location in which to save SSR pages
-const ssrTempFolder = path.join(__dirname, '../temp/ssr/')
+const tempFolder = path.join(__dirname, '../temp/')
 
 // Set storage engine
 const storage = multer.diskStorage({
-  destination: imageUploadsFolder,
+  destination: tempFolder,
   filename: (req, file, cb) => {
-    const fileName = file.fieldname + '-' + uuidv4() + path.extname(file.originalname)
-    cb(null, fileName)
+    const filename = uuidv4() + path.extname(file.originalname)
+    cb(null, filename)
   }
 })
 
@@ -49,20 +47,20 @@ const saveImageToLocalTempFolder = (req, res) => {
   })
 }
 
-const saveHtmlToLocalTempFolder = ({ html }) => {
+const saveHTMLToLocalTempFolder = ({ html }) => {
   return new Promise((resolve, reject) => {
-    fs.appendFile(`${ssrTempFolder}${uuidv4()}.html`, html, err => {
-      // Handle error
+    const filename = `${uuidv4()}.html`
+    const filepath = `${tempFolder}${filename}`
+    fs.appendFile(filepath, html, err => {
       if (err) reject(err)
-      // Return path to file
-      resolve(filepath)
+      resolve(filename)
     })
   })
 }
 
 const deleteFileFromLocalTempFolder = async ({ filename }) => {
   return new Promise((resolve, reject) => {
-    fs.unlink(`${imageUploadsFolder}${filename}`, err => {
+    fs.unlink(`${tempFolder}${filename}`, err => {
       if (err) reject(err)
       resolve()
     })
@@ -75,7 +73,7 @@ const handleImageUpload = async ({ req, res, _id }) => {
     const fileData = await saveImageToLocalTempFolder(req, res)
     const { filename } = fileData
     // Create stream to upload image to AWS S3, extract public URL from AWS S3 response
-    const stream = fs.createReadStream(`${imageUploadsFolder}${filename}`)
+    const stream = fs.createReadStream(`${tempFolder}${filename}`)
     const awsData = await s3.uploadFile({ filename, stream })
     const imageUrl = awsData.Location
     // Delete image from local temp folder
@@ -90,4 +88,8 @@ const handleImageUpload = async ({ req, res, _id }) => {
   }
 }
 
-module.exports = handleImageUpload
+module.exports = {
+  handleImageUpload,
+  saveHTMLToLocalTempFolder,
+  deleteFileFromLocalTempFolder
+}
