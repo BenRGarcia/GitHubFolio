@@ -3,7 +3,7 @@ require('babel-register')({
 })
 const express = require('express')
 const router = express.Router()
-const { findOneByGitHubId } = require('../../controllers/UserController')
+const { User, ssr } = require('../../controllers')
 const React = require('react')
 const { renderToStaticMarkup } = require('react-dom/server')
 const htmlTemplate = require('../../utils/ssr')
@@ -18,7 +18,7 @@ const uuidv4 = require('uuid/v4')
 // React Server Side Rendering, send fully rendered page
 router.route('/user/:gitHubId')
   .get((req, res, next) => {
-    findOneByGitHubId({ gitHubId: req.params.gitHubId })
+    User.getDataByGitHubId({ gitHubId: req.params.gitHubId })
       .then(userData => {
         // Destructure for user data
         const { template, color, pinnedRepositories, bio, displayName, email, location, photo, profileUrl } = userData
