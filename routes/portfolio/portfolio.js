@@ -1,15 +1,9 @@
-require('babel-register')({
-  presets: ['react']
-})
+
 const express = require('express')
 const router = express.Router()
 const { User, ssr } = require('../../controllers')
-const React = require('react')
-const { renderToStaticMarkup } = require('react-dom/server')
-const htmlTemplate = require('../../utils/ssr')
 const fs = require('fs')
 const path = require('path')
-const uuidv4 = require('uuid/v4')
 
 /**
  * Public Routes - '/portfolio'
@@ -24,7 +18,7 @@ router.route('/user/:gitHubId')
         const { template, color, pinnedRepositories, bio, displayName, email, location, photo, profileUrl } = userData
         const user = { template, color, pinnedRepositories, bio, displayName, email, location, photo, profileUrl }
         const html = renderToStaticMarkup(
-          React.createElement(htmlTemplate, { user })
+          React.createElement(htmlTemplate, { userData })
         )
         res.send(html)
       })
