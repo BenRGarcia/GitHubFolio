@@ -1,47 +1,41 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-const PinnedRepositoriesSchema = new Schema({
-  // Name of repo
+const RepositorySchema = new Schema({
   name: {
     type: String,
     required: true,
     minlength: 1,
     trim: true
   },
-  // Description of repo
   description: {
     type: String,
     required: false,
     trim: true
   },
-  // GitHub repo home page
-  homepageUrl: {
+  repositoryUrl: {
     type: String,
     required: false,
     trim: true
   },
-  // URL of deployed site
-  url: {
+  deployedUrl: {
     type: String,
     required: true,
     minlength: 1,
     trim: true
   },
-  // Thumbnail photo public URL
   imageUrl: {
     type: String,
     minlength: 1,
     required: false
   },
-  // Image file name
-  imageName: {
+  imageFilename: {
     type: String,
     minlength: 1,
     required: false
   }
 })
 
-const PinnedRepositories = mongoose.model('PinnedRepositories', PinnedRepositoriesSchema)
+const Repository = mongoose.model('Repository', RepositorySchema)
 
-module.exports = PinnedRepositories
+module.exports = Repository

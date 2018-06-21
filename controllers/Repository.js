@@ -17,7 +17,7 @@ const deleteOldRepos = async ({ _id }) => {
   return false
 }
 
-const bulkCreate = async ({ _id }, arrayOfObjects) => {
+const addNewRepos = async ({ _id }, arrayOfObjects) => {
   await deleteOldRepos({ _id })
   const mongoDeliverable = arrayOfObjects.map(pinnedRepo => {
     const { name, description, homepageUrl, url } = pinnedRepo
@@ -33,7 +33,7 @@ const bulkCreate = async ({ _id }, arrayOfObjects) => {
   return User.setPinnedRepos({ _id }, ids)
 }
 
-const bulkUpdate = async (repos) => {
+const updateRepos = async (repos) => {
   const mongoDeliverable = repos.map(pinnedRepo => {
     const { _id, name, description, homepageUrl, url } = pinnedRepo
     return {
@@ -46,12 +46,12 @@ const bulkUpdate = async (repos) => {
   return db.PinnedRepositories.bulkWrite(mongoDeliverable)
 }
 
-const getOldPhotoFileName = async ({ _id }) => {
+const getImageFilename = async ({ _id }) => {
   const repoData = await db.PinnedRepositories.findOne({ _id })
   return repoData.imageName || false
 }
 
-const addPhoto = async ({ _id, imageUrl, imageName }) => {
+const addImage = async ({ _id, imageUrl, imageName }) => {
   return db.PinnedRepositories.findOneAndUpdate(
     { _id },
     { $set: { imageUrl, imageName } },
@@ -59,8 +59,8 @@ const addPhoto = async ({ _id, imageUrl, imageName }) => {
 }
 
 module.exports = {
-  bulkCreate,
-  bulkUpdate,
-  getOldPhotoFileName,
-  addPhoto
+  addNewRepos,
+  updateRepos,
+  getImageFilename,
+  addImage
 }
