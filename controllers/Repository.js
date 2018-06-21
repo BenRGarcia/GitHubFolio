@@ -29,8 +29,8 @@ const addNewRepos = async ({ _id }, arrayOfObjects) => {
   })
 
   const resp = await db.PinnedRepositories.bulkWrite(mongoDeliverable)
-  const ids = Object.values(resp.insertedIds)
-  return User.setPinnedRepos({ _id }, ids)
+  const repoIds = Object.values(resp.insertedIds)
+  return User.associateRepositories({ _id, repoIds })
 }
 
 const updateRepos = async (repos) => {
