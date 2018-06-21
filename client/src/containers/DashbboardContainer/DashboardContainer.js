@@ -22,7 +22,7 @@ import{
   NotFound} 
  from '../../components';
 
-console.log(fetchUserInfo)
+console.log('fetchUserInfo**********************', fetchUserInfo)
  
 export class DashboardContainer extends Component {
   

@@ -11,7 +11,7 @@ export const fetchUserInfo = () => dispatch => {
 }
 
 export const editUserInfo = (infoToEdit) => dispatch => {
-  console.log(infoToEdit)
+  console.log('info to edit****************************', infoToEdit)
 	return fetch('/api/user/data', {
     credentials: 'include',  
 		method: 'PUT',
@@ -26,6 +26,27 @@ export const editUserInfo = (infoToEdit) => dispatch => {
 		}).then((newUserInfo) => 
       dispatch({
         type: EDIT_USER_INFO,
+        payload: newUserInfo
+    })   
+  )
+}
+
+export const editRepos = (infoToEdit) => dispatch => {
+  console.log('info to edit****************************', infoToEdit)
+	return fetch('/api/user/data', {
+    credentials: 'include',  
+		method: 'PUT',
+		headers: {
+		'Content-Type': 'application/json'
+		 },
+		body: JSON.stringify(  
+		   [infoToEdit]
+		  )
+		}).then((response) => {
+		    return response.json() 
+		}).then((newUserInfo) => 
+      dispatch({
+        type: EDIT_REPOS,
         payload: newUserInfo
     })   
   )

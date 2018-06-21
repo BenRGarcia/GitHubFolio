@@ -52,6 +52,7 @@ export class DashboardEditUser extends Component {
               name = 'displayName'
               value = {this.state.displayName}
               onChange={this.handleChange}
+              // onChange={(e)=>this.handleChange(repo._id)}              
               className='form-control' 
               placeholder={this.props.userInfo.displayName}>
             </input>

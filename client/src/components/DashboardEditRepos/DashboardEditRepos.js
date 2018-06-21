@@ -8,19 +8,32 @@ import "./DashboardEditRepos.css";
 export class DashboardEditRepos extends Component {
 
   state = {
-    name: this.props.userInfo.pinnedRepositories.name,
-    description: this.props.userInfo.pinnedRepositories.name,
-    url: this.props.userInfo.pinnedRepositories.name,
-    homepageUrl: this.props.userInfo.pinnedRepositories.name
-  }
- 
-  componentWillMount(){
-    this.props.fetchUserInfo();
+    pinnedRepositories: {
+      name: this.props.userInfo.pinnedRepositories.name,
+      description: this.props.userInfo.pinnedRepositories.name,
+      url: this.props.userInfo.pinnedRepositories.name,
+      homepageUrl: this.props.userInfo.pinnedRepositories.name
     }
+  }
+
+  initiliazed= false;
+ 
+  componentWillReceiveProps(nextProps){
+    if(!this.initialized){
+      this.initialized = true;
+      const {name, description, url, homepageUrl} = nextProps.userInfo.pinnedRepositories
+      this.setState({
+        name, 
+        description, 
+        url, 
+        homepageUrl
+      })
+    }
+  }
 
   handleSubmit = (e) => {
       e.preventDefault()
-      this.props.editUserInfo(this.state); 
+      this.props.editUserInfo(this.state).then(response => {console.log(response)});
       console.log("submit is being read")
     }
 
@@ -33,57 +46,62 @@ export class DashboardEditRepos extends Component {
   
   repoMap(){
     return (
-    <div>
-      {
-        this.props.userInfo
-        &&
-        this.props.userInfo.pinnedRepositories
-        &&
-        typeof this.props.userInfo.pinnedRepositories === 'array'
-        &&
-        <div>
-          {
+    // <div>
+    //   {
+    //     this.props.userInfo
+    //     &&
+    //     this.props.userInfo.pinnedRepositories
+    //     &&
+    //     typeof this.props.userInfo.pinnedRepositories === 'array'
+    //     &&
+    //     <div>
+    //       {
             this.props.userInfo.pinnedRepositories.map(repo =>   
               <div className='form-group' key ={repo._id}>
                 <label>Project Name</label>
                   <input
+                    type='text'
+                    name= 'name'                   
                     value = {this.state.name}
-                    onChange={this.handleChange}
-                    type='text' 
+                    // onChange={(e)=>this.handleChange(repo._id)}
+                    onChange={this.handleChange}                    
                     className='form-control' 
                     placeholder={repo.name}
                    >
                   </input>
                 <label>Description</label>
                   <input 
+                    type='text'
+                    name= 'description' 
                     value = {this.state.description}
                     onChange={this.handleChange}
-                    type='text' 
                     className='form-control' 
                     placeholder={repo.description}>
                   </input>
                 <label>GitHub Link</label>
                   <input 
+                    type='text'
+                    name= 'url' 
                     value = {this.state.url}
                     onChange={this.handleChange}
-                    type='text' 
                     className='form-control' 
                     placeholder={repo.url}>
                   </input>
                 <label>Deployed Link</label>
                   <input 
+                    type='text'
+                    name= 'homepageUrl' 
                     value = {this.state.homepageUrl}
                     onChange={this.handleChange}
-                    type='text' 
                     className='form-control' 
                     placeholder={repo.homepageUrl}>
                   </input>
               </div>
              )
-          }
-        </div>
-        }
-    </div>
+    //       }
+    //     </div>
+    //     }
+    // </div>
     )
   }
   
