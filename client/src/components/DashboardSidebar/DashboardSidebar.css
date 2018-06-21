@@ -1,5 +1,5 @@
   .sidenav {
-    background: #F2F2F2;
+    background: #28314B;
     z-index: 1;
     overflow-x: hidden;
     height: 100%;
@@ -9,35 +9,54 @@
     left: 0;
   }
 
-  .sidenavText {
-    font-family: 'Roboto', sans-serif;
-    font-size: 18px;
-    color: #666666;
-    letter-spacing: -0.04px;
-    display: block;
-    text-align: left;
-    padding-bottom: -15px;    
-  }
-
-  .sidenavText:hover {
-    text-decoration: none;    
-    color: black;
-  }
-
-  .arrowPad {
-    position: absolute;
-    right: 0px;
-    padding-right: 15px;  
-    padding-top: 5px;
-  }
-
-  .githubfoliologo{
+  .githubfoliologo  {
     width:30px;
     height:auto;
     padding-top: 50px;
     padding-bottom: 50px;
     display:block;
     margin:auto;
+  }
+  
+  .ulNone {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  .leftBorder {
+    /* Rectangle 2 Copy 2: */
+    background-image: linear-gradient(-180deg, #9A48E3 0%, #FB697B 100%);
+    width: 4px;
+    height: 50px;
+    max-width: 100%;
+    float: left;
+  }
+
+  .sidenavText {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    color: #979799;
+    letter-spacing: -0.04px;
+    display: block;
+    text-align: left;
+    padding-top: 15px;
+    padding-left: 25px;
+    height: 50px;
+    width: 100%;
+  }
+
+  .sidenavText:hover {
+    text-decoration: none;    
+    color: white;
+    height: 50px;
+    width: 100%;
+  }
+
+  .active {
+    height: 50px;
+    width: 200px;
+    background: #1E263D;
+    color: white;
   }
 
   
