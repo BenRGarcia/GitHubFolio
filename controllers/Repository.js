@@ -21,29 +21,24 @@ const addNew = async ({ _id, repositories }) => {
   const operations = repositories.map(repository => {
     return {
       insertOne: {
-        document: {
-          repository
-        }
+        document: { repository }
       }
     }
   })
   const resp = await Repository.bulkWrite(operations)
   const repoIds = Object.values(resp.insertedIds)
-  return User.associateRepositories({ _id, repoIds })
+  await User.associateRepositories({ _id, repoIds })
+  return resp
 }
 
 const update = async (repositories) => {
   const operations = repositories.map(repository => {
     const { _id, name, description, repositoryUrl, deployedUrl } = repository
+    const updatedRepo = { name, description, repositoryUrl, deployedUrl }
     return {
       updateOne: {
         filter: { _id },
-        update: {
-          name,
-          description,
-          repositoryUrl,
-          deployedUrl
-        }
+        update: { updatedRepo }
       }
     }
   })
