@@ -3,8 +3,7 @@ import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import EditUserInfo from '../../components/DashboardEditUser/DashboardEditUser';
 import PinnedRepos from '../../components/DashboardEditRepos/DashboardEditRepos';
-import { fetchUserInfo } from '../../actions/index'
-
+import { fetchUserInfo } from '../../actions';
 
 import{
   DashboardSidebar,
@@ -23,33 +22,14 @@ import{
   NotFound} 
  from '../../components';
 
+console.log(fetchUserInfo)
+ 
 export class DashboardContainer extends Component {
   
 
-  // componentDidMount(){
-  //   this.props.fetchUserInfo
-  // }
-
-  // getPinnedRepos = () => {
-  //   fetch('/api/users/pinnedrepos')
-  //   .then(resp => resp.json())
-  //     .then(data.map(((d)=> 
-  //       this.setState({
-  //         pins: d.pinnedRepos
-  //       })
-  //    ))
-  //   )
-  // }
-
-  // getUserInfo = () => {
-  //   fetch('/api/user/data', { credentials: 'include' })
-  //   .then(resp => resp.json())
-     // .then(data => dispatch({
-      //   type: FETCH_USER_INFO,
-      //   payload: data
-      // }));
-  //   .then(resp => console.log(resp))
-  // }
+  componentWillMount(){
+    this.props.fetchUserInfo();
+  }
 
   render() {
     return(
@@ -74,4 +54,4 @@ export class DashboardContainer extends Component {
 //   userInfo: state.userInfo
 // })
 
-// export default connect(mapStateToProps, {fetchUserInfo})(DashboardContainer)
+export default connect(null, {fetchUserInfo})(DashboardContainer)

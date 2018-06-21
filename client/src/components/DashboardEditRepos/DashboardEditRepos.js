@@ -14,7 +14,7 @@ export class DashboardEditRepos extends Component {
     homepageUrl: this.props.userInfo.pinnedRepositories.name
   }
  
-  componentDidMount(){
+  componentWillMount(){
     this.props.fetchUserInfo();
     }
 
@@ -32,43 +32,58 @@ export class DashboardEditRepos extends Component {
   }
   
   repoMap(){
-    console.log(this.props.userInfo.pinnedRepositories)
-    return this.props.userInfo.pinnedRepositories.map(repo =>   
-      <div className='form-group' key ={repo._id}>
-        <label>Project Name</label>
-          <input
-            value = {this.state.name}
-            onChange={this.handleChange}
-            type='text' 
-            className='form-control' 
-            placeholder={repo.name}
-           >
-          </input>
-        <label>Description</label>
-          <input 
-            value = {this.state.description}
-            onChange={this.handleChange}
-            type='text' 
-            className='form-control' 
-            placeholder={repo.description}>
-          </input>
-        <label>GitHub Link</label>
-          <input 
-            value = {this.state.url}
-            onChange={this.handleChange}
-            type='text' 
-            className='form-control' 
-            placeholder={repo.url}>
-          </input>
-        <label>Deployed Link</label>
-          <input 
-            value = {this.state.homepageUrl}
-            onChange={this.handleChange}
-            type='text' 
-            className='form-control' 
-            placeholder={repo.homepageUrl}>
-          </input>
-      </div>
+    return (
+    <div>
+      {
+        this.props.userInfo
+        &&
+        this.props.userInfo.pinnedRepositories
+        &&
+        typeof this.props.userInfo.pinnedRepositories === 'array'
+        &&
+        <div>
+          {
+            this.props.userInfo.pinnedRepositories.map(repo =>   
+              <div className='form-group' key ={repo._id}>
+                <label>Project Name</label>
+                  <input
+                    value = {this.state.name}
+                    onChange={this.handleChange}
+                    type='text' 
+                    className='form-control' 
+                    placeholder={repo.name}
+                   >
+                  </input>
+                <label>Description</label>
+                  <input 
+                    value = {this.state.description}
+                    onChange={this.handleChange}
+                    type='text' 
+                    className='form-control' 
+                    placeholder={repo.description}>
+                  </input>
+                <label>GitHub Link</label>
+                  <input 
+                    value = {this.state.url}
+                    onChange={this.handleChange}
+                    type='text' 
+                    className='form-control' 
+                    placeholder={repo.url}>
+                  </input>
+                <label>Deployed Link</label>
+                  <input 
+                    value = {this.state.homepageUrl}
+                    onChange={this.handleChange}
+                    type='text' 
+                    className='form-control' 
+                    placeholder={repo.homepageUrl}>
+                  </input>
+              </div>
+             )
+          }
+        </div>
+        }
+    </div>
     )
   }
   

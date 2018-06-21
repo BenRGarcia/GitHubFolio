@@ -1,45 +1,45 @@
-// import React from "react";
-// import { connect } from "react-redux";
+import React from "react";
+import { connect } from "react-redux";
 
-// // const isLogin = false;
+// const isLogin = false;
 
-// export default ComposedComponent => {
-//   class RequireAuth extends React.Component {
+export default ComposedComponent => {
+  class RequireAuth extends React.Component {
 
-//     state = {
-//       isLogin: false
-//     }
+    state = {
+      isLogin: false
+    }
 
-//     componentDidMount(){
-//       fetch('/isAuthenticated')
-//       .then(resp => resp.json())
-//         .then(data =>
-//           this.setState(
-//             {isLogin: data.isAuthenticated}
-//           )
-//         )
-//     }
+    componentDidMount(){
+      fetch('/isAuthenticated')
+      .then(resp => resp.json())
+        .then(data =>
+          this.setState(
+            {isLogin: data.isAuthenticated}
+          )
+        )
+    }
     
-//     componentWillMount() {
-//       if (!this.isLogin) {
-//         this.props.history.push("/");
-//       }
-//     }
+    componentWillMount() {
+      if (!this.isLogin) {
+        this.props.history.push("/");
+      }
+    }
 
-//     render() {
-//       return <ComposedComponent {...this.props} />;
-//     }
-//   }
+    render() {
+      return <ComposedComponent {...this.props} />;
+    }
+  }
   
 
 
-  // function mapStateToProps(state) {
-  //   return {
-  //     auth: state.auth.authenticated
-  //   };
-  // }
+  function mapStateToProps(state) {
+    return {
+      auth: state.auth.authenticated
+    };
+  }
 
-  // connect(mapStateToProps)
+  connect(mapStateToProps)
  
-  // return  (RequireAuth);
-// };
+  return  (RequireAuth);
+};

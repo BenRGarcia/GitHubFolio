@@ -12,15 +12,26 @@ export class DashboardEditUser extends Component {
     email: this.props.userInfo.email,
     bio: this.props.userInfo.bio
   }
- 
-  componentDidMount(){
-    this.props.fetchUserInfo();
+  
+  initialized = false;
+
+  componentWillReceiveProps(nextProps){
+    if(!this.initialized){
+      this.initialized = true;
+      const {email, displayName, bio} = nextProps.userInfo
+      this.setState({
+        displayName,
+        email,
+        bio
+      })
     }
+  }
 
   handleSubmit = (e) => {
       e.preventDefault()
-      this.props.editUserInfo(this.state); 
-      console.log("submit is being read")
+      this.props.editUserInfo(this.state).then(response => {console.log(response)}) 
+      // console.log("submit is being read")
+      // this.props.fetchUserInfo();
     }
 
   handleChange = event => {

@@ -11,23 +11,24 @@ export const fetchUserInfo = () => dispatch => {
 }
 
 export const editUserInfo = (infoToEdit) => dispatch => {
-	return fetch('/api/user/data', { credentials: 'include' }, { 
+  console.log(infoToEdit)
+	return fetch('/api/user/data', {
+    credentials: 'include',  
 		method: 'PUT',
 		headers: {
 		'Content-Type': 'application/json'
 		 },
-		body: JSON.stringify({  
-		item: infoToEdit
-		  })
+		body: JSON.stringify(  
+		   infoToEdit
+		  )
 		}).then((response) => {
 		    return response.json() 
-		}).then((infoToEdit) => 
+		}).then((newUserInfo) => 
       dispatch({
         type: EDIT_USER_INFO,
-        payload: infoToEdit
+        payload: newUserInfo
     })   
   )
-  .then(console.log("editUserInfo is being called"))  
 }
 
 
