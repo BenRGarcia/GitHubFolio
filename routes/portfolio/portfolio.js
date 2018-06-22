@@ -1,45 +1,45 @@
-
 const express = require('express')
 const router = express.Router()
-const { User, ssr } = require('../../controllers')
-const fs = require('fs')
-const path = require('path')
+const { User, ssr, fileHandler } = require('../../controllers')
+const { isAuthenticated } = require('../../utils/isAuthenticated')
 
 /**
  * Public Routes - '/portfolio'
  */
 
-// React Server Side Rendering, send fully rendered page
+// React Server Side Rendering, send fully rendered public page
 router.route('/user/:gitHubId')
   .get((req, res, next) => {
-    // Get user data from the database
+    // Get user data, create SSR html page, send to client
     User.getDataByGitHubId({ gitHubId: req.params.gitHubId })
-      // Create SSR html page
       .then(userData => ssr.renderPortfolioPage(userData))
-      // Send rendered html to client
       .then(html => res.send(html))
       .catch(err => next(err))
   })
 
-// React Server Side Rendering, send file of fully rendered page
-router.route('/ssr/:gitHubId')
-  .get((req, res, next) => {
-    console.log(`request received in the backend`)
-    findOneByGitHubId({ gitHubId: req.params.gitHubId })
-      .then(userData => {
-        // Destructure for user data
-        const { template, color, pinnedRepositories, bio, displayName, email, location, photo, profileUrl } = userData
-        const user = { template, color, pinnedRepositories, bio, displayName, email, location, photo, profileUrl }
-        const html = renderToStaticMarkup(
-          React.createElement(htmlTemplate, { user })
-        )
-        const filepath = path.join(__dirname, '../../temp/ssr/')
-        const filename = `${uuidv4()}.html`
-        const file = `${filepath}${filename}`
-        fs.appendFile(file, `<!DOCTYPE html>${html}`, (err) => {
+// React Server Side Rendering, send fully rendered partial public page
+router.route('/user/preview')
+  .get(isAuthenticated, (req, res, next) => {
+    // Get user data, create SSR html page, send to client
+    User.getDataById({ _id: req.user._id })
+      .then(userData => ssr.renderPortfolioBody(userData))
+      .then(html => res.send(html))
+      .catch(err => next(err))
+  })
+
+// React Server Side Rendering, send download file of fully rendered page
+router.route('/ssr')
+  .get(isAuthenticated, (req, res, next) => {
+    // Get user data, create SSR html page, write to file, send to client, delete file
+    User.getDataById({ _id: req.user._id })
+      .then(userData => ssr.renderPortfolioPage(userData))
+      .then(html => fileHandler.saveHTMLToLocalTempFolder({ html }))
+      .then(filename => {
+        const cb = err => {
           if (err) throw err
-          res.download(file)
-        })
+          fileHandler.deleteFileFromLocalTempFolder({ filename })
+        }
+        res.download(`../../temp/${filename}`, 'GitHubFolio_Source_Code.html', cb)
       })
       .catch(err => {
         console.error(err)
