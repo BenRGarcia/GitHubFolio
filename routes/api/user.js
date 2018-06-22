@@ -52,7 +52,7 @@ router.route('/photo/:repoId')
 
 router.route('/isauthenticated')
   .get((req, res, next) => {
-    res.json({ isAuthenticated: req.isAuthenticatedBoolean() })
+    res.json({ isAuthenticated: isAuthenticatedBoolean(req) })
   })
 
 module.exports = router
