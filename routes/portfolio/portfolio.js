@@ -4,7 +4,7 @@ const { User, ssr, fileHandler } = require('../../controllers')
 const { isAuthenticated } = require('../../utils/isAuthenticated')
 
 /**
- * Public Routes - '/portfolio'
+ * SSR Routes - '/portfolio'
  */
 
 // React Server Side Rendering, send fully rendered public page
@@ -41,10 +41,7 @@ router.route('/ssr')
         }
         res.download(`../../temp/${filename}`, 'GitHubFolio_Source_Code.html', cb)
       })
-      .catch(err => {
-        console.error(err)
-        res.json({ ssrBroke: err })
-      })
+      .catch(err => next(err))
   })
 
 module.exports = router
