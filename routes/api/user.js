@@ -9,12 +9,14 @@ const { User, Repository, gitHubAPI, fileHandler } = require('../../controllers'
 
 router.route('/data')
   // Retrieve all user data, pinned repos included
+  // PASS OR FAIL? ->
   .get(isAuthenticated, (req, res, next) => {
     User.getDataById({ _id: req.user._id })
       .then(userData => res.json(userData))
       .catch(err => next(err))
   })
   // Update user data (non-pinned repo data)
+  // PASS OR FAIL? ->
   .put(isAuthenticated, (req, res, next) => {
     // Destructure request body, compose user data object
     const { profileName, profilePageUrl, email, profileImageUrl, bio, location, chosenTemplate, chosenColor } = req.body
@@ -26,6 +28,7 @@ router.route('/data')
 
 router.route('/pinnedrepos')
   // Query GitHub graphQL, store pinned repos in DB
+  // PASS OR FAIL? -> FAIL
   .post(isAuthenticated, (req, res, next) => {
     gitHubAPI.getPinnedRepos(req.user.accessToken)
       .then(repositories => Repository.addNew({ _id: req.user._id, repositories }))
@@ -33,6 +36,7 @@ router.route('/pinnedrepos')
       .catch(err => next(err))
   })
   // Update user pinned repos
+  // PASS OR FAIL? -> FAIL
   .put(isAuthenticated, (req, res, next) => {
     // Destructure request body, compose repo data object
     const { _id, name, description, repositoryUrl, deployedUrl } = req.body
@@ -44,6 +48,7 @@ router.route('/pinnedrepos')
 
 router.route('/photo/:repoId')
   // Add photo to pinned repo
+  // PASS OR FAIL? -> FAIL
   .post(isAuthenticated, (req, res, next) => {
     fileHandler.handleImageUpload({ req, res, _id: req.params.repoId })
       .then(updatedRepoData => res.status(201).json(updatedRepoData))

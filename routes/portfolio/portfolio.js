@@ -9,6 +9,7 @@ const { isAuthenticated } = require('../../utils/isAuthenticated')
 
 // React Server Side Rendering, send fully rendered public page
 router.route('/user/:gitHubId')
+  // PASS OR FAIL? -> FAIL
   .get((req, res, next) => {
     // Get user data, create SSR html page, send to client
     User.getDataByGitHubId({ gitHubId: req.params.gitHubId })
@@ -19,6 +20,7 @@ router.route('/user/:gitHubId')
 
 // React Server Side Rendering, send fully rendered partial public page
 router.route('/user/preview')
+  // PASS OR FAIL? -> FAIL
   .get(isAuthenticated, (req, res, next) => {
     // Get user data, create SSR html page, send to client
     User.getDataById({ _id: req.user._id })
@@ -29,6 +31,7 @@ router.route('/user/preview')
 
 // React Server Side Rendering, send download file of fully rendered page
 router.route('/ssr')
+  // PASS OR FAIL? -> FAIL
   .get(isAuthenticated, (req, res, next) => {
     // Get user data, create SSR html page, write to file, send to client, delete file
     User.getDataById({ _id: req.user._id })
