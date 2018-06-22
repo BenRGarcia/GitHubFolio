@@ -4,7 +4,7 @@ module.exports = {
       ? next()
       : res.status(401).redirect('/')
   },
-  isAuthenticatedBoolean: (req, res, next) => {
+  isAuthenticatedBoolean: (req) => {
     return !!req.isAuthenticated()
   }
 }
