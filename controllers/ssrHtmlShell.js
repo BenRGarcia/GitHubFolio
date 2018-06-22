@@ -26,7 +26,7 @@ module.exports = createReactClass({
           </title>
         </head>
         <body>
-          {this.props.body}
+          <div dangerouslySetInnerHTML={{ __html: this.props.body }} />
         </body>
       </html>
     )

@@ -16,7 +16,7 @@ const getDataById = ({ _id }) => {
     .populate('repositories')
 }
 
-const getDataByGitHubId = ({ gitHubId }) => {
+const getDataByGitHubId = async ({ gitHubId }) => {
   return User.findOne({ gitHubId })
     .populate('repositories')
 }

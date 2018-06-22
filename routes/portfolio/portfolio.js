@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const { User, ssr, fileHandler } = require('../../controllers')
+const { user, ssr, fileHandler } = require('../../controllers')
 const { isAuthenticated } = require('../../utils/isAuthenticated')
 
 /**
@@ -11,9 +11,10 @@ const { isAuthenticated } = require('../../utils/isAuthenticated')
 router.route('/user/:gitHubId')
   // PASS OR FAIL? -> FAIL
   .get((req, res, next) => {
+    console.log(`GET was called with ${req.params.gitHubId}`)
     // Get user data, create SSR html page, send to client
-    User.getDataByGitHubId({ gitHubId: req.params.gitHubId })
-      .then(userData => ssr.renderPortfolioPage(userData))
+    user.getDataByGitHubId({ gitHubId: req.params.gitHubId })
+      .then(userData => ssr.renderPortfolioPage({ userData }))
       .then(html => res.send(html))
       .catch(err => next(err))
   })
@@ -22,9 +23,10 @@ router.route('/user/:gitHubId')
 router.route('/user/preview')
   // PASS OR FAIL? -> FAIL
   .get(isAuthenticated, (req, res, next) => {
+    console.log(`GET was called`)
     // Get user data, create SSR html page, send to client
-    User.getDataById({ _id: req.user._id })
-      .then(userData => ssr.renderPortfolioBody(userData))
+    user.getDataById({ _id: req.user._id })
+      .then(userData => ssr.renderPortfolioBody({ userData }))
       .then(html => res.send(html))
       .catch(err => next(err))
   })
@@ -33,9 +35,10 @@ router.route('/user/preview')
 router.route('/ssr')
   // PASS OR FAIL? -> FAIL
   .get(isAuthenticated, (req, res, next) => {
+    console.log(`GET was called`)
     // Get user data, create SSR html page, write to file, send to client, delete file
-    User.getDataById({ _id: req.user._id })
-      .then(userData => ssr.renderPortfolioPage(userData))
+    user.getDataById({ _id: req.user._id })
+      .then(userData => ssr.renderPortfolioPage({ userData }))
       .then(html => fileHandler.saveHTMLToLocalTempFolder({ html }))
       .then(filename => {
         const cb = err => {
