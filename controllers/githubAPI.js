@@ -27,4 +27,6 @@ const getPinnedRepos = async accessToken => {
   }
 }
 
-module.exports = getPinnedRepos
+module.exports = {
+  getPinnedRepos
+}

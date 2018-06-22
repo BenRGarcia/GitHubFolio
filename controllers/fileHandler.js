@@ -3,7 +3,7 @@ const multer = require('multer')
 const uuidv4 = require('uuid/v4')
 const fs = require('fs')
 const s3 = require('../utils/awsS3')
-const { Repository } = require('../controllers')
+const { repository } = require('../controllers')
 
 // Set location in which to save images
 const tempFolder = path.join(__dirname, '../temp/')
@@ -79,10 +79,10 @@ const handleImageUpload = async ({ req, res, _id }) => {
     // Delete image from local temp folder
     await deleteFileFromLocalTempFolder({ filename })
     // Find old image name from DB, delete file from AWS S3 if exists
-    const oldFilename = await Repository.getImageFilename({ _id })
+    const oldFilename = await repository.getImageFilename({ _id })
     if (oldFilename) await s3.deleteFile({ oldFilename })
     // Set new public URL and filename in DB
-    return Repository.addImage({ _id, imageUrl, imageName: filename })
+    return repository.addImage({ _id, imageUrl, imageName: filename })
   } catch (err) {
     return err
   }

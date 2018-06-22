@@ -1,8 +1,8 @@
 const { Repository } = require('../models')
-const { User } = require('./')
+const user = require('./user')
 
 const deleteOldRepositories = async ({ _id }) => {
-  const userData = await User.getRepositoryIds({ _id })
+  const userData = await user.getRepositoryIds({ _id })
   const repoIds = userData.repositories
   if (repoIds.length > 0) {
     const operations = repoIds.map(_id => {
@@ -19,15 +19,18 @@ const deleteOldRepositories = async ({ _id }) => {
 const addNew = async ({ _id, repositories }) => {
   await deleteOldRepositories({ _id })
   const operations = repositories.map(repository => {
+    console.log(repository)
+    const { name, description, repositoryUrl, deployedUrl } = repository
     return {
       insertOne: {
-        document: { repository }
+        document: repository
       }
     }
   })
   const resp = await Repository.bulkWrite(operations)
+  console.log(resp)
   const repoIds = Object.values(resp.insertedIds)
-  await User.associateRepositories({ _id, repoIds })
+  await user.associateRepositories({ _id, repoIds })
   return resp
 }
 

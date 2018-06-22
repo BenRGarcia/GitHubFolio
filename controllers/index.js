@@ -1,7 +1,7 @@
 module.exports = {
-  Repository: require('./Repository'),
-  User: require('./User'),
-  gitHubAPI: require('./githubAPI'),
+  repository: require('./repository'),
+  user: require('./user'),
+  gitHubAPI: require('./gitHubAPI'),
   fileHandler: require('./fileHandler'),
   ssr: require('./ssr')
 }

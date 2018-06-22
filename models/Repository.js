@@ -5,8 +5,7 @@ const RepositorySchema = new Schema({
   name: {
     type: String,
     required: true,
-    minlength: 1,
-    trim: true
+    minlength: 1
   },
   description: {
     type: String,
@@ -20,7 +19,7 @@ const RepositorySchema = new Schema({
   },
   deployedUrl: {
     type: String,
-    required: true,
+    required: false,
     minlength: 1,
     trim: true
   },
