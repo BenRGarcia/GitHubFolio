@@ -64,8 +64,8 @@ const updateData = ({
       location,
       chosenTemplate,
       chosenColor
-    }
-  )
+    },
+    { new: true })
 }
 
 module.exports = {
