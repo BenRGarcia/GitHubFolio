@@ -33,7 +33,8 @@ const uploadFile = ({ filename, stream }) => {
   }
 }
 
-const deleteMultipleFiles = (filenames) => {
+const deleteMultipleFiles = ({ filenames }) => {
+  console.log(`received filenames:`, filenames)
   try {
     return new Promise((resolve, reject) => {
       // make sure array of objects is passed

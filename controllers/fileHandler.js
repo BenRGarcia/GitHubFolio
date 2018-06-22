@@ -4,6 +4,7 @@ const uuidv4 = require('uuid/v4')
 const fs = require('fs')
 const s3 = require('../controllers/awsS3')
 const repository = require('../controllers/repository')
+const user = require('./user')
 
 // Set location in which to save images
 const tempFolder = path.join(__dirname, '../temp/')
@@ -88,8 +89,27 @@ const handleImageUpload = async ({ req, res, _id }) => {
   }
 }
 
+const handleDeleteOldImages = async ({ _id }) => {
+  // Query DB to get old filenames
+  const userData = await user.getDataById({ _id })
+  const repos = userData.repositories
+  // If repos exist...
+  if (repos.length > 0) {
+    // ... compose array of objects with repo names
+    const filenamesToDelete = repos.map(repo => {
+      if (repo.filename) {
+        console.log(`previous filename to delete added: ${repo.filename}`)
+        return { Key: repo.filename }
+      }
+    })
+    console.log(`trying to delete multiple files:`, filenamesToDelete)
+    return s3.deleteMultipleFiles({ filenames: filenamesToDelete })
+  }
+}
+
 module.exports = {
   handleImageUpload,
   saveHTMLToLocalTempFolder,
-  deleteFileFromLocalTempFolder
+  deleteFileFromLocalTempFolder,
+  handleDeleteOldImages
 }
