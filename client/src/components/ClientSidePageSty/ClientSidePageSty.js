@@ -4,7 +4,7 @@ import { StylizedPinnedCard } from '../../components/StylizedPinnedCard/Stylized
 
 
 export const ClientSidePageSty = props => {
-  const {userInfo, pinnedRepos} = props;
+  const {pinnedRepos} = props;
   return(
   <div className= "minPageContainer">
     <div className="container pt-4">

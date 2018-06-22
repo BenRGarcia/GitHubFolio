@@ -2,7 +2,7 @@ import React from "react";
 import "./DashboardUserInfo.css";
 
 export const DashboardUserInfo = ({userInfo}) => {
-  const {name, email, bio, userImage} = userInfo;
+  const {name, email, bio} = userInfo;
   return (
     <div className="userCard">
 
