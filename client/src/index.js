@@ -4,10 +4,10 @@ import ReactDOM from 'react-dom';
 import { Provider } from "react-redux";
 import App from './App';
 import $ from 'jquery';
-import store from "./store/store";
+// import store from "./store/store";
 
 require('./vendor/bootstrap/bootstrap.min.css');
 require('bootstrap');
 
 
-render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
+render(<Provider /* store={store} */><App /></Provider>, document.getElementById('root'));
