@@ -29,7 +29,33 @@ const uploadFile = ({ filename, stream }) => {
       })
     })
   } catch (err) {
-    console.error(err)
+    return err
+  }
+}
+
+const deleteMultipleFiles = (filenames) => {
+  try {
+    return new Promise((resolve, reject) => {
+      // make sure array of objects is passed
+      if (!Array.isArray(filenames) ||
+          !filenames.every(el => typeof el === 'object') ||
+          !filenames.every(el => el.constructor === 'Object')) {
+        reject(filenames)
+      }
+      const params = {
+        Bucket: awsS3Bucket,
+        Delete: {
+          Objects: filenames
+        }
+      }
+      const cb = (err, data) => {
+        if (err) reject(err)
+        console.log(`AWS S3 object deletion reponse:\n`, data)
+        resolve(data)
+      }
+      s3.deleteObjects(params, cb)
+    })
+  } catch (err) {
     return err
   }
 }
@@ -51,5 +77,6 @@ const deleteFile = ({ oldFilename }) => {
 
 module.exports = {
   uploadFile,
-  deleteFile
+  deleteFile,
+  deleteMultipleFiles
 }
