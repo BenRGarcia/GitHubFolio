@@ -26,6 +26,7 @@ const RepositorySchema = new Schema({
   imageUrl: {
     type: String,
     minlength: 1,
+    default: 'https://s3.us-east-2.amazonaws.com/githubfolio.dn7kwp92pdrmtdefnyz6uka5/GitHubFolio_Thumbnail.png',
     required: false
   },
   imageFilename: {
