@@ -3,7 +3,7 @@ const multer = require('multer')
 const uuidv4 = require('uuid/v4')
 const fs = require('fs')
 const s3 = require('../controllers/awsS3')
-const { repository } = require('../controllers')
+const repository = require('../controllers/repository')
 
 // Set location in which to save images
 const tempFolder = path.join(__dirname, '../temp/')
@@ -68,7 +68,6 @@ const deleteFileFromLocalTempFolder = async ({ filename }) => {
 }
 
 const handleImageUpload = async ({ req, res, _id }) => {
-  console.log(`will now attempt to handle image upload`)
   try {
     // Save file upload to local temp folder, extract file name
     const fileData = await saveImageToLocalTempFolder(req, res)
@@ -83,10 +82,7 @@ const handleImageUpload = async ({ req, res, _id }) => {
     const oldFilename = await repository.getImageFilename({ _id })
     if (oldFilename) await s3.deleteFile({ oldFilename })
     // Set new public URL and filename in DB
-    console.log(`about to call 'repository.addImage()'`)
-    const resp = await repository.addImage({ _id, imageUrl, imageFilename: filename })
-    console.log(`addImage response`, resp)
-    return resp
+    return repository.addImage({ _id, imageUrl, imageFilename: filename })
   } catch (err) {
     return err
   }

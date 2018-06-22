@@ -47,9 +47,9 @@ router.route('/photo/:repoId')
   // Add photo to pinned repo
   // PASS OR FAIL? -> FAIL
   .post(isAuthenticated, (req, res, next) => {
-    console.log(`file received in backend`)
     fileHandler.handleImageUpload({ req, res, _id: req.params.repoId })
-      .then(updatedRepoData => res.status(201).json(updatedRepoData))
+      .then(() => user.getDataById({ _id: req.user._id }))
+      .then(userData => res.status(200).json(userData))
       .catch(err => next(err))
   })
 

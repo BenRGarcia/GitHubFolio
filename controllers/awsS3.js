@@ -35,6 +35,7 @@ const uploadFile = ({ filename, stream }) => {
 }
 
 const deleteFile = ({ oldFilename }) => {
+  console.log(`aws was asked to delete ${oldFilename}`)
   try {
     return new Promise((resolve, reject) => {
       s3.deleteObject({ Bucket: awsS3Bucket, Key: oldFilename }, (err, data) => {

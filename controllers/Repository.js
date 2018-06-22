@@ -47,11 +47,10 @@ const update = async (repositories) => {
 
 const getImageFilename = async ({ _id }) => {
   const repoData = await Repository.findOne({ _id })
-  return repoData.imageName || false
+  return repoData.imageFilename || false
 }
 
 const addImage = async ({ _id, imageUrl, imageFilename }) => {
-  console.log(`attempting to save new image data:`, _id, imageUrl, imageFilename)
   return Repository.findOneAndUpdate(
     { _id },
     { $set: { imageUrl, imageFilename } },
