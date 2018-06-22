@@ -1,14 +1,14 @@
 import React from "react";
 import "./MinimalistPage.css";
 import { MinimalistPinnedCard } from '../../components/MinimalistPinnedCard/MinimalistPinnedCard';
-import { DashboardUserInfo } from '../../components/DashboardUserInfo/DashboardUserInfo';
+// import { DashboardUserInfo } from '../../components/DashboardUserInfo/DashboardUserInfo';
 
 
 
 
 
 export const MinimalistPage = props => {
-  const {userInfo, pinnedRepos} = props;
+  const { pinnedRepos} = props;
   return(
   <div className= "minPageContainer">
     <div className="container pt-4">
@@ -25,5 +25,3 @@ export const MinimalistPage = props => {
   </div>
   )
 }
-
-{/* <a href='/dashboard/templates'><button>GO BACK</button></a>  */}
