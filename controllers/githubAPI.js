@@ -8,7 +8,7 @@ const normalizePinnedRepos = repoArray => {
   })
 }
 
-const getPinnedRepos = async accessToken => {
+const getPinnedRepos = async ({ accessToken }) => {
   try {
     // Get user's pinned repo data from GitHub
     const res = await axios({

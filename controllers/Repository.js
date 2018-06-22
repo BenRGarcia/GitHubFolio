@@ -38,7 +38,7 @@ const update = async (repositories) => {
     return {
       updateOne: {
         filter: { _id },
-        update: { updatedRepo }
+        update: updatedRepo
       }
     }
   })
