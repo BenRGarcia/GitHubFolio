@@ -97,16 +97,17 @@ const handleDeleteOldImages = async ({ _id }) => {
   if (repos.length > 0) {
     // ... compose array of objects with repo names
     const filenamesToDelete = repos.map(repo => {
-      if (repo.filename) {
-        console.log(`previous filename to delete added: ${repo.filename}`)
-        return { Key: repo.filename }
+      if (repo.imageFilename) {
+        return { Key: repo.imageFilename }
+      } else {
       }
     }).filter(el => typeof el !== 'undefined')
+    // If previous image files exist, delete from AWS S3
     if (filenamesToDelete.length > 0) {
-      console.log(`trying to delete multiple files:`, filenamesToDelete)
       return s3.deleteMultipleFiles({ filenames: filenamesToDelete })
     }
   }
+  return false
 }
 
 module.exports = {

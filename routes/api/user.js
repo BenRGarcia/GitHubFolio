@@ -33,7 +33,10 @@ router.route('/pinnedrepos')
       .then(repositories => repository.addNew({ _id: req.user._id, repositories }))
       .then(() => user.getDataById({ _id: req.user._id }))
       .then(userData => res.status(200).json(userData))
-      .catch(err => next(err))
+      .catch(err => {
+        console.log(`Yikes:`, err)
+        next(err)
+      })
   })
   // Update user pinned repos
   // PASS OR FAIL? -> PASS
