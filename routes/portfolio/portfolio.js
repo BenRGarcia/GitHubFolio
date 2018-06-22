@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const { user, ssr, fileHandler } = require('../../controllers')
 const { isAuthenticated } = require('../../utils/isAuthenticated')
+const path = require('path')
 
 /**
  * SSR Routes - '/portfolio'
@@ -33,7 +34,7 @@ router.route('/user/:gitHubId')
 router.route('/ssr')
   // PASS OR FAIL? -> FAIL
   .get(isAuthenticated, (req, res, next) => {
-    console.log(`GET was called`)
+    console.log(`\n=====\nauthenticated request for '/portfolio/ssr' received\n=====\n`)
     // Get user data, create SSR html page, write to file, send to client, delete file
     user.getDataById({ _id: req.user._id })
       .then(userData => ssr.renderPortfolioPage({ userData }))
@@ -43,7 +44,7 @@ router.route('/ssr')
           if (err) throw err
           fileHandler.deleteFileFromLocalTempFolder({ filename })
         }
-        res.download(`../../temp/${filename}`, 'GitHubFolio_Source_Code.html', cb)
+        res.download(path.join(__dirname, `../../temp/${filename}`), 'GitHubFolio_Source_Code.html', cb)
       })
       .catch(err => next(err))
   })
