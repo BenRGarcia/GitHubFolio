@@ -50,10 +50,11 @@ const getImageFilename = async ({ _id }) => {
   return repoData.imageName || false
 }
 
-const addImage = async ({ _id, imageUrl, imageName }) => {
+const addImage = async ({ _id, imageUrl, imageFilename }) => {
+  console.log(`attempting to save new image data:`, _id, imageUrl, imageFilename)
   return Repository.findOneAndUpdate(
     { _id },
-    { $set: { imageUrl, imageName } },
+    { $set: { imageUrl, imageFilename } },
     { new: true })
 }
 
