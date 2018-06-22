@@ -1,6 +1,7 @@
 const { User } = require('../models')
 
 const associateRepositories = ({ _id, repoIds }) => {
+  console.log(`attempting to associate: ${repoIds}`)
   return User.findOneAndUpdate({ _id }, { $set: { Repositories: repoIds } })
 }
 
