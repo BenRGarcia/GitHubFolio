@@ -11,7 +11,7 @@ const getRepositoryIds = ({ _id }) => {
   return User.findOne({ _id }, 'repositories')
 }
 
-const getDataById = ({ _id }) => {
+const getDataById = async ({ _id }) => {
   return User.findOne({ _id })
     .populate('repositories')
 }
