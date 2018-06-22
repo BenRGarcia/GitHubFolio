@@ -23,7 +23,6 @@ const getDataByGitHubId = ({ gitHubId }) => {
 
 const loginWithGithub = async ({
   gitHubId,
-  accessToken,
   location,
   bio,
   profileImageUrl,
@@ -31,18 +30,25 @@ const loginWithGithub = async ({
   profileName,
   email
 }) => {
+  const cb = (err, doc) => {
+    if (err) throw err
+    return doc
+  }
+
   return User.findOneAndUpdate(
     { gitHubId },
     {
       profileName,
       profilePageUrl,
       profileImageUrl,
-      accessToken,
       email,
       bio,
       location
     },
-    { upsert: true })
+    {
+      upsert: true,
+      new: true
+    }, cb)
 }
 
 const updateData = (

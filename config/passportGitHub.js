@@ -16,7 +16,6 @@ const verifyCb = async (accessToken, refreshToken, profile, cb) => {
     gitHubId: profile.id,
     profileName: profile.displayName,
     profilePageUrl: profile.profileUrl,
-    accessToken: accessToken,
     email: profile.emails[0].value,
     profileImageUrl: profile.photos[0].value,
     bio: profile._json.bio,
