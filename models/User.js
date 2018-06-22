@@ -5,63 +5,57 @@ const UserSchema = new Schema({
   gitHubId: {
     type: String,
     required: true,
-    minlength: 1,
-    trim: true,
     unique: true
-  },
-  displayName: {
-    type: String,
-    required: true,
-    trim: true
-  },
-  profileUrl: {
-    type: String,
-    required: true,
-    trim: true
   },
   email: {
     type: String,
-    required: true,
+    required: false,
     trim: true,
     unique: true
   },
-  photo: {
+  profileName: {
     type: String,
+    minlength: 1,
+    required: true,
+    trim: true
+  },
+  profilePageUrl: {
+    type: String,
+    minlength: 1,
+    required: true,
+    trim: true
+  },
+  profileImageUrl: {
+    type: String,
+    minlength: 1,
     required: true,
     trim: true
   },
   bio: {
     type: String,
-    required: true,
+    minlength: 1,
+    required: false,
     trim: true
   },
   location: {
     type: String,
-    required: true,
+    minlength: 1,
+    required: false,
     trim: true
   },
-  template: {
-    type: String,
-    required: false,
-    trim: true,
-    default: 'Stylized'
-  },
-  color: {
-    type: String,
-    required: false,
-    trim: true,
-    default: 'Light'
-  },
-  accessToken: {
+  chosenTemplate: {
     type: String,
     required: true,
-    minlength: 1,
-    trim: true,
-    unique: true
+    default: 'minimalist'
   },
-  pinnedRepositories: [{
+  chosenColor: {
+    type: String,
+    required: true,
+    default: 'light'
+  },
+  repositories: [{
     type: Schema.Types.ObjectId,
-    ref: 'PinnedRepositories'
+    ref: 'Repository'
   }]
 })
 

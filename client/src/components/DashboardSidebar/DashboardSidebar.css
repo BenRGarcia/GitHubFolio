@@ -1,10 +1,8 @@
   .sidenav {
     background: #28314B;
-    z-index: 1;
-    overflow-x: hidden;
     height: 100%;
-    width: 200px;
-    position: fixed;
+    width: 15%;
+    position: absolute;
     top: 0;
     left: 0;
   }
@@ -54,7 +52,7 @@
 
   .active {
     height: 50px;
-    width: 200px;
+    width: 100%;
     background: #1E263D;
     color: white;
   }

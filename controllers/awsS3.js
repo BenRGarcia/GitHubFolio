@@ -12,7 +12,7 @@ const s3 = new AWS.S3()
  *   - https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html
  */
 
-const uploadImage = ({ filename, stream }) => {
+const uploadFile = ({ filename, stream }) => {
   // Compose object for POST to AWS S3
   const params = {
     Bucket: awsS3Bucket,
@@ -29,12 +29,35 @@ const uploadImage = ({ filename, stream }) => {
       })
     })
   } catch (err) {
-    console.error(err)
     return err
   }
 }
 
-const deleteImage = ({ oldFilename }) => {
+const deleteMultipleFiles = ({ filenames }) => {
+  try {
+    return new Promise((resolve, reject) => {
+      // make sure array of objects is passed
+      if (!Array.isArray(filenames)) {
+        reject(filenames)
+      }
+      const params = {
+        Bucket: awsS3Bucket,
+        Delete: {
+          Objects: filenames
+        }
+      }
+      const cb = (err, data) => {
+        if (err) reject(err)
+        resolve(data)
+      }
+      s3.deleteObjects(params, cb)
+    })
+  } catch (err) {
+    return err
+  }
+}
+
+const deleteFile = ({ oldFilename }) => {
   try {
     return new Promise((resolve, reject) => {
       s3.deleteObject({ Bucket: awsS3Bucket, Key: oldFilename }, (err, data) => {
@@ -49,6 +72,7 @@ const deleteImage = ({ oldFilename }) => {
 }
 
 module.exports = {
-  uploadImage,
-  deleteImage
+  uploadFile,
+  deleteFile,
+  deleteMultipleFiles
 }

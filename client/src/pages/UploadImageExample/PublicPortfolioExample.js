@@ -19,9 +19,9 @@ export class PublicPortfolioExample extends Component {
       <div>
         <div>
           <a
-            href={`/portfolio/ssr/${this.props.gitHubId || '26657982'}`}
+            href='/portfolio/ssr'
             className='btn btn-danger'
-            download='GitHubFolio_Source_Code'
+            download='GitHubFolio_Source_Code.html'
           >
             Download Source Code
           </a>
