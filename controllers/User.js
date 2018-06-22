@@ -18,7 +18,7 @@ const getDataByGitHubId = ({ gitHubId }) => {
     .populate('repositories')
 }
 
-const loginWithGithub = ({
+const loginWithGithub = async ({
   gitHubId,
   accessToken,
   location,

@@ -23,7 +23,7 @@ const verifyCb = async (accessToken, refreshToken, profile, cb) => {
     location: profile._json.location
   }
   // Find or create user with destructured data
-  const user = await User.loginWithGitHub(userProfile)
+  const user = await User.loginWithGithub(userProfile)
   // Passport.js callback
   return cb(null, { _id: user._id, accessToken })
 }

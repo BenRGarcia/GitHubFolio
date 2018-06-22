@@ -9,14 +9,14 @@ const { isAuthenticated } = require('../../utils/isAuthenticated')
 
 router.route('/github/callback')
   // Login with GitHub - oAuth 2.0 callback
-  // PASS OR FAIL? -> FAIL
+  // PASS OR FAIL? -> PASS
   .get(passport.authenticate('github'), (req, res, next) => {
     res.redirect('/dashboard')
   })
 
 router.route('/logout')
   // User logout, redirection
-  // PASS OR FAIL? -> FAIL
+  // PASS OR FAIL? -> PASS
   .get(isAuthenticated, (req, res, next) => {
     req.logout()
     req.session.destroy()
