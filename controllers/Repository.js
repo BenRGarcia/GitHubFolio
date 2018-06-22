@@ -19,8 +19,6 @@ const deleteOldRepositories = async ({ _id }) => {
 const addNew = async ({ _id, repositories }) => {
   await deleteOldRepositories({ _id })
   const operations = repositories.map(repository => {
-    console.log(repository)
-    const { name, description, repositoryUrl, deployedUrl } = repository
     return {
       insertOne: {
         document: repository
@@ -28,7 +26,6 @@ const addNew = async ({ _id, repositories }) => {
     }
   })
   const resp = await Repository.bulkWrite(operations)
-  console.log(resp)
   const repoIds = Object.values(resp.insertedIds)
   await user.associateRepositories({ _id, repoIds })
   return resp
