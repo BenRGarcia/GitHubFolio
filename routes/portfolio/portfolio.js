@@ -10,7 +10,6 @@ const path = require('path')
 
 // React Server Side Rendering, send fully rendered partial public page
 router.route('/user/preview')
-  // PASS OR FAIL? -> PASS
   .get(isAuthenticated, (req, res, next) => {
     // Get user data, create SSR html page, send to client
     user.getDataById({ _id: req.user._id })
@@ -21,7 +20,6 @@ router.route('/user/preview')
 
 // React Server Side Rendering, send fully rendered public page
 router.route('/user/:gitHubId')
-  // PASS OR FAIL? -> PASS
   .get((req, res, next) => {
     // Get user data, create SSR html page, send to client
     user.getDataByGitHubId({ gitHubId: req.params.gitHubId })
@@ -32,9 +30,7 @@ router.route('/user/:gitHubId')
 
 // React Server Side Rendering, send download file of fully rendered page
 router.route('/ssr')
-  // PASS OR FAIL? -> FAIL
   .get(isAuthenticated, (req, res, next) => {
-    console.log(`\n=====\nauthenticated request for '/portfolio/ssr' received\n=====\n`)
     // Get user data, create SSR html page, write to file, send to client, delete file
     user.getDataById({ _id: req.user._id })
       .then(userData => ssr.renderPortfolioPage({ userData }))
