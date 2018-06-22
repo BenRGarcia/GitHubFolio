@@ -101,9 +101,11 @@ const handleDeleteOldImages = async ({ _id }) => {
         console.log(`previous filename to delete added: ${repo.filename}`)
         return { Key: repo.filename }
       }
-    })
-    console.log(`trying to delete multiple files:`, filenamesToDelete)
-    return s3.deleteMultipleFiles({ filenames: filenamesToDelete })
+    }).filter(el => typeof el !== 'undefined')
+    if (filenamesToDelete.length > 0) {
+      console.log(`trying to delete multiple files:`, filenamesToDelete)
+      return s3.deleteMultipleFiles({ filenames: filenamesToDelete })
+    }
   }
 }
 

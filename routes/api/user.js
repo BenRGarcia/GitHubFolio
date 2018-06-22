@@ -28,7 +28,8 @@ router.route('/pinnedrepos')
   // Query GitHub graphQL, store pinned repos in DB
   // PASS OR FAIL? -> FAIL (delete old photos for old repos)
   .post(isAuthenticated, (req, res, next) => {
-    gitHubAPI.getPinnedRepos({ accessToken: req.user.accessToken })
+    fileHandler.handleDeleteOldImages({ _id: req.user._id })
+      .then(() => gitHubAPI.getPinnedRepos({ accessToken: req.user.accessToken }))
       .then(repositories => repository.addNew({ _id: req.user._id, repositories }))
       .then(() => user.getDataById({ _id: req.user._id }))
       .then(userData => res.status(200).json(userData))

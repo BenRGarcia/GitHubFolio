@@ -34,7 +34,7 @@ const uploadFile = ({ filename, stream }) => {
 }
 
 const deleteMultipleFiles = ({ filenames }) => {
-  console.log(`received filenames:`, filenames)
+  console.log(`'deleteMultipleFiles()' received filenames:`, filenames)
   try {
     return new Promise((resolve, reject) => {
       // make sure array of objects is passed
@@ -62,7 +62,6 @@ const deleteMultipleFiles = ({ filenames }) => {
 }
 
 const deleteFile = ({ oldFilename }) => {
-  console.log(`aws was asked to delete ${oldFilename}`)
   try {
     return new Promise((resolve, reject) => {
       s3.deleteObject({ Bucket: awsS3Bucket, Key: oldFilename }, (err, data) => {
