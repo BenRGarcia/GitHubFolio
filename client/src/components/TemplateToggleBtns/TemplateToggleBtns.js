@@ -2,21 +2,21 @@ import React, {Component} from "react";
 import "./TemplateToggleBtns.css";
 
 export class TemplateToggleBtns extends Component {
-    state = {
-        template: <img src={ require('./minimalist-temp.png') } />
-    }
+    // state = {
+    //     template: <img src={ require('./minimalist-temp.png') } />
+    // }
 
-    handleClickMinimalist = () => {
-        this.setState({
-            template: <img src={ require('./minimalist-temp.png') } />
-        })
-    }
+    // handleClickMinimalist = () => {
+    //     this.setState({
+    //         template: <img src={ require('./minimalist-temp.png') } />
+    //     })
+    // }
 
-    handleClickStylized = () => {
-        this.setState({
-            template: <img src={ require('./stylized-temp.png') } />
-        })
-    }
+    // handleClickStylized = () => {
+    //     this.setState({
+    //         template: <img src={ require('./stylized-temp.png') } />
+    //     })
+    // }
 
     render() {
         return(

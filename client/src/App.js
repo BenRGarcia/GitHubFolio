@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router'
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 import './App.css';
 import {DashboardPage} from "./pages/Dashboard/dashboardPage";
