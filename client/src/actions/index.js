@@ -11,7 +11,7 @@ export const fetchUserInfo = () => dispatch => {
 
 
 export const fetchRepos = (repos) => dispatch => {
-  return fetch('/api/user/pinnedRepos', {
+  return fetch('/api/user/pinnedrepos', {
     credentials: 'include',  
     method: 'POST',
     headers: {
@@ -52,7 +52,6 @@ export const editUserInfo = (infoToEdit) => dispatch => {
 }
 
 export const editRepos = (infoToEdit) => dispatch => {
-  console.log('info to edit in ACTIONS****************************', infoToEdit)
 	return fetch('/api/user/pinnedrepos', {
     credentials: 'include',  
 		method: 'PUT',

@@ -34,9 +34,13 @@ router.route('/pinnedrepos')
   })
   // Update user pinned repos
   .put(isAuthenticated, (req, res, next) => {
+    console.log('\nREQ BODY*****************\n', req.body)
     repository.update(req.body)
       .then(() => user.getDataById({ _id: req.user._id }))
-      .then(userData => res.status(200).json(userData))
+      .then(userData => {
+        res.status(200).json(userData)
+        console.log(userData)
+      })
       .catch(err => next(err))
   })
 
