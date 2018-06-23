@@ -1,8 +1,18 @@
-import React from 'react'
+import React from 'react';
+import DashboardRouter from '../../router/Dashboard';
+import { DashboardSidebar } from '../../components';
 
 const Dashboard = props => (
   <div>
     <h1>Dashboard.js</h1>
+    <div>
+      <div>
+        <DashboardSidebar />
+      </div>
+      <div>
+        <DashboardRouter />
+      </div>
+    </div>
   </div>
 )
 
