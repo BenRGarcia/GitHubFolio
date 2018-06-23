@@ -4,7 +4,7 @@ import { DashboardUserInfo } from './DashboardUserInfo/DashboardUserInfo';
 import { StylizedPinnedCard } from './StylizedPinnedCard/StylizedPinnedCard';
 import { MinimalistPage } from './MinimalistPage/MinimalistPage';
 import { StylizedPage } from './StylizedPage/StylizedPage';
-import { SaveTemplateBtn } from './SaveTemplateBtn/SaveTemplateBtn';
+import { TemplateBtns } from './TemplateBtns/TemplateBtns';
 import { MinimalistPinnedCard } from './MinimalistPinnedCard/MinimalistPinnedCard';
 import { ClientSidePageMin } from './ClientSidePageMin/ClientSidePageMin';
 import { ClientSidePageSty } from './ClientSidePageSty/ClientSidePageSty';
@@ -16,6 +16,7 @@ import { DashboardEditUser } from './DashboardEditUser/DashboardEditUser.js';
 import { DashboardEditRepos } from './DashboardEditRepos/DashboardEditRepos.js';
 import { NotFound } from './NotFound/NotFound.js';
 import { DashboardSidebar } from './DashboardSidebar/DashboardSidebar';
+import { TemplateToggleBtns } from './TemplateToggleBtns/TemplateToggleBtns'
 
 
 export {
@@ -25,7 +26,7 @@ export {
   StylizedPinnedCard,
   MinimalistPage,
   StylizedPage,
-  SaveTemplateBtn,
+  TemplateBtns,
   MinimalistPinnedCard,
   ClientSidePageMin,
   ClientSidePageSty,
@@ -36,7 +37,8 @@ export {
   DashboardEditUser,
   DashboardEditRepos,
   NotFound,
-  DashboardSidebar
+  DashboardSidebar,
+  TemplateToggleBtns
 }
 
 
