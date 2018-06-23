@@ -7,9 +7,8 @@ import  { TemplateToggleBtns } from "../../components/TemplateToggleBtns/Templat
 export const TemplatePage = props => {
   return(
     <div className='col-lg-10 offset-lg-2'>
-      <TemplateToggleBtns />
       <SaveTemplateBtn />
-      <img src={ require('./minimalist-temp.png') } />
+      <TemplateToggleBtns />
     </div>
   )
 }

@@ -1,22 +1,38 @@
-import React from "react";
+import React, {Component} from "react";
 import "./TemplateToggleBtns.css";
 
-export const TemplateToggleBtns = props => {
-    // onClick = (id) => {
-    //     if (id === "Minimalist") {
-    //         return <img src={ require('./minimalist-temp.png') } />
-    //     } else {
-    //         return <img src={ require('./stylized-temp.png') } />
-    //     }
-    // }
-  return(
-    <div class="toggle-buttons pt-4 pb-4 btn-group btn-group-toggle" data-toggle="buttons">
-        <label class="btn btn-secondary active">
-            <input type="radio" name="options" id="Minimalist" autocomplete="off" checked /> Minimalist
-        </label>
-        <label class="btn btn-secondary">
-            <input type="radio" name="options" id="Stylized" autocomplete="off" /> Stylized
-        </label>
-    </div>
-  )
+export class TemplateToggleBtns extends Component {
+    state = {
+        template: <img src={ require('./minimalist-temp.png') } />
+    }
+
+    handleClickMinimalist = () => {
+        this.setState({
+            template: <img src={ require('./minimalist-temp.png') } />
+        })
+    }
+
+    handleClickStylized = () => {
+        this.setState({
+            template: <img src={ require('./stylized-temp.png') } />
+        })
+    }
+
+    render() {
+        return(
+            <div>
+                <div className="toggle-buttons pt-4 pb-4 btn-group btn-group-toggle" data-toggle="buttons">
+                    <label className="btn btn-secondary active"  onClick={this.handleClickMinimalist}>
+                        <input type="radio" name="options" id="Minimalist" autoComplete="off"/> Minimalist
+                    </label>
+                    <label className="btn btn-secondary" onClick={this.handleClickStylized}>
+                        <input type="radio" name="options" id="Stylized" autoComplete="off"/> Stylized
+                    </label>
+                </div>
+                <div id="template">
+                    {this.state.template}
+                </div>
+            </div>
+        )
+    }
 }
