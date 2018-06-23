@@ -5,7 +5,7 @@ import AppRouter from './router/Home';
 class App extends Component {
   render() {
     return (
-      <div>
+      <div className='text-center'>
         <AppRouter />
       </div>
     );

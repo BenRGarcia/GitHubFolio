@@ -12,7 +12,7 @@ const AppRouter = () => (
     <Switch>
       <Route exact path='/' component={Home} />
       <Route path='/dashboard' component={Dashboard} />
-      <Route exact path='/portfolio' component={Portfolio} />
+      <Route exact path='/portfolio/:gitHubId' component={Portfolio} />
       <Route exact path='/404' component={_404} />
       <Route render={() => <Redirect to="/404" />} />
     </Switch>

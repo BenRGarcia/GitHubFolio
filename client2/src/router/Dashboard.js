@@ -5,27 +5,33 @@ import {
   Route,
   Redirect
 } from 'react-router-dom';
-import {
-  DashboardGetRepos,
-  DashboardEditRepos,
-  DashboardTemplates,
-  DashboardEditUser,
-  DashboardPreview
-} from '../pages/Dashboard';
+import PropTypes from 'prop-types';
 import { _404 } from '../pages';
 
-const DashboardRouter = () => (
+const DashboardRouter = ({ routes }) => (
   <Router>
     <Switch>
-      <Route exact path='/dashboard' component={DashboardGetRepos} />
-      <Route exact path='/dashboard/templates' component={DashboardTemplates} />
-      <Route exact path='/dashboard/edituser' component={DashboardEditUser} />
-      <Route exact path='/dashboard/editrepos' component={DashboardEditRepos} />
-      <Route exact path='/dashboard/preview' component={DashboardPreview} />
+      {
+        routes.map(route => {
+          const { exact, path, component } = route
+          return (
+            < Route
+              exact={exact}
+              path={path}
+              render={() => component}
+              key={path}
+            />
+          )
+        })
+      }
       <Route exact path='/dashboard/404' component={_404} />
       <Route render={() => <Redirect to="/dashboard/404" />} />
     </Switch>
   </Router>
 );
+
+DashboardRouter.propTypes = {
+  routes: PropTypes.array.isRequired
+}
 
 export default DashboardRouter
