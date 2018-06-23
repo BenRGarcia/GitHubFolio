@@ -20,7 +20,7 @@ const rootReducer = (state = initialState, action) => {
       return { ...state, userInfo: action.payload};
     case EDIT_REPOS:
       console.log("action pay********************* IN REDUCERS" , action.payload)
-      return { ...state, userInfo: action.payload};
+      return { ...state, userInfo: {...state.userInfo, repositories: action.payload}};
     case EDIT_USER_INFO:
       console.log("action pay" , action.payload)
       return { ...state, userInfo: action.payload};

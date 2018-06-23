@@ -22,16 +22,15 @@ export const fetchRepos = (repos) => dispatch => {
       )
     }).then((response) => {
         return response.json() 
-    }).then((newRepos) => 
-      dispatch({
+    }).then((newRepos) => {
+      return dispatch({
         type: FETCH_REPOS,
         payload: newRepos
     })   
-  )
+  })
 }
 
 export const editUserInfo = (infoToEdit) => dispatch => {
-  console.log(infoToEdit)
 	return fetch('/api/user/data', {
     credentials: 'include',  
 		method: 'PUT',
@@ -52,6 +51,9 @@ export const editUserInfo = (infoToEdit) => dispatch => {
 }
 
 export const editRepos = (infoToEdit) => dispatch => {
+  infoToEdit.repositories.map(el => {
+    console.log(el._id)
+  })
 	return fetch('/api/user/pinnedrepos', {
     credentials: 'include',  
 		method: 'PUT',
@@ -59,11 +61,14 @@ export const editRepos = (infoToEdit) => dispatch => {
 		'Content-Type': 'application/json'
 		 },
 		body: JSON.stringify(infoToEdit.repositories) 
-		}).then(() => {
+    })
+    .then(res => res.json()).then(data => {
+
+      console.log("response: ", data)
 		return(
       dispatch({
         type: EDIT_REPOS,
-        payload: infoToEdit
+        payload: infoToEdit.repositories
       })
     )
     }

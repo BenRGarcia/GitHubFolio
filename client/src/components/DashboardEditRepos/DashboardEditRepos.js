@@ -17,6 +17,7 @@ export class DashboardEditRepos extends Component {
     if(!this.initialized){
       this.initialized = true;
       const { repositories } = nextProps.userInfo
+      console.log("======================")
       this.setState({
         repositories
       })
@@ -25,7 +26,7 @@ export class DashboardEditRepos extends Component {
 
   handleSubmit = (e) => {
       e.preventDefault()
-      console.log(`user just clicked 'save repo data' IN COMPONENT and this is the current state:'`, this.state)
+      console.log(`user just clicked 'save repo data' IN COMPONENT and this is the current state:'`, this.state.repositories)
       this.props.editRepos(this.state);
     }
 
@@ -106,6 +107,7 @@ export class DashboardEditRepos extends Component {
   }
   
   render() {
+    console.log(this.props.userInfo)
     return (
       <div className='container editPinForm'>
         <form>

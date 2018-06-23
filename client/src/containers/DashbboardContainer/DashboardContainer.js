@@ -21,7 +21,6 @@ export class DashboardContainer extends Component {
 
   componentWillMount(){
     this.props.fetchUserInfo();
-    this.props.fetchRepos();
   }
 
   render() {
