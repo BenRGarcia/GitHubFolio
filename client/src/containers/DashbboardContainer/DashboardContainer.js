@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import EditUserInfo from '../../components/DashboardEditUser/DashboardEditUser';
 import PinnedRepos from '../../components/DashboardEditRepos/DashboardEditRepos';
 import { fetchUserInfo } from '../../actions';
+import { fetchRepos } from '../../actions';
+
 
 import{
   PreviewPage,
@@ -13,8 +15,6 @@ import{
   // DashboardEditRepos,
   NotFound} 
  from '../../components';
-
-console.log('fetchUserInfo**********************', fetchUserInfo)
  
 export class DashboardContainer extends Component {
   
@@ -46,4 +46,4 @@ export class DashboardContainer extends Component {
 //   userInfo: state.userInfo
 // })
 
-export default connect(null, {fetchUserInfo})(DashboardContainer)
+export default connect(null, {fetchUserInfo, fetchRepos})(DashboardContainer)
