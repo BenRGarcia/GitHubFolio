@@ -51,9 +51,6 @@ export const editUserInfo = (infoToEdit) => dispatch => {
 }
 
 export const editRepos = (infoToEdit) => dispatch => {
-  infoToEdit.repositories.map(el => {
-    console.log(el._id)
-  })
 	return fetch('/api/user/pinnedrepos', {
     credentials: 'include',  
 		method: 'PUT',
