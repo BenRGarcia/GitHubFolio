@@ -5,7 +5,7 @@ import { DashboardSidebar } from '../../components';
 const Dashboard = props => (
   <div>
     <h1>Dashboard.js</h1>
-    <div>
+    <div className='d-flex'>
       <div>
         <DashboardSidebar />
       </div>
