@@ -28,7 +28,3 @@ export const StylizedPage = props => {
   </div>
   )
 }
-
-{/* <a href='/dashboard/templates'><button>GO BACK</button></a>  */}
-{/* <a href='/dashboard/templates'><button>GO BACK</button></a>
-<a href='/dashboard/templates'><button>USE THIS TEMPLATE</button></a> */}

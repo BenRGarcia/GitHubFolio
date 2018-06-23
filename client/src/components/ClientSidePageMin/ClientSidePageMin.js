@@ -4,7 +4,7 @@ import { MinimalistPinnedCard } from '../../components/MinimalistPinnedCard/Mini
 
 
 export const ClientSidePageMin = props => {
-  const {userInfo, pinnedRepos} = props;
+  const {pinnedRepos} = props;
   return(
   <div className= "minPageContainer">
     <div className="container pt-4">
