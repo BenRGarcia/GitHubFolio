@@ -1,4 +1,4 @@
-import { FETCH_USER_INFO, EDIT_USER_INFO, EDIT_REPOS  } from "../constants/action-types";
+import { FETCH_USER_INFO, EDIT_USER_INFO, EDIT_REPOS, FETCH_REPOS  } from "../constants/action-types";
 
 export const fetchUserInfo = () => dispatch => {
   fetch('/api/user/data', { credentials: 'include' })
@@ -7,7 +7,27 @@ export const fetchUserInfo = () => dispatch => {
         type: FETCH_USER_INFO,
         payload: data
       }))
-      .then(console.log("fetch user data worked"))
+}
+
+
+export const fetchRepos = (repos) => dispatch => {
+  return fetch('/api/user/pinnedRepos', {
+    credentials: 'include',  
+    method: 'POST',
+    headers: {
+    'Content-Type': 'application/json'
+      },
+    body: JSON.stringify(  
+        [repos]
+      )
+    }).then((response) => {
+        return response.json() 
+    }).then((newRepos) => 
+      dispatch({
+        type: FETCH_REPOS,
+        payload: newRepos
+    })   
+  )
 }
 
 export const editUserInfo = (infoToEdit) => dispatch => {
@@ -32,23 +52,23 @@ export const editUserInfo = (infoToEdit) => dispatch => {
 }
 
 export const editRepos = (infoToEdit) => dispatch => {
-  console.log('info to edit****************************', infoToEdit)
+  console.log('info to edit in ACTIONS****************************', infoToEdit)
 	return fetch('/api/user/pinnedrepos', {
     credentials: 'include',  
 		method: 'PUT',
 		headers: {
 		'Content-Type': 'application/json'
 		 },
-		body: JSON.stringify(infoToEdit.pinnedRepositories) 
+		body: JSON.stringify(infoToEdit.repositories) 
 		}).then(() => {
 		return(
       dispatch({
         type: EDIT_REPOS,
         payload: infoToEdit
       })
-    )   
+    )
     }
-  )
+  ).then(console.log('AFTER edit repo call in ACTIONS', infoToEdit))  
 }
 
 
