@@ -23,15 +23,15 @@ export class SaveTemplateBtn extends Component {
   }
 
   handleSubmit = (e) => {
-      e.preventDefault()
-      this.props.editUserInfo(this.state).then(response => {console.log(response)}) 
-    }
+    e.preventDefault()
+    this.props.editUserInfo(this.state) 
+  }
 
 
   render() {
     return(
       <div className="save-button pt-4 pb-4">
-        <button className='btn btn-dark' onClick={this.handleSubmit}>Save Template</button>
+        <button className='btn btn-dark' type='submit' onClick={this.handleSubmit}>Save Template</button>
       </div>
     )
   }

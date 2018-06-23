@@ -3,7 +3,7 @@ import { render } from "react-dom";
 import { Provider } from "react-redux";
 import App from './App';
 import $ from 'jquery';
-import store from "./store/store.js";
+import store from "./store/store";
 
 require('./vendor/bootstrap/bootstrap.min.css');
 require('bootstrap');

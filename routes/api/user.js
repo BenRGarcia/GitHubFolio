@@ -36,7 +36,7 @@ router.route('/pinnedrepos')
   .put(isAuthenticated, (req, res, next) => {
     repository.update(req.body)
       .then(() => user.getDataById({ _id: req.user._id }))
-      .then(userData => res.status(200).json(userData))
+      .then(userData => { res.status(200).json(userData) })
       .catch(err => next(err))
   })
 
