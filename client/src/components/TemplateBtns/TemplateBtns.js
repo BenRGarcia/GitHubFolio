@@ -1,33 +1,48 @@
 import React, { Component } from "react";
 import "./TemplateBtns.css";
-import  { TemplateToggleBtns } from "../../components/TemplateToggleBtns/TemplateToggleBtns.js";
+import "../TemplateToggleBtns/TemplateToggleBtns.css"
+// import  { TemplateToggleBtns } from "../../components/TemplateToggleBtns/TemplateToggleBtns.js";
 import { connect } from "react-redux";
-import { editUserInfo } from '../../actions/index';
+import { editUserInfo, fetchUserInfo } from '../../actions/index';
 import { bindActionCreators } from "redux";
 
 
 export class TemplateBtns extends Component {
+
   state = {
-    template: ""
+    chosenTemplate: ""
   }
 
   initialized = false;
 
   componentWillReceiveProps(nextProps){
+    console.log('next props', nextProps)
     if(!this.initialized){
       this.initialized = true;
-      const { template } = nextProps.userInfo
+      const { chosenTemplate } = nextProps.userInfo
       this.setState({
-        template
+        chosenTemplate
       })
     }
   }
 
   handleSubmit = (e) => {
     e.preventDefault()
+    console.log(this.state)
     this.props.editUserInfo(this.state) 
   }
 
+handleClickMinimalist = () => {
+    this.setState({
+        chosenTemplate: "minimalist"
+    })
+}
+
+handleClickStylized = () => {
+    this.setState({
+        chosenTemplate: "stylized" 
+    })
+}
 
   render() {
     console.log(this.props)
@@ -36,7 +51,24 @@ export class TemplateBtns extends Component {
         <div className="save-button pt-4 pb-4">
           <button className='btn btn-dark' type='submit' onClick={this.handleSubmit}>Save Template</button>
         </div>
-        <TemplateToggleBtns />
+        <div>
+            <div className="toggle-buttons pt-4 pb-4 btn-group btn-group-toggle" data-toggle="buttons">
+                <label className="btn btn-secondary active"  onClick={this.handleClickMinimalist}>
+                    <input type="radio" name="options" id="Minimalist" autoComplete="off"/> Minimalist
+                </label>
+                <label className="btn btn-secondary" onClick={this.handleClickStylized}>
+                    <input type="radio" name="options" id="Stylized" autoComplete="off"/> Stylized
+                </label>
+            </div>
+            <div id="template">            
+                {this.state.chosenTemplate==="stylized"
+                  ? 
+                  <img src={ require('./stylized-temp.png') } />
+                  : 
+                  <img src={ require('./minimalist-temp.png') } />
+              }
+            </div>
+        </div>
       </div>
     )
   }
@@ -47,7 +79,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => {
-  return bindActionCreators({ editUserInfo }, dispatch);
+  return bindActionCreators({ editUserInfo, fetchUserInfo }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(TemplateBtns);

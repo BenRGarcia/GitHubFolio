@@ -6,7 +6,7 @@ export const initialState = {
     profileName: "",
     email: "",
     bio: "",
-    template: "",
+    chosenTemplate: "",
     repositories: []
   }
 }
