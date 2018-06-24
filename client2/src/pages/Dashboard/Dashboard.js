@@ -3,11 +3,17 @@ import DashboardRouter from '../../router/Dashboard';
 import { DashboardSidebar, Navbar } from '../../components';
 import routes from '../../router/Routes'
 
+const styleDarkPanel = {
+  backgroundColor: '#28314B'
+};
+
 class Dashboard extends Component {
   render() {
     return (
       <div>
-        <Navbar routes={routes.dashboard} />
+        <div className='d-md-none'>
+          <Navbar routes={routes.dashboard} style={styleDarkPanel} />
+        </div>
         <h1>Dashboard.js</h1>
         <div className='d-flex'>
           <div>
