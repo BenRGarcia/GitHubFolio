@@ -1,9 +1,10 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
+import { NotFound } from '../pages';
 import PropTypes from 'prop-types';
 
 const DashboardRouter = ({ routes }) => (
-  <div>
+  <Switch>
     {
       routes
       &&
@@ -19,7 +20,9 @@ const DashboardRouter = ({ routes }) => (
         )
       })
     }
-  </div>
+    <Route exact path='/dashboard/404' component={NotFound} />
+    <Route render={() => <Redirect to='/dashboard/404' />} />
+  </Switch>
 );
 
 DashboardRouter.propTypes = {

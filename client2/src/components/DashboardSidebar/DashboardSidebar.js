@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 
 const DashboardSidebar = ({ routes }) => (
   <div>
-    <h1>DashboardSidebar.js</h1>
     <h2>logo</h2>
     <ul className="nav flex-column">
       {

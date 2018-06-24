@@ -19,9 +19,7 @@ class Dashboard extends Component {
             <DashboardSidebar routes={routes.dashboard}/>
           </div>
           <div>
-            <div className='container'>
-              <DashboardRouter routes={routes.dashboard} />
-            </div>
+            <DashboardRouter routes={routes.dashboard} />
           </div>
         </div>
       </div>
