@@ -2,7 +2,10 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 
 const Navbar = ({ routes }) => (
-  <nav className="navbar navbar-expand-md navbar-dark p-2">
+  <nav
+    className="navbar fixed-top navbar-expand-md p-2 navbar-dark"
+    style={{ backgroundColor: '#28314B' }}
+  >
     <span className="navbar-brand">
       GitHubFolio
     </span>
@@ -48,6 +51,5 @@ const Navbar = ({ routes }) => (
     </div>
   </nav>
 );
-
 
 export default Navbar

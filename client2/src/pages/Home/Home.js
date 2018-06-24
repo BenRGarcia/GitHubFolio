@@ -1,17 +1,25 @@
 import React from 'react';
-import { Navbar } from '../../components'
+import { Navbar, Panel, Jumbotron } from '../../components';
 import routes from '../../router/Routes';
 
-const style = {
-  panelHeight: {
-    minHeight: '100vh'
-  }
-}
+const styleDarkPanel = {
+  minHeight: '100vh',
+  backgroundColor: '#28314B'
+};
+
+const styleLightPanel = {
+  minHeight: '100vh',
+  backgroundColor: '#fff'
+};
 
 const Home = props => (
   <div className='text-center'>
+    <Navbar routes={routes.home} />
     {/* Panel 1 */}
-    <div className='bg-secondary' style={style.panelHeight}>
+    <Panel style={styleDarkPanel}>
+      <Jumbotron />
+    </Panel>
+    <div className='bg-secondary'>
       <div className='container'>
         <div className="row">
           <div className="col">
@@ -21,20 +29,22 @@ const Home = props => (
           </div>
         </div>
       </div>
-      <div className='container'>
-        <div className="row" style={style.panelHeight}>
-          <div className="col d-flex justify-content-center align-items-center">
-            <div className="jumbotron jumbotron-fluid mb-0 bg-secondary">
-              <div className="container text-white">
-                <h1 className="display-4">
-                  <strong>GitHubFolio</strong>
-                </h1>
-                <p className="lead">
-                  Create a beautiful portolio to showcase your best work.
+      <div className=''>
+        <div className='container'>
+          <div className="row">
+            <div className="col d-flex justify-content-center align-items-center">
+              <div className="jumbotron jumbotron-fluid mb-0 bg-secondary">
+                <div className="container text-white">
+                  <h1 className="display-4">
+                    <strong>GitHubFolio</strong>
+                  </h1>
+                  <p className="lead">
+                    Create a beautiful portolio to showcase your best work.
                 </p>
-                <a href="/dashboard" className='btn btn-light'>
-                  Sign in with GitHub
+                  <a href="/dashboard" className='btn btn-light'>
+                    Sign in with GitHub
                 </a>
+                </div>
               </div>
             </div>
           </div>
