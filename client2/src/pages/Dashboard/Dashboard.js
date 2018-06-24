@@ -31,7 +31,9 @@ class Dashboard extends Component {
         <div className="row text-center">
           <div className='col-12 col-lg-9 col-xl-10 ml-auto'>
             <div className='container'>
-              <DashboardRouter routes={routes.dashboard} />
+              <DashboardRouter
+                routes={routes.dashboard}
+              />
             </div>
           </div>
         </div>

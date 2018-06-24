@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { LogoSidebar, LogoutSidebar } from '../';
 
 const styleSidebar = {
   backgroundColor: '#28314B',
@@ -13,13 +14,7 @@ const styleSidebar = {
 
 const DashboardSidebar = ({ routes }) => (
   <div className='col-lg-3 col-xl-2 px-0' style={styleSidebar}>
-    <div className='d-flex justify-content-center my-5 py-4'>
-      <img
-        className='img-fluid'
-        src={require('../../images/githubfolio-gradient.png')}
-        alt="GitHubFolio logo"
-      />
-    </div>
+    <LogoSidebar />
     <ul className="nav flex-column">
       {
         routes
@@ -45,6 +40,7 @@ const DashboardSidebar = ({ routes }) => (
           );
         })
       }
+      <LogoutSidebar />
     </ul>
   </div>
 );
