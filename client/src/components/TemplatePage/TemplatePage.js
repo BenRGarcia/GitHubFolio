@@ -10,6 +10,9 @@ import { bindActionCreators } from "redux";
 export class TemplatePage extends Component {
 
   state = {
+    profileName: "" ,
+    email: " ",
+    bio: " ",
     chosenTemplate: " "
   }
 
@@ -19,9 +22,12 @@ export class TemplatePage extends Component {
     console.log('next props', nextProps)
     if(!this.initialized){
       this.initialized = true;
-      const { chosenTemplate } = nextProps.userInfo
+      const { chosenTemplate, profileName, email, bio } = nextProps.userInfo
       this.setState({
-        chosenTemplate
+        chosenTemplate,
+        profileName,
+        email,
+        bio
       })
     }
   }
@@ -34,20 +40,26 @@ export class TemplatePage extends Component {
 
 handleClickMinimalist = () => {
     this.setState({
-        chosenTemplate: "minimalist"
+        chosenTemplate: "minimalist",
+        profileName: this.props.userInfo.profileName,
+        email: this.props.userInfo.email,
+        bio: this.props.userInfo.bio
     })
     console.log('click state min', this.state)
 }
 
 handleClickStylized = () => {
     this.setState({
-        chosenTemplate: "stylized" 
+        chosenTemplate: "stylized",
+        profileName: this.props.userInfo.profileName,
+        email: this.props.userInfo.email,
+        bio: this.props.userInfo.bio 
     })
     console.log('click state sty', this.state)
 }
 
   render() {
-    console.log('PROPS\n', this.props)
+    console.log('STATE\n', this.props.userInfo)
     return(
       <div className='col-lg-10 offset-lg-2'>
         <div className="save-button pt-4 pb-4">
