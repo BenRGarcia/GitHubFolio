@@ -12,7 +12,7 @@ const styleSidebar = {
 };
 
 const DashboardSidebar = ({ routes }) => (
-  <div className='col-lg-3 col-xl-2 pl-0' style={styleSidebar}>
+  <div className='col-lg-3 col-xl-2 px-0' style={styleSidebar}>
     <div className='d-flex justify-content-center my-5 py-4'>
       <img
         className='img-fluid'
@@ -33,11 +33,11 @@ const DashboardSidebar = ({ routes }) => (
             >
               <NavLink
                 to={path}
-                className='nav-link'
+                className='nav-link ml-2'
                 activeClassName='active'
               >
                 <i
-                  className={icon + ' mr-2'}
+                  className={icon + ' mx-1'}
                 ></i>
                 {label}
               </NavLink>

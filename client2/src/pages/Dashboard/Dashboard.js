@@ -30,7 +30,9 @@ class Dashboard extends Component {
         {/* Nested subpages render here */}
         <div className="row">
           <div className='col-12 col-lg-9 col-xl-10 ml-auto'>
-            <DashboardRouter routes={routes.dashboard} />
+            <div className='container'>
+              <DashboardRouter routes={routes.dashboard} />
+            </div>
           </div>
         </div>
       </div>
