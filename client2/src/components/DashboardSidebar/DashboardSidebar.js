@@ -4,7 +4,11 @@ import PropTypes from 'prop-types';
 
 const DashboardSidebar = ({ routes }) => (
   <div>
-    <h2>logo</h2>
+    <img
+      className='img-fluid'
+      src={require('../../images/githubfolio-gradient.png')}
+      alt="GitHubFolio logo"
+    />
     <ul className="nav flex-column">
       {
         routes

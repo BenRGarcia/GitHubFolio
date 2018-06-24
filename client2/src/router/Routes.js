@@ -41,26 +41,31 @@ const routes = {
       label: 'Get GitHub Repos',
       path: '/dashboard',
       exact: true,
+      icon: 'fas fa-code-branch',
       component: <DashboardGetRepos />
     }, {
       label: 'Templates',
       path: '/dashboard/templates',
       exact: true,
+      icon: 'fas fa-file-alt',
       component: <DashboardTemplates />
     }, {
       label: 'Edit Portfolio Info',
       path: '/dashboard/edituser',
       exact: true,
+      icon: 'far fa-edit',
       component: <DashboardEditUser />
     }, {
       label: 'Edit Repo Data',
       path: '/dashboard/editrepos',
       exact: true,
+      icon: '',
       component: <DashboardEditRepos />
     }, {
       label: 'Preview Portfolio',
       path: '/dashboard/preview',
       exact: true,
+      icon: '',
       component: <DashboardPreview />
     }
   ],
