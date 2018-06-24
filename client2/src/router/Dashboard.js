@@ -20,8 +20,7 @@ const DashboardRouter = ({ routes }) => (
         )
       })
     }
-    <Route exact path='/dashboard/404' component={NotFound} />
-    <Route render={() => <Redirect to='/dashboard/404' />} />
+    <Route render={() => <Redirect to='/404' />} />
   </Switch>
 );
 
