@@ -29,9 +29,9 @@ export class DashboardContainer extends Component {
       <Router>
         <Switch>
           <Route exact path='/dashboard' component={GitPinnedReposPage} />
-          <Route exact path='/dashboard/template' component={TemplatePage}/>
+          <Route exact path='/dashboard/template' render={()=><TemplatePage />}/>
           <Route path="/dashboard/user" render={()=><EditUserInfo />}/>          
-          <Route path="/dashboard/repos" render={()=><PinnedRepos/>} />          
+          <Route path="/dashboard/repos" render={()=><PinnedRepos />} />          
           {/* <Route exact path='/dashboard/repos' render={this.EditRepoInfo}/>       */}
           <Route exact path='/dashboard/preview' component={PreviewPage} />
           <Route component={NotFound} />
