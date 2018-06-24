@@ -9,11 +9,11 @@ const Navbar = ({ routes, style }) => (
   >
     <div className="container">
       <nav
-        className="navbar navbar-expand-md p-2 navbar-dark"
+        className="navbar navbar-expand-lg p-2 navbar-dark"
       >
         <span className="navbar-brand">
           GitHubFolio
-    </span>
+        </span>
         <button
           className="navbar-toggler"
           type="button"
