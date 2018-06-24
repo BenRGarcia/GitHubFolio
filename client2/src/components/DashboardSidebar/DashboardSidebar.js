@@ -19,7 +19,7 @@ const DashboardSidebar = ({ routes }) => (
                 className='nav-link'
                 activeClassName='active'
               >
-              {label}
+                {label}
               </NavLink>
             </li>
           );

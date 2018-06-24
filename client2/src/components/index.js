@@ -1,7 +1,7 @@
 import DashboardSidebar from './DashboardSidebar/DashboardSidebar';
-import DashboardNavbar from './DashboardNavbar/DashboardNavbar';
+import Navbar from './Navbar/Navbar';
 
 export {
   DashboardSidebar,
-  DashboardNavbar
+  Navbar
 }

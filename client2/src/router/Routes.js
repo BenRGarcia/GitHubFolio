@@ -62,10 +62,21 @@ const routes = {
       path: '/dashboard/preview',
       exact: true,
       component: <DashboardPreview />
-    }/* , {
-      label: 'Redirect to 404',
-      component: <Redirect to="/404" />
-    } */
+    }
+  ],
+  home: [
+    {
+      label: 'HOME',
+      path: '/'
+    },
+    {
+      label: 'FAQS',
+      path: '/faqs'
+    },
+    {
+      label: 'CONTACT US',
+      path: '/contact'
+    }
   ]
 };
 

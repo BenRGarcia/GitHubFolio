@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import DashboardRouter from '../../router/Dashboard';
-import { DashboardSidebar, DashboardNavbar } from '../../components';
+import { DashboardSidebar, Navbar } from '../../components';
 import routes from '../../router/Routes'
 
 class Dashboard extends Component {
   render() {
     return (
       <div>
-        <DashboardNavbar routes={routes.dashboard} />
+        <Navbar routes={routes.dashboard} />
         <h1>Dashboard.js</h1>
         <div className='d-flex'>
           <div>
