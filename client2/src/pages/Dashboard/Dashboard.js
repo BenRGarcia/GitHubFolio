@@ -16,6 +16,7 @@ class Dashboard extends Component {
           <Navbar
             routes={routes.dashboard}
             style={styleDarkPanel}
+            logout={true}
           />
         </div>
         {/* Hide sidebar on smaller screens */}

@@ -14,10 +14,13 @@ const styleGradientButton = {
 const LoginWithGitHub = () => (
   <a
     href='https://github.com/login/oauth/authorize?client_id=d704cc5bc30e737c2c31&scope=read:user'
-    className='py-2 px-3' style= { styleGradientButton }
+    className='py-2 px-3'
+    style={styleGradientButton}
   >
-  <i class="fab fa-github pr-3 fa-lg"></i>
-  Sign in with GitHub
+  <i
+    className="fab fa-github pr-3 fa-lg"
+  ></i>
+    Sign in with GitHub
   </a>
 );
 
