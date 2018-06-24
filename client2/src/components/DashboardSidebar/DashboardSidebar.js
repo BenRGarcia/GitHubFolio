@@ -1,25 +1,36 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import PropTypes from 'prop-types';
 
-const DashboardSidebar = props => (
+const DashboardSidebar = ({ routes }) => (
   <div>
     <h1>DashboardSidebar.js</h1>
-    <p>logo</p>
+    <h2>logo</h2>
     <ul className="nav flex-column">
-      <li className="nav-item">
-        <NavLink
-          to='/dashboard/'
-        />
-        <a className="nav-link active" href="#">Get GitHub Repos</a>
-      </li>
-      <li className="nav-item">
-        <a className="nav-link" href="#">Link</a>
-      </li>
-      <li className="nav-item">
-        <a className="nav-link" href="#">Link</a>
-      </li>
+      {
+        routes
+        &&
+        routes.map(route => {
+          const { path, label } = route;
+          return (
+            <li className="nav-item" key={label}>
+              <NavLink
+                to={path}
+                className='nav-link'
+                activeClassName='active'
+              >
+              {label}
+              </NavLink>
+            </li>
+          );
+        })
+      }
     </ul>
   </div>
-)
+);
+
+DashboardSidebar.propTypes = {
+  routes: PropTypes.array.isRequired
+};
 
 export default DashboardSidebar

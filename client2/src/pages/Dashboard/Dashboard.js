@@ -12,26 +12,31 @@ import {
 class Dashboard extends Component {
   routes = [
     {
+      label: 'Get GitHub Repos',
       path: '/dashboard',
       exact: true,
       component: <DashboardGetRepos />
     },
     {
+      label: 'Templates',
       path: '/dashboard/templates',
       exact: true,
       component: <DashboardTemplates />
     },
     {
+      label: 'Edit Portfolio Info',
       path: '/dashboard/edituser',
       exact: true,
       component: <DashboardEditUser />
     },
     {
+      label: 'Edit Repo Data',
       path: '/dashboard/editrepos',
       exact: true,
       component: <DashboardEditRepos />
     },
     {
+      label: 'Preview Portfolio',
       path: '/dashboard/preview',
       exact: true,
       component: <DashboardPreview />
@@ -45,10 +50,12 @@ class Dashboard extends Component {
         <h1>Dashboard.js</h1>
         <div className='d-flex'>
           <div>
-            <DashboardSidebar routes={this.routes} />
+            <DashboardSidebar routes={this.routes}/>
           </div>
           <div>
-            <DashboardRouter routes={this.routes} />
+            <div className='container'>
+              <DashboardRouter routes={this.routes} />
+            </div>
           </div>
         </div>
       </div>
@@ -56,4 +63,4 @@ class Dashboard extends Component {
   }
 }
 
-export default Dashboard
+export default Dashboard;
