@@ -1,5 +1,6 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
 
 const Navbar = ({ routes, style }) => (
   <div
@@ -57,5 +58,10 @@ const Navbar = ({ routes, style }) => (
     </div>
   </div>
 );
+
+Navbar.propTypes = {
+  style: PropTypes.object.isRequired,
+  routes: PropTypes.array.isRequired
+};
 
 export default Navbar
