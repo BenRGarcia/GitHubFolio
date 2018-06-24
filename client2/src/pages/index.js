@@ -1,11 +1,11 @@
 import Home from './Home/Home'
 import Portfolio from './Portfolio/Portfolio'
 import Dashboard from './Dashboard/Dashboard'
-import _404 from './_404/_404'
+import NotFound from './NotFound/NotFound'
 
 export {
   Home,
   Portfolio,
   Dashboard,
-  _404
+  NotFound
 }

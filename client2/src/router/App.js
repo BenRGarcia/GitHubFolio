@@ -1,22 +1,35 @@
 import React from 'react';
-import {
+import PropTypes from 'prop-types';
+import { 
   BrowserRouter as Router,
-  Switch,
   Route,
-  Redirect
+  Switch
 } from 'react-router-dom';
-import { Home, Portfolio, Dashboard, _404 } from '../pages'
 
-const AppRouter = () => (
+const AppRouter = ({ routes }) => (
   <Router>
     <Switch>
-      <Route exact path='/' component={Home} />
-      <Route path='/dashboard' component={Dashboard} />
-      <Route exact path='/portfolio/:gitHubId' component={Portfolio} />
-      <Route exact path='/404' component={_404} />
-      <Route render={() => <Redirect to="/404" />} />
+      {
+        routes
+        &&
+        routes.map((route, i) => {
+          const { exact, path, component } = route;
+          return (
+            <Route
+              exact={exact}
+              path={path}
+              render={() => component}
+              key={path || i}
+            />
+          );
+        })
+      }
     </Switch>
   </Router>
 );
+
+AppRouter.propTypes = {
+  routes: PropTypes.array.isRequired
+};
 
 export default AppRouter

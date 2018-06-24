@@ -7,15 +7,15 @@ class Dashboard extends Component {
   render() {
     return (
       <div>
-        <DashboardNavbar routes={routes} />
+        <DashboardNavbar routes={routes.dashboard} />
         <h1>Dashboard.js</h1>
         <div className='d-flex'>
           <div>
-            <DashboardSidebar routes={routes}/>
+            <DashboardSidebar routes={routes.dashboard}/>
           </div>
           <div>
             <div className='container'>
-              <DashboardRouter routes={routes} />
+              <DashboardRouter routes={routes.dashboard} />
             </div>
           </div>
         </div>
