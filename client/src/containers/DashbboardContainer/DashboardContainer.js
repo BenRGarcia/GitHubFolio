@@ -3,13 +3,12 @@ import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import EditUserInfo from '../../components/DashboardEditUser/DashboardEditUser';
 import PinnedRepos from '../../components/DashboardEditRepos/DashboardEditRepos';
+import TemplatePage from '../../components/TemplatePage/TemplatePage';
 import { fetchUserInfo } from '../../actions';
-import { fetchRepos } from '../../actions';
 
 
 import{
   PreviewPage,
-  TemplatePage,
   GitPinnedReposPage,
   // DashboardEditUser,
   // DashboardEditRepos,
@@ -29,7 +28,7 @@ export class DashboardContainer extends Component {
       <Router>
         <Switch>
           <Route exact path='/dashboard' component={GitPinnedReposPage} />
-          <Route exact path='/dashboard/template' render={()=><TemplatePage />}/>
+          <Route path='/dashboard/template' render={()=><TemplatePage />}/>
           <Route path="/dashboard/user" render={()=><EditUserInfo />}/>          
           <Route path="/dashboard/repos" render={()=><PinnedRepos />} />          
           {/* <Route exact path='/dashboard/repos' render={this.EditRepoInfo}/>       */}
@@ -46,4 +45,4 @@ export class DashboardContainer extends Component {
 //   userInfo: state.userInfo
 // })
 
-export default connect(null, {fetchUserInfo, fetchRepos})(DashboardContainer)
+export default connect(null, {fetchUserInfo})(DashboardContainer)

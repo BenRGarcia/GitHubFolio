@@ -29,7 +29,7 @@ export class TemplatePage extends Component {
   handleSubmit = (e) => {
     e.preventDefault()
     console.log('state\n', this.state)
-    this.props.editUserInfo(this.state.chosenTemplate).then(response => {console.log('response\n', response)})
+    this.props.editUserInfo(this.state).then(response => {console.log('response\n', response)})
   }
 
 handleClickMinimalist = () => {
