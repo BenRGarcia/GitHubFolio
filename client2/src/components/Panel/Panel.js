@@ -15,7 +15,6 @@ const Panel = ({ style, children }) => (
 
 Panel.propTypes = {
   style: PropTypes.object.isRequired,
-  children: PropTypes.element.isRequired
 };
 
 export default Panel

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navbar, Panel, Jumbotron } from '../../components';
+import { Navbar, Panel, Jumbotron, Themes } from '../../components';
 import routes from '../../router/Routes';
 
 const light = '#fff'
@@ -26,18 +26,9 @@ const Home = props => (
       <Jumbotron />
     </Panel>
     {/* Panel 2 */}
-  <div className="bg-light">
-    <div className="container">
-      <div className="row">
-        <div className="col">
-          <div>
-            <h2>Beautiful portfolio themes</h2>
-            <img className='img-fluid' src={require("../../images/themes.png")} alt="Theme templates" />
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+    <Panel style={styleLightPanel}>
+      <Themes />
+    </Panel>
   {/* Panel 3 */}
   <div className='bg-secondary'>
     <div className="container">

@@ -5,7 +5,7 @@ const Jumbotron = () => (
   <div className="jumbotron jumbotron-fluid mb-0 bg-transparent">
     <div className="container text-white">
       <h1 className="display-4">
-        <strong>GitHubFolio</strong>
+        GitHubFolio
       </h1>
       <p className="lead">
         Create a beautiful portolio to showcase your best work.
