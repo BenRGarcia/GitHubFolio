@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 const Panel = ({ style, children }) => (
   <div style={style}>
     <div className="container">
-      <div className="row">
-        <div className="col">
+      <div className="row" style={{ minHeight: '100vh' }}>
+        <div className="col d-flex justify-content-center align-items-center">
           {children}
         </div>
       </div>
@@ -15,7 +15,7 @@ const Panel = ({ style, children }) => (
 
 Panel.propTypes = {
   style: PropTypes.object.isRequired,
-  children: PropTypes.array.isRequired
+  children: PropTypes.element.isRequired
 };
 
 export default Panel

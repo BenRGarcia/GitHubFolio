@@ -3,8 +3,7 @@ import { NavLink } from 'react-router-dom'
 
 const Navbar = ({ routes }) => (
   <nav
-    className="navbar fixed-top navbar-expand-md p-2 navbar-dark"
-    style={{ backgroundColor: '#28314B' }}
+    className="navbar navbar-expand-md p-2 navbar-dark"
   >
     <span className="navbar-brand">
       GitHubFolio

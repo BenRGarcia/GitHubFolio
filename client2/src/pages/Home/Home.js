@@ -2,19 +2,26 @@ import React from 'react';
 import { Navbar, Panel, Jumbotron } from '../../components';
 import routes from '../../router/Routes';
 
+const panelHeight = '100vh'
+const light = '#fff'
+const dark = '#28314B'
+
 const styleDarkPanel = {
-  minHeight: '100vh',
-  backgroundColor: '#28314B'
+  backgroundColor: dark
 };
 
 const styleLightPanel = {
-  minHeight: '100vh',
-  backgroundColor: '#fff'
+  backgroundColor: light
 };
 
 const Home = props => (
   <div className='text-center'>
-    <Navbar routes={routes.home} />
+    {/* Navbar */}
+    <div className='fixed-top' style={{ backgroundColor: dark }}>
+      <div className="container">
+        <Navbar routes={routes.home} />
+      </div>
+    </div>
     {/* Panel 1 */}
     <Panel style={styleDarkPanel}>
       <Jumbotron />
@@ -23,9 +30,9 @@ const Home = props => (
       <div className='container'>
         <div className="row">
           <div className="col">
-            <Navbar
+            {/* <Navbar
               routes={routes.home}
-            />
+            /> */}
           </div>
         </div>
       </div>
