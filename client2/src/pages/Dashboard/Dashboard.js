@@ -28,7 +28,7 @@ class Dashboard extends Component {
           </div>
         </div>
         {/* Nested subpages render here */}
-        <div className="row">
+        <div className="row text-center">
           <div className='col-12 col-lg-9 col-xl-10 ml-auto'>
             <div className='container'>
               <DashboardRouter routes={routes.dashboard} />
