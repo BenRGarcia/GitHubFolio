@@ -41,6 +41,7 @@ const Navbar = ({ routes, style }) => (
                     key={label}
                   >
                     <NavLink
+                      exact
                       to={path}
                       className='nav-link'
                       activeClassName='active'
