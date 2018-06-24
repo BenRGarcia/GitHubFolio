@@ -25,7 +25,6 @@ const Home = props => (
     <Panel style={styleDarkPanel}>
       <Jumbotron />
     </Panel>
-            /> */}
     {/* Panel 2 */}
   <div className="bg-light">
     <div className="container">
