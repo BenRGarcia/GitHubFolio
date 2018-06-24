@@ -14,9 +14,8 @@ class Dashboard extends Component {
         <div className='d-md-none'>
           <Navbar routes={routes.dashboard} style={styleDarkPanel} />
         </div>
-        <h1>Dashboard.js</h1>
         <div className='d-flex'>
-          <div>
+          <div className='d-none d-md-flex'>
             <DashboardSidebar routes={routes.dashboard}/>
           </div>
           <div>
