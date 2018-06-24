@@ -1,7 +1,8 @@
 import { connect } from "react-redux";
 import React, { Component } from 'react';
-import {editRepos } from '../../actions/index';
+import {editRepos} from '../../actions/index';
 import { bindActionCreators } from "redux";
+import GitPinnedReposBtn from '../../components/GitPinnedReposBtn/GitPinnedReposBtn';
 import "./DashboardEditRepos.css";
 
 
@@ -10,14 +11,13 @@ export class DashboardEditRepos extends Component {
   state = {
     repositories: []
   }
-
+  
   initiliazed= false;
  
   componentWillReceiveProps(nextProps){
     if(!this.initialized){
       this.initialized = true;
       const { repositories } = nextProps.userInfo
-      console.log("======================")
       this.setState({
         repositories
       })
@@ -105,18 +105,31 @@ export class DashboardEditRepos extends Component {
     // </div>
     )
   }
+
+  renderChoice(){
+    if(this.state.repositories.length == 0){
+      return(
+        <GitPinnedReposBtn />
+      )
+    } else {
+      return (
+        <div className='container editPinForm'>
+          <form>
+            {this.repoMap()} 
+            <div className='container'>
+              <button onClick={this.handleSubmit} type='submit'>submit</button>
+            </div>
+          </form>
+        </div>   
+      )
+    }
+  }
   
-  render() {
-    console.log(this.props.userInfo)
+  render() {    
     return (
-      <div className='container editPinForm'>
-        <form>
-          {this.repoMap()} 
-          <div className='container'>
-            <button onClick={this.handleSubmit} type='submit'>submit</button>
-          </div>
-        </form>
-      </div>   
+      <div>
+        {this.renderChoice()}
+      </div>
     )
   }
 }
