@@ -1,37 +1,38 @@
 import { connect } from "react-redux";
 import React, { Component } from 'react';
-import { fetchUserInfo, editRepos } from '../../actions/index';
+import {editRepos} from '../../actions/index';
 import { bindActionCreators } from "redux";
+import GitPinnedReposBtn from '../../components/GitPinnedReposBtn/GitPinnedReposBtn';
 import "./DashboardEditRepos.css";
 
 
 export class DashboardEditRepos extends Component {
 
   state = {
-    pinnedRepositories: []
+    repositories: []
   }
-
+  
   initiliazed= false;
  
   componentWillReceiveProps(nextProps){
     if(!this.initialized){
       this.initialized = true;
-      const { pinnedRepositories } = nextProps.userInfo
+      const { repositories } = nextProps.userInfo
       this.setState({
-        pinnedRepositories
+        repositories
       })
     }
   }
 
   handleSubmit = (e) => {
       e.preventDefault()
-      console.log(`user just clicked 'save repo data:'`, this.state)
+      console.log(`user just clicked 'save repo data' IN COMPONENT and this is the current state:'`, this.state.repositories)
       this.props.editRepos(this.state);
     }
 
   handleChange = (event, _id) => {
     const { name, value } = event.target;
-    const nextPinnedRepos = this.state.pinnedRepositories.map(repo => {
+    const nextPinnedRepos = this.state.repositories.map(repo => {
       if (_id === repo._id) {
         const newData = { [name]: value }
         const nextRepo = { ...repo, ...newData }
@@ -40,7 +41,7 @@ export class DashboardEditRepos extends Component {
       return repo
     })
     this.setState({
-      pinnedRepositories: nextPinnedRepos
+      repositories: nextPinnedRepos
     });
   }
   
@@ -50,13 +51,13 @@ export class DashboardEditRepos extends Component {
     //   {
     //     this.props.userInfo
     //     &&
-    //     this.props.userInfo.pinnedRepositories
+    //     this.props.userInfo.repositories
     //     &&
-    //     typeof this.props.userInfo.pinnedRepositories === 'array'
+    //     typeof this.props.userInfo.repositories === 'array'
     //     &&
     //     <div>
     //       {
-            this.props.userInfo.pinnedRepositories.map(repo =>   
+            this.props.userInfo.repositories.map(repo =>   
               <div className='form-group' key ={repo._id}>
                 <label>Project Name</label>
                   <input
@@ -81,20 +82,20 @@ export class DashboardEditRepos extends Component {
                 <label>GitHub Link</label>
                   <input 
                     type='text'
-                    name= 'url' 
-                    value = {this.state.url}
+                    name= 'repositoryUrl' 
+                    value = {this.state.repositoryUrl}
                     onChange={this.handleChange}
                     className='form-control' 
-                    placeholder={repo.url}>
+                    placeholder={repo.repositoryUrl}>
                   </input>
                 <label>Deployed Link</label>
                   <input 
                     type='text'
-                    name= 'homepageUrl' 
-                    value = {this.state.homepageUrl}
+                    name= 'deployedUrl' 
+                    value = {this.state.deployedUrl}
                     onChange={this.handleChange}
                     className='form-control' 
-                    placeholder={repo.homepageUrl}>
+                    placeholder={repo.deployedUrl}>
                   </input>
               </div>
              )
@@ -104,17 +105,31 @@ export class DashboardEditRepos extends Component {
     // </div>
     )
   }
+
+  renderChoice(){
+    if(this.state.repositories.length == 0){
+      return(
+        <GitPinnedReposBtn />
+      )
+    } else {
+      return (
+        <div className='container editPinForm'>
+          <form>
+            {this.repoMap()} 
+            <div className='container'>
+              <button onClick={this.handleSubmit} type='submit'>submit</button>
+            </div>
+          </form>
+        </div>   
+      )
+    }
+  }
   
-  render() {
+  render() {    
     return (
-      <div className='container editPinForm'>
-        <form>
-          {this.repoMap()} 
-          <div className='container'>
-            <button onClick={this.handleSubmit} type='submit'>submit</button>
-          </div>
-        </form>
-      </div>   
+      <div>
+        {this.renderChoice()}
+      </div>
     )
   }
 }
@@ -124,7 +139,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => {
-  return bindActionCreators({ fetchUserInfo, editRepos }, dispatch);
+  return bindActionCreators({ editRepos }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(DashboardEditRepos);

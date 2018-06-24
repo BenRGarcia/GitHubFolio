@@ -8,7 +8,7 @@ import "./DashboardEditUser.css";
 export class DashboardEditUser extends Component {
 
   state = {
-    displayName: "" ,
+    profileName: "" ,
     email: " ",
     bio: " "
   }
@@ -18,9 +18,9 @@ export class DashboardEditUser extends Component {
   componentWillReceiveProps(nextProps){
     if(!this.initialized){
       this.initialized = true;
-      const {email, displayName, bio} = nextProps.userInfo
+      const {email, profileName, bio} = nextProps.userInfo
       this.setState({
-        displayName,
+        profileName,
         email,
         bio
       })
@@ -42,6 +42,7 @@ export class DashboardEditUser extends Component {
     }
   
   render() {
+    console.log(this.props)
     return (
     <div className='container editPinForm'>
       <form>
@@ -49,12 +50,12 @@ export class DashboardEditUser extends Component {
           <label>Name</label>
             <input 
               type='text' 
-              name = 'displayName'
-              value = {this.state.displayName}
+              name = 'profileName'
+              value = {this.state.profileName}
               onChange={this.handleChange}
               // onChange={(e)=>this.handleChange(repo._id)}              
               className='form-control' 
-              placeholder={this.props.userInfo.displayName}>
+              placeholder={this.props.userInfo.profileName}>
             </input>
           <label>Email</label>          
             <input 
