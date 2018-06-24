@@ -6,7 +6,6 @@ import $ from 'jquery'
 
 class Navbar extends Component {
   handleClick = (e, disabled) => {
-    console.log(disabled)
     if (disabled) e.preventDefault()
     $('.navbar-collapse').collapse('hide');
   };
@@ -56,7 +55,7 @@ class Navbar extends Component {
                           to={path}
                           className='nav-link'
                           activeClassName='active'
-                          onClick={(e, disabled) => this.handleClick(e, disabled)}
+                          onClick={(e) => this.handleClick(e, disabled)}
                         >
                           {label}
                         </NavLink>
