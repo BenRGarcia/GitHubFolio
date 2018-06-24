@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import { LogoutNavbar } from '../';
+import $ from 'jquery'
 
 class Navbar extends Component {
   handleClick = (e, disabled) => {
     if (disabled) e.preventDefault()
+    $('.navbar-collapse').collapse('hide');
   };
 
   render() {
@@ -53,7 +55,7 @@ class Navbar extends Component {
                           to={path}
                           className='nav-link'
                           activeClassName='active'
-                          onClick={e => { if (disabled) e.preventDefault() }}
+                          onClick={(e, disabled) => this.handleClick(e, disabled)}
                         >
                           {label}
                         </NavLink>
