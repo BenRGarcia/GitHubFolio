@@ -4,33 +4,37 @@ import routes from '../../router/Routes';
 
 const Home = props => (
   <div className='text-center'>
-  <div className="row bg-secondary">
-    <div className="col">
-      <div className='container'>
-          <Navbar
-            routes={routes.home}
-          />
+    {/* Panel 1 */}
+    <div className='bg-secondary' style={{ minHeight: '100vh' }}>
+      {/* Navbar */}
+      <div className="row">
+        <div className="col">
+          <div className='container'>
+            <Navbar
+              routes={routes.home}
+            />
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-  {/* Panel 1 */}
-  <div className="row bg-secondary">
-    <div className="col d-flex align-items-center" style={{ minHeight: '80vh' }}>
-      <div className="flex-fill jumbotron jumbotron-fluid mb-0 bg-secondary">
-        <div className="container text-white">
-          <h1 className="display-4">
-            Introducing <strong>GitHubFolio</strong>
-          </h1>
-          <p className="lead">
-            Create a beautiful portolio to showcase your best work with GitGubFolio.
-          </p>
-          <a href="/dashboard" className='btn btn-light'>
-            Sign in with GitHub
-          </a>
+      {/* Jumbotron */}
+      <div className="row" style={{ minHeight: '100vh' }}>
+        <div className="col d-flex justify-content-center">
+          <div className="jumbotron jumbotron-fluid mb-0 bg-secondary d-flex align-items-center">
+            <div className="container text-white">
+              <h1 className="display-4">
+                Introducing <strong>GitHubFolio</strong>
+              </h1>
+              <p className="lead">
+                Create a beautiful portolio to showcase your best work with GitGubFolio.
+            </p>
+              <a href="/dashboard" className='btn btn-light'>
+                Sign in with GitHub
+            </a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
   {/* Panel 2 */}
   <div className="row bg-light">
     <div className="col">

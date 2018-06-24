@@ -67,15 +67,18 @@ const routes = {
   home: [
     {
       label: 'HOME',
-      path: '/'
+      path: '/',
+      disabled: false
     },
     {
       label: 'FAQS',
-      path: '/faqs'
+      path: '/faqs',
+      disabled: true
     },
     {
       label: 'CONTACT US',
-      path: '/contact'
+      path: '/contact',
+      disabled: true
     }
   ]
 };

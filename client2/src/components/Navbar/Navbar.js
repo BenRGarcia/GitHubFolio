@@ -2,7 +2,7 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 
 const Navbar = ({ routes }) => (
-  <nav className="navbar navbar-expand-md navbar-dark p-3">
+  <nav className="navbar navbar-expand-md navbar-dark p-2">
     <span className="navbar-brand">
       GitHubFolio
     </span>
@@ -26,7 +26,7 @@ const Navbar = ({ routes }) => (
           routes
           &&
           routes.map(route => {
-            const { path, label } = route
+            const { path, label, disabled } = route
             return (
               <li
                 className='nav-item'
@@ -36,6 +36,7 @@ const Navbar = ({ routes }) => (
                   to={path}
                   className='nav-link'
                   activeClassName='active'
+                  onClick={e => {if(disabled) e.preventDefault()}}
                 >
                   {label}
                 </NavLink>
