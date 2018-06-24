@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import {editRepos} from '../../actions/index';
 import { bindActionCreators } from "redux";
 import GitPinnedReposBtn from '../../components/GitPinnedReposBtn/GitPinnedReposBtn';
+import  UploadImage  from '../../components/UploadImage/UploadImage';
 import "./DashboardEditRepos.css";
 
 
@@ -47,62 +48,52 @@ export class DashboardEditRepos extends Component {
   
   repoMap(){
     return (
-    // <div>
-    //   {
-    //     this.props.userInfo
-    //     &&
-    //     this.props.userInfo.repositories
-    //     &&
-    //     typeof this.props.userInfo.repositories === 'array'
-    //     &&
-    //     <div>
-    //       {
-            this.props.userInfo.repositories.map(repo =>   
-              <div className='form-group' key ={repo._id}>
-                <label>Project Name</label>
-                  <input
-                    type='text'
-                    name= 'name'                   
-                    value = {this.state.name}
-                    // onChange={(e)=>this.handleChange(repo._id)}
-                    onChange={(e)=>this.handleChange(e, repo._id)}                    
-                    className='form-control' 
-                    placeholder={repo.name}
-                   >
-                  </input>
-                <label>Description</label>
-                  <input 
-                    type='text'
-                    name= 'description' 
-                    value = {this.state.description}
-                    onChange={this.handleChange}
-                    className='form-control' 
-                    placeholder={repo.description}>
-                  </input>
-                <label>GitHub Link</label>
-                  <input 
-                    type='text'
-                    name= 'repositoryUrl' 
-                    value = {this.state.repositoryUrl}
-                    onChange={this.handleChange}
-                    className='form-control' 
-                    placeholder={repo.repositoryUrl}>
-                  </input>
-                <label>Deployed Link</label>
-                  <input 
-                    type='text'
-                    name= 'deployedUrl' 
-                    value = {this.state.deployedUrl}
-                    onChange={this.handleChange}
-                    className='form-control' 
-                    placeholder={repo.deployedUrl}>
-                  </input>
-              </div>
-             )
-    //       }
-    //     </div>
-    //     }
-    // </div>
+      this.props.userInfo.repositories.map(repo =>   
+        <div className='repo-group' key ={repo._id}>
+          <label>Project Name</label>
+            <input
+              type='text'
+              name= 'name'                   
+              value = {this.state.name}
+              // onChange={(e)=>this.handleChange(repo._id)}
+              onChange={(e)=>this.handleChange(e, repo._id)}                    
+              className='form-control' 
+              placeholder={repo.name}
+              >
+            </input>  
+          <label>Description</label>
+            <input 
+              type='text'
+              name= 'description' 
+              value = {this.state.description}
+              onChange={this.handleChange}
+              className='form-control' 
+              placeholder={repo.description}>
+            </input>
+          <label>GitHub Link</label>
+            <input 
+              type='text'
+              name= 'repositoryUrl' 
+              value = {this.state.repositoryUrl}
+              onChange={this.handleChange}
+              className='form-control' 
+              placeholder={repo.repositoryUrl}>
+            </input>
+          <label>Deployed Link</label>
+            <input 
+              type='text'
+              name= 'deployedUrl' 
+              value = {this.state.deployedUrl}
+              onChange={this.handleChange}
+              className='form-control' 
+              placeholder={repo.deployedUrl}>
+            </input>
+            <label>Choose Image</label>
+            <UploadImage repoId= {repo._id}/>     
+            <img src={repo.imageUrl} />                   
+        </div>
+        
+      )
     )
   }
 
@@ -125,7 +116,7 @@ export class DashboardEditRepos extends Component {
     }
   }
   
-  render() {    
+  render() {   
     return (
       <div>
         {this.renderChoice()}

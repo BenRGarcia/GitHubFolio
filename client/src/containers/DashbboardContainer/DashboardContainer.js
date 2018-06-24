@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import EditUserInfo from '../../components/DashboardEditUser/DashboardEditUser';
 import DashboardEditRepos from '../../components/DashboardEditRepos/DashboardEditRepos';
 import TemplatePage from '../../components/TemplatePage/TemplatePage';
+import { UploadImageExample } from '../../pages/UploadImageExample/UploadImageExample';
 import { fetchUserInfo } from '../../actions';
 
 
@@ -31,7 +32,7 @@ export class DashboardContainer extends Component {
           <Route path='/dashboard/template' render={()=><TemplatePage />}/>
           <Route path="/dashboard/user" render={()=><EditUserInfo />}/>          
           <Route path="/dashboard/repos" render={()=><DashboardEditRepos />} />          
-          {/* <Route exact path='/dashboard/repos' render={this.EditRepoInfo}/>       */}
+          <Route path="/dashboard/image" render={()=><UploadImageExample />} />                    
           <Route exact path='/dashboard/preview' component={PreviewPage} />
           <Route component={NotFound} />
         </Switch>
