@@ -12,9 +12,7 @@ const DashboardSidebar = ({ routes }) => (
         &&
         routes.map(route => {
           const { path, label } = route;
-          return path
-          ?
-          (
+          return (
             <li className="nav-item" key={label}>
               <NavLink
                 to={path}
@@ -24,9 +22,7 @@ const DashboardSidebar = ({ routes }) => (
               {label}
               </NavLink>
             </li>
-          )
-          : null
-          ;
+          );
         })
       }
     </ul>
