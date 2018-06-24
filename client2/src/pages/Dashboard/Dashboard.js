@@ -18,13 +18,13 @@ class Dashboard extends Component {
           />
         </div>
         <div className='d-flex'>
-          <div className='d-none d-md-flex px-3'>
+          <div className='d-none d-md-flex'>
             <DashboardSidebar
               routes={routes.dashboard}
               style={styleDarkPanel}
             />
           </div>
-          <div>
+          <div className='text-center'>
             <DashboardRouter routes={routes.dashboard} />
           </div>
         </div>

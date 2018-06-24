@@ -59,13 +59,13 @@ const routes = {
       label: 'Edit Repo Data',
       path: '/dashboard/editrepos',
       exact: true,
-      icon: '',
+      icon: 'fas fa-wrench',
       component: <DashboardEditRepos />
     }, {
       label: 'Preview Portfolio',
       path: '/dashboard/preview',
       exact: true,
-      icon: '',
+      icon: 'fas fa-th-large',
       component: <DashboardPreview />
     }
   ],
