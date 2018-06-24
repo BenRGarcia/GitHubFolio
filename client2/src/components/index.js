@@ -6,6 +6,8 @@ import Jumbotron from './Panels/Jumbotron';
 import Themes from './Panels/Themes';
 import ListInfo from './Panels/ListInfo';
 import Footer from './Footer/Footer';
+import LogoSidebar from './DashboardSidebar/LogoSidebar';
+import LogoutSidebar from './DashboardSidebar/LogoutSidebar';
 
 export {
   DashboardSidebar,
@@ -15,5 +17,7 @@ export {
   LoginWithGitHub,
   Themes,
   ListInfo,
-  Footer
+  Footer,
+  LogoSidebar,
+  LogoutSidebar
 }
