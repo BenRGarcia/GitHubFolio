@@ -2,7 +2,6 @@ import React from 'react';
 import { Navbar, Panel, Jumbotron } from '../../components';
 import routes from '../../router/Routes';
 
-const panelHeight = '100vh'
 const light = '#fff'
 const dark = '#28314B'
 
@@ -26,39 +25,8 @@ const Home = props => (
     <Panel style={styleDarkPanel}>
       <Jumbotron />
     </Panel>
-    <div className='bg-secondary'>
-      <div className='container'>
-        <div className="row">
-          <div className="col">
-            {/* <Navbar
-              routes={routes.home}
             /> */}
-          </div>
-        </div>
-      </div>
-      <div className=''>
-        <div className='container'>
-          <div className="row">
-            <div className="col d-flex justify-content-center align-items-center">
-              <div className="jumbotron jumbotron-fluid mb-0 bg-secondary">
-                <div className="container text-white">
-                  <h1 className="display-4">
-                    <strong>GitHubFolio</strong>
-                  </h1>
-                  <p className="lead">
-                    Create a beautiful portolio to showcase your best work.
-                </p>
-                  <a href="/dashboard" className='btn btn-light'>
-                    Sign in with GitHub
-                </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  {/* Panel 2 */}
+    {/* Panel 2 */}
   <div className="bg-light">
     <div className="container">
       <div className="row">
