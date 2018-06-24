@@ -9,8 +9,22 @@ const styleSidebar = {
   top: '0px',
   bottom: '0px',
   left: '0px',
-  overflowY: 'scroll'
+  overflowY: 'scroll',
 };
+
+const styleLinks = {
+  fontFamily: 'Roboto sans-serif',
+  fontSize: '18px',
+  color: '#979799',
+  paddingTop: '15px',
+  paddingLeft: '25px',
+  height: '50px',
+  width: '100%',
+}
+
+const active = {
+  backgroundColor: '#1E263D'
+}
 
 const DashboardSidebar = ({ routes }) => (
   <div className='col-lg-3 col-xl-2 px-0' style={styleSidebar}>
@@ -29,10 +43,11 @@ const DashboardSidebar = ({ routes }) => (
               <NavLink
                 to={path}
                 className='nav-link ml-2'
-                activeClassName='active'
+                activeClassName={ active }
+                style={ styleLinks }
               >
                 <i
-                  className={icon + ' mx-1'}
+                  className={icon + ' mx-1, mr-4'}
                 ></i>
                 {label}
               </NavLink>
