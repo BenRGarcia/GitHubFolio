@@ -11,22 +11,23 @@ class Dashboard extends Component {
   render() {
     return (
       <div>
+        {/* Hide navbar on larger screens */}
         <div className='d-md-none'>
           <Navbar
             routes={routes.dashboard}
             style={styleDarkPanel}
           />
         </div>
-        <div className='d-flex'>
-          <div className='d-none d-md-flex'>
-            <DashboardSidebar
-              routes={routes.dashboard}
-              style={styleDarkPanel}
-            />
-          </div>
-          <div className='text-center'>
-            <DashboardRouter routes={routes.dashboard} />
-          </div>
+        {/* Hide sidebar on smaller screens */}
+        <div className='d-none d-md-block'>
+          <DashboardSidebar
+            routes={routes.dashboard}
+            style={styleDarkPanel}
+          />
+        </div>
+        {/* Nested subpages render here */}
+        <div className='col-12 col-md-9 ml-auto'>
+          <DashboardRouter routes={routes.dashboard} />
         </div>
       </div>
     );

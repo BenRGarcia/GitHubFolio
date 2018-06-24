@@ -1,9 +1,18 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
+import React from 'react';
+import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
+const styleSidebar = {
+  backgroundColor: '#28314B',
+  position: 'fixed',
+  top: '0px',
+  bottom: '0px',
+  left: '0px',
+  overflowY: 'scroll'
+};
+
 const DashboardSidebar = ({ routes }) => (
-  <div className='align-self-stretch border border-dark'>
+  <div className='border border-dark' style={styleSidebar}>
     <div className='d-flex justify-content-center my-5 py-4'>
       <img
         className='img-fluid'
