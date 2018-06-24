@@ -12,11 +12,17 @@ class Dashboard extends Component {
     return (
       <div>
         <div className='d-md-none'>
-          <Navbar routes={routes.dashboard} style={styleDarkPanel} />
+          <Navbar
+            routes={routes.dashboard}
+            style={styleDarkPanel}
+          />
         </div>
         <div className='d-flex'>
-          <div className='d-none d-md-flex'>
-            <DashboardSidebar routes={routes.dashboard}/>
+          <div className='d-none d-md-flex px-3'>
+            <DashboardSidebar
+              routes={routes.dashboard}
+              style={styleDarkPanel}
+            />
           </div>
           <div>
             <DashboardRouter routes={routes.dashboard} />
