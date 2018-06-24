@@ -27,10 +27,10 @@ const Home = props => (
             <div className="jumbotron jumbotron-fluid mb-0 bg-secondary">
               <div className="container text-white">
                 <h1 className="display-4">
-                  Introducing <strong>GitHubFolio</strong>
+                  <strong>GitHubFolio</strong>
                 </h1>
                 <p className="lead">
-                  Create a beautiful portolio to showcase your best work with GitHubFolio.
+                  Create a beautiful portolio to showcase your best work.
                 </p>
                 <a href="/dashboard" className='btn btn-light'>
                   Sign in with GitHub
