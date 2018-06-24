@@ -1,9 +1,10 @@
 import DashboardSidebar from './DashboardSidebar/DashboardSidebar';
 import Navbar from './Navbar/Navbar';
+import LoginWithGitHub from './LoginWithGitHub/LoginWithGitHub';
 import Panel from './Panel/Panel';
 import Jumbotron from './Panels/Jumbotron';
-import LoginWithGitHub from './LoginWithGitHub/LoginWithGitHub';
 import Themes from './Panels/Themes';
+import ListInfo from './Panels/ListInfo'
 
 export {
   DashboardSidebar,
@@ -11,5 +12,6 @@ export {
   Panel,
   Jumbotron,
   LoginWithGitHub,
-  Themes
+  Themes,
+  ListInfo
 }

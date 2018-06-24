@@ -4,7 +4,7 @@ import { LoginWithGitHub } from '../'
 const Jumbotron = () => (
   <div className="jumbotron jumbotron-fluid mb-0 bg-transparent">
     <div className="container text-white">
-      <h1 className="display-4">
+      <h1 className="display-4 mb-4">
         GitHubFolio
       </h1>
       <p className="lead">

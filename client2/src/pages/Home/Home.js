@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navbar, Panel, Jumbotron, Themes } from '../../components';
+import { Navbar, Panel, Jumbotron, Themes, ListInfo } from '../../components';
 import routes from '../../router/Routes';
 
 const light = '#fff'
@@ -29,34 +29,10 @@ const Home = props => (
     <Panel style={styleLightPanel}>
       <Themes />
     </Panel>
-  {/* Panel 3 */}
-  <div className='bg-secondary'>
-    <div className="container">
-      <div className="row">
-        <div className="col">
-          <h2 className='text-white'>Everything you need for your online portfolio</h2>
-          <div className="row">
-            <div className="col-12 col-sm-8 offset-sm-2 col-lg-6 offset-lg-3">
-              <ul className='list-group'>
-                <li className='list-group-item'>
-                  Things that GitHub does to your things and so on...etc
-                </li>
-                <li className='list-group-item'>
-                  We have templates and such.... yeeeehaw
-                </li>
-                <li className='list-group-item'>
-                  This is a pencil writing on paper... you know what that means
-                </li>
-                <li className='list-group-item'>
-                  Pencil wrench cross... some kind of teacher mechanic cult
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+    {/* Panel 3 */}
+    <Panel style={styleDarkPanel}>
+      <ListInfo />
+    </Panel>
   {/* Footer */}
   <div className="bg-dark">
       <div className="container">
