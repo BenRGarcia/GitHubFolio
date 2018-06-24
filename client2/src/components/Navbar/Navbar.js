@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
+import { LogoutNavbar } from '../';
 
 const Navbar = ({ routes, style }) => (
   <div
@@ -53,6 +54,7 @@ const Navbar = ({ routes, style }) => (
                 );
               })
             }
+            <LogoutNavbar />
           </ul>
         </div>
       </nav>

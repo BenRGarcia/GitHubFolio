@@ -8,6 +8,7 @@ import ListInfo from './Panels/ListInfo';
 import Footer from './Footer/Footer';
 import LogoSidebar from './DashboardSidebar/LogoSidebar';
 import LogoutSidebar from './DashboardSidebar/LogoutSidebar';
+import LogoutNavbar from './Navbar/LogoutNavbar';
 
 export {
   DashboardSidebar,
@@ -19,5 +20,6 @@ export {
   ListInfo,
   Footer,
   LogoSidebar,
-  LogoutSidebar
+  LogoutSidebar,
+  LogoutNavbar
 }
