@@ -4,7 +4,7 @@ const parseJSON = resp => resp.json();
 
 const updateReduxStore = nextState => {
   console.log(`Sending data to the state in Redux store:\n`, nextState)
-  // Melissa - your call to Redux store can go here
+  // Melissa - your call to Redux store can go here ?
   return;
 }
 
@@ -29,7 +29,6 @@ class GetRepos extends Component {
 
   render() {
     return(
-      <div>
         <button
           className='btn btn-outline-danger btn-large'
           onClick={this.handleClick}
@@ -40,7 +39,6 @@ class GetRepos extends Component {
             : 'Get Pinned Repositories from GitHub'
           }
         </button>
-      </div>
     );
   }
 }
