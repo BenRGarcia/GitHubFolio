@@ -1,42 +1,27 @@
 import React, { Component } from 'react';
-import { connect } from "react-redux";
 import axios from 'axios';
+import isValidImageFile from '../../utils/utils';
 
 export class UploadImage extends Component {
-  state = { file: null, repoId: null, src: null, warning: null }
+  state = {
+    file: null,
+    repoId: null,
+    src: null,
+    warning: null
+  }
 
-  handleUploadImage = e => {
+  handleUploadImage = (repoId, e) => {
     e.preventDefault()
-    return this.isValidFile(this.state.file)
-      ? this.sendPostRequest()
-      // ? this.sendPostRequest(this.state.repoId)
-      : this.resetState()
-  }
-
-  isValidFile = ({ name, type, size }) => {
-    // Regex for proper file/mime types
-    const allowedFileExt = /^jpeg$|^jpg$|^png$|^gif$/gi
-    const allowedMimeTypes = /^image\/jpeg$|^image\/jpg$|^image\/png$|^image\/gif$/gi
-    // Test for correct file/mime types
-    const isCorrectFileExt = allowedFileExt.test(this.getFileExtension(name))
-    const isCorrectMimeType = allowedMimeTypes.test(type)
-    const isCorrectFileSize = size < 250000
-    // Return boolean
-    return isCorrectFileExt && isCorrectMimeType && isCorrectFileSize
-  }
-
-  getFileExtension = (fileName) => {
-    var fileNameArray = fileName.split('.')
-    var fileExtension = fileNameArray[fileNameArray.length - 1]
-    return fileExtension
+    return isValidImageFile(this.state.file)
+    ? this.sendPostRequest()
+    : this.resetState()
   }
 
   sendPostRequest = () => {
     const url = `/api/user/photo/${this.state.repoId}`
-    console.log(`sending post request to: ${url}`)
     const formData = new FormData()
     formData.append('repoImage', this.state.file)
-    const config = { headers: { 'content-type': 'multipart/form-data' } }    
+    const config = { headers: { 'content-type': 'multipart/form-data' } }  
     return axios.post(url, formData, config)
       .then(resp => {
         this.resetState()
@@ -53,7 +38,7 @@ export class UploadImage extends Component {
     // clear previous state
     this.setState({ file: null, repoId: null, src: null, warning: null })
     // Check if file is valid sized image
-    if (this.isValidFile(e.target.files[0])) {
+    if (isValidImageFile(e.target.files[0])) {
       const reader = new FileReader();
       const file = e.target.files[0]
       reader.onloadend = () => {
@@ -73,11 +58,9 @@ export class UploadImage extends Component {
   };
 
   render() {   
-    // console.log('uploadimageProp\n', this.props)
-    // console.log('uploadimageState\n', this.state)
     return (
       <div>
-        <form onSubmit={this.handleUploadImage}>
+        <form onSubmit={e => this.handleUploadImage(this.props.repoId, e)}>
           <div className='input-group mb-3'>
             <div className='custom-file'>
               <input onChange={e => this.handleChooseFile(this.props.repoId, e)} type='file' name='repoImage' className='custom-file-input'/>
@@ -107,12 +90,4 @@ export class UploadImage extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return { userInfo: state.userInfo };
-};
-
-// const mapDispatchToProps = dispatch => {
-//   return bindActionCreators({ editRepos }, dispatch);
-// }
-
-export default connect(mapStateToProps)(UploadImage);
+export default UploadImage;
