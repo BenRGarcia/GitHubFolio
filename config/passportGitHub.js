@@ -11,12 +11,18 @@ const strategyConfig = {
 }
 
 const verifyCb = async (accessToken, refreshToken, profile, cb) => {
+  let email
+  if (profile.emails && profile.emails.length > 0) {
+    email = profile.emails[0].value
+  } else {
+    email = 'user@example.com'
+  }
   // Compose user object from GitHub oAuth `profile` response
   const userProfile = {
     gitHubId: profile.id,
     profileName: profile.displayName,
     profilePageUrl: profile.profileUrl,
-    email: profile.emails[0].value || 'user@example.com',
+    email: email,
     profileImageUrl: profile.photos[0].value,
     bio: profile._json.bio || "World's best coder",
     location: profile._json.location || 'Undisclosed'
