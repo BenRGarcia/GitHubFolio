@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { LogoSidebar, LogoutSidebar } from '../';
 import "./DashboardSidebar.css";
 
@@ -21,7 +21,7 @@ const styleLinks = {
   paddingLeft: '25px',
   height: '50px',
   width: '100%',
-  whiteSpace: 'nowrap'
+  whiteSpace: 'nowrap',
 }
 
 const DashboardSidebar = ({ routes }) => (
@@ -45,7 +45,7 @@ const DashboardSidebar = ({ routes }) => (
                 style={styleLinks}
               >
                 <i
-                  className={icon + ' mx-1, mr-4'}
+                  className={icon + ' mx-1 mr-4'}
                 ></i>
                 {label}
               </NavLink>
@@ -58,8 +58,8 @@ const DashboardSidebar = ({ routes }) => (
   </div>
 );
 
-// DashboardSidebar.propTypes = {
-//   routes: PropTypes.array.isRequired
-// };
+DashboardSidebar.propTypes = {
+  routes: PropTypes.array.isRequired
+};
 
 export default DashboardSidebar
