@@ -21,9 +21,6 @@ const styleLinks = {
   paddingLeft: '25px',
   height: '50px',
   width: '100%',
-}
-
-const textNowrap = {
   whiteSpace: 'nowrap',
 }
 
@@ -45,7 +42,7 @@ const DashboardSidebar = ({ routes }) => (
                 exact to={path}
                 className='nav-link ml-2 sidenavText' 
                 activeClassName='active'
-                style={[ styleLinks, textNowrap ] }
+                style={styleLinks}
               >
                 <i
                   className={icon + ' mx-1, mr-4'}
