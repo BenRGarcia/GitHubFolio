@@ -90,7 +90,7 @@ export class DashboardEditRepos extends Component {
             </input>
             <label>Choose Image</label>
             <UploadImage repoId= {repo._id}/>     
-            <img src={repo.imageUrl} />                   
+            <img src={repo.imageUrl} alt='repo' />                   
         </div>
         
       )
@@ -98,7 +98,7 @@ export class DashboardEditRepos extends Component {
   }
 
   renderChoice(){
-    if(this.state.repositories.length == 0){
+    if(this.state.repositories.length === 0){
       return(
         <GitPinnedReposBtn />
       )

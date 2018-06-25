@@ -53,7 +53,7 @@ export class UploadImageExample extends Component {
    * Fallback parameter used for testing  *
    * -> Delete fallback before production *
    ****************************************/
-  handleChooseFile = (repoId = '5b2589155b206112b59481db', e) => {
+  handleChooseFile = (repoId = '5b30e7bb84bca80630e325dc', e) => {
     // clear previous state
     this.setState({ file: null, repoId: null, src: null, warning: null })
     // Check if file is valid sized image
