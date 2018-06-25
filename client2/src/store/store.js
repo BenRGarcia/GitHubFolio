@@ -74,6 +74,7 @@ const initialState = {
     profileName: "",
     email: "",
     bio: "",
+    location: "",
     chosenTemplate: "",
     repositories: []
   }
