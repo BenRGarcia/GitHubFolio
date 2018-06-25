@@ -40,9 +40,9 @@ class DashboardEditUser extends Component {
     return (
       <div className="row" style={{ minHeight: '100vh' }}>
         <div className="col d-flex justify-content-center align-items-center">
-          {
-            this.renderInputs()
-          }
+          <div className='flex-column'>
+            {this.renderInputs()}
+          </div>
         </div>
       </div>
     );
