@@ -1,4 +1,5 @@
-import { createStore } from "redux";
+import { createStore, compose, applyMiddleware } from "redux";
+import thunk from 'redux-thunk';
 
 /**
  * Helper Functions
@@ -97,6 +98,6 @@ const reducers = (state = initialState, action) => {
   }
 };
 
-const store = createStore(reducers)
+const store = createStore(reducers, compose(applyMiddleware(thunk)))
 
 export default store;
