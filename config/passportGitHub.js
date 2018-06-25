@@ -16,10 +16,10 @@ const verifyCb = async (accessToken, refreshToken, profile, cb) => {
     gitHubId: profile.id,
     profileName: profile.displayName,
     profilePageUrl: profile.profileUrl,
-    email: profile.emails[0].value,
+    email: profile.emails[0].value || 'user@example.com',
     profileImageUrl: profile.photos[0].value,
-    bio: profile._json.bio,
-    location: profile._json.location
+    bio: profile._json.bio || "World's best coder",
+    location: profile._json.location || 'Undisclosed'
   }
   // Find or create user with destructured data
   const user = await User.loginWithGithub(userProfile)
