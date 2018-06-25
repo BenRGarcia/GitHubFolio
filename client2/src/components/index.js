@@ -9,6 +9,7 @@ import Footer from './Footer/Footer';
 import LogoSidebar from './DashboardSidebar/LogoSidebar';
 import LogoutSidebar from './DashboardSidebar/LogoutSidebar';
 import LogoutNavbar from './Navbar/LogoutNavbar';
+import GetRepos from './Dashboard/GetRepos';
 
 export {
   DashboardSidebar,
@@ -21,5 +22,6 @@ export {
   Footer,
   LogoSidebar,
   LogoutSidebar,
-  LogoutNavbar
+  LogoutNavbar,
+  GetRepos
 }

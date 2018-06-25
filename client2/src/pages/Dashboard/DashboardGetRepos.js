@@ -1,23 +1,22 @@
-import React from 'react'
+import React from 'react';
+import { GetRepos } from '../../components'
 
 const DashboardGetRepos = props => (
-  <div>
-    <h1>DashboardGetRepos.js</h1>
-    <p className='h4'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero amet inventore necessitatibus? Distinctio, maiores placeat. Iure, repellat magni similique ipsum, molestias molestiae soluta blanditiis, veniam dolores cupiditate reiciendis modi ab.</p>
-    <p className='h4'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero amet inventore necessitatibus? Distinctio, maiores placeat. Iure, repellat magni similique ipsum, molestias molestiae soluta blanditiis, veniam dolores cupiditate reiciendis modi ab.</p>
-    <p className='h4'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero amet inventore necessitatibus? Distinctio, maiores placeat. Iure, repellat magni similique ipsum, molestias molestiae soluta blanditiis, veniam dolores cupiditate reiciendis modi ab.</p>
-    <p className='h4'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero amet inventore necessitatibus? Distinctio, maiores placeat. Iure, repellat magni similique ipsum, molestias molestiae soluta blanditiis, veniam dolores cupiditate reiciendis modi ab.</p>
-    <p className='h4'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero amet inventore necessitatibus? Distinctio, maiores placeat. Iure, repellat magni similique ipsum, molestias molestiae soluta blanditiis, veniam dolores cupiditate reiciendis modi ab.</p>
-    <p className='h4'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero amet inventore necessitatibus? Distinctio, maiores placeat. Iure, repellat magni similique ipsum, molestias molestiae soluta blanditiis, veniam dolores cupiditate reiciendis modi ab.</p>
-    <p className='h4'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero amet inventore necessitatibus? Distinctio, maiores placeat. Iure, repellat magni similique ipsum, molestias molestiae soluta blanditiis, veniam dolores cupiditate reiciendis modi ab.</p>
-    <p className='h4'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero amet inventore necessitatibus? Distinctio, maiores placeat. Iure, repellat magni similique ipsum, molestias molestiae soluta blanditiis, veniam dolores cupiditate reiciendis modi ab.</p>
-    <p className='h4'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero amet inventore necessitatibus? Distinctio, maiores placeat. Iure, repellat magni similique ipsum, molestias molestiae soluta blanditiis, veniam dolores cupiditate reiciendis modi ab.</p>
-    <p className='h4'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero amet inventore necessitatibus? Distinctio, maiores placeat. Iure, repellat magni similique ipsum, molestias molestiae soluta blanditiis, veniam dolores cupiditate reiciendis modi ab.</p>
-    <p className='h4'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero amet inventore necessitatibus? Distinctio, maiores placeat. Iure, repellat magni similique ipsum, molestias molestiae soluta blanditiis, veniam dolores cupiditate reiciendis modi ab.</p>
-    <p className='h4'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero amet inventore necessitatibus? Distinctio, maiores placeat. Iure, repellat magni similique ipsum, molestias molestiae soluta blanditiis, veniam dolores cupiditate reiciendis modi ab.</p>
-    <p className='h4'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero amet inventore necessitatibus? Distinctio, maiores placeat. Iure, repellat magni similique ipsum, molestias molestiae soluta blanditiis, veniam dolores cupiditate reiciendis modi ab.</p>
-    <p className='h4'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero amet inventore necessitatibus? Distinctio, maiores placeat. Iure, repellat magni similique ipsum, molestias molestiae soluta blanditiis, veniam dolores cupiditate reiciendis modi ab.</p>
-    <p className='h4'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero amet inventore necessitatibus? Distinctio, maiores placeat. Iure, repellat magni similique ipsum, molestias molestiae soluta blanditiis, veniam dolores cupiditate reiciendis modi ab.</p>
+  <div className="row" style={{ minHeight: '100vh' }}>
+    <div className="col d-flex justify-content-center align-items-center">
+      <div className='card'>
+        <div className='card-body'>
+          <div className='card-title'>
+            <GetRepos />
+          </div>
+          <div className='card-text'>
+            <p className='pb-0'>
+              Caution, this operation will overwrite all previously saved repository data.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 )
 
