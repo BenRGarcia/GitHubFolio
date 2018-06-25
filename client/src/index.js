@@ -9,5 +9,4 @@ import store from "./store/store";
 require('./vendor/bootstrap/bootstrap.min.css');
 require('bootstrap');
 
-
 render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
