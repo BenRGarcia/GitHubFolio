@@ -1,11 +1,11 @@
 import React from "react";
 import "./DashboardSidebar.css";
-import { NavLink, Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 export const DashboardSidebar = props => (
   <div className="sidenav">
     <div>
-      <img className='githubfoliologo'src='/images/githubfolio-gradient.png'/>
+      <img className='githubfoliologo'src='/images/githubfolio-gradient.png' alt='thumbnail logo'/>
       
       <ul className="ulNone">
         <li>
