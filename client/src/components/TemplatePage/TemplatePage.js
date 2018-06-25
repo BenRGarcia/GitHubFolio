@@ -75,9 +75,9 @@ handleClickStylized = () => {
             <div id="template">            
                 {this.state.chosenTemplate==="stylized"
                   ? 
-                  <img src={ require('./stylized-temp.png') } />
+                  <img src={ require('./stylized-temp.png') } alt='profile' />
                   : 
-                  <img src={ require('./minimalist-temp.png') } />
+                  <img src={ require('./minimalist-temp.png') } alt='profile' />
               }
             </div>
         </div>

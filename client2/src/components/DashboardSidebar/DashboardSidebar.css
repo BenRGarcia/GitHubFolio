@@ -1,0 +1,22 @@
+.sidenavText {
+    font-family: 'Roboto', sans-serif;
+    color: #979799;
+    letter-spacing: -0.04px;
+    display: block;
+    text-align: left;
+    padding-top: 15px;
+    padding-left: 25px;
+    height: 50px;
+    width: 100%;
+}
+
+.sidenavText:hover {
+    color: white !important;
+}
+
+.active {
+    height: 50px;
+    width: 100%;
+    background: #1E263D;
+    color: white;
+}
