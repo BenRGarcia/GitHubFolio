@@ -26,12 +26,14 @@ app.use(passport.initialize())
 app.use(passport.session())
 // Static assets - React Build
 app.use(express.static(path.join(__dirname, 'build')))
+// app.use(express.static(path.join(__dirname, './client2/build')))
 // API Server routes
 app.use(routes)
 
 // Handle redirects
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, './build/index.html'))
+  // res.sendFile(path.join(__dirname, './client2/build/index.html'))
 })
 
 // error handler

@@ -45,7 +45,7 @@ const DashboardSidebar = ({ routes }) => (
                 style={styleLinks}
               >
                 <i
-                  className={icon + ' mx-1, mr-4'}
+                  className={icon + ' mx-1 mr-4'}
                 ></i>
                 {label}
               </NavLink>
