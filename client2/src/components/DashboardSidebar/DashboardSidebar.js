@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { LogoSidebar, LogoutSidebar } from '../';
+import "./DashboardSidebar.css";
 
 const styleSidebar = {
   backgroundColor: '#28314B',
@@ -41,9 +42,9 @@ const DashboardSidebar = ({ routes }) => (
               key={label}
             >
               <NavLink
-                to={path}
-                className='nav-link ml-2'
-                activeClassName={ active }
+                exact to={path}
+                className='nav-link ml-2 sidenavText' 
+                activeClassName='active'
                 style={ styleLinks }
               >
                 <i
