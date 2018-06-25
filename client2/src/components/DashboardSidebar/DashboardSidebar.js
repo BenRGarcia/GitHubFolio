@@ -23,12 +23,12 @@ const styleLinks = {
   width: '100%',
 }
 
-const active = {
-  backgroundColor: '#1E263D'
+const textNowrap = {
+  whiteSpace: 'nowrap',
 }
 
 const DashboardSidebar = ({ routes }) => (
-  <div className='col-lg-3 col-xl-2 px-0' style={styleSidebar}>
+  <div className='col-md-3 col-lg-3 col-xl-2 px-0' style={styleSidebar}>
     <LogoSidebar />
     <ul className="nav flex-column">
       {
@@ -45,7 +45,7 @@ const DashboardSidebar = ({ routes }) => (
                 exact to={path}
                 className='nav-link ml-2 sidenavText' 
                 activeClassName='active'
-                style={ styleLinks }
+                style={[ styleLinks, textNowrap ] }
               >
                 <i
                   className={icon + ' mx-1, mr-4'}
