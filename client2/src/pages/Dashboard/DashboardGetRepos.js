@@ -2,7 +2,7 @@ import React from 'react';
 import { GetRepos } from '../../components'
 
 const DashboardGetRepos = props => (
-  <div className="row" style={{ minHeight: '100vh' }}>
+  <div className="row" style={{ minHeight: '90vh' }}>
     <div className="col d-flex justify-content-center align-items-center">
       <div className='card'>
         <div className='card-body'>
