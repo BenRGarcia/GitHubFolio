@@ -16,7 +16,6 @@ import { DashboardEditUser } from './DashboardEditUser/DashboardEditUser.js';
 import { DashboardEditRepos } from './DashboardEditRepos/DashboardEditRepos.js';
 import { NotFound } from './NotFound/NotFound.js';
 import { DashboardSidebar } from './DashboardSidebar/DashboardSidebar';
-import { TemplateToggleBtns } from './TemplateToggleBtns/TemplateToggleBtns'
 
 
 export {
@@ -37,8 +36,7 @@ export {
   DashboardEditUser,
   DashboardEditRepos,
   NotFound,
-  DashboardSidebar,
-  TemplateToggleBtns
+  DashboardSidebar
 }
 
 
