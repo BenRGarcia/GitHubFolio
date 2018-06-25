@@ -14,7 +14,7 @@ const Logout = () => (
   <li className="nav-item my-2">
     <a
       href="/api/auth/logout"
-      className='nav-link ml-2'
+      className='nav-link ml-2 sidenavText'
       style={ logoutLinks }
     >
       <i
