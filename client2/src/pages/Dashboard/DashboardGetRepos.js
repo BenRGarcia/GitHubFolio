@@ -1,7 +1,7 @@
 import React from 'react';
 import { GetRepos } from '../../components'
 
-const DashboardGetRepos = props => (
+const DashboardGetRepos = () => (
   <div className="row" style={{ minHeight: '90vh' }}>
     <div className="col d-flex justify-content-center align-items-center">
       <div className='card'>
@@ -18,6 +18,6 @@ const DashboardGetRepos = props => (
       </div>
     </div>
   </div>
-)
+);
 
-export default DashboardGetRepos
+export default DashboardGetRepos;
