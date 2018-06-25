@@ -10,6 +10,7 @@ import LogoSidebar from './DashboardSidebar/LogoSidebar';
 import LogoutSidebar from './DashboardSidebar/LogoutSidebar';
 import LogoutNavbar from './Navbar/LogoutNavbar';
 import GetRepos from './Dashboard/GetRepos';
+import DownloadSourceCode from './Dashboard/DownloadSourceCode';
 
 export {
   DashboardSidebar,
@@ -23,5 +24,6 @@ export {
   LogoSidebar,
   LogoutSidebar,
   LogoutNavbar,
-  GetRepos
+  GetRepos,
+  DownloadSourceCode
 }
