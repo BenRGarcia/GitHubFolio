@@ -11,7 +11,7 @@ const DashboardGetRepos = () => (
           </div>
           <div className='card-text'>
             <p className='pb-0'>
-              Caution, this operation will overwrite all previously saved repository data.
+              Caution, this will overwrite all previously saved repository data.
             </p>
           </div>
         </div>
