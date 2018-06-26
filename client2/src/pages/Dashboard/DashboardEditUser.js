@@ -22,9 +22,6 @@ class DashboardEditUser extends Component {
   prevStateIsNextState = () => {
     const prevState = JSON.stringify(this.prevState);
     const nextState = JSON.stringify(this.state);
-    console.log(`Does prevState equal nextState?`, prevState === nextState)
-    // console.log(`prevState:\n`, prevState)
-    // console.log(`nextState:\n`, nextState)
     return prevState === nextState;
   };
 
@@ -33,7 +30,6 @@ class DashboardEditUser extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log(`received nextProps`)
     const { email, location, profileName, bio } = nextProps.userInfo
     const nextState = { profileName, email, bio, location };
     this.prevState = nextState
