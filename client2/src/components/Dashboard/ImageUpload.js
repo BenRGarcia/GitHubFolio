@@ -1,15 +1,19 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import isValidImageFile from '../../utils/imageChecker';
+import { isValidImageFile } from '../../utils/imageChecker';
 
 class ImageUpload extends Component {
   state = {
-    file: null
+    file: 'null'
   };
 
   handleUpload = _id => {
     console.log(`User clicked 'upload new image' for _id: ${_id}`)
-
+    if (!!this.state.file) {
+      console.log(`is the image valid?`, isValidImageFile(this.state.file))
+    } else {
+      console.log(`but 'this.state.file' was falsy`)
+    }
   };
 
   render() {

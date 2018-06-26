@@ -5,13 +5,18 @@ const getFileExtension = (fileName) => {
 }
 
 export const isValidImageFile = ({ name, type, size }) => {
-  // Regex for proper file/mime types
-  const allowedFileExt = /^jpeg$|^jpg$|^png$|^gif$/gi
-  const allowedMimeTypes = /^image\/jpeg$|^image\/jpg$|^image\/png$|^image\/gif$/gi
-  // Test for correct file/mime types
-  const isCorrectFileExt = allowedFileExt.test(getFileExtension(name))
-  const isCorrectMimeType = allowedMimeTypes.test(type)
-  const isCorrectFileSize = size < 250000
-  // Return boolean
-  return isCorrectFileExt && isCorrectMimeType && isCorrectFileSize
+  try {
+    // Regex for proper file/mime types
+    const allowedFileExt = /^jpeg$|^jpg$|^png$|^gif$/gi
+    const allowedMimeTypes = /^image\/jpeg$|^image\/jpg$|^image\/png$|^image\/gif$/gi
+    // Test for correct file/mime types
+    const isCorrectFileExt = allowedFileExt.test(getFileExtension(name))
+    const isCorrectMimeType = allowedMimeTypes.test(type)
+    const isCorrectFileSize = size < 250000
+    // Return boolean
+    return isCorrectFileExt && isCorrectMimeType && isCorrectFileSize
+  } catch (err) {
+    console.error(`entered catch block:\n`, err)
+    return false;
+  }
 };
