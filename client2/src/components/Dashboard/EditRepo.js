@@ -81,11 +81,7 @@ const EditRepo = ({ handleChange, repositories }) => {
             <div>
               <button type='submit' className='btn btn-outline-dark'>
                 Save Changes
-            </button>
-            </div>
-            <hr />
-            <div>
-              image upload here
+              </button>
             </div>
           </div>
         </div>
