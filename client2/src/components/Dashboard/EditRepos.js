@@ -16,7 +16,17 @@ class EditRepos extends Component {
 
   handleChange = (e, _id) => {
     const { name, value } = e.target
-    console.log(`change:\nname: ${name}\nvalue: ${value}\n_id: ${_id}`)
+    const nextRepos = this.state.repositories.map(repo => {
+      if (_id === repo._id) {
+        repo[name] = value;
+        return repo;
+      } else {
+        return repo
+      }
+    });
+    this.setState({
+      repositories: nextRepos
+    })
   };
 
   componentDidMount() {
