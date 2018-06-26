@@ -2,10 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types';
 
 const UserInput = ({ handleChange, value, name, label, _id }) => (
-  <React.Fragment>
+  <div className='text-left'>
     <label
       htmlFor={name}
-      className='mb-0'
+      className='mb-0 pl-1'
     >
       {label}
     </label>
@@ -14,10 +14,11 @@ const UserInput = ({ handleChange, value, name, label, _id }) => (
       ?
       <textarea
         type="text"
+        rows='3'
         onChange={handleChange}
         name={name}
         value={value || ''}
-        className='form-control'
+        className='form-control mb-3'
       />
       :
       <input
@@ -25,11 +26,11 @@ const UserInput = ({ handleChange, value, name, label, _id }) => (
         onChange={handleChange}
         name={name}
         value={value || ''}
-        className='form-control'
+        className='form-control mb-3'
         _id={_id || ''}
       />
     }
-  </React.Fragment>
+  </div>
 );
 
 UserInput.propTypes = {

@@ -12,25 +12,40 @@ class DashboardEditUser extends Component {
     location: ""
   }
 
+  prevState = {
+    profileName: "",
+    email: "",
+    bio: "",
+    location: ""
+  };
+
+  prevStateIsNextState = () => {
+    const prevState = JSON.stringify(this.prevState);
+    const nextState = JSON.stringify(this.state);
+    console.log(`Does prevState equal nextState?`, prevState === nextState)
+    // console.log(`prevState:\n`, prevState)
+    // console.log(`nextState:\n`, nextState)
+    return prevState === nextState;
+  };
+
   componentDidMount() {
     this.props.fetchUserInfo()
   }
 
   componentWillReceiveProps(nextProps) {
+    console.log(`received nextProps`)
     const { email, location, profileName, bio } = nextProps.userInfo
-    this.setState({
-      profileName,
-      email,
-      bio,
-      location
-    })
+    const nextState = { profileName, email, bio, location };
+    this.prevState = nextState
+    this.setState(nextState)
   }
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props.editUserInfo(this.state)
-      .then(resp => console.log(resp))
-      .catch(err => console.error(err))
+    if (!this.prevStateIsNextState()) {
+      this.props.editUserInfo(this.state)
+        .catch(err => console.error(err))
+    }
   };
 
   handleChange = e => {
@@ -60,18 +75,26 @@ class DashboardEditUser extends Component {
     return (
       <div className="row" style={{ minHeight: '100vh' }}>
         <div className="col d-flex justify-content-center align-items-center">
-          <form
-            className='flex-column'
-            onSubmit={this.handleSubmit}
-          >
-            {this.renderInputs()}
-            <button
-              type='submit'
-              className='mt-3 btn btn-dark'
+          <div className="flex-fill px-5">
+            <form
+              onSubmit={this.handleSubmit}
             >
-              Submit
+              {this.renderInputs()}
+              <button
+                type='submit'
+                className={'mt-3 btn btn-outline-dark'}
+                disabled={this.prevStateIsNextState()}
+              >
+                {
+                  this.prevStateIsNextState()
+                  ?
+                  'Saved!'
+                  :
+                  'Save'
+                }
             </button>
-          </form>
+            </form>
+          </div>
         </div>
       </div>
     );
