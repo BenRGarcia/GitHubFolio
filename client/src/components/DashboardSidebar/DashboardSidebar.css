@@ -57,7 +57,7 @@
     height: 50px;
     width: 100%;
     background: #1E263D;
-    color: white;
+    color: white !important;
   }
 
   
