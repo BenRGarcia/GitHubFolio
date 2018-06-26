@@ -4,7 +4,7 @@ import { UserInput } from '../';
 
 const EditRepos = ({ repositories, handleChange }) => (
   <React.Fragment>
-    {
+    {/* {
       repositories.map(repo => {
         return (
             <div key={repo._id}>
@@ -26,7 +26,7 @@ const EditRepos = ({ repositories, handleChange }) => (
             </div>
         );
       })
-    }
+    } */}
   </React.Fragment>
 );
 
