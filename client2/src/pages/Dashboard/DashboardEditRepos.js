@@ -33,16 +33,13 @@ class DashboardEditRepos extends Component {
       <div className="row mt-3">
         <div className="col">
           <form onSubmit={this.handleSubmit}>
-            <div className="accordion">
+            <div className="accordion" id='accordionExample'>
               <EditRepos
                 repositories={this.state.repositories}
                 handleChange={this.handleChange}
                 handleSubmit={this.handleSubmit}
               />
             </div>
-            <button type='submit' className='mb-3 btn btn-outline-dark'>
-              Save Changes
-            </button>
           </form>
         </div>
       </div>
