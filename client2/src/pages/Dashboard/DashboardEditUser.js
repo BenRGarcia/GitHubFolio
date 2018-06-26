@@ -16,20 +16,14 @@ class DashboardEditUser extends Component {
     this.props.fetchUserInfo()
   }
 
-  // initialized = false;
-
   componentWillReceiveProps(nextProps) {
-    console.log(`componentWillReceiveProps was called`)
-    // if (!this.initialized) {
-      this.initialized = true;
-      const { email, location, profileName, bio } = nextProps.userInfo
-      this.setState({
-        profileName,
-        email,
-        bio,
-        location
-      })
-    // }
+    const { email, location, profileName, bio } = nextProps.userInfo
+    this.setState({
+      profileName,
+      email,
+      bio,
+      location
+    })
   }
 
   handleSubmit = e => {
