@@ -1,100 +1,62 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { EditRepo } from '../';
+import React, { Component } from 'react';
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { fetchRepos, editRepos } from '../../store/store';
+import { EditRepo, GetRepos } from '../';
 
-const EditRepos = ({ repositories, handleChange, handleSubmit }) => {
-  let counter = 0
-  return repositories.map(repo => {
-    const { _id, name, /* imageUrl, */ description, deployedUrl } = repo;
+class EditRepos extends Component {
+  state = {
+    repositories: []
+  };
+
+  handleSubmit = e => {
+    e.preventDefault()
+    console.log(`user hit submit button`)
+  }
+
+  handleChange = (e, _id) => {
+    const { name, value } = e.target
+    console.log(`change:\nname: ${name}\nvalue: ${value}\n_id: ${_id}`)
+  };
+
+  componentDidMount() {
+    this.props.fetchRepos()
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { repositories } = nextProps.userInfo
+    this.setState({ repositories })
+  }
+
+  render() {
     return (
-      <fieldset key={_id} className='card'>
-        <div className="card-header" id="headingOne">
-          <button
-            className="btn btn-link"
-            type="submit"
-            data-toggle="collapse"
-            data-target={`#collapse${_id}`}
-            aria-expanded="true"
-            aria-controls="collapseOne"
-          >
-            Pinned Repository #{++counter}
-          </button>
-        </div>
-        <div
-          id={`collapse${_id}`}
-          className={counter === 1 ? "collapse show" : "collapse"}
-          aria-labelledby="headingOne"
-          data-parent="#accordionExample"
-        >
-          <div className="card-body py-2">
-            {/* Repo name template */}
-            <div className="form-group mb-3 row">
-              <label
-                className='col-sm-3 col-form-label text-left pb-1 pt-0'
-              >
-                Repository Name:
-          </label>
-              <div className='col-sm-9'>
-                <input
-                  name='name'
-                  type="text"
-                  value={name || ''}
-                  onChange={e => handleChange(e, _id)}
-                  className='form-control'
+      <div>
+        {
+          this.state.repositories.length > 0
+          ?
+            <form onSubmit={this.handleSubmit}>
+              <div className="accordion" id='accordionExample'>
+                <EditRepo
+                  handleChange={this.handleChange}
+                  repositories={this.state.repositories}
                 />
               </div>
-            </div>
-            {/* Deployed Website template */}
-            <div className="form-group mb-3 row">
-              <label
-                className='col-sm-3 col-form-label text-left pb-1 pt-0'
-              >
-                Deployed Site:
-            </label>
-              <div className='col-sm-9'>
-                <input
-                  name='deployedUrl'
-                  type="text"
-                  value={deployedUrl || ''}
-                  onChange={e => handleChange(e, _id)}
-                  className='form-control'
-                />
-              </div>
-            </div>
-            {/* Description template */}
-            <div className="form-group mb-3 row">
-              <label
-                className='col-sm-3 col-form-label text-left pb-1 pt-0'
-              >
-                Description:
-            </label>
-              <div className='col-sm-9'>
-                <textarea
-                  name='description'
-                  type="text"
-                  value={description || ''}
-                  onChange={e => handleChange(e, _id)}
-                  className='form-control'
-                  rows='2'
-                />
-              </div>
-            </div>
-            <div>
-              <button type='submit' className='btn btn-outline-dark'>
-                Save Changes
-            </button>
-            </div>
-          </div>
-        </div>
-      </fieldset>
+            </form>
+          :
+          <GetRepos />
+        }
+      </div>
     );
-  })
+  }
+
+}
+
+const mapStateToProps = state => {
+  return { userInfo: state.userInfo };
 };
 
-EditRepos.propTypes = {
-  repositories: PropTypes.array.isRequired,
-  handleSubmit: PropTypes.func.isRequired,
-  handleChange: PropTypes.func.isRequired
-};
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators({ fetchRepos, editRepos }, dispatch);
+}
 
-export default EditRepos;
+export default connect(mapStateToProps, mapDispatchToProps)(EditRepos);

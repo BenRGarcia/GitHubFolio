@@ -18,7 +18,6 @@ const styleLinks = {
   fontSize: '18px',
   color: '#979799',
   paddingTop: '15px',
-  paddingLeft: '25px',
   height: '50px',
   width: '100%',
   whiteSpace: 'nowrap',
@@ -40,12 +39,12 @@ const DashboardSidebar = ({ routes }) => (
             >
               <NavLink
                 exact to={path}
-                className='nav-link ml-2 sidenavText' 
+                className='nav-link sidenavText'
                 activeClassName='active'
                 style={styleLinks}
               >
                 <i
-                  className={icon + ' mx-1 mr-4'}
+                  className={icon + ' mx-1 mr-3'}
                 ></i>
                 {label}
               </NavLink>
