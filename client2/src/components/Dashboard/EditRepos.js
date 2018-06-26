@@ -21,19 +21,19 @@ const EditRepos = ({ repositories, handleChange, handleSubmit }) => {
         </div>
         <div
           id={`collapse${_id}`}
-          class="collapse"
+          class={counter === 1 ? "collapse show" : "collapse"}
           aria-labelledby="headingOne"
           data-parent="#accordionExample"
         >
           <div className="card-body py-2">
             {/* Repo name template */}
-            <div className="form-group mb-2 row">
+            <div className="form-group mb-3 row">
               <label
-                className='col-sm-2 col-form-label text-left pb-1 pt-0'
+                className='col-sm-3 col-form-label text-left pb-1 pt-0'
               >
                 Repository Name:
           </label>
-              <div className='col-sm-10'>
+              <div className='col-sm-9'>
                 <input
                   name='name'
                   type="text"
@@ -44,13 +44,13 @@ const EditRepos = ({ repositories, handleChange, handleSubmit }) => {
               </div>
             </div>
             {/* Deployed Website template */}
-            <div className="form-group mb-2 row">
+            <div className="form-group mb-3 row">
               <label
-                className='col-sm-2 col-form-label text-left pb-1 pt-0'
+                className='col-sm-3 col-form-label text-left pb-1 pt-0'
               >
                 Deployed Site:
             </label>
-              <div className='col-sm-10'>
+              <div className='col-sm-9'>
                 <input
                   name='deployedUrl'
                   type="text"
@@ -61,13 +61,13 @@ const EditRepos = ({ repositories, handleChange, handleSubmit }) => {
               </div>
             </div>
             {/* Description template */}
-            <div className="form-group mb-2 row">
+            <div className="form-group mb-3 row">
               <label
-                className='col-sm-2 col-form-label text-left pb-1 pt-0'
+                className='col-sm-3 col-form-label text-left pb-1 pt-0'
               >
                 Description:
             </label>
-              <div className='col-sm-10'>
+              <div className='col-sm-9'>
                 <textarea
                   name='description'
                   type="text"

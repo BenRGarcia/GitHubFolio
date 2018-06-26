@@ -30,17 +30,19 @@ class DashboardEditRepos extends Component {
 
   render() {
     return (
-      <div className="row mt-3">
-        <div className="col">
-          <form onSubmit={this.handleSubmit}>
-            <div className="accordion" id='accordionExample'>
-              <EditRepos
-                repositories={this.state.repositories}
-                handleChange={this.handleChange}
-                handleSubmit={this.handleSubmit}
-              />
-            </div>
-          </form>
+      <div className="row" style={{ minHeight: '100vh' }}>
+        <div className="col d-flex justify-content-center align-items-center">
+          <div className="flex-fill">
+            <form onSubmit={this.handleSubmit}>
+              <div className="accordion" id='accordionExample'>
+                <EditRepos
+                  repositories={this.state.repositories}
+                  handleChange={this.handleChange}
+                  handleSubmit={this.handleSubmit}
+                />
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     );
