@@ -17,8 +17,7 @@ class GetRepos extends Component {
 
   componentWillReceiveProps(nextProps) {
     const { repositories } = nextProps.userInfo
-    if (repositories.length > 0) {
-      console.log(`repos array length = ${repositories.length}`)
+    if (repositories && repositories.length > 0) {
       this.setState({ fetchSuccess: true })
     }
   }
