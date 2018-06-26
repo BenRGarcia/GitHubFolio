@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchRepos } from '../../store/store';
 import { bindActionCreators } from 'redux';
+import { fetchUserInfo } from '../../store/store';
 
 class GetRepos extends Component {
   state = {
@@ -9,11 +10,18 @@ class GetRepos extends Component {
   };
 
   handleClick = () => {
-    this.props.fetchRepos()
-    this.setState({
-      fetchSuccess: true
-    });
+    if (this.state.fetchSuccess === false) {
+      this.props.fetchRepos()
+    }
   };
+
+  componentWillReceiveProps(nextProps) {
+    const { repositories } = nextProps.userInfo
+    if (repositories.length > 0) {
+      console.log(`repos array length = ${repositories.length}`)
+      this.setState({ fetchSuccess: true })
+    }
+  }
 
   render() {
     return(
@@ -36,7 +44,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => {
-  return bindActionCreators({ fetchRepos }, dispatch)
+  return bindActionCreators({ fetchRepos, fetchUserInfo }, dispatch)
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(GetRepos);
