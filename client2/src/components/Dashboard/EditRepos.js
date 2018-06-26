@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { UserInput } from '../';
+// import { UserInput } from '../';
 
 const EditRepos = ({ repositories, handleChange }) => (
   <React.Fragment>
