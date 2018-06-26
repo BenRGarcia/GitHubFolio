@@ -1,29 +1,44 @@
 # GitHubFolio
 
-```sh
-# To run the full stack application in development
-$ npm run dev
+> Showcase your pinned repositories in a beautifully crafted portfolio. 
 
-# To run only the backend api server and mongo database in development
-$ npm run dev-server
-```
+## Project Description
 
-Sample `.env`
+Users login using their GitHub accounts and fetch their pinned repositories. After choosing a template, a well-designed portofolio page will be complied of the user's information according to GitHub. 
 
-```sh
-GITHUB_CLIENT_ID=...
-GITHUB_CLIENT_SECRET=...
-GITHUB_CALLBACK_URL=...
-EXPRESS_SESSION_SECRET=...
-AWS_S3_BUCKET=...
-AWS_ACCESS_KEY_ID=...
-AWS_SECRET_ACCESS_KEY=...
-```
+Users can edit their information and download the source code for their convenience. A unique url is created for the user to be able to use as a public view page.
 
-## Heroku Deploy Checklist
+## Tools
 
-* add `.env` variables
-* provision redis, mongolab
-* update homepage and callback url on GitHub developer settings
-* remove `/build` from `.gitignore` file
-* then, add/commit and deploy
+* Node, Express, MongoDB stack -- Deployed to Heroku
+* React and Redux
+* Authentication with Passport, local strategy
+* Session management with express-session, Redis
+* Password salt/hash with bcryptjs
+* Additional attack vector reduction with helmet, csurf, express-limiter
+* Code style enforced with ESLint
+
+## Screenshots
+
+### Landing Page
+
+![]()
+
+### Login
+
+![]()
+
+### Dashboard and subpages
+
+![]()
+![]()
+![]()
+![]()
+
+### Preview Page with source download button
+
+![]()
+
+### Public View Page
+
+![]()
