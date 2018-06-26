@@ -31,7 +31,7 @@ module.exports = createReactClass({
                     style={{ width: '230px' }}
                   />
                 </div>
-                <p className='mb-0'><strong></strong> {repo.name}</p>
+                <p className='mb-0'>{repo.name}</p>
               </div>
             </div>
           ))
