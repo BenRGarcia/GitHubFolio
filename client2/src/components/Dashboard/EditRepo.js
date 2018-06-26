@@ -10,7 +10,7 @@ const EditRepo = ({ handleChange, repositories, isDisabled }) => {
         <div className="card-header" id="headingOne">
           <button
             className="btn btn-link"
-            type="submit"
+            type="button"
             data-toggle="collapse"
             data-target={`#collapse${_id}`}
             aria-expanded="true"
