@@ -37,7 +37,7 @@ class DashboardEditRepos extends Component {
               repositories={this.state.repositories}
               handleChange={this.handleChange}
             />
-            <button type='submit' className='mt-3 btn btn-outline-dark'>
+            <button type='submit' className='mb-3 btn btn-outline-dark'>
               Save Changes
             </button>
           </form>
