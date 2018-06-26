@@ -24,7 +24,7 @@ class ImageUpload extends Component {
                 alt="Repo thumbnail"
               />
               <button
-                onClick={this.handleUpload(this.props._id)}
+                onClick={() => this.handleUpload(this.props._id)}
                 type='button'
                 className='btn btn-outline-dark mb-1'
               >
