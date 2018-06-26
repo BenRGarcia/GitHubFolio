@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { fetchRepos, editRepos } from '../../store/store';
+import { editRepos, fetchUserInfo } from '../../store/store';
 import { EditRepo, GetRepos } from '../';
 
 class EditRepos extends Component {
@@ -20,19 +20,21 @@ class EditRepos extends Component {
   };
 
   componentDidMount() {
-    this.props.fetchRepos()
+    this.props.fetchUserInfo()
   }
 
   componentWillReceiveProps(nextProps) {
     const { repositories } = nextProps.userInfo
-    this.setState({ repositories })
+    if (repositories) {
+      this.setState({ repositories })
+    }
   }
 
   render() {
     return (
       <div>
         {
-          this.state.repositories.length > 0
+          this.state.repositories && this.state.repositories.length > 0
           ?
             <form onSubmit={this.handleSubmit}>
               <div className="accordion" id='accordionExample'>
@@ -56,7 +58,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => {
-  return bindActionCreators({ fetchRepos, editRepos }, dispatch);
+  return bindActionCreators({ editRepos, fetchUserInfo }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditRepos);
