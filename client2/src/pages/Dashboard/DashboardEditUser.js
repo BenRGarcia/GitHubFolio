@@ -88,7 +88,7 @@ class DashboardEditUser extends Component {
                   ?
                   'Saved!'
                   :
-                  'Save'
+                  'Save Changes'
                 }
             </button>
             </form>

@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import isValidImageFile from '../../utils/imageChecker';
 
 class ImageUpload extends Component {
+  state = {
+    file: null
+  };
+
   handleUpload = _id => {
     console.log(`User clicked 'upload new image' for _id: ${_id}`)
+
   };
 
   render() {
@@ -32,12 +38,11 @@ class ImageUpload extends Component {
               </button>
             </div>
           </div>
-          <div
-            className="alert alert-danger"
-            role="alert"
-          >
-            Oops! Only .jpg .jpeg .png and .gif files smaller than 250kb allowed!
-          </div>
+          {/* <div className="custom-file">
+            <input type="file" className="custom-file-input" id="validatedCustomFile" required />
+            <label className="custom-file-label" htmlFor="validatedCustomFile">Upload new image</label>
+            <div className="invalid-feedback">Only .jpg .jpeg .png and .gif files smaller than 250kb allowed!</div>
+          </div> */}
         </div>
       </div>
     );

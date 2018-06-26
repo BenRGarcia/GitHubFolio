@@ -87,7 +87,13 @@ const EditRepo = ({ handleChange, repositories, isDisabled }) => {
               </div>
             </div>
             <button type='submit' className='btn btn-outline-dark' disabled={isDisabled}>
-              Save Changes
+              {
+                isDisabled
+                ?
+                'Saved!'
+                :
+                'Save Changes'
+              }
             </button>
           </div>
         </div>
