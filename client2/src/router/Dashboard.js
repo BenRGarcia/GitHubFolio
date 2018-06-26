@@ -19,6 +19,7 @@ const DashboardRouter = ({ routes }) => (
         )
       })
     }
+    <Route exact path='/api/auth/logout' render={() => <Redirect to='/' />} />
     <Route render={() => <Redirect to='/404' />} />
   </Switch>
 );

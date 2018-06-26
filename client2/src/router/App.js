@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { 
   BrowserRouter as Router,
   Route,
+  Redirect,
   Switch
 } from 'react-router-dom';
 
@@ -24,6 +25,7 @@ const AppRouter = ({ routes }) => (
           );
         })
       }
+      <Route exact path='/api/auth/logout' render={() => <Redirect to='/' />} />
     </Switch>
   </Router>
 );
