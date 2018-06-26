@@ -1,7 +1,5 @@
 // import React, { Component } from "react";
 // import "./TemplateBtns.css";
-// import "../TemplateToggleBtns/TemplateToggleBtns.css"
-// // import  { TemplateToggleBtns } from "../../components/TemplateToggleBtns/TemplateToggleBtns.js";
 // import { connect } from "react-redux";
 // import { editUserInfo } from '../../actions/index';
 // import { bindActionCreators } from "redux";
