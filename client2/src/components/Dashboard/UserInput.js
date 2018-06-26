@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const UserInput = ({ handleChange, value, name, label }) => {
   return (
-    <div>
+    <React.Fragment>
       <label
         htmlFor={name}
         className='mb-0'
@@ -14,18 +14,18 @@ const UserInput = ({ handleChange, value, name, label }) => {
         type="text"
         onChange={handleChange}
         name={name}
-        value={value}
+        value={value || ''}
         className='form-control'
       />
-    </div>
+    </React.Fragment>
   );
 }
 
 UserInput.propTypes = {
-  handleChange: PropTypes.func.isRequired,
-  value: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired
+  handleChange: PropTypes.func,
+  value: PropTypes.string,
+  name: PropTypes.string,
+  label: PropTypes.string
 };
 
 export default UserInput;
