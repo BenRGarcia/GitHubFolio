@@ -4,7 +4,7 @@ import { isValidImageFile } from '../../utils/imageChecker';
 
 class ImageUpload extends Component {
   state = {
-    file: 'null'
+    file: null
   };
 
   handleUpload = _id => {
@@ -42,11 +42,11 @@ class ImageUpload extends Component {
               </button>
             </div>
           </div>
-          {/* <div className="custom-file">
+          <div className="custom-file">
             <input type="file" className="custom-file-input" id="validatedCustomFile" required />
             <label className="custom-file-label" htmlFor="validatedCustomFile">Upload new image</label>
             <div className="invalid-feedback">Only .jpg .jpeg .png and .gif files smaller than 250kb allowed!</div>
-          </div> */}
+          </div>
         </div>
       </div>
     );
