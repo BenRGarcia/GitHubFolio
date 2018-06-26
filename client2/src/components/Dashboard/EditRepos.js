@@ -9,7 +9,7 @@ const EditRepos = ({ repositories, handleChange, handleSubmit }) => {
       <fieldset key={_id} className='card'>
         <div className="card-header" id="headingOne">
           <button
-            class="btn btn-link"
+            className="btn btn-link"
             type="button"
             data-toggle="collapse"
             data-target={`#collapse${_id}`}
@@ -21,7 +21,7 @@ const EditRepos = ({ repositories, handleChange, handleSubmit }) => {
         </div>
         <div
           id={`collapse${_id}`}
-          class={counter === 1 ? "collapse show" : "collapse"}
+          className={counter === 1 ? "collapse show" : "collapse"}
           aria-labelledby="headingOne"
           data-parent="#accordionExample"
         >
