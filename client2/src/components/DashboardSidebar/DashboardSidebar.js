@@ -20,6 +20,7 @@ const styleLinks = {
   height: '50px',
   width: '100%',
   whiteSpace: 'nowrap',
+  color: '#979799',
 }
 
 const leftBorder = {
