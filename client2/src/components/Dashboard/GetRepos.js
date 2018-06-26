@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
-
-const parseJSON = resp => resp.json();
-
-const updateReduxStore = nextState => {
-  console.log(`Sending data to the state in Redux store:\n`, nextState)
-  // Melissa - your call to Redux store can go here ?
-  return;
-}
+import { connect } from 'react-redux';
+import { fetchRepos } from '../../store/store';
+import { bindActionCreators } from 'redux';
+import { fetchUserInfo } from '../../store/store';
 
 class GetRepos extends Component {
   state = {
@@ -14,18 +10,18 @@ class GetRepos extends Component {
   };
 
   handleClick = () => {
-    if (!this.state.fetchSuccess) {
-      const url = '/api/user/pinnedrepos'
-      fetch(url, {
-        method: 'POST',
-        credentials: 'include'
-      })
-        .then(parseJSON)
-        .then(updateReduxStore)
-        .then(() => this.setState({ fetchSuccess: true }))
-        .catch(() => this.setState({ fetchSuccess: false }))
+    if (this.state.fetchSuccess === false) {
+      this.props.fetchRepos()
     }
   };
+
+  componentWillReceiveProps(nextProps) {
+    const { repositories } = nextProps.userInfo
+    if (repositories.length > 0) {
+      console.log(`repos array length = ${repositories.length}`)
+      this.setState({ fetchSuccess: true })
+    }
+  }
 
   render() {
     return(
@@ -43,4 +39,12 @@ class GetRepos extends Component {
   }
 }
 
-export default GetRepos;
+const mapStateToProps = state => {
+  return { userInfo: state.userInfo };
+};
+
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators({ fetchRepos, fetchUserInfo }, dispatch)
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(GetRepos);

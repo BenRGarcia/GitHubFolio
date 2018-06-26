@@ -1,8 +1,16 @@
-import { createStore } from "redux";
+import { createStore, compose, applyMiddleware } from "redux";
+import thunk from 'redux-thunk';
+
+/**
+ * Helper Functions
+ */
 
 const parseJSON = data => data.json();
-
 const handleError = err => console.error(err);
+
+/**
+ * Actions
+ */
 
 export const fetchUserInfo = () => dispatch => {
   const url = '/api/user/data';
@@ -66,26 +74,31 @@ const initialState = {
     profileName: "",
     email: "",
     bio: "",
+    location: "",
     chosenTemplate: "",
     repositories: []
   }
 };
 
+/**
+ * Reducers
+ */
+
 const reducers = (state = initialState, action) => {
   switch (action.type) {
     case 'FETCH_USER_INFO':
-      break;
+      return { ...state, userInfo: action.payload };
     case 'EDIT_USER_INFO':
-      break;
+      return { ...state, userInfo: action.payload };
     case 'FETCH_REPOS':
-      break;
+      return { ...state, userInfo: action.payload };
     case 'EDIT_REPOS':
-      break;
+      return { ...state, userInfo: { repositories: action.payload }};
     default:
-      break;
+      return state;
   }
 };
 
-const store = createStore()
+const store = createStore(reducers, compose(applyMiddleware(thunk)))
 
 export default store;
