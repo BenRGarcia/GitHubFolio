@@ -26,13 +26,31 @@ const EditRepo = ({ handleChange, repositories, isDisabled }) => {
           data-parent="#accordionExample"
         >
           <div className="card-body py-2">
+
+          {/* Image component */}
+          <div className="form-group mb-3 row">
+            <label className='col-sm-3 col-form-label text-left my-auto'>
+              Repository Image:
+            </label>
+            <div className=' col-sm-9'>
+              <div className="border rounded py-2">
+                <div className='mx-auto' style={{ width: '15rem', overflow: 'hidden' }}>
+                  <img className="img-fluid rounded mb-2" src={require('../../images/Thumbnail.png')} alt="Repo thumbnail" />
+                  <button type='button' className='btn btn-outline-dark'>
+                    Upload new image
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
             {/* Repo name template */}
             <div className="form-group mb-3 row">
               <label
                 className='col-sm-3 col-form-label text-left pb-1 pt-0'
               >
                 Repository Name:
-          </label>
+              </label>
               <div className='col-sm-9'>
                 <input
                   name='name'
