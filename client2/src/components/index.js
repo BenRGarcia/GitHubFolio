@@ -14,6 +14,7 @@ import DownloadSourceCode from './Dashboard/DownloadSourceCode';
 import UserInput from './Dashboard/UserInput';
 import EditRepos from './Dashboard/EditRepos';
 import EditRepo from './Dashboard/EditRepo';
+import ImageUpload from './Dashboard/ImageUpload';
 
 export {
   DashboardSidebar,
@@ -31,5 +32,6 @@ export {
   DownloadSourceCode,
   UserInput,
   EditRepos,
-  EditRepo
+  EditRepo,
+  ImageUpload
 }

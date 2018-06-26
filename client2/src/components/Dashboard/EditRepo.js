@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { ImageUpload } from '../';
 
 const EditRepo = ({ handleChange, repositories, isDisabled }) => {
   let counter = 0
   return repositories.map(repo => {
-    const { _id, name, /* imageUrl, */ description, deployedUrl } = repo;
+    const { _id, name, imageUrl, description, deployedUrl } = repo;
     return (
       <fieldset key={_id} className='card'>
         <div className="card-header" id="headingOne">
@@ -28,29 +29,15 @@ const EditRepo = ({ handleChange, repositories, isDisabled }) => {
           <div className="card-body py-2">
 
           {/* Image component */}
-          <div className="form-group mb-3 row">
-            <label className='col-sm-3 col-form-label text-left my-auto'>
-              Repository Image:
-            </label>
-            <div className=' col-sm-9'>
-              <div className="border rounded py-2">
-                <div className='mx-auto' style={{ width: '15rem', overflow: 'hidden' }}>
-                  <img className="img-fluid rounded mb-2" src={require('../../images/Thumbnail.png')} alt="Repo thumbnail" />
-                  <button type='button' className='btn btn-outline-dark mb-1'>
-                    Upload new image
-                  </button>
-                </div>
-              </div>
-              <div className="alert alert-danger" role="alert">
-                Oops! Only .jpg .jpeg .png and .gif files smaller than 250kb allowed!
-              </div>
-            </div>
-          </div>
+          <ImageUpload
+            _id={_id}
+            src={imageUrl || require('../../images/Thumbnail.png')}
+          />
 
             {/* Repo name template */}
             <div className="form-group mb-3 row">
               <label
-                className='col-sm-3 col-form-label text-left pb-1 pt-0'
+                className='col-sm-3 col-form-label text-left pb-1 pt-0 my-auto'
               >
                 Repository Name:
               </label>
@@ -67,7 +54,7 @@ const EditRepo = ({ handleChange, repositories, isDisabled }) => {
             {/* Deployed Website template */}
             <div className="form-group mb-3 row">
               <label
-                className='col-sm-3 col-form-label text-left pb-1 pt-0'
+                className='col-sm-3 col-form-label text-left pb-1 pt-0 my-auto'
               >
                 Deployed Site:
             </label>
@@ -84,7 +71,7 @@ const EditRepo = ({ handleChange, repositories, isDisabled }) => {
             {/* Description template */}
             <div className="form-group mb-3 row">
               <label
-                className='col-sm-3 col-form-label text-left pb-1 pt-0'
+                className='col-sm-3 col-form-label text-left pb-1 pt-0 my-auto'
               >
                 Description:
             </label>
@@ -99,11 +86,9 @@ const EditRepo = ({ handleChange, repositories, isDisabled }) => {
                 />
               </div>
             </div>
-            <div>
-              <button type='submit' className='btn btn-outline-dark' disabled={isDisabled}>
-                Save Changes
-              </button>
-            </div>
+            <button type='submit' className='btn btn-outline-dark' disabled={isDisabled}>
+              Save Changes
+            </button>
           </div>
         </div>
       </fieldset>
