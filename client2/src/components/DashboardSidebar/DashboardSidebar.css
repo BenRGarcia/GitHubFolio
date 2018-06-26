@@ -1,6 +1,5 @@
 .sidenavText {
     font-family: 'Roboto', sans-serif;
-    color: #979799;
     letter-spacing: -0.04px;
     display: block;
     text-align: left;
@@ -18,5 +17,5 @@
     height: 50px;
     width: 100%;
     background: #1E263D;
-    color: white;
+    color: white !important;
 }
