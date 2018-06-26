@@ -4,7 +4,7 @@ const graphqlQuery = `{ viewer { pinnedRepositories(first: 6) { edges { node { n
 const normalizePinnedRepos = repoArray => {
   return repoArray.map(repo => {
     const { name, description, homepageUrl, url } = repo.node
-    return { name, description, repositoryUrl: homepageUrl, deployedUrl: url }
+    return { name, description, repositoryUrl: url, deployedUrl: homepageUrl }
   })
 }
 

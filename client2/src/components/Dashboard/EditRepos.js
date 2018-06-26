@@ -1,38 +1,62 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-// import { UserInput } from '../';
+import React, { Component } from 'react';
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { fetchRepos, editRepos } from '../../store/store';
+import { EditRepo, GetRepos } from '../';
 
-const EditRepos = ({ repositories, handleChange }) => (
-  <React.Fragment>
-    {/* {
-      repositories.map(repo => {
-        return (
-            <div key={repo._id}>
-            {
-              Object.keys(repo).map(key => {
-                if (repo[key] !== '_id') {
-                  return (
-                    <UserInput
-                      onChange={handleChange}
-                      value={repo[key]}
-                      name={key}
-                      label={key}
-                      _id={repo._id}
-                    />
-                  );
-                }
-              })
-            }
-            </div>
-        );
-      })
-    } */}
-  </React.Fragment>
-);
+class EditRepos extends Component {
+  state = {
+    repositories: []
+  };
 
-EditRepos.propTypes = {
-  repositories: PropTypes.array.isRequired,
-  handleChange: PropTypes.func
+  handleSubmit = e => {
+    e.preventDefault()
+    console.log(`user hit submit button`)
+  }
+
+  handleChange = (e, _id) => {
+    const { name, value } = e.target
+    console.log(`change:\nname: ${name}\nvalue: ${value}\n_id: ${_id}`)
+  };
+
+  componentDidMount() {
+    this.props.fetchRepos()
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { repositories } = nextProps.userInfo
+    this.setState({ repositories })
+  }
+
+  render() {
+    return (
+      <div>
+        {
+          this.state.repositories.length > 0
+          ?
+            <form onSubmit={this.handleSubmit}>
+              <div className="accordion" id='accordionExample'>
+                <EditRepo
+                  handleChange={this.handleChange}
+                  repositories={this.state.repositories}
+                />
+              </div>
+            </form>
+          :
+          <GetRepos />
+        }
+      </div>
+    );
+  }
+
+}
+
+const mapStateToProps = state => {
+  return { userInfo: state.userInfo };
 };
 
-export default EditRepos;
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators({ fetchRepos, editRepos }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(EditRepos);

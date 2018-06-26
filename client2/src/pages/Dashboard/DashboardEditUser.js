@@ -72,6 +72,9 @@ class DashboardEditUser extends Component {
       <div className="row" style={{ minHeight: '100vh' }}>
         <div className="col d-flex justify-content-center align-items-center">
           <div className="flex-fill px-5">
+            <h1>
+              Profile Data
+            </h1>
             <form
               onSubmit={this.handleSubmit}
             >

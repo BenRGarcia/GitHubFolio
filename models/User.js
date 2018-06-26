@@ -48,7 +48,7 @@ const UserSchema = new Schema({
   chosenTemplate: {
     type: String,
     required: true,
-    default: 'minimalist'
+    default: 'stylized'
   },
   repositories: [{
     type: Schema.Types.ObjectId,
