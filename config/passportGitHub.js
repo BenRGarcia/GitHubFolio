@@ -12,7 +12,7 @@ const strategyConfig = {
 
 const verifyCb = async (accessToken, refreshToken, profile, cb) => {
   let email
-  if (profile.emails && profile.emails.length > 0) {
+  if (profile.emails && Array.isArray(profile.emails) && profile.emails.length > 0) {
     email = profile.emails[0].value
   } else {
     email = 'user@example.com'
