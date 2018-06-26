@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types';
 
-const UserInput = ({ handleChange, value, name, label }) => (
+const UserInput = ({ handleChange, value, name, label, _id }) => (
   <React.Fragment>
     <label
       htmlFor={name}
@@ -26,6 +26,7 @@ const UserInput = ({ handleChange, value, name, label }) => (
         name={name}
         value={value || ''}
         className='form-control'
+        _id={_id || ''}
       />
     }
   </React.Fragment>
@@ -35,7 +36,8 @@ UserInput.propTypes = {
   handleChange: PropTypes.func,
   value: PropTypes.string,
   name: PropTypes.string,
-  label: PropTypes.string
+  label: PropTypes.string,
+  _id: PropTypes.string
 };
 
 export default UserInput;

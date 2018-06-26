@@ -12,6 +12,7 @@ import LogoutNavbar from './Navbar/LogoutNavbar';
 import GetRepos from './Dashboard/GetRepos';
 import DownloadSourceCode from './Dashboard/DownloadSourceCode';
 import UserInput from './Dashboard/UserInput';
+import EditRepos from './Dashboard/EditRepos';
 
 export {
   DashboardSidebar,
@@ -27,5 +28,6 @@ export {
   LogoutNavbar,
   GetRepos,
   DownloadSourceCode,
-  UserInput
+  UserInput,
+  EditRepos
 }
