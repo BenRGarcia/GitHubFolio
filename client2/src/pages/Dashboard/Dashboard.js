@@ -39,7 +39,7 @@ class Dashboard extends Component {
         <div className="row text-center">
           <div className='col-12 col-lg-9 col-xl-10 ml-auto'>
             {/* Add top margin when navbar visible */}
-            <div className='d-lg-none' style={{ marginBottom: '80px' }}></div>
+            <div className='d-lg-none' style={{ marginBottom: '60px' }}></div>
             <div className='container'>
               <DashboardRouter
                 routes={routes.dashboard}

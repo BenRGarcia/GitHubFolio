@@ -30,15 +30,19 @@ class DashboardEditRepos extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <EditRepos
-          repositories={this.state.repositories}
-          handleChange={this.handleChange}
-        />
-        <button type='submit'>
-          Save Changes
-        </button>
-      </form>
+      <div className="row mt-3">
+        <div className="col">
+          <form onSubmit={this.handleSubmit}>
+            <EditRepos
+              repositories={this.state.repositories}
+              handleChange={this.handleChange}
+            />
+            <button type='submit' className='mt-3 btn btn-outline-dark'>
+              Save Changes
+            </button>
+          </form>
+        </div>
+      </div>
     );
   }
 }
