@@ -55,25 +55,19 @@ const updateData = (
   { _id },
   {
     profileName,
-    profilePageUrl,
     email,
-    photo,
     bio,
     location,
-    chosenTemplate,
-    chosenColor
+    chosenTemplate
   }) => {
   return User.findOneAndUpdate(
     { _id },
     {
       profileName,
-      profilePageUrl,
       email,
-      photo,
       bio,
       location,
-      chosenTemplate,
-      chosenColor
+      chosenTemplate
     },
     { new: true })
 }
