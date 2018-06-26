@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { EditRepo } from '../';
 
 const EditRepos = ({ repositories, handleChange, handleSubmit }) => {
   let counter = 0
@@ -10,7 +11,7 @@ const EditRepos = ({ repositories, handleChange, handleSubmit }) => {
         <div className="card-header" id="headingOne">
           <button
             className="btn btn-link"
-            type="button"
+            type="submit"
             data-toggle="collapse"
             data-target={`#collapse${_id}`}
             aria-expanded="true"

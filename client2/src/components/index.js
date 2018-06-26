@@ -13,6 +13,7 @@ import GetRepos from './Dashboard/GetRepos';
 import DownloadSourceCode from './Dashboard/DownloadSourceCode';
 import UserInput from './Dashboard/UserInput';
 import EditRepos from './Dashboard/EditRepos';
+import EditRepo from './Dashboard/EditRepo';
 
 export {
   DashboardSidebar,
@@ -29,5 +30,6 @@ export {
   GetRepos,
   DownloadSourceCode,
   UserInput,
-  EditRepos
+  EditRepos,
+  EditRepo
 }
