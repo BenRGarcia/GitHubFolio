@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const EditRepos = ({ repositories, handleChange }) => {
+const EditRepos = ({ repositories, handleChange, handleSubmit }) => {
   let counter = 0
   return repositories.map(repo => {
     const { _id, name, /* imageUrl, */ description, deployedUrl } = repo;
@@ -14,7 +14,7 @@ const EditRepos = ({ repositories, handleChange }) => {
           {/* Repo name template */}
           <div className="form-group mb-2 row">
             <label
-              className='col-sm-2 col-form-label text-right'
+              className='col-sm-2 col-form-label text-left pb-1 pt-0'
             >
               Repository Name:
           </label>
@@ -31,7 +31,7 @@ const EditRepos = ({ repositories, handleChange }) => {
           {/* Deployed Website template */}
           <div className="form-group mb-2 row">
             <label
-              className='col-sm-2 col-form-label text-right'
+              className='col-sm-2 col-form-label text-left pb-1 pt-0'
             >
               Deployed Site:
             </label>
@@ -48,7 +48,7 @@ const EditRepos = ({ repositories, handleChange }) => {
           {/* Description template */}
           <div className="form-group mb-2 row">
             <label
-              className='col-sm-2 col-form-label text-right'
+              className='col-sm-2 col-form-label text-left pb-1 pt-0'
             >
               Description:
             </label>
@@ -63,6 +63,15 @@ const EditRepos = ({ repositories, handleChange }) => {
               />
             </div>
           </div>
+          <div>
+            <button type='submit' className='btn btn-outline-dark'>
+              Save Changes
+            </button>
+          </div>
+        </div>
+        <hr className='my-0'/>
+        <div className="card-body">
+          image upload stuff
         </div>
       </fieldset>
     );
@@ -71,6 +80,7 @@ const EditRepos = ({ repositories, handleChange }) => {
 
 EditRepos.propTypes = {
   repositories: PropTypes.array.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
   handleChange: PropTypes.func.isRequired
 };
 
