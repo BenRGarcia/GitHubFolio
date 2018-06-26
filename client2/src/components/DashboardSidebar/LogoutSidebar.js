@@ -5,7 +5,6 @@ const logoutLinks = {
   fontSize: '18px',
   color: '#979799',
   paddingTop: '15px',
-  paddingLeft: '25px',
   height: '50px',
   width: '100%',
 }
@@ -14,7 +13,7 @@ const Logout = () => (
   <li className="nav-item my-2">
     <a
       href="/api/auth/logout"
-      className='nav-link ml-2 sidenavText'
+      className='nav-link sidenavText'
       style={ logoutLinks }
     >
       <i
