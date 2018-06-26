@@ -40,7 +40,6 @@ class DashboardEditUser extends Component {
     e.preventDefault();
     if (!this.prevStateIsNextState()) {
       this.props.editUserInfo(this.state)
-        .catch(err => console.error(err))
     }
   };
 

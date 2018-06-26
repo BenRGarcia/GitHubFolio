@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const EditRepo = ({ handleChange, repositories }) => {
+const EditRepo = ({ handleChange, repositories, isDisabled }) => {
   let counter = 0
   return repositories.map(repo => {
     const { _id, name, /* imageUrl, */ description, deployedUrl } = repo;
@@ -79,7 +79,7 @@ const EditRepo = ({ handleChange, repositories }) => {
               </div>
             </div>
             <div>
-              <button type='submit' className='btn btn-outline-dark'>
+              <button type='submit' className='btn btn-outline-dark' disabled={isDisabled}>
                 Save Changes
               </button>
             </div>

@@ -9,9 +9,22 @@ class EditRepos extends Component {
     repositories: []
   };
 
+  prevState = {
+    repositories: []
+  };
+
+  prevStateIsNextState = () => {
+    const prevState = JSON.stringify(this.prevState, null, 2);
+    const nextState = JSON.stringify(this.state, null, 2);
+    return prevState === nextState;
+  };
+
   handleSubmit = e => {
     e.preventDefault()
     console.log(`user hit submit button`)
+    if (!this.prevStateIsNextState()) {
+      this.props.editRepos(this.state)
+    }
   }
 
   handleChange = (e, _id) => {
@@ -36,7 +49,11 @@ class EditRepos extends Component {
   componentWillReceiveProps(nextProps) {
     const { repositories } = nextProps.userInfo
     if (repositories) {
-      this.setState({ repositories })
+      // Make copy of array of object copies
+      const prevRepositories = repositories.map(repo => Object.assign({}, repo))
+      // set state and prevState
+      this.prevState = { repositories: prevRepositories }
+      this.setState({ repositories: repositories });
     }
   }
 
@@ -51,6 +68,7 @@ class EditRepos extends Component {
                 <EditRepo
                   handleChange={this.handleChange}
                   repositories={this.state.repositories}
+                  isDisabled={this.prevStateIsNextState()}
                 />
               </div>
             </form>
