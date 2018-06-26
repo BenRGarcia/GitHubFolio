@@ -23,6 +23,14 @@ const styleLinks = {
   whiteSpace: 'nowrap',
 }
 
+const leftBorder = {
+  backgroundImage: 'linear-gradient(-180deg, #9A48E3 0%, #FB697B 100%)',
+  width: '4px',
+  height: '50px',
+  maxWidth: '100%',
+  float: 'left',
+}
+
 const DashboardSidebar = ({ routes }) => (
   <div className='col-md-3 col-lg-3 col-xl-2 px-0' style={styleSidebar}>
     <LogoSidebar />
@@ -37,6 +45,10 @@ const DashboardSidebar = ({ routes }) => (
               className="nav-item my-2"
               key={label}
             >
+            {window.location.pathname === path
+              ? <div style={leftBorder}></div> 
+              : <div style={{display: 'none'}}></div>
+            }
               <NavLink
                 exact to={path}
                 className='nav-link sidenavText'
