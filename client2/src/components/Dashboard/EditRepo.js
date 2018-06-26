@@ -36,10 +36,13 @@ const EditRepo = ({ handleChange, repositories, isDisabled }) => {
               <div className="border rounded py-2">
                 <div className='mx-auto' style={{ width: '15rem', overflow: 'hidden' }}>
                   <img className="img-fluid rounded mb-2" src={require('../../images/Thumbnail.png')} alt="Repo thumbnail" />
-                  <button type='button' className='btn btn-outline-dark'>
+                  <button type='button' className='btn btn-outline-dark mb-1'>
                     Upload new image
                   </button>
                 </div>
+              </div>
+              <div class="alert alert-danger" role="alert">
+                Whoops! Only .jpg, .jpeg, .png, and .gif files smaller than 250kb allowed!
               </div>
             </div>
           </div>
