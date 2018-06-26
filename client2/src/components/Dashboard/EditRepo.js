@@ -41,8 +41,8 @@ const EditRepo = ({ handleChange, repositories, isDisabled }) => {
                   </button>
                 </div>
               </div>
-              <div class="alert alert-danger" role="alert">
-                Whoops! Only .jpg, .jpeg, .png, and .gif files smaller than 250kb allowed!
+              <div className="alert alert-danger" role="alert">
+                Oops! Only .jpg .jpeg .png and .gif files smaller than 250kb allowed!
               </div>
             </div>
           </div>
