@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { isValidImageFile } from '../../utils/imageChecker';
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { fetchUserInfo } from '../../store/store';
+import axios from 'axios';
 
 class ImageUpload extends Component {
   state = {
@@ -24,7 +28,16 @@ class ImageUpload extends Component {
   }
 
   handleUpload = _id => {
-    console.log(`time to execute the upload`)
+    const url = `/api/user/photo/${_id}`
+    console.log(`time to execute POSt request to url: ${url}`)
+    const formData = new FormData()
+    formData.append('repoImage', this.state.file)
+    const config = { headers: { 'content-type': 'multipart/form-data' } }
+    return axios.post(url, formData, config)
+      .then(this.setState({ file: null }))
+      .then(this.props.fetchUserInfo)
+      .then(resp => console.log(`POST image success response:`, JSON.stringify(resp, null, 2)))
+      .catch(err => console.error(`POST request error:\n`, err))
   };
 
   render() {
@@ -37,7 +50,7 @@ class ImageUpload extends Component {
           <div className="border rounded pt-2">
             <div
               className='mx-auto'
-              style={{ width: '15rem', overflow: 'hidden' }}
+              style={{ width: '15rem', overflow: 'hidden', maxHeight: '250px' }}
             >
               <img
                 className="img-fluid rounded mb-2"
@@ -78,4 +91,12 @@ ImageUpload.propTypes = {
   src: PropTypes.string.isRequired
 }
 
-export default ImageUpload;
+const mapStateToProps = state => {
+  return { userInfo: state.userInfo };
+};
+
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators({ fetchUserInfo }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ImageUpload);
