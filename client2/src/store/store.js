@@ -5,7 +5,14 @@ import thunk from 'redux-thunk';
  * Helper Functions
  */
 
-const parseJSON = data => data.json();
+const parseJSON = response => {
+  const contentType = response.headers.get('content-type');
+  if (contentType && contentType.includes('application/json')) {
+    return response.json()
+  } else {
+    return false
+  }
+}
 const handleError = err => console.error(err);
 
 /**
