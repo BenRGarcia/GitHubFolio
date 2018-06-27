@@ -39,7 +39,8 @@
     "dev": "concurrently \"npm run dev-server\" \"npm run dev-client\"",
     "dev-server": "concurrently \"mongod\" \"nodemon ./bin/www\" \"redis-server\" ",
     "dev-client": "cd client && yarn start",
-    "dev-server-prod": "concurrently \"mongod\" \"redis-server\" \"node ./bin/www\""
+    "dev-server-prod": "concurrently \"mongod\" \"redis-server\" \"node ./bin/www\"",
+    "heroku-build": "cd client2 && yarn build"
   },
   "dependencies": {
     "aws-sdk": "^2.259.1",
