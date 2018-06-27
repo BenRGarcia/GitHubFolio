@@ -4,7 +4,7 @@
   border-top: 12px solid #bbb;
   width: 160px;
   height: 160px;
-  animation: spin 0.7s linear infinite;
+  animation: spin 1s linear infinite;
 }
 
 @keyframes spin {

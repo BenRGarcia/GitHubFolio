@@ -10,7 +10,8 @@ require('./ImageUpload.css')
 class ImageUpload extends Component {
   state = {
     file: null,
-    warning: null
+    warning: null,
+    loading: false
   };
 
   handleChange = (e, _id) => {
@@ -35,9 +36,10 @@ class ImageUpload extends Component {
     formData.append('repoImage', this.state.file)
     const config = { headers: { 'content-type': 'multipart/form-data' } }
     return axios.post(url, formData, config)
-      .then(this.setState({ file: null }))
+      .then(this.setState({ file: null, loading: true }))
       .then(this.props.fetchUserInfo)
       .then(resp => console.log(`POST image success response:`, JSON.stringify(resp, null, 2)))
+      .then(() => this.setState({ loading: false }))
       .catch(err => console.error(`POST request error:\n`, err))
   };
 
@@ -49,18 +51,23 @@ class ImageUpload extends Component {
         </label>
         <div className=' col-sm-9'>
           <div className="border rounded pt-2">
-            <div className='image-loading'>
-
-            </div>
             <div
               className='mx-auto'
               style={{ width: '15rem', overflow: 'hidden', height: '250px' }}
             >
-              <img
-                className="img-fluid rounded mb-2"
-                src={this.props.src}
-                alt="Repo thumbnail"
-              />
+              <div className='my-auto'>
+                {
+                  this.state.loading
+                  ?
+                  <div className='image-loading'></div>
+                  :
+                  <img
+                    className="img-fluid rounded mb-2"
+                    src={this.props.src}
+                    alt="Repo thumbnail"
+                  />
+                }
+              </div>
             </div>
             <div className="custom-file">
               <input
