@@ -4,8 +4,7 @@ const Schema = mongoose.Schema
 const RepositorySchema = new Schema({
   name: {
     type: String,
-    required: true,
-    minlength: 1
+    required: true
   },
   description: {
     type: String,
@@ -20,7 +19,6 @@ const RepositorySchema = new Schema({
   deployedUrl: {
     type: String,
     required: false,
-    minlength: 1,
     trim: true
   },
   imageUrl: {
