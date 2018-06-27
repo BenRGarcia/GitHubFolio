@@ -65,8 +65,8 @@ module.exports = createReactClass({
                 <div className='card-body'>
                   <h5 className='card-title' style={styleDescriptions}> {repo.name}</h5>
                   <p className='card-text' style={styleDescriptions}> {repo.description}</p>
-                  <a class='btn btn-outline-secondary mr-2' target='_blank' href={repo.repositoryUrl}>View Project</a>
-                  <a class='btn btn-outline-secondary ml-2' target='_blank' href={repo.deployedUrl}><i class="fab fa-github"></i></a>
+                  <a class='btn btn-outline-secondary mr-2' target='_blank' href={repo.deployedUrl}>View Project</a>
+                  <a class='btn btn-outline-secondary ml-2' target='_blank' href={repo.repositoryUrl}><i class="fab fa-github"></i></a>
                 </div>
               </div>
             </div>
