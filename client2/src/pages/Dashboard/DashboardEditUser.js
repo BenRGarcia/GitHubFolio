@@ -9,7 +9,8 @@ class DashboardEditUser extends Component {
     profileName: "",
     email: "",
     bio: "",
-    location: ""
+    location: "",
+    chosenTemplate: ''
   }
 
   prevState = {
@@ -30,8 +31,8 @@ class DashboardEditUser extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { email, location, profileName, bio } = nextProps.userInfo
-    const nextState = { profileName, email, bio, location };
+    const { email, location, profileName, bio, chosenTemplate } = nextProps.userInfo
+    const nextState = { profileName, email, bio, location, chosenTemplate };
     this.prevState = nextState
     this.setState(nextState)
   }

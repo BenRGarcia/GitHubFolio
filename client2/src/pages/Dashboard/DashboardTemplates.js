@@ -24,6 +24,10 @@ const style = {
 
 class DashboardTemplates extends Component {
   state = {
+    profileName: "",
+    email: "",
+    bio: "",
+    location: "",
     chosenTemplate: '',
     viewingTemplate: 'stylized'
   };
@@ -33,10 +37,9 @@ class DashboardTemplates extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { chosenTemplate } = nextProps.userInfo
-    if (chosenTemplate) {
-      this.setState({ chosenTemplate })
-    }
+    const { email, location, profileName, bio, chosenTemplate } = nextProps.userInfo
+    const nextState = { profileName, email, bio, location, chosenTemplate };
+    this.setState(nextState)
   }
 
   handleSubmit = e => {
