@@ -8,7 +8,8 @@ const style = {
     border: 'none'
   },
   navItem: {
-    border: 'none',
+    border: '1px solid #ddd',
+    borderRadius: '0',
     color: 'initial',
     textDecoration: 'none'
   }
@@ -40,7 +41,7 @@ class DashboardTemplates extends Component {
       <div className="row" style={{ minHeight: '100vh' }}>
         <div className="col d-flex justify-content-center align-items-start">
           <div className="flex-fill mt-4">
-            <nav>
+            <nav className='mb-3'>
               <div
                 className="nav nav-tabs"
                 style={style.navtabs}
@@ -48,7 +49,7 @@ class DashboardTemplates extends Component {
                 role="tablist"
               >
                 <a
-                  className="nav-item nav-link active"
+                  className="nav-item nav-link active py-1 px-5"
                   style={style.navItem}
                   id="nav-stylized-tab"
                   data-toggle="tab"
@@ -58,9 +59,9 @@ class DashboardTemplates extends Component {
                   aria-selected="true"
                 >
                   Stylized
-              </a>
+                </a>
                 <a
-                  className="nav-item nav-link"
+                  className="nav-item nav-link py-1 px-5"
                   style={style.navItem}
                   id="nav-minimalist-tab"
                   data-toggle="tab"
