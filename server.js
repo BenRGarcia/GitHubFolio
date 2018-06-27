@@ -17,7 +17,7 @@ limiter(limiterConfig)
 
 // Middleware
 app.use(helmet())
-app.use(favicon(path.join(__dirname, 'build', 'favicon.ico')))
+app.use(favicon(path.join(__dirname, './client2/build', 'favicon.ico')))
 app.use(logger('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
