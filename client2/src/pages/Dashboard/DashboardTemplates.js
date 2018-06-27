@@ -35,14 +35,15 @@ class DashboardTemplates extends Component {
   componentWillReceiveProps(nextProps) {
     const { chosenTemplate } = nextProps.userInfo
     if (chosenTemplate) {
-      console.log(`component received props of chosen template: ${chosenTemplate}`)
       this.setState({ chosenTemplate })
     }
   }
 
   handleSubmit = e => {
     e.preventDefault();
-    console.log(`user chose a template: ???`)
+    const nextState = { ...this.state }
+    nextState.chosenTemplate = this.state.viewingTemplate
+    this.props.editUserInfo(nextState)
   };
 
   handleChange = template => {
@@ -95,7 +96,12 @@ class DashboardTemplates extends Component {
               className="tab-content"
               id="nav-tabContent"
             >
-              <button type='button' className='btn btn-outline-dark'>
+              <button
+                onClick={this.handleSubmit}
+                type='button'
+                className='btn btn-outline-dark mb-1'
+                disabled={this.state.viewingTemplate === this.state.chosenTemplate}
+              >
                 {
                   this.state.viewingTemplate === this.state.chosenTemplate
                   ?
