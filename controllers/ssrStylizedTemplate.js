@@ -17,8 +17,8 @@ const style = {
   styleDescriptions: {
     fontFamily: 'Oswald-SemiBold',
     color: '#3a4145'
-  },
-};
+  }
+}
 
 module.exports = createReactClass({
   render () {
@@ -53,7 +53,7 @@ module.exports = createReactClass({
               <div className='card  d-flex' style={{ maxWidth: '400px' }}>
                 <a className='mb-0'>
                   <img
-                    src={repo.imageUrl || 'https://s3.us-east-2.amazonaws.com/githubfolio.dn7kwp92pdrmtdefnyz6uka5/GitHubFolio_Thumbnail.png'}
+                    src={repo.imageUrl || 'https://s3.us-east-2.amazonaws.com/githubfolio.dn7kwp92pdrmtdefnyz6uka5/placeholder.png'}
                     alt='Profile'
                     style={{ width: '100%', maxHeight: '350px' }}
                   />

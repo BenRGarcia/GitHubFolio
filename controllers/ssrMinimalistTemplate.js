@@ -25,7 +25,7 @@ module.exports = createReactClass({
               <div key={profilePageUrl}>
                 <div className='mb-0'>
                   <img
-                    src={repo.imageUrl || 'https://s3.us-east-2.amazonaws.com/githubfolio.dn7kwp92pdrmtdefnyz6uka5/GitHubFolio_Thumbnail.png'}
+                    src={repo.imageUrl || 'https://s3.us-east-2.amazonaws.com/githubfolio.dn7kwp92pdrmtdefnyz6uka5/placeholder.png'}
                     alt="Profile"
                     className='img-fluid'
                     style={{ width: '230px' }}
