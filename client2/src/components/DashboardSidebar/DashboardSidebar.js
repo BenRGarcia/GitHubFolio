@@ -53,7 +53,7 @@ const DashboardSidebar = ({ routes }) => (
                 exact to={path}
                 className='nav-link sidenavText'
                 style={styleLinks}
-                activeClassName='active'
+                activeClassName='sidebar-active'
               >
                 <i
                   className={icon + ' mx-1 mr-3'}
