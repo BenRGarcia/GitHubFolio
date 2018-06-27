@@ -8,7 +8,7 @@ const style = {
     border: 'none'
   },
   navItem: {
-    border: '1px solid #ddd',
+    border: '1px solid #28314B',
     borderRadius: '0',
     color: 'initial',
     textDecoration: 'none'
@@ -16,7 +16,7 @@ const style = {
   navItemActive: {
     backgroundColor: '#28314B',
     color: '#fff',
-    border: '1px solid #ddd',
+    border: '1px solid #28314B',
     borderRadius: '0',
     textDecoration: 'none'
   }
