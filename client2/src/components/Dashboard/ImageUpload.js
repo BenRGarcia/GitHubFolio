@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { fetchUserInfo } from '../../store/store';
 import axios from 'axios';
+require('./ImageUpload.css')
 
 class ImageUpload extends Component {
   state = {
@@ -48,9 +49,12 @@ class ImageUpload extends Component {
         </label>
         <div className=' col-sm-9'>
           <div className="border rounded pt-2">
+            <div className='image-loading'>
+
+            </div>
             <div
               className='mx-auto'
-              style={{ width: '15rem', overflow: 'hidden', maxHeight: '250px' }}
+              style={{ width: '15rem', overflow: 'hidden', height: '250px' }}
             >
               <img
                 className="img-fluid rounded mb-2"
