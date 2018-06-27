@@ -48,15 +48,16 @@ class ImageUpload extends Component {
         </label>
         <div className=' col-sm-9'>
           <div className="border rounded">
-            <div
-              className='mx-auto'
-              style={{ width: '15rem', overflow: 'hidden', height: '250px' }}
-            >
+            <div className="row" style={{ height: '250px', overflow: 'hidden' }}>
+              <div className="col d-flex justify-content-center align-items-center">
+                <div className="flex-fill">
+
               {
                 this.state.loading
                 ?
-                <div className='image-loading mt-5'></div>
+                <div className='image-loading mx-auto'></div>
                 :
+
                 <img
                   z-index='-1'
                   className="img-fluid rounded"
@@ -64,6 +65,8 @@ class ImageUpload extends Component {
                   alt="Repo thumbnail"
                 />
               }
+                </div>
+              </div>
             </div>
             {
               this.state.warning
