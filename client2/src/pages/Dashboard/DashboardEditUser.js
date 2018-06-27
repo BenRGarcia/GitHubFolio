@@ -53,7 +53,11 @@ class DashboardEditUser extends Component {
 
   renderInputs = () => {
     const inputs = [];
-    for (let key in this.state) {
+    // make copy of state
+    const cloneState = { ...this.state };
+    // remove chosen template
+    delete cloneState.chosenTemplate;
+    for (let key in cloneState) {
       inputs.push(
         <UserInput
           label={key.toUpperCase()}
