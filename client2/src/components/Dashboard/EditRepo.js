@@ -1,16 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { ImageUpload } from '../';
 
-const EditRepo = ({ handleChange, repositories }) => {
+const EditRepo = ({ handleChange, repositories, isDisabled }) => {
   let counter = 0
   return repositories.map(repo => {
-    const { _id, name, /* imageUrl, */ description, deployedUrl } = repo;
+    const { _id, name, imageUrl, description, deployedUrl } = repo;
     return (
       <fieldset key={_id} className='card'>
         <div className="card-header" id="headingOne">
           <button
             className="btn btn-link"
-            type="submit"
+            type="button"
             data-toggle="collapse"
             data-target={`#collapse${_id}`}
             aria-expanded="true"
@@ -26,13 +27,20 @@ const EditRepo = ({ handleChange, repositories }) => {
           data-parent="#accordionExample"
         >
           <div className="card-body py-2">
+
+          {/* Image component */}
+          <ImageUpload
+            _id={_id}
+            src={imageUrl || require('../../images/Thumbnail.png')}
+          />
+
             {/* Repo name template */}
             <div className="form-group mb-3 row">
               <label
-                className='col-sm-3 col-form-label text-left pb-1 pt-0'
+                className='col-sm-3 col-form-label text-left pb-1 pt-0 my-auto'
               >
                 Repository Name:
-          </label>
+              </label>
               <div className='col-sm-9'>
                 <input
                   name='name'
@@ -46,7 +54,7 @@ const EditRepo = ({ handleChange, repositories }) => {
             {/* Deployed Website template */}
             <div className="form-group mb-3 row">
               <label
-                className='col-sm-3 col-form-label text-left pb-1 pt-0'
+                className='col-sm-3 col-form-label text-left pb-1 pt-0 my-auto'
               >
                 Deployed Site:
             </label>
@@ -63,7 +71,7 @@ const EditRepo = ({ handleChange, repositories }) => {
             {/* Description template */}
             <div className="form-group mb-3 row">
               <label
-                className='col-sm-3 col-form-label text-left pb-1 pt-0'
+                className='col-sm-3 col-form-label text-left pb-1 pt-0 my-auto'
               >
                 Description:
             </label>
@@ -78,15 +86,15 @@ const EditRepo = ({ handleChange, repositories }) => {
                 />
               </div>
             </div>
-            <div>
-              <button type='submit' className='btn btn-outline-dark'>
-                Save Changes
+            <button type='submit' className='btn btn-outline-dark' disabled={isDisabled}>
+              {
+                isDisabled
+                ?
+                'Saved!'
+                :
+                'Save Changes'
+              }
             </button>
-            </div>
-            <hr />
-            <div>
-              image upload here
-            </div>
           </div>
         </div>
       </fieldset>
