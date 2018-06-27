@@ -3,13 +3,13 @@ import { connect } from "react-redux";
 import { fetchUserInfo, editUserInfo } from '../../store/store';
 import { bindActionCreators } from "redux";
 
-const style = {
-  fontFamily: 'Oswald-SemiBold',
-  fontSize: '36px',
-  color: '#666666',
-  letterSpacing: '-0.04px',
-  textAlign: 'left'
-};
+// const style = {
+//   fontFamily: 'Oswald-SemiBold',
+//   fontSize: '36px',
+//   color: '#666666',
+//   letterSpacing: '-0.04px',
+//   textAlign: 'left'
+// };
 
 class DashboardTemplates extends Component {
   state = {
@@ -42,18 +42,18 @@ class DashboardTemplates extends Component {
   render() {
     return (
       <div>
-        <div className="save-button">
+        <div>
           <button
-            className='btn btn-dark'
+            className='btn btn-outline-dark'
             type='submit'
             onClick={this.handleSubmit}
           >
-            Save Template
+            Save Template || Saved!
           </button>
         </div>
         <div>
           <div
-            className="toggle-buttons btn-group btn-group-toggle"
+            className="btn-group btn-group-toggle"
             data-toggle="buttons"
           >
             <label
@@ -61,27 +61,29 @@ class DashboardTemplates extends Component {
               onClick={this.handleToggle}
             >
               Minimalist
-            </label>
               <input
                 type="radio"
                 name="options"
-                id="Minimalist"
+                id="minimalist"
                 autoComplete="off"
+                checked={this.state.chosenTemplate === 'minimalist' ? true : false}
               />
+            </label>
             <label
               className="btn btn-secondary"
               onClick={this.handleToggle}
             >
               Stylized
-            </label>
               <input
                 type="radio"
                 name="options"
-                id="Stylized"
+                id="stylized"
                 autoComplete="off"
+                checked={this.state.chosenTemplate === 'stylized' ? true : false}
               />
+            </label>
           </div>
-          <div id="template">
+          <div>
             {
               this.state.chosenTemplate !== 'minimalist'
               ?

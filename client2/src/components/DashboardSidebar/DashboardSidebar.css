@@ -13,7 +13,7 @@
     color: white !important;
 }
 
-.active {
+.sidebar-active {
     height: 50px;
     width: 100%;
     background: #1E263D;

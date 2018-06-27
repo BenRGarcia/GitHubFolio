@@ -21,7 +21,6 @@ class EditRepos extends Component {
 
   handleSubmit = e => {
     e.preventDefault()
-    console.log(`user hit submit button`)
     if (!this.prevStateIsNextState()) {
       this.props.editRepos(this.state)
     }
@@ -49,9 +48,7 @@ class EditRepos extends Component {
   componentWillReceiveProps(nextProps) {
     const { repositories } = nextProps.userInfo
     if (repositories) {
-      // Make copy of array of object copies
       const prevRepositories = repositories.map(repo => Object.assign({}, repo))
-      // set state and prevState
       this.prevState = { repositories: prevRepositories }
       this.setState({ repositories: repositories });
     }
