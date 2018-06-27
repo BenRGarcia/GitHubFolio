@@ -3,6 +3,17 @@ import { connect } from "react-redux";
 import { fetchUserInfo, editUserInfo } from '../../store/store';
 import { bindActionCreators } from "redux";
 
+const style = {
+  navtabs: {
+    border: 'none'
+  },
+  navItem: {
+    border: 'none',
+    color: 'initial',
+    textDecoration: 'none'
+  }
+};
+
 class DashboardTemplates extends Component {
   state = {
     chosenTemplate: ''
@@ -32,11 +43,13 @@ class DashboardTemplates extends Component {
             <nav>
               <div
                 className="nav nav-tabs"
+                style={style.navtabs}
                 id="nav-tab"
                 role="tablist"
               >
                 <a
                   className="nav-item nav-link active"
+                  style={style.navItem}
                   id="nav-stylized-tab"
                   data-toggle="tab"
                   href="#stylized"
@@ -48,6 +61,7 @@ class DashboardTemplates extends Component {
               </a>
                 <a
                   className="nav-item nav-link"
+                  style={style.navItem}
                   id="nav-minimalist-tab"
                   data-toggle="tab"
                   href="#minimalist"
@@ -63,13 +77,19 @@ class DashboardTemplates extends Component {
               className="tab-content"
               id="nav-tabContent"
             >
+              <button type='button' className='btn btn-outline-dark'>
+                Choose this template || Chosen!
+              </button>
               <div
                 className="tab-pane fade show active"
                 id="stylized"
                 role="tabpanel"
                 aria-labelledby="nav-stylized-tab"
                 >
-                  one thing
+                <img
+                  className='img-fluid'
+                  src={require('../../images/stylized-temp.png')} alt="stylized template example"
+                />
                 </div>
               <div
                 className="tab-pane fade"
@@ -77,7 +97,10 @@ class DashboardTemplates extends Component {
                 role="tabpanel"
                 aria-labelledby="nav-minimalist-tab"
                 >
-                  another thing
+                <img
+                  className='img-fluid'
+                  src={require('../../images/minimalist-temp.png')} alt="stylized template example"
+                />
                 </div>
             </div>
           </div>
