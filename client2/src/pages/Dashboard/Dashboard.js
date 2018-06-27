@@ -8,13 +8,6 @@ const styleDarkPanel = {
 };
 
 class Dashboard extends Component {
-  componentDidMount() {
-    fetch('/api/user/isauthenticated', { credentials: 'include' })
-      .then(resp => resp.json())
-      .then(data => console.log(`Is user authenticated?`, data.isAuthenticated))
-      .catch(err => console.error(err))
-  }
-
   render() {
     return (
       <div>

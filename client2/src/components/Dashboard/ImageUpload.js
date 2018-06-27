@@ -47,24 +47,25 @@ class ImageUpload extends Component {
           Repository Image:
         </label>
         <div className=' col-sm-9'>
-          <div className="border rounded pt-2">
-            <div
-              className='mx-auto'
-              style={{ width: '15rem', overflow: 'hidden', height: '250px' }}
-            >
-              <div className='my-auto'>
-                {
-                  this.state.loading
-                  ?
-                  <div className='image-loading mt-5'></div>
-                  :
-                  <img
-                    z-index='-1'
-                    className="img-fluid rounded mb-2"
-                    src={this.props.src}
-                    alt="Repo thumbnail"
-                  />
-                }
+          <div className="border rounded">
+            <div className="row" style={{ height: '250px', overflow: 'hidden' }}>
+              <div className="col d-flex justify-content-center align-items-center">
+                <div className="flex-fill">
+
+              {
+                this.state.loading
+                ?
+                <div className='image-loading mx-auto'></div>
+                :
+
+                <img
+                  z-index='-1'
+                  className="img-fluid rounded"
+                  src={this.props.src}
+                  alt="Repo thumbnail"
+                />
+              }
+                </div>
               </div>
             </div>
             {
