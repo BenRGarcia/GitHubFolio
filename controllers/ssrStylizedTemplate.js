@@ -52,13 +52,13 @@ module.exports = createReactClass({
           {
             repositories &&
           repositories.map(repo => (
-            <div className="col-md-6  pt-5 pb-3">
-              <div className='card'>
+
+            <div className="col-md-4 pt-5 pb-3">
+              <div className='card  d-flex' style={{ maxWidth: '400px' }}>
                 <a className='mb-0'>
                   <img
                     src={repo.imageUrl || 'https://s3.us-east-2.amazonaws.com/githubfolio.dn7kwp92pdrmtdefnyz6uka5/GitHubFolio_Thumbnail.png'}
                     alt='Profile'
-                    className='img-fluid'
                     style={{ width: '100%', maxHeight: '350px' }}
                   />
                 </a>
@@ -68,6 +68,7 @@ module.exports = createReactClass({
                   <a class='btn btn-outline-secondary mr-2' target='_blank' href={repo.deployedUrl}>View Project</a>
                   <a class='btn btn-outline-secondary ml-2' target='_blank' href={repo.repositoryUrl}><i class="fab fa-github"></i></a>
                 </div>
+
               </div>
             </div>
           ))
