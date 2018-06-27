@@ -33,6 +33,12 @@ module.exports = createReactClass({
                 </div>
                 <p className='mb-0'>{repo.name}</p>
               </div>
+              <a href={profilePageUrl} target='_blank'>
+                <i class="fab fa-github-square fa-2x pr-2"></i>
+              </a>
+              <a href={`mailto:${email}`} target='_top' className='secondary'>
+                <i class='fab fas fa-envelope-square fa-2x pl-2'></i>
+              </a>
             </div>
           ))
           }

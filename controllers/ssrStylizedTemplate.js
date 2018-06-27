@@ -1,44 +1,40 @@
 const React = require('react')
 const createReactClass = require('create-react-class')
 
-const styleTitleName = {
-  fontFamily: 'Oswald-SemiBold',
-  fontSize: '36px',
-  color: '#3a4145'
-}
+const style = {
 
-const styleBio = {
-  fontFamily: 'Oswald-SemiBold',
-  color: '#666666'
-}
+  styleTitleName: {
+    fontFamily: 'Oswald-SemiBold',
+    fontSize: '36px',
+    color: '#3a4145'
+  },
 
-const styleDescriptions = {
-  fontFamily: 'Oswald-SemiBold',
-  color: '#3a4145'
-}
+  styleBio: {
+    fontFamily: 'Oswald-SemiBold',
+    color: '#666666'
+  },
+
+  styleDescriptions: {
+    fontFamily: 'Oswald-SemiBold',
+    color: '#3a4145'
+  },
+};
 
 module.exports = createReactClass({
   render () {
     const { repositories, bio, profileName, email, location, profileImageUrl, profilePageUrl } = this.props.userData
     return (
-      <div className='container'>
+
+      <div className='container text-center'>
         <div className='section bg-light pb-5 pt-2'>
           <div><img src={profileImageUrl} alt="Profile"
             className='rounded-circle mx-auto d-block justify-content-center mt-2 mb-2 border bg-white p-2'
             style={{ width: '150px' }} />
           </div>
-          <h1 style={styleTitleName}> {profileName}</h1>
-          <h5 style={styleBio}> {bio}</h5>
+          <h1 style={style.styleTitleName}> {profileName}</h1>
+          <p style={style.styleBio}>{location}</p>
+          <h5 style={style.styleBio}> {bio}</h5>
           <div className='row justify-content-center'>
-            {/* <div className="col-3 text-center">
-              <p style={styleBio}><a href={`mailto:${email}`}>{email}</a></p>
-            </div> */}
-            {/* <div className="col-3 text-center">
-              <p style={styleBio}>{location}</p>
-            </div> */}
-            {/* <div className="col-3 text-center">
-              <p style={styleBio}><a target='_blank' href={profilePageUrl}>{profilePageUrl}</a></p>
-            </div> */}
             <a href={profilePageUrl} target='_blank'>
               <i class="fab fa-github-square fa-2x pr-2"></i>
             </a>
@@ -53,7 +49,7 @@ module.exports = createReactClass({
             repositories &&
           repositories.map(repo => (
 
-            <div className="col-md-4 pt-5 pb-3">
+            <div className='col-md-4 pt-5 pb-3'>
               <div className='card  d-flex' style={{ maxWidth: '400px' }}>
                 <a className='mb-0'>
                   <img
@@ -63,10 +59,10 @@ module.exports = createReactClass({
                   />
                 </a>
                 <div className='card-body'>
-                  <h5 className='card-title' style={styleDescriptions}> {repo.name}</h5>
-                  <p className='card-text' style={styleDescriptions}> {repo.description}</p>
-                  <a class='btn btn-outline-secondary mr-2' target='_blank' href={repo.deployedUrl}>View Project</a>
-                  <a class='btn btn-outline-secondary ml-2' target='_blank' href={repo.repositoryUrl}><i class="fab fa-github"></i></a>
+                  <h5 className='card-title' style={style.styleDescriptions}> {repo.name}</h5>
+                  <p className='card-text' style={style.styleDescriptions}> {repo.description}</p>
+                  <a className='btn btn-outline-secondary mr-2' target='_blank' href={repo.deployedUrl}>View Project</a>
+                  <a className='btn btn-outline-secondary ml-2' target='_blank' href={repo.repositoryUrl}>GitHub</a>
                 </div>
 
               </div>
@@ -78,6 +74,16 @@ module.exports = createReactClass({
     )
   }
 })
+
+// { /* <div className="col-3 text-center">
+//   <p style={styleBio}><a href={`mailto:${email}`}>{email}</a></p>
+// </div> */ }
+// { /* <div className="col-3 text-center">
+//   <p style={styleBio}>{location}</p>
+// </div> */ }
+// { /* <div className="col-3 text-center">
+//   <p style={styleBio}><a target='_blank' href={profilePageUrl}>{profilePageUrl}</a></p>
+// </div> */ }
 
 // <div className="col-md-6  pt-5 pb-3">
 //   <div key={profilePageUrl}>
