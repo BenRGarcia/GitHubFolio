@@ -31,7 +31,7 @@ const EditRepo = ({ handleChange, repositories, isDisabled }) => {
           {/* Image component */}
           <ImageUpload
             _id={_id}
-            src={imageUrl || require('../../images/Thumbnail.png')}
+            src={imageUrl || require('../../images/placeholder.png')}
           />
 
             {/* Repo name template */}
