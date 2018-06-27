@@ -17,6 +17,11 @@ const style = {
   styleDescriptions: {
     fontFamily: 'Oswald-SemiBold',
     color: '#3a4145'
+  },
+
+  topPanel: {
+    width: '100vw',
+    marginLeft: 'calc(-50vw + 50%)'
   }
 }
 
@@ -26,12 +31,12 @@ module.exports = createReactClass({
     return (
 
       <div className='container text-center'>
-        <div className='section bg-light pb-5 pt-2'>
+        <div className='section bg-light pb-5 pt-2' style={style.topPanel}>
           <div><img src={profileImageUrl} alt="Profile"
             className='rounded-circle mx-auto d-block justify-content-center mt-2 mb-2 border bg-white p-2'
             style={{ width: '150px' }} />
           </div>
-          <h1 style={style.styleTitleName}> {profileName}</h1>
+          <h1 style={style.styleTitleName}>{profileName}</h1>
           <p style={style.styleBio}>{location}</p>
           <h5 style={style.styleBio}> {bio}</h5>
           <div className='row justify-content-center'>
