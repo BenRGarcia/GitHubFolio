@@ -53,13 +53,13 @@ class DashboardPreview extends Component {
                 OR
               </div>
             }
-            <div>
-              {
-                this.state.html
-                &&
+            {
+              this.state.html
+              &&
+              <div>
                 <DownloadSourceCode />
-              }
-            </div>
+              </div>
+            }
           </div>
         </div>
         <div>
