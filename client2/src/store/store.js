@@ -76,7 +76,8 @@ const initialState = {
     bio: "",
     location: "",
     chosenTemplate: "",
-    repositories: []
+    repositories: [],
+    gitHubId: ''
   }
 };
 
