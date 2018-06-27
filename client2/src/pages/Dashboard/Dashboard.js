@@ -8,7 +8,14 @@ const styleDarkPanel = {
   backgroundColor: '#28314B'
 };
 
-const parseJSON = resp => resp.json();
+const parseJSON = response => {
+  const contentType = response.headers.get('content-type');
+  if (contentType && contentType.includes('application/json')) {
+    return response.json()
+  } else {
+    return false
+  }
+}
 
 class Dashboard extends Component {
   state = {
@@ -16,12 +23,6 @@ class Dashboard extends Component {
   };
 
   componentDidMount() {
-    console.log(`componentDidMount was called`)
-    this.checkAuthenticatedState()
-  }
-
-  componentDidUpdate() {
-    console.log(`componentDidUpdate was called`)
     this.checkAuthenticatedState()
   }
 
@@ -33,7 +34,6 @@ class Dashboard extends Component {
 
   setAuthState = nextState => {
     const { isAuthenticated } = nextState;
-    console.log(`verified with server and user auth state is: ${isAuthenticated}`)
     this.setState({ isAuthenticated });
   }
 
