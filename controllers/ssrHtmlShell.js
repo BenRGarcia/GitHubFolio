@@ -31,7 +31,7 @@ module.exports = createReactClass({
             GitHubFolio | My Portfolio Site
           </title>
         </head>
-        <body>
+        <body className='text-center'>
           <div dangerouslySetInnerHTML={{ __html: this.props.body }} />
         </body>
       </html>
