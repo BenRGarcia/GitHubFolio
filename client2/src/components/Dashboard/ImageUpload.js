@@ -16,31 +16,28 @@ class ImageUpload extends Component {
 
   handleChange = (e, _id) => {
     const nextFile = e.target.files[0]
-    console.log(`User clicked 'upload new image' for _id: ${_id}`)
-    if (isValidImageFile(nextFile)) {
+    if (nextFile && isValidImageFile(nextFile)) {
       this.setState({
         file: nextFile,
         warning: null
       }, () => this.handleUpload(_id))
     } else {
       this.setState({
-        warning: 'Only .jpg .jpeg .png and .gif files smaller than 250kb allowed!'
+        warning: 'Only .jpg .jpeg .png and .gif files smaller than 250kb allowed! Try Again'
       })
     }
   }
 
   handleUpload = _id => {
     const url = `/api/user/photo/${_id}`
-    console.log(`time to execute POSt request to url: ${url}`)
     const formData = new FormData()
     formData.append('repoImage', this.state.file)
     const config = { headers: { 'content-type': 'multipart/form-data' } }
     return axios.post(url, formData, config)
       .then(this.setState({ file: null, loading: true }))
       .then(this.props.fetchUserInfo)
-      .then(resp => console.log(`POST image success response:`, JSON.stringify(resp, null, 2)))
       .then(() => this.setState({ loading: false }))
-      .catch(err => console.error(`POST request error:\n`, err))
+      .catch(err => console.error(err))
   };
 
   render() {
@@ -59,9 +56,10 @@ class ImageUpload extends Component {
                 {
                   this.state.loading
                   ?
-                  <div className='image-loading'></div>
+                  <div className='image-loading mt-5'></div>
                   :
                   <img
+                    z-index='-1'
                     className="img-fluid rounded mb-2"
                     src={this.props.src}
                     alt="Repo thumbnail"
@@ -69,6 +67,13 @@ class ImageUpload extends Component {
                 }
               </div>
             </div>
+            {
+              this.state.warning
+              &&
+              <small className='text-danger'>
+                {this.state.warning}
+              </small>
+            }
             <div className="custom-file">
               <input
                 onChange={e => this.handleChange(e, this.props._id)}
@@ -82,13 +87,6 @@ class ImageUpload extends Component {
               >
                 Upload New Image&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               </label>
-              {
-                this.state.warning
-                &&
-                <small className='text-danger'>
-                  {this.state.warning}
-                </small>
-              }
             </div>
           </div>
         </div>
