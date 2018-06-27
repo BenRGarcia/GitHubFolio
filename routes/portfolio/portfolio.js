@@ -40,7 +40,7 @@ router.route('/ssr')
           if (err) throw err
           fileHandler.deleteFileFromLocalTempFolder({ filename })
         }
-        res.download(path.join(__dirname, `../../temp/${filename}`), cb)
+        res.download(path.join(__dirname, `../../temp/${filename}`), 'GitHubFolio_Source_Code.html', cb)
       })
       .catch(err => next(err))
   })
