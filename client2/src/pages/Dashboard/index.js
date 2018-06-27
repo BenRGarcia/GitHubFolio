@@ -4,7 +4,6 @@ import DashboardEditUser from './DashboardEditUser';
 import DashboardGetRepos from './DashboardGetRepos';
 import DashboardPreview from './DashboardPreview';
 import DashboardTemplates from './DashboardTemplates';
-import ProtectedRoute from './ProtectedRoute';
 
 export {
   Dashboard,
@@ -12,6 +11,5 @@ export {
   DashboardEditUser,
   DashboardGetRepos,
   DashboardPreview,
-  DashboardTemplates,
-  ProtectedRoute
+  DashboardTemplates
 }
