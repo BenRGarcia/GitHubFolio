@@ -30,6 +30,7 @@ class Dashboard extends Component {
     fetch('/api/user/isauthenticated', { credentials: 'include' })
       .then(parseJSON)
       .then(this.setAuthState)
+      .catch(() => this.setAuthState({ isAuthenticated: false }))
   }
 
   setAuthState = nextState => {
