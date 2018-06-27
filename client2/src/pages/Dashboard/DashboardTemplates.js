@@ -12,12 +12,20 @@ const style = {
     borderRadius: '0',
     color: 'initial',
     textDecoration: 'none'
+  },
+  navItemActive: {
+    backgroundColor: '#28314B',
+    color: '#fff',
+    border: '1px solid #ddd',
+    borderRadius: '0',
+    textDecoration: 'none'
   }
 };
 
 class DashboardTemplates extends Component {
   state = {
-    chosenTemplate: ''
+    chosenTemplate: '',
+    viewingTemplate: 'stylized'
   };
 
   componentDidMount() {
@@ -27,6 +35,7 @@ class DashboardTemplates extends Component {
   componentWillReceiveProps(nextProps) {
     const { chosenTemplate } = nextProps.userInfo
     if (chosenTemplate) {
+      console.log(`component received props of chosen template: ${chosenTemplate}`)
       this.setState({ chosenTemplate })
     }
   }
@@ -34,6 +43,12 @@ class DashboardTemplates extends Component {
   handleSubmit = e => {
     e.preventDefault();
     console.log(`user chose a template: ???`)
+  };
+
+  handleChange = template => {
+    this.setState({
+      viewingTemplate: template
+    })
   };
 
   render() {
@@ -49,8 +64,9 @@ class DashboardTemplates extends Component {
                 role="tablist"
               >
                 <a
+                  onClick={() => this.handleChange('stylized')}
                   className="nav-item nav-link active py-1 px-5"
-                  style={style.navItem}
+                  style={this.state.viewingTemplate === 'stylized' ? style.navItemActive : style.navItem}
                   id="nav-stylized-tab"
                   data-toggle="tab"
                   href="#stylized"
@@ -61,8 +77,9 @@ class DashboardTemplates extends Component {
                   Stylized
                 </a>
                 <a
+                  onClick={() => this.handleChange('minimalist')}
                   className="nav-item nav-link py-1 px-5"
-                  style={style.navItem}
+                  style={this.state.viewingTemplate === 'minimalist' ? style.navItemActive : style.navItem}
                   id="nav-minimalist-tab"
                   data-toggle="tab"
                   href="#minimalist"
@@ -79,7 +96,13 @@ class DashboardTemplates extends Component {
               id="nav-tabContent"
             >
               <button type='button' className='btn btn-outline-dark'>
-                Choose this template || Chosen!
+                {
+                  this.state.viewingTemplate === this.state.chosenTemplate
+                  ?
+                  'Chosen!'
+                  :
+                  'Choose this template instead'
+                }
               </button>
               <div
                 className="tab-pane fade show active"
