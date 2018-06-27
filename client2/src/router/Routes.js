@@ -5,8 +5,8 @@ import {
   DashboardEditRepos,
   DashboardTemplates,
   DashboardEditUser,
-  DashboardPreview,
-  ProtectedRoute
+  DashboardPreview/* ,
+  ProtectedRoute */
 } from '../pages/Dashboard'
 import { Home, Portfolio, Dashboard, NotFound } from '../pages'
 
@@ -21,8 +21,8 @@ const routes = {
       label: 'Dashboard',
       path: '/dashboard',
       exact: false,
-      component: <ProtectedRoute component={Dashboard} />
-      // component: <Dashboard />
+      // component: <ProtectedRoute component={Dashboard} />
+      component: <Dashboard />
     }, {
       label: 'Portfolios',
       path: '/portfolio/:gitHubId',

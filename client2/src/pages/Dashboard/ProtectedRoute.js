@@ -1,18 +1,18 @@
 import React from "react";
 import { Route, Redirect } from 'react-router-dom';
 
-const parseJSON = resp => {
-  const response = resp.json()
-  console.log(`Here's the server isAuthenticated response:\n`, JSON.stringify(response))
-  return response;
-};
+const parseJSON = resp => resp.json();
 
 const checkAuth = {
   isAuthenticated: true,
-  checkAuthentication() {
+  async checkAuthentication() {
     return fetch('/api/user/isauthenticated', { credentials: 'include' })
       .then(parseJSON)
-      .then(res => this.isAuthenticated = res.isAuthenticated )
+      .then(res => {
+        console.log(res)
+        this.isAuthenticated = res.isAuthenticated
+        console.log()
+      })
       .catch(err => console.error(err))
   },
   signout(cb) {
@@ -21,6 +21,8 @@ const checkAuth = {
 };
 
 const ProtectedRoute = ({ component: Component, ...rest }) => {
+  console.log(`Before authentication check:`, checkAuth.isAuthenticated)
+  checkAuth.checkAuthentication()
   return <Route
     {...rest}
     render={props => {
