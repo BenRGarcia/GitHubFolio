@@ -16,7 +16,6 @@ export const isValidImageFile = ({ name, type, size }) => {
     // Return boolean
     return isCorrectFileExt && isCorrectMimeType && isCorrectFileSize
   } catch (err) {
-    console.error(`entered catch block:\n`, err)
     return false;
   }
 };
