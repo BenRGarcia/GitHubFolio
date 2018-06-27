@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "proxy": "http://localhost:3001/",
+  "homepage": "https://githubfolio.herokuapp.com/",
   "dependencies": {
     "axios": "^0.18.0",
     "bootstrap": "^4.1.1",
