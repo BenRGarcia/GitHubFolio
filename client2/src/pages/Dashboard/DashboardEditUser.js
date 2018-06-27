@@ -9,7 +9,8 @@ class DashboardEditUser extends Component {
     profileName: "",
     email: "",
     bio: "",
-    location: ""
+    location: "",
+    chosenTemplate: ''
   }
 
   prevState = {
@@ -30,8 +31,8 @@ class DashboardEditUser extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { email, location, profileName, bio } = nextProps.userInfo
-    const nextState = { profileName, email, bio, location };
+    const { email, location, profileName, bio, chosenTemplate } = nextProps.userInfo
+    const nextState = { profileName, email, bio, location, chosenTemplate };
     this.prevState = nextState
     this.setState(nextState)
   }
@@ -52,7 +53,11 @@ class DashboardEditUser extends Component {
 
   renderInputs = () => {
     const inputs = [];
-    for (let key in this.state) {
+    // make copy of state
+    const cloneState = { ...this.state };
+    // remove chosen template
+    delete cloneState.chosenTemplate;
+    for (let key in cloneState) {
       inputs.push(
         <UserInput
           label={key.toUpperCase()}

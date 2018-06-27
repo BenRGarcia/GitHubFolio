@@ -1,14 +1,19 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { fetchUserInfo } from '../../store/store';
 import { DownloadSourceCode } from '../../components'
 
 const parseText = resp => resp.text();
 
 class DashboardPreview extends Component {
   state = {
-    html: null
+    html: null,
+    gitHubId: ''
   };
 
   componentDidMount() {
+    this.props.fetchUserInfo()
     const url = '/portfolio/user/preview';
     fetch(url, { credentials: 'include' })
       .then(parseText)
@@ -16,16 +21,46 @@ class DashboardPreview extends Component {
       .catch(err => console.error(err))
   }
 
+  componentWillReceiveProps(nextProps) {
+    const { gitHubId } = nextProps.userInfo
+    this.setState({ gitHubId })
+  }
+
   render() {
     const html = { __html: this.state.html }
     return (
-      <div>
-        <div>
-          {
-            this.state.html
-            &&
-            <DownloadSourceCode />
-          }
+      <div className='mt-4'>
+        <div className='card'>
+          <div className="card-body">
+            {
+              this.state.gitHubId
+              &&
+              <div>
+                <a
+                  className='btn btn-outline-danger'
+                  href={`/portfolio/user/${this.state.gitHubId}`}
+                  target='_blank'>
+                  View Public Portfolio Page
+                </a>
+              </div>
+            }
+            {
+              this.state.html
+              &&
+              this.state.gitHubId
+              &&
+              <div className='my-3'>
+                OR
+              </div>
+            }
+            {
+              this.state.html
+              &&
+              <div>
+                <DownloadSourceCode />
+              </div>
+            }
+          </div>
         </div>
         <div>
           {
@@ -39,4 +74,12 @@ class DashboardPreview extends Component {
   }
 }
 
-export default DashboardPreview
+const mapStateToProps = state => {
+  return { userInfo: state.userInfo };
+};
+
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators({ fetchUserInfo }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(DashboardPreview)

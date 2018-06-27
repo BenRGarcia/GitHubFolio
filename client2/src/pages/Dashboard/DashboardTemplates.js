@@ -3,17 +3,33 @@ import { connect } from "react-redux";
 import { fetchUserInfo, editUserInfo } from '../../store/store';
 import { bindActionCreators } from "redux";
 
-// const style = {
-//   fontFamily: 'Oswald-SemiBold',
-//   fontSize: '36px',
-//   color: '#666666',
-//   letterSpacing: '-0.04px',
-//   textAlign: 'left'
-// };
+const style = {
+  navtabs: {
+    border: 'none'
+  },
+  navItem: {
+    border: '1px solid #ddd',
+    borderRadius: '0',
+    color: 'initial',
+    textDecoration: 'none'
+  },
+  navItemActive: {
+    backgroundColor: '#28314B',
+    color: '#fff',
+    border: '1px solid #ddd',
+    borderRadius: '0',
+    textDecoration: 'none'
+  }
+};
 
 class DashboardTemplates extends Component {
   state = {
-    chosenTemplate: ''
+    profileName: "",
+    email: "",
+    bio: "",
+    location: "",
+    chosenTemplate: '',
+    viewingTemplate: 'stylized'
   };
 
   componentDidMount() {
@@ -21,82 +37,105 @@ class DashboardTemplates extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { chosenTemplate } = nextProps.userInfo
-    if (chosenTemplate) {
-      this.setState({ chosenTemplate })
-    }
+    const { email, location, profileName, bio, chosenTemplate } = nextProps.userInfo
+    const nextState = { profileName, email, bio, location, chosenTemplate };
+    this.setState(nextState)
   }
 
   handleSubmit = e => {
     e.preventDefault();
     const nextState = { ...this.state }
-    if (nextState.chosenTemplate !== '') {
-      this.props.editUserInfo(this.state)
-    }
+    nextState.chosenTemplate = this.state.viewingTemplate
+    this.props.editUserInfo(nextState)
   };
 
-  handleToggle = () => {
-    console.log(`Ben, you need to handle the toggle...`)
+  handleChange = template => {
+    this.setState({
+      viewingTemplate: template
+    })
   };
 
   render() {
     return (
-      <div>
-        <div>
-          <button
-            className='btn btn-outline-dark'
-            type='submit'
-            onClick={this.handleSubmit}
-          >
-            Save Template || Saved!
-          </button>
-        </div>
-        <div>
-          <div
-            className="btn-group btn-group-toggle"
-            data-toggle="buttons"
-          >
-            <label
-              className="btn btn-secondary active"
-              onClick={this.handleToggle}
+      <div className="row" style={{ minHeight: '100vh' }}>
+        <div className="col d-flex justify-content-center align-items-start">
+          <div className="flex-fill mt-4">
+            <nav className='mb-3'>
+              <div
+                className="nav nav-tabs"
+                style={style.navtabs}
+                id="nav-tab"
+                role="tablist"
+              >
+                <a
+                  onClick={() => this.handleChange('stylized')}
+                  className="nav-item nav-link active py-1 px-5"
+                  style={this.state.viewingTemplate === 'stylized' ? style.navItemActive : style.navItem}
+                  id="nav-stylized-tab"
+                  data-toggle="tab"
+                  href="#stylized"
+                  role="tab"
+                  aria-controls="nav-home"
+                  aria-selected="true"
+                >
+                  Stylized
+                </a>
+                <a
+                  onClick={() => this.handleChange('minimalist')}
+                  className="nav-item nav-link py-1 px-5"
+                  style={this.state.viewingTemplate === 'minimalist' ? style.navItemActive : style.navItem}
+                  id="nav-minimalist-tab"
+                  data-toggle="tab"
+                  href="#minimalist"
+                  role="tab"
+                  aria-controls="nav-profile"
+                  aria-selected="false"
+                >
+                  Minimalist
+                </a>
+              </div>
+            </nav>
+            <div
+              className="tab-content"
+              id="nav-tabContent"
             >
-              Minimalist
-              <input
-                type="radio"
-                name="options"
-                id="minimalist"
-                autoComplete="off"
-                checked={this.state.chosenTemplate === 'minimalist' ? true : false}
-              />
-            </label>
-            <label
-              className="btn btn-secondary"
-              onClick={this.handleToggle}
-            >
-              Stylized
-              <input
-                type="radio"
-                name="options"
+              <button
+                onClick={this.handleSubmit}
+                type='button'
+                className='btn btn-outline-dark mb-1'
+                disabled={this.state.viewingTemplate === this.state.chosenTemplate}
+              >
+                {
+                  this.state.viewingTemplate === this.state.chosenTemplate
+                  ?
+                  'Chosen!'
+                  :
+                  'Choose this template instead'
+                }
+              </button>
+              <div
+                className="tab-pane fade show active"
                 id="stylized"
-                autoComplete="off"
-                checked={this.state.chosenTemplate === 'stylized' ? true : false}
-              />
-            </label>
-          </div>
-          <div>
-            {
-              this.state.chosenTemplate !== 'minimalist'
-              ?
-              <img
-                src={require('../../images/stylized-temp.png')}
-                alt='profile'
-              />
-              :
-              <img
-                src={require('../../images/minimalist-temp.png')}
-                alt='profile'
-              />
-            }
+                role="tabpanel"
+                aria-labelledby="nav-stylized-tab"
+                >
+                <img
+                  className='img-fluid'
+                  src={require('../../images/stylized-temp.png')} alt="stylized template example"
+                />
+                </div>
+              <div
+                className="tab-pane fade"
+                id="minimalist"
+                role="tabpanel"
+                aria-labelledby="nav-minimalist-tab"
+                >
+                <img
+                  className='img-fluid'
+                  src={require('../../images/minimalist-temp.png')} alt="stylized template example"
+                />
+                </div>
+            </div>
           </div>
         </div>
       </div>
