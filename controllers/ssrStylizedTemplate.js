@@ -59,7 +59,7 @@ module.exports = createReactClass({
                     src={repo.imageUrl || 'https://s3.us-east-2.amazonaws.com/githubfolio.dn7kwp92pdrmtdefnyz6uka5/GitHubFolio_Thumbnail.png'}
                     alt='Profile'
                     className='img-fluid'
-                    style={{ width: '400px', height: '350px' }}
+                    style={{ width: '100%', maxHeight: '350px' }}
                   />
                 </a>
                 <div className='card-body'>
