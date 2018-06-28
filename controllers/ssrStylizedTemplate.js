@@ -23,7 +23,6 @@ const style = {
   topPanel: {
     width: '100vw',
     marginLeft: 'calc(-50vw + 50%)'
-    // height: '300px'
   },
 
   profilePic: {
@@ -97,29 +96,56 @@ module.exports = createReactClass({
           </div>
 
           <div className="row">
+            {/* Repo Card */}
             {
               repositories &&
-          repositories.map(repo => (
-
-            <div className='col-md-4 pt-5 pb-3'>
-              <div className='card  d-flex' style={{ maxWidth: '400px' }}>
-                <a className='mb-0'>
-                  <img
-                    src={repo.imageUrl || 'https://s3.us-east-2.amazonaws.com/githubfolio.dn7kwp92pdrmtdefnyz6uka5/placeholder.png'}
-                    alt='Profile'
-                    style={{ width: '100%', maxHeight: '350px' }}
-                  />
-                </a>
-                <div className='card-body'>
-                  <h5 className='card-title' style={style.styleDescriptions}> {repo.name}</h5>
-                  <p className='card-text' style={style.styleDescriptions}> {repo.description}</p>
-                  <a className='btn btn-outline-secondary mr-2' target='_blank' href={repo.deployedUrl}>View Project</a>
-                  <a className='btn btn-outline-secondary ml-2' target='_blank' href={repo.repositoryUrl}>GitHub</a>
+              repositories.map(repo => (
+                <div className='col-md-4 pt-5 pb-3'>
+                  <div
+                    className='card d-flex'
+                    style={{ maxWidth: '400px' }}
+                  >
+                    <div className='mb-0'>
+                      <img
+                        src={repo.imageUrl || 'https://s3.us-east-2.amazonaws.com/githubfolio.dn7kwp92pdrmtdefnyz6uka5/placeholder.png'}
+                        alt='Profile'
+                        style={{ width: '100%', maxHeight: '350px' }}
+                      />
+                    </div>
+                    <div className='card-body'>
+                      <h5
+                        className='card-title'
+                        style={style.styleDescriptions}
+                      >
+                        {repo.name}
+                      </h5>
+                      <p
+                        className='card-text'
+                        style={style.styleDescriptions}
+                      >
+                        {repo.description}
+                      </p>
+                      <a
+                        className='btn btn-outline-secondary mr-2'
+                        target='_blank'
+                        href={repo.deployedUrl}
+                      >
+                        View Project
+                      </a>
+                      <a
+                        className='btn btn-outline-secondary ml-2'
+                        target='_blank'
+                        href={repo.repositoryUrl}
+                      >
+                        <i
+                          class="fab fa-github"
+                        ></i>
+                        &nbsp;GitHub
+                      </a>
+                    </div>
+                  </div>
                 </div>
-
-              </div>
-            </div>
-          ))
+              ))
             }
           </div>
         </div>
