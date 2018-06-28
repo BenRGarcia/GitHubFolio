@@ -9,13 +9,13 @@ const EditRepo = ({ handleChange, repositories, isDisabled }) => {
     return (
       <fieldset key={_id} className='card'>
         <div
-          className="card-header"
+          className="card-header py-0"
           id="headingOne"
           style={{ backgroundColor: '#28314b'}}
       >
           <button
-            className="btn btn-link"
-            style={{ color: '#fff' }}
+            className="btn btn-link h3 mb-0"
+            style={{ color: '#fff', fontSize: '1.15rem', fontFamily: 'Roboto' }}
             type="button"
             data-toggle="collapse"
             data-target={`#collapse${_id}`}
