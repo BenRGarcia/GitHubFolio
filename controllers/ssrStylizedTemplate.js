@@ -41,7 +41,8 @@ module.exports = createReactClass({
     const { repositories, bio, profileName, email, location, profileImageUrl, profilePageUrl } = this.props.userData
     return (
       <div className='text-center'>
-        <nav className="navbar navbar-expand border-bottom">
+        {/* Navbar */}
+        <nav className="navbar navbar-expand py-0">
           <span class="navbar-brand">
             {profileName || 'Super Coder'}
           </span>
@@ -51,6 +52,7 @@ module.exports = createReactClass({
                 <a
                   className='nav-link'
                   href={profilePageUrl}
+                  style={{ color: 'initial' }}
                   target="_blank"
                 >
                   <i
@@ -61,19 +63,20 @@ module.exports = createReactClass({
               <li className="nav-item">
                 <a
                   className='nav-link'
+                  style={{ color: 'initial' }}
                   href={`mailto:${email}`}
                 >
                   <i
-                    className=" fab fas fa-envelope-square fa-2x"
+                    className="fas fa-envelope-square fa-2x"
                   ></i>
                 </a>
               </li>
             </ul>
           </div>
         </nav>
-
         <div className='container'>
-          <div className='section bg-light pb-5 pt-2' style={style.topPanel}>
+          {/* Jumbotron */}
+          <div className='bg-light pb-5 pt-2 border-top' style={style.topPanel}>
             <div style={{ position: 'relative' }}>
               <img
                 src={profileImageUrl}
