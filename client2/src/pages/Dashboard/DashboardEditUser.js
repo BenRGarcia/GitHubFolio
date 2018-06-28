@@ -4,6 +4,12 @@ import { UserInput } from '../../components';
 import { bindActionCreators } from "redux";
 import { fetchUserInfo, editUserInfo } from '../../store/store';
 
+const styleBG = {
+  backgroundImage: `url(${require('../../images/404Bg.png')})`,
+  backgroundSize: 'cover',
+  backgroundPosition: '30% 35%'
+};
+
 class DashboardEditUser extends Component {
   state = {
     profileName: "",
@@ -76,8 +82,8 @@ class DashboardEditUser extends Component {
       <div className="row" style={{ minHeight: '90vh' }}>
         <div className="col d-flex justify-content-center align-items-center">
           <div className="flex-fill">
-          <div className="card">
-            <div className="card-header text-white" style={{ backgroundColor: '#28314b' }}>
+          <div className="card shadow">
+            <div className="card-header text-white" style={styleBG}>
               <h1 className='mb-0' style={{ fontFamily: 'Roboto', fontSize: '1.35rem'  }}>
                 Profile Data
               </h1>

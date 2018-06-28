@@ -6,7 +6,7 @@ module.exports = (RedisStore, client) => {
       httpOnly: true,
       sameSite: true,
       secure: false, // change to 'true' for production
-      maxAge: 30 * 60 * 1000 // 30 minutes
+      maxAge: 60 * 60 * 1000 // 60 minutes
     },
     name: 'sessionId',
     secret: process.env.EXPRESS_SESSION_SECRET,

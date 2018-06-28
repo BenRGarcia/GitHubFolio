@@ -2,6 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { ImageUpload } from '../';
 
+const styleBG = {
+  backgroundImage: `url(${require('../../images/404Bg.png')})`,
+  backgroundSize: 'cover',
+  backgroundPosition: '30% 35%'
+};
+
 const EditRepo = ({ handleChange, repositories, isDisabled }) => {
   let counter = 0
   return repositories.map(repo => {
@@ -11,7 +17,7 @@ const EditRepo = ({ handleChange, repositories, isDisabled }) => {
         <div
           className="card-header py-0"
           id="headingOne"
-          style={{ backgroundColor: '#28314b'}}
+          style={styleBG}
       >
           <button
             className="btn btn-link h3 mb-0"
