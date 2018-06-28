@@ -61,7 +61,7 @@ module.exports = createReactClass({
               <li className="nav-item">
                 <a
                   className='nav-link'
-                  href={`mailto:${email}`} target="_top"
+                  href={`mailto:${email}`}
                 >
                   <i
                     className=" fab fas fa-envelope-square fa-2x"
