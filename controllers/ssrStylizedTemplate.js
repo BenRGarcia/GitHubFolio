@@ -28,7 +28,7 @@ const style = {
   profilePic: {
     float: 'none',
     position: 'absolute',
-    top: '5%',
+    top: '-30px',
     left: '50%',
     transform: 'translate(-50%, -10%)',
     width: '150px'
@@ -75,7 +75,7 @@ module.exports = createReactClass({
         </nav>
         <div className='container'>
           {/* Jumbotron */}
-          <div className='bg-light pb-5 pt-2 border-top' style={style.topPanel}>
+          <div className='bg-light pb-5 pt-2 border-top border-bottom' style={style.topPanel}>
             <div style={{ position: 'relative' }}>
               <img
                 src={profileImageUrl}
@@ -148,6 +148,11 @@ module.exports = createReactClass({
             }
           </div>
         </div>
+        <footer>
+          <div className='text-center py-3'>
+            Powered by GitHubFolio
+          </div>
+        </footer>
       </div>
     )
   }
