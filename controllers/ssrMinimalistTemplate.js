@@ -29,7 +29,13 @@ module.exports = createReactClass({
             <div className='row'>
               <div className="col-12">
                 <h1
-                  className='mt-2 mb-4'
+                  className='d-lg-none mt-2 mb-4 text-center'
+                  style={styleTitleName}
+                >
+                  {profileName}
+                </h1>
+                <h1
+                  className='d-none d-lg-block mt-2 mb-4'
                   style={styleTitleName}
                 >
                   {profileName}
