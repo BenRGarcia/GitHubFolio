@@ -11,16 +11,12 @@ const listFontStyle = {
   fontSize: '18px',
   color: '#D8D8D8',
   letterSpacing: '-0.05px',
-  display: 'inline-block',
   textAlign: 'left'
 }
 
 const outerDiv = {
   justifyContent: 'center'
-
 }
-
-
 
 const ListInfo = () => (
   <div className="row text-white center-text" style={outerDiv}>
