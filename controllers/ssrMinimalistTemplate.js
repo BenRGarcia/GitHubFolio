@@ -10,14 +10,13 @@ const styleTitleName = {
 }
 
 const styleImageWrapper = {
-  height: '300px',
+  height: '290px',
   overflow: 'hidden'
 }
 
 const styleImage = {
-  minHeight: '100%',
   verticalAlign: 'middle',
-  horizontalAlign: 'top'
+  minHeight: '100%'
 }
 
 module.exports = createReactClass({
@@ -41,8 +40,14 @@ module.exports = createReactClass({
                   {
                     repositories &&
                     repositories.map(repo => (
-                      <div className='col-12 col-md-6 col-lg-4 mb-3' key={profilePageUrl}>
-                        <div className='mb-0 bg-secondary' style={styleImageWrapper}>
+                      <div
+                        className='col-12 col-md-6 col-lg-4 mb-3'
+                        key={profilePageUrl}
+                      >
+                        <div
+                          className='mb-0 bg-light border'
+                          style={styleImageWrapper}
+                        >
                           <a
                             href={repo.repositoryUrl}
                             target='_blank'
@@ -55,7 +60,9 @@ module.exports = createReactClass({
                             />
                           </a>
                         </div>
-                        <p className='mb-0'>{repo.name}</p>
+                        <p className='mb-0'>
+                          {repo.name}
+                        </p>
                       </div>
                     ))
                   }
@@ -67,32 +74,35 @@ module.exports = createReactClass({
         <div className="row">
           <div className="col-12">
             <footer className="py-2">
-              <div className="container">
-                <span className='float-left'>
-                      Powered by GitHubFolio
-                </span>
-                <span className='float-right'>
-                  <a
-                    href={profilePageUrl}
-                    target='_blank'
-                    style={{ color: 'initial' }}
-                    className='ml-3'
-                  >
-                    <i
-                      className="fab fa-github-square fa-2x"
-                    ></i>
-                  </a>
-                  <a
-                    href={`mailto:${email}`}
-                    style={{ color: 'initial' }}
-                    className='ml-3'
-                  >
-                    <i
-                      className='fab fas fa-envelope-square fa-2x'
-                    ></i>
-                  </a>
-                </span>
-              </div>
+              <span className='float-left'>
+                <a
+                  href="http://githubfolio.com"
+                  style={{ color: 'initial' }}
+                >
+                    Powered by GitHubFolio
+                </a>
+              </span>
+              <span className='float-right'>
+                <a
+                  href={profilePageUrl}
+                  target='_blank'
+                  style={{ color: 'initial' }}
+                  className='ml-3'
+                >
+                  <i
+                    className="fab fa-github-square fa-2x"
+                  ></i>
+                </a>
+                <a
+                  href={`mailto:${email}`}
+                  style={{ color: 'initial' }}
+                  className='ml-3'
+                >
+                  <i
+                    className='fab fas fa-envelope-square fa-2x'
+                  ></i>
+                </a>
+              </span>
             </footer>
           </div>
         </div>
