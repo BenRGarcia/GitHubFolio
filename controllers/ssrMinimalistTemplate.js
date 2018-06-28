@@ -11,7 +11,8 @@ const styleTitleName = {
 
 const styleImageWrapper = {
   height: '290px',
-  overflow: 'hidden'
+  overflow: 'hidden',
+  backgroundColor: '#e5e5e5'
 }
 
 const styleImage = {
