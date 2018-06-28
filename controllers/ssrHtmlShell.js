@@ -27,6 +27,10 @@ module.exports = createReactClass({
             integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
             crossOrigin="anonymous"
           />
+          <link
+            href="https://fonts.googleapis.com/css?family=Lora|Oswald|Roboto"
+            rel="stylesheet"
+          />
           <title>
             GitHubFolio | My Portfolio Site
           </title>

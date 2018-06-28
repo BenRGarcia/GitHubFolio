@@ -73,9 +73,9 @@ module.exports = createReactClass({
             </ul>
           </div>
         </nav>
-        <div className='container'>
+        <div className=''>
           {/* Jumbotron */}
-          <div className='bg-light pb-5 pt-2 border-top border-bottom' style={style.topPanel}>
+          <div className='bg-light pb-5 pt-2 border-top border-bottom'>
             <div style={{ position: 'relative' }}>
               <img
                 src={profileImageUrl}
@@ -94,58 +94,68 @@ module.exports = createReactClass({
               {bio}
             </h5>
           </div>
-          <div className="row">
-            {/* Repo Card */}
-            {
-              repositories &&
-              repositories.map(repo => (
-                <div className='col-md-4 pt-5 pb-3'>
-                  <div
-                    className='card d-flex'
-                    style={{ maxWidth: '400px' }}
-                  >
-                    <div className='mb-0'>
-                      <img
-                        src={repo.imageUrl || 'https://s3.us-east-2.amazonaws.com/githubfolio.dn7kwp92pdrmtdefnyz6uka5/placeholder.png'}
-                        alt='Profile'
-                        style={{ width: '100%', maxHeight: '350px' }}
-                      />
-                    </div>
-                    <div className='card-body'>
-                      <h5
-                        className='card-title'
-                        style={style.styleDescriptions}
-                      >
-                        {repo.name || 'Another Awesome Project'}
-                      </h5>
-                      <p
-                        className='card-text'
-                        style={style.styleDescriptions}
-                      >
-                        {repo.description || 'The most amazing thing ever built! You have to check it out!'}
-                      </p>
-                      <a
-                        className='btn btn-outline-secondary mr-2'
-                        target='_blank'
-                        href={repo.deployedUrl || repo.repositoryUrl}
-                      >
-                        View Project
-                      </a>
-                      <a
-                        className='btn btn-outline-secondary ml-2'
-                        target='_blank'
-                        href={repo.repositoryUrl}
-                      >
-                        <i
-                          class="fab fa-github"
-                        ></i>
-                        &nbsp;GitHub
-                      </a>
+
+          <div className="container">
+            <div className="row">
+              {/* Repo Card */}
+              {
+                repositories &&
+                repositories.map(repo => (
+                  <div className='col-12 col-md-6 col-lg-4 pt-5 pb-3'>
+                    <div
+                      className='card mx-auto'
+                      style={{ maxWidth: '400px' }}
+                    >
+                      <div className='mb-0'>
+                        <img
+                          src={repo.imageUrl || 'https://s3.us-east-2.amazonaws.com/githubfolio.dn7kwp92pdrmtdefnyz6uka5/placeholder.png'}
+                          alt='Profile'
+                          className='rounded-top'
+                          style={{ width: '100%', maxHeight: '350px' }}
+                        />
+                      </div>
+                      <div className='card-body'>
+                        <h5
+                          className='card-title'
+                          style={style.styleDescriptions}
+                        >
+                          {repo.name || 'Another Awesome Project'}
+                        </h5>
+                        <p
+                          className='card-text'
+                          style={style.styleDescriptions}
+                        >
+                          {repo.description || 'The most amazing thing ever built! You have to check it out!'}
+                        </p>
+                        <div className="row">
+                          <div className="col-6">
+                            <a
+                              className='btn btn-outline-secondary'
+                              target='_blank'
+                              href={repo.deployedUrl || repo.repositoryUrl}
+                            >
+                              View Project
+                            </a>
+                          </div>
+                          <div className="col-6">
+                            <a
+                              className='btn btn-outline-secondary'
+                              target='_blank'
+                              href={repo.repositoryUrl}
+                            >
+                              <i
+                                class="fab fa-github"
+                              ></i>
+                              &nbsp;GitHub
+                            </a>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))
-            }
+                ))
+              }
+            </div>
           </div>
         </div>
         <footer>

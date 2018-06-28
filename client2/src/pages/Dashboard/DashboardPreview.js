@@ -4,6 +4,12 @@ import { bindActionCreators } from "redux";
 import { fetchUserInfo } from '../../store/store';
 import { DownloadSourceCode } from '../../components'
 
+const styleBG = {
+  backgroundImage: `url(${require('../../images/404Bg.png')})`,
+  backgroundSize: 'cover',
+  backgroundPosition: '30% 35%'
+};
+
 const parseText = resp => resp.text();
 
 class DashboardPreview extends Component {
@@ -29,39 +35,53 @@ class DashboardPreview extends Component {
   render() {
     const html = { __html: this.state.html }
     return (
-      <div className='mt-4'>
-        <div className='card'>
-          <div className="card-body">
-            {
-              this.state.gitHubId
-              &&
-              <div>
-                <a
-                  className='btn btn-outline-danger'
-                  href={`/portfolio/user/${this.state.gitHubId}`}
-                  target='_blank'>
-                  View Public Portfolio Page
-                </a>
+      <div className='mt-3'>
+        <div className="accordion" id="accordionExample">
+          <div className="card">
+            <div className="card-header" style={styleBG} id="headingOne">
+              <h5 className="mb-0">
+                <button className="btn btn-link text-white" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  <i
+                    className="fas fa-toolbox fa-lg"
+                  ></i>
+                  &nbsp;&nbsp;Click here to open tool box
+                </button>
+              </h5>
+            </div>
+            <div id="collapseOne" className="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+              <div className="card-body border-bottom bg-light">
+                {
+                  this.state.gitHubId
+                  &&
+                  <div>
+                    <a
+                      className='btn btn-outline-danger'
+                      href={`/portfolio/user/${this.state.gitHubId}`}
+                      target='_blank'>
+                      View Public Portfolio Page
+                    </a>
+                  </div>
+                }
+                {
+                  this.state.html
+                  &&
+                  this.state.gitHubId
+                  &&
+                  <div className='my-3'>
+                    OR
+                  </div>
+                }
+                {
+                  this.state.html
+                  &&
+                  <div>
+                    <DownloadSourceCode />
+                  </div>
+                }
               </div>
-            }
-            {
-              this.state.html
-              &&
-              this.state.gitHubId
-              &&
-              <div className='my-3'>
-                OR
-              </div>
-            }
-            {
-              this.state.html
-              &&
-              <div>
-                <DownloadSourceCode />
-              </div>
-            }
+            </div>
           </div>
-        </div>
+          </div>
         <div>
           {
             this.state.html

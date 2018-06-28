@@ -1,7 +1,7 @@
 import React from 'react';
 
 const logoutLinks = {
-  fontFamily: 'Roboto sans-serif',
+  fontFamily: 'Roboto, sans-serif',
   fontSize: '18px',
   color: '#979799',
   paddingTop: '15px',
