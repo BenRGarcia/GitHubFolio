@@ -5,9 +5,9 @@ const style = {
 
   styleTitleName: {
     fontFamily: 'Oswald-SemiBold',
-    fontSize: '36px',
+    fontSize: '2.2rem',
     color: '#3a4145',
-    paddingTop: '140px'
+    paddingTop: '130px'
   },
 
   styleBio: {
@@ -20,13 +20,7 @@ const style = {
     color: '#3a4145'
   },
 
-  topPanel: {
-    width: '100vw',
-    marginLeft: 'calc(-50vw + 50%)'
-  },
-
   profilePic: {
-    float: 'none',
     position: 'absolute',
     top: '-30px',
     left: '50%',
@@ -35,13 +29,23 @@ const style = {
   }
 }
 
+const styleImageWrapper = {
+  height: '290px',
+  overflow: 'hidden'
+}
+
+const styleImage = {
+  verticalAlign: 'middle',
+  minHeight: '100%'
+}
+
 module.exports = createReactClass({
   render () {
     const { repositories, bio, profileName, email, location, profileImageUrl, profilePageUrl } = this.props.userData
     return (
       <div className='text-center'>
         {/* Navbar */}
-        <nav className="navbar navbar-expand py-0">
+        <nav className="navbar navbar-expand pt-3 pb-4">
           <span class="navbar-brand">
             {profileName || 'Super Coder'}
           </span>
@@ -106,12 +110,12 @@ module.exports = createReactClass({
                       className='card mx-auto'
                       style={{ maxWidth: '400px' }}
                     >
-                      <div className='mb-0'>
+                      <div className='mb-0' style={styleImageWrapper}>
                         <img
                           src={repo.imageUrl || 'https://s3.us-east-2.amazonaws.com/githubfolio.dn7kwp92pdrmtdefnyz6uka5/placeholder.png'}
                           alt='Profile'
-                          className='rounded-top'
-                          style={{ width: '100%', maxHeight: '350px' }}
+                          className='img-fluid rounded-top'
+                          style={styleImage}
                         />
                       </div>
                       <div className='card-body'>
