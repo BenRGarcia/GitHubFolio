@@ -15,7 +15,7 @@ const styleSidebar = {
 };
 
 const styleLinks = {
-  fontFamily: 'Roboto sans-serif',
+  fontFamily: 'Roboto, sans-serif',
   fontSize: '18px',
   paddingTop: '15px',
   height: '50px',
