@@ -19,8 +19,8 @@ module.exports = createReactClass({
     const { repositories, bio, profileName, email, location, profileImageUrl, profilePageUrl } = this.props.userData
     return (
       <div className='container'>
-        <div className="row" style={{ minHeight: '100vh' }}>
-          <div className="col d-flex justify-content-center align-items-center">
+        <div className="row" style={{ minHeight: '90vh' }}>
+          <div className="col d-flex justify-content-center align-items-center mb-2">
             <div className='row'>
               <div className="col-12">
                 <h1
@@ -31,7 +31,7 @@ module.exports = createReactClass({
                 </h1>
               </div>
               <div className="col-12">
-                <div className='row mb-5'>
+                <div className='row mb-4'>
                   {
                     repositories &&
                     repositories.map(repo => (
@@ -58,8 +58,10 @@ module.exports = createReactClass({
                 </div>
               </div>
             </div>
-            <footer className="fixed-bottom bg-white">
-              <div className='d-flex justify-content-around py-3'>
+          </div>
+          <div className="bg-white">
+            <footer className="fixed-bottom py-2">
+              <div className="container">
                 <span>
                   Powered by GitHubFolio
                 </span>
@@ -70,7 +72,7 @@ module.exports = createReactClass({
                     style={{ color: 'initial' }}
                   >
                     <i
-                      class="fab fa-github-square fa-2x pr-2"
+                      class="fab fa-github-square fa-2x"
                     ></i>
                   </a>
                   <a
@@ -78,7 +80,7 @@ module.exports = createReactClass({
                     style={{ color: 'initial' }}
                   >
                     <i
-                      class='fab fas fa-envelope-square fa-2x pl-2'
+                      class='fab fas fa-envelope-square fa-2x'
                     ></i>
                   </a>
                 </span>
