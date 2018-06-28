@@ -42,7 +42,7 @@ module.exports = createReactClass({
     return (
       <div className='container text-center'>
         <nav className="navbar navbar-expand-lg navbar-light bg-white nav_font border-bottom navbar-fixed-bottom ">
-          <a class="navbar-brand" href="#">{profileName}</a>
+          <span class="navbar-brand">{profileName}</span>
 
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
             aria-label="Toggle navigation">
