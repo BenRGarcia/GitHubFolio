@@ -7,7 +7,7 @@ const listTitleFontStyle = {
 
 const listFontStyle = {
   fontFamily: 'Oswald-Light',
-  fontSize: '22px',
+  fontSize: '1.4rem',
   color: '#D8D8D8',
   letterSpacing: '-0.05px',
   textAlign: 'left'
