@@ -29,7 +29,7 @@ class Navbar extends Component {
           >
           <span
             className="navbar-brand"
-            style={{ fontFamily: 'lora-bold' }}
+            style={{ fontFamily: 'lora', fontWeight: 'bold' }}
           >
             <img
               className='img-fluid pr-2'

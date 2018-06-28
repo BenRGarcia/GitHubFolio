@@ -1,12 +1,13 @@
 import React from 'react';
 
 const listTitleFontStyle = {
-  fontFamily: 'Roboto-Regular',
+  fontFamily: 'Roboto',
   letterSpacing: '-0.08px'
 }
 
 const listFontStyle = {
-  fontFamily: 'Oswald-Light',
+  fontFamily: 'Oswald',
+  fontWeight: '600',
   fontSize: '1.4rem',
   color: '#D8D8D8',
   letterSpacing: '-0.05px',

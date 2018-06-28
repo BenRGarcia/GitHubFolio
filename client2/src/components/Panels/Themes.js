@@ -1,7 +1,7 @@
 import React from 'react';
 
 const themesTitleFontStyle = {
-  fontFamily: 'Roboto-Regular',
+  fontFamily: 'Roboto',
   letterSpacing: '-0.08px',
   color: '#4a4a4a'
 }
