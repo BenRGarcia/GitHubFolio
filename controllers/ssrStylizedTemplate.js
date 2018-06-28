@@ -63,8 +63,8 @@ module.exports = createReactClass({
               </li>
             </ul>
           </div>
-
         </nav>
+        
         <div className='section bg-light pb-5 pt-2' style={style.topPanel}>
           <div><img src={profileImageUrl} alt="Profile" 
             className='rounded-circle mx-auto d-block justify-content-center mt-2 mb-2 border bg-white p-2'
