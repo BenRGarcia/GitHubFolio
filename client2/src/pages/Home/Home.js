@@ -11,7 +11,7 @@ const styleLightPanel = {
 };
 
 const landingBG = {
-  backgroundImage: `url(${require("../../images/landingillustration.png")})`,
+  backgroundImage: `url(${require("../../images/landingillustration-final.png")})`,
   backgroundPosition: 'center bottom',
   backgroundSize: 'cover',
   backgroundRepeat: 'no-repeat'

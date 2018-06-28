@@ -23,7 +23,7 @@ const Jumbotron = () => (
         Introducing GitHubFolio
       </h1>
       <p className="lead pb-4" style={ pHeroFontStyle } >
-        Create a beautiful portolio to showcase your best work.
+        Create a beautiful portfolio to showcase your best work.
       </p>
       <LoginWithGitHub />
     </div>
