@@ -7,8 +7,8 @@ import $ from 'jquery'
 const logoSizing = {
   width: '30px',
   height: 'auto',
-  margin: 'auto'
-  }
+  margin: 'auto',
+}
 
 class Navbar extends Component {
   handleClick = (e, disabled) => {
@@ -27,7 +27,10 @@ class Navbar extends Component {
           <nav
             className="navbar navbar-expand-lg p-2 navbar-dark"
           >
-          <span className="navbar-brand">
+          <span
+            className="navbar-brand"
+            style={{ fontFamily: 'Roboto' }}
+          >
             <img
               className='img-fluid pr-2'
               style={ logoSizing }
