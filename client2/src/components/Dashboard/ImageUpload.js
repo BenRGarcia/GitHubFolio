@@ -7,6 +7,11 @@ import { fetchUserInfo } from '../../store/store';
 import axios from 'axios';
 require('./ImageUpload.css')
 
+const styleImageWrapper = {
+  height: '300px',
+  overflow: 'hidden'
+}
+
 class ImageUpload extends Component {
   state = {
     file: null,
@@ -57,13 +62,15 @@ class ImageUpload extends Component {
                 ?
                 <div className='image-loading mx-auto'></div>
                 :
-
-                <img
-                  z-index='-1'
-                  className="img-fluid rounded"
-                  src={this.props.src}
-                  alt="Repo thumbnail"
-                />
+                <div style={styleImageWrapper}>
+                  <img
+                    z-index='-1'
+                    className="img-fluid rounded"
+                    src={this.props.src}
+                    style={{ minHeight: '100%', verticalAlign: 'middle', horizontalAlign: 'top' }}
+                    alt="Repo thumbnail"
+                  />
+                </div>
               }
                 </div>
               </div>
