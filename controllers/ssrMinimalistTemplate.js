@@ -19,19 +19,19 @@ module.exports = createReactClass({
     const { repositories, bio, profileName, email, location, profileImageUrl, profilePageUrl } = this.props.userData
     return (
       <div className='container'>
-        <div className="row" style={{ minHeight: '90vh' }}>
-          <div className="col d-flex justify-content-center align-items-center mb-2">
+        <div className="row" style={{ minHeight: '888vh' }}>
+          <div className="col-12 d-flex justify-content-center align-items-center px-0">
             <div className='row'>
               <div className="col-12">
                 <h1
-                  className='mt-3 mb-4'
+                  className='mt-2 mb-4'
                   style={styleTitleName}
                 >
                   {profileName}
                 </h1>
               </div>
               <div className="col-12">
-                <div className='row mb-4'>
+                <div className='row'>
                   {
                     repositories &&
                     repositories.map(repo => (
@@ -59,17 +59,20 @@ module.exports = createReactClass({
               </div>
             </div>
           </div>
-          <div className="bg-white">
-            <footer className="fixed-bottom py-2">
-              <div className="container">
-                <span>
-                  Powered by GitHubFolio
+        </div>
+        <div className="row">
+          <div className="col-12 px-0">
+            <footer className="py-2">
+              <div className="container px-0">
+                <span className='float-left'>
+                      Powered by GitHubFolio
                 </span>
-                <span>
+                <span className='float-right'>
                   <a
                     href={profilePageUrl}
                     target='_blank'
                     style={{ color: 'initial' }}
+                    className='ml-3'
                   >
                     <i
                       class="fab fa-github-square fa-2x"
@@ -78,6 +81,7 @@ module.exports = createReactClass({
                   <a
                     href={`mailto:${email}`}
                     style={{ color: 'initial' }}
+                    className='ml-3'
                   >
                     <i
                       class='fab fas fa-envelope-square fa-2x'

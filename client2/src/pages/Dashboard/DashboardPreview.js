@@ -35,12 +35,26 @@ class DashboardPreview extends Component {
   render() {
     const html = { __html: this.state.html }
     return (
-      <div className='mt-3'>
-        <div className="accordion" id="accordionExample">
+      <div>
+        <div
+          className="accordion"
+          id="accordionExample"
+        >
           <div className="card">
-            <div className="card-header" style={styleBG} id="headingOne">
+            <div
+              className="card-header"
+              style={styleBG}
+              id="headingOne"
+            >
               <h5 className="mb-0">
-                <button className="btn btn-link text-white" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                <button
+                  className="btn btn-link text-white"
+                  type="button"
+                  data-toggle="collapse"
+                  data-target="#collapseOne"
+                  aria-expanded="true"
+                  aria-controls="collapseOne"
+                >
                   <i
                     className="fas fa-toolbox fa-lg"
                   ></i>
@@ -48,7 +62,12 @@ class DashboardPreview extends Component {
                 </button>
               </h5>
             </div>
-            <div id="collapseOne" className="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div
+              id="collapseOne"
+              className="collapse"
+              aria-labelledby="headingOne"
+              data-parent="#accordionExample"
+            >
               <div className="card-body border-bottom bg-light">
                 {
                   this.state.gitHubId
