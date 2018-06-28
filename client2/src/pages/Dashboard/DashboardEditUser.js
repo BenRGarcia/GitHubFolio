@@ -4,6 +4,12 @@ import { UserInput } from '../../components';
 import { bindActionCreators } from "redux";
 import { fetchUserInfo, editUserInfo } from '../../store/store';
 
+const styleBG = {
+  backgroundImage: `url(${require('../../images/404Bg.png')})`,
+  backgroundSize: 'cover',
+  backgroundPosition: '30% 35%'
+};
+
 class DashboardEditUser extends Component {
   state = {
     profileName: "",
@@ -73,30 +79,36 @@ class DashboardEditUser extends Component {
 
   render() {
     return (
-      <div className="row" style={{ minHeight: '100vh' }}>
+      <div className="row" style={{ minHeight: '90vh' }}>
         <div className="col d-flex justify-content-center align-items-center">
-          <div className="flex-fill px-5">
-            <h1>
-              Profile Data
-            </h1>
-            <form
-              onSubmit={this.handleSubmit}
-            >
-              {this.renderInputs()}
-              <button
-                type='submit'
-                className={'mt-3 btn btn-outline-dark'}
-                disabled={this.prevStateIsNextState()}
-              >
-                {
-                  this.prevStateIsNextState()
-                  ?
-                  'Saved!'
-                  :
-                  'Save Changes'
-                }
-            </button>
-            </form>
+          <div className="flex-fill">
+          <div className="card shadow">
+            <div className="card-header text-white" style={styleBG}>
+              <h1 className='mb-0' style={{ fontFamily: 'Roboto', fontSize: '1.35rem'  }}>
+                Profile Data
+              </h1>
+            </div>
+            <div className="card-body bg-light">
+                <form
+                  onSubmit={this.handleSubmit}
+                >
+                  {this.renderInputs()}
+                  <button
+                    type='submit'
+                    className={'mt-3 btn btn-outline-dark'}
+                    disabled={this.prevStateIsNextState()}
+                  >
+                    {
+                      this.prevStateIsNextState()
+                        ?
+                        'Saved!'
+                        :
+                        'Save Changes'
+                    }
+                  </button>
+                </form>
+            </div>
+          </div>
           </div>
         </div>
       </div>

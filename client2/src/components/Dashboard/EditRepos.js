@@ -61,7 +61,7 @@ class EditRepos extends Component {
           this.state.repositories && this.state.repositories.length > 0
           ?
             <form onSubmit={this.handleSubmit}>
-              <div className="accordion" id='accordionExample'>
+              <div className="accordion shadow" id='accordionExample'>
                 <EditRepo
                   handleChange={this.handleChange}
                   repositories={this.state.repositories}

@@ -25,7 +25,7 @@ class GetRepos extends Component {
   render() {
     return(
         <button
-          className='btn btn-outline-danger btn-large'
+          className='btn btn-outline-danger btn-large my-5'
           onClick={this.handleClick}
         >
           {

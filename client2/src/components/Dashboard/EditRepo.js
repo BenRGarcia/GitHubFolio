@@ -2,15 +2,26 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { ImageUpload } from '../';
 
+const styleBG = {
+  backgroundImage: `url(${require('../../images/404Bg.png')})`,
+  backgroundSize: 'cover',
+  backgroundPosition: '30% 35%'
+};
+
 const EditRepo = ({ handleChange, repositories, isDisabled }) => {
   let counter = 0
   return repositories.map(repo => {
     const { _id, name, imageUrl, description, deployedUrl } = repo;
     return (
       <fieldset key={_id} className='card'>
-        <div className="card-header" id="headingOne">
+        <div
+          className="card-header py-0"
+          id="headingOne"
+          style={styleBG}
+      >
           <button
-            className="btn btn-link"
+            className="btn btn-link h3 mb-0"
+            style={{ color: '#fff', fontSize: '1.35rem', fontFamily: 'Roboto' }}
             type="button"
             data-toggle="collapse"
             data-target={`#collapse${_id}`}
@@ -26,7 +37,7 @@ const EditRepo = ({ handleChange, repositories, isDisabled }) => {
           aria-labelledby="headingOne"
           data-parent="#accordionExample"
         >
-          <div className="card-body py-2">
+          <div className="card-body py-2 bg-light">
 
           {/* Image component */}
           <ImageUpload

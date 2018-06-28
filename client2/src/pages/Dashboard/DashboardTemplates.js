@@ -14,7 +14,10 @@ const style = {
     textDecoration: 'none'
   },
   navItemActive: {
-    backgroundColor: '#28314B',
+    backgroundImage: `url(${require('../../images/404Bg.png')})`,
+    backgroundSize: 'cover',
+    backgroundPosition: '30% 35%',
+    // backgroundColor: '#28314B',
     color: '#fff',
     border: '1px solid #28314B',
     borderRadius: '0',
