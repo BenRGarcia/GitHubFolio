@@ -24,7 +24,7 @@ class NotFound extends Component {
       redirect: false
     }, () => setTimeout(() => {
         this.setState({ redirect: true })
-    }, 3000))
+    }, 5000))
   }
 
   render() {
