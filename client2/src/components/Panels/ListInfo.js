@@ -11,19 +11,23 @@ const listFontStyle = {
   fontSize: '18px',
   color: '#D8D8D8',
   letterSpacing: '-0.05px',
+  display: 'inline-block',
+  textAlign: 'left'
+}
 
-  margin: '0 auto',
+const outerDiv = {
+  justifyContent: 'center'
 
 }
 
 
 
 const ListInfo = () => (
-  <div className="row text-white center-text">
+  <div className="row text-white center-text" style={outerDiv}>
     <div className="col-12">
       <h2 className='display-4 mb-4' style={ listTitleFontStyle }>Everything you need for your portfolio</h2>
     </div>
-    <div className="col-12" style={ listFontStyle }>
+    <div style={ listFontStyle }>
       <p><i className='fas fa-code-branch mx-1 mr-3'></i>Retrieve your pinned repositories from GitHub.</p>
       <p><i className='fas fa-file-alt mx-1 mr-3'></i>Choose a beautiful template and preview your portfolio.</p>
       <p><i className='far fa-edit mx-1 mr-3'></i>Edit your personal information and mission.</p>
