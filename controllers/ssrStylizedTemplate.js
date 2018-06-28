@@ -94,7 +94,6 @@ module.exports = createReactClass({
               {bio}
             </h5>
           </div>
-
           <div className="row">
             {/* Repo Card */}
             {
@@ -117,18 +116,18 @@ module.exports = createReactClass({
                         className='card-title'
                         style={style.styleDescriptions}
                       >
-                        {repo.name}
+                        {repo.name || 'Another Awesome Project'}
                       </h5>
                       <p
                         className='card-text'
                         style={style.styleDescriptions}
                       >
-                        {repo.description}
+                        {repo.description || 'The most amazing thing ever built! You have to check it out!'}
                       </p>
                       <a
                         className='btn btn-outline-secondary mr-2'
                         target='_blank'
-                        href={repo.deployedUrl}
+                        href={repo.deployedUrl || repo.repositoryUrl}
                       >
                         View Project
                       </a>
