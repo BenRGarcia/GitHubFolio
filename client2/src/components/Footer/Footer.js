@@ -11,7 +11,7 @@ const Footer = () => (
         <div className="col">
           <footer className='p-4'>
             <span className='text-white'>
-              Footer things go here
+              &copy; GitHubFolio 2018
             </span>
           </footer>
         </div>

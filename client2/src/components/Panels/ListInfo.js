@@ -22,10 +22,13 @@ const ListInfo = () => (
       <h2 className='display-4 mb-4' style={ listTitleFontStyle }>Everything you need for your portfolio</h2>
     </div>
     <div className="col-12 col-md-8 offset-md-2 text-left" style={ listFontStyle }>
-      <p>Things that GitHub does to your things and so on...etc</p>
-      <p>We have templates and such.... yeeeehaw</p>
-      <p>This is a pencil writing on paper... you know what that means</p>
-      <p>Pencil wrench cross... some kind of teacher mechanic cult</p>
+      <p>Retrieve your pinned repositories from GitHub.</p>
+      <p>Edit your personal information and mission.</p>
+      <p>Edit your repository information and description for your portfolio.</p>
+      <p>Upload photos to accompany your repositories.</p>
+      <p>Choose a beautiful template and preview your portfolio.</p>
+      <p>Receive access to a public URL for your portfolio.</p>
+      <p>Download a file of your portfolio code to edit.</p>
     </div>
   </div>
 );

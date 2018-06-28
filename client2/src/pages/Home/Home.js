@@ -10,6 +10,13 @@ const styleLightPanel = {
   backgroundColor: '#fff'
 };
 
+const landingBG = {
+  backgroundImage: `url(${require("../../images/landingillustration.png")})`,
+  backgroundPosition: 'center bottom',
+  backgroundSize: 'cover',
+  backgroundRepeat: 'no-repeat'
+};
+
 const Home = props => (
   <div className='text-center'>
     <Navbar
@@ -17,7 +24,7 @@ const Home = props => (
       style={styleDarkPanel}
     />
     
-    <Panel style={styleDarkPanel}>
+    <Panel style={landingBG}>
       <Jumbotron />
     </Panel>
     
