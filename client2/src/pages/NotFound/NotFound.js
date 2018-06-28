@@ -1,15 +1,23 @@
 import React from 'react';
 import { Panel } from '../../components';
 
-const styleDarkPanel = {
-  backgroundColor: '#28314B'
+const landingBG = {
+  backgroundImage: `url(${require("../../images/404Bg.png")})`,
+  backgroundPosition: 'center bottom',
+  backgroundSize: 'cover',
+  backgroundRepeat: 'no-repeat',
+  color: '#fff'
+};
+
+const style404 = {
+  // fontFamily: 'Oswald-medium'
+  fontWeight: '700'
 };
 
 const NotFound = () => (
-  <Panel
-    style={styleDarkPanel}
-  >
-    <div className="row text-center text-white">
+
+  <Panel style={landingBG}>
+    <div className='row text-center'>
       <div className="col-12">
         <h1 className='display-4'>
           Whoops!
@@ -21,13 +29,13 @@ const NotFound = () => (
         </h2>
       </div>
       <div className="col-12">
-        <img
-          className='img-fluid'
-          src={require('../../images/404.png')}
-          alt="404"
-        />
+        <h1 className='display-1' style={style404}>
+          404
+        </h1>
       </div>
     </div>
+  
+    
   </Panel>
 )
 
