@@ -3,17 +3,18 @@ import { LoginWithGitHub } from '../'
 
 const heroFontStyle = {
   fontFamily: 'Roboto-Regular',
-  fontSize: '36px',
+  fontSize: '60px',
   letterSpacing: '-0.08px'
 }
 
 const pHeroFontStyle = {
   /* Create a beautiful p: */
   fontFamily: 'Roboto-Regular',
-  fontSize: '18px',
+  fontSize: '26px',
   color: '#FFFFFF',
   letterSpacing: '-0.04px',
   textAlign: 'center',
+  lineHeight: '1.2'
 }
 
 const Jumbotron = () => (
@@ -22,7 +23,7 @@ const Jumbotron = () => (
       <h1 className="display-4 mb-2" style={ heroFontStyle } >
         Introducing GitHubFolio
       </h1>
-      <p className="lead pb-4" style={ pHeroFontStyle } >
+      <p className="lead pb-4 mb-5" style={ pHeroFontStyle } >
         Create a beautiful portfolio to showcase your best work.
       </p>
       <LoginWithGitHub />

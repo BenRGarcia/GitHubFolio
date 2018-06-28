@@ -78,7 +78,7 @@ class DashboardEditUser extends Component {
           <div className="flex-fill">
           <div className="card">
             <div className="card-header text-white" style={{ backgroundColor: '#28314b' }}>
-              <h1 className='mb-0' style={{ fontFamily: 'Roboto', fontSize: '1.15rem'  }}>
+              <h1 className='mb-0' style={{ fontFamily: 'Roboto', fontSize: '1.35rem'  }}>
                 Profile Data
               </h1>
             </div>

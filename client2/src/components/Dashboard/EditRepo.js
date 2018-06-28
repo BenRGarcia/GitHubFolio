@@ -15,7 +15,7 @@ const EditRepo = ({ handleChange, repositories, isDisabled }) => {
       >
           <button
             className="btn btn-link h3 mb-0"
-            style={{ color: '#fff', fontSize: '1.15rem', fontFamily: 'Roboto' }}
+            style={{ color: '#fff', fontSize: '1.35rem', fontFamily: 'Roboto' }}
             type="button"
             data-toggle="collapse"
             data-target={`#collapse${_id}`}
