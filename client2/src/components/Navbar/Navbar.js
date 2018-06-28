@@ -4,6 +4,12 @@ import { NavLink } from 'react-router-dom';
 import { LogoutNavbar } from '../';
 import $ from 'jquery'
 
+const logoSizing = {
+  width: '30px',
+  height: 'auto',
+  margin: 'auto'
+  }
+
 class Navbar extends Component {
   handleClick = (e, disabled) => {
     if (disabled) e.preventDefault()
@@ -21,9 +27,16 @@ class Navbar extends Component {
           <nav
             className="navbar navbar-expand-lg p-2 navbar-dark"
           >
-            <span className="navbar-brand">
+          <span className="navbar-brand">
+            <img
+              className='img-fluid pr-2'
+              style={ logoSizing }
+              src={require('../../images/githubfolio-gradient.png')}
+              alt="GitHubFolio logo"
+              />
               GitHubFolio
-        </span>
+          </span>
+
             <button
               className="navbar-toggler"
               type="button"

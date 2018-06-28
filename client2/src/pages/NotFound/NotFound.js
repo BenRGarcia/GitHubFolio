@@ -3,7 +3,7 @@ import { Panel } from '../../components';
 import { Redirect } from 'react-router-dom';
 
 const landingBG = {
-  backgroundImage: `url(${require("../../images/404Bg.png")})`,
+  backgroundImage: `url(${require("../../images/404-final.png")})`,
   backgroundPosition: 'center bottom',
   backgroundSize: 'cover',
   backgroundRepeat: 'no-repeat',

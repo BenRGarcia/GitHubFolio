@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 const styleGradientButton = {
   backgroundImage: 'linear-gradient(-180deg, #F25059 0%, #7135C6 100%)',
   boxShadow: '0 0 10px 5px rgba(255,255,255,0.93)',
@@ -18,7 +19,7 @@ const LoginWithGitHub = () => (
     style={styleGradientButton}
   >
   <i
-    className="fab fa-github pr-3 fa-lg"
+    className="fab fa-github pr-3 fa-md"
   ></i>
     Sign in with GitHub
   </a>
