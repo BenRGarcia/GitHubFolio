@@ -22,11 +22,11 @@ const ListInfo = () => (
  <div> 
   <div className="row text-white center-text" style={outerDiv}>
     <div className="col-12">
-      <h2 className='mb-4' style={ listTitleFontStyle }>Everything you need for your portfolio</h2>
+      <h2 className='d-lg-none mb-4 display-4' style={listTitleFontStyle}>Everything You Need</h2>
+      <h2 className='d-none d-lg-block mb-5 display-4' style={listTitleFontStyle}>Everything You Need For Your Portfolio</h2>
     </div>
   </div>
-
-  <div className = 'container' style= {listFontStyle}> 
+  <div className='container' style= {listFontStyle}> 
     <div className = 'row'>
       <div className = 'col-2'>
         <p><i className='fas fa-code-branch mx-3 mr-5'></i></p>

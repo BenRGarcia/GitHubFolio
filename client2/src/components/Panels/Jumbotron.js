@@ -20,7 +20,10 @@ const pHeroFontStyle = {
 const Jumbotron = () => (
   <div className="jumbotron jumbotron-fluid mb-0 bg-transparent">
     <div className="container text-white">
-      <h1 className="display-4 mb-2" style={ heroFontStyle } >
+      <h1 className="d-lg-none display-4 mb-2" style={ heroFontStyle } >
+        GitHubFolio
+      </h1>
+      <h1 className="d-none d-lg-block display-4 mb-2" style={heroFontStyle} >
         Introducing GitHubFolio
       </h1>
       <p className="lead pb-4 mb-5" style={ pHeroFontStyle } >
