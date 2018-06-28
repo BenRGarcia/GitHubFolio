@@ -25,10 +25,10 @@ const DashboardGetRepos = () => (
             Get My Pinned Repositories!
           </h1>
         </div>
-        <div className='card-body bg-light'>
+        <div className='card-body bg-light pt-3'>
           <div className='card-text'>
             <p className='pb-0 text-dark'>
-              Caution, this will overwrite all previously saved repository data.
+              Caution: This will overwrite all previously saved repository data.
             </p>
           </div>
           <div className='card-title'>

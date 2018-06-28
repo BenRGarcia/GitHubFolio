@@ -19,7 +19,7 @@ module.exports = createReactClass({
     const { repositories, bio, profileName, email, location, profileImageUrl, profilePageUrl } = this.props.userData
     return (
       <div className='container'>
-        <div className="row" style={{ minHeight: '888vh' }}>
+        <div className="row" style={{ minHeight: '88vh' }}>
           <div className="col-12 d-flex justify-content-center align-items-center px-0">
             <div className='row'>
               <div className="col-12">
@@ -35,23 +35,21 @@ module.exports = createReactClass({
                   {
                     repositories &&
                     repositories.map(repo => (
-                      <div className='col-12 col-md-6 col-lg-4 mb-3'>
-                        <div key={profilePageUrl}>
-                          <div className='mb-0' style={styleImageWrapper}>
-                            <a
-                              href={repo.repositoryUrl}
-                              target='_blank'
-                            >
-                              <img
-                                src={repo.imageUrl || 'https://s3.us-east-2.amazonaws.com/githubfolio.dn7kwp92pdrmtdefnyz6uka5/placeholder.png'}
-                                alt="Profile"
-                                className='img-fluid'
-                                style={{ minHeight: '100%', verticalAlign: 'middle', horizontalAlign: 'top' }}
-                              />
-                            </a>
-                          </div>
-                          <p className='mb-0'>{repo.name}</p>
+                      <div className='col-12 col-md-6 col-lg-4 mb-3' key={profilePageUrl}>
+                        <div className='mb-0' style={styleImageWrapper}>
+                          <a
+                            href={repo.repositoryUrl}
+                            target='_blank'
+                          >
+                            <img
+                              src={repo.imageUrl || 'https://s3.us-east-2.amazonaws.com/githubfolio.dn7kwp92pdrmtdefnyz6uka5/placeholder.png'}
+                              alt="Profile"
+                              className='img-fluid'
+                              style={{ minHeight: '100%', verticalAlign: 'middle', horizontalAlign: 'top' }}
+                            />
+                          </a>
                         </div>
+                        <p className='mb-0'>{repo.name}</p>
                       </div>
                     ))
                   }
@@ -75,7 +73,7 @@ module.exports = createReactClass({
                     className='ml-3'
                   >
                     <i
-                      class="fab fa-github-square fa-2x"
+                      className="fab fa-github-square fa-2x"
                     ></i>
                   </a>
                   <a
@@ -84,7 +82,7 @@ module.exports = createReactClass({
                     className='ml-3'
                   >
                     <i
-                      class='fab fas fa-envelope-square fa-2x'
+                      className='fab fas fa-envelope-square fa-2x'
                     ></i>
                   </a>
                 </span>
