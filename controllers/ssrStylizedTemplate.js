@@ -101,7 +101,7 @@ module.exports = createReactClass({
               {
                 repositories &&
                 repositories.map(repo => (
-                  <div className='col-md-4 pt-5 pb-3'>
+                  <div className='col-12 col-md-6 col-lg-4 pt-5 pb-3'>
                     <div
                       className='card mx-auto'
                       style={{ maxWidth: '400px' }}
@@ -110,6 +110,7 @@ module.exports = createReactClass({
                         <img
                           src={repo.imageUrl || 'https://s3.us-east-2.amazonaws.com/githubfolio.dn7kwp92pdrmtdefnyz6uka5/placeholder.png'}
                           alt='Profile'
+                          className='rounded-top'
                           style={{ width: '100%', maxHeight: '350px' }}
                         />
                       </div>
@@ -127,16 +128,18 @@ module.exports = createReactClass({
                           {repo.description || 'The most amazing thing ever built! You have to check it out!'}
                         </p>
                         <div className="row">
-                          <div className="col-12">
+                          <div className="col-6">
                             <a
-                              className='btn btn-outline-secondary mb-2'
+                              className='btn btn-outline-secondary'
                               target='_blank'
                               href={repo.deployedUrl || repo.repositoryUrl}
                             >
                               View Project
                             </a>
+                          </div>
+                          <div className="col-6">
                             <a
-                              className='btn btn-outline-secondary mb-2'
+                              className='btn btn-outline-secondary'
                               target='_blank'
                               href={repo.repositoryUrl}
                             >
