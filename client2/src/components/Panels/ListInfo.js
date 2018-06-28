@@ -2,7 +2,6 @@ import React from 'react';
 
 const listTitleFontStyle = {
   fontFamily: 'Roboto-Regular',
-  fontSize: '45px',
   letterSpacing: '-0.08px'
 }
 
@@ -23,7 +22,7 @@ const ListInfo = () => (
  <div> 
   <div className="row text-white center-text" style={outerDiv}>
     <div className="col-12">
-      <h2 className='display-4 mb-4' style={ listTitleFontStyle }>Everything you need for your portfolio</h2>
+      <h2 className='mb-4' style={ listTitleFontStyle }>Everything you need for your portfolio</h2>
     </div>
   </div>
 
