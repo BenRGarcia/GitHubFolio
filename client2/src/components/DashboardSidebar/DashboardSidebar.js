@@ -11,6 +11,7 @@ const styleSidebar = {
   bottom: '0px',
   left: '0px',
   overflowY: 'scroll',
+  zIndex: '2'
 };
 
 const styleLinks = {
