@@ -56,22 +56,21 @@ class ImageUpload extends Component {
             <div className="row" style={{ height: '250px', overflow: 'hidden' }}>
               <div className="col d-flex justify-content-center align-items-center">
                 <div className="flex-fill">
-
-              {
-                this.state.loading
-                ?
-                <div className='image-loading mx-auto'></div>
-                :
-                <div style={styleImageWrapper}>
-                  <img
-                    z-index='-1'
-                    className="img-fluid rounded"
-                    src={this.props.src}
-                    style={{ minHeight: '100%', verticalAlign: 'middle', horizontalAlign: 'top' }}
-                    alt="Repo thumbnail"
-                  />
-                </div>
-              }
+                  {
+                    this.state.loading
+                    ?
+                    <div className='image-loading mx-auto'></div>
+                    :
+                    <div style={styleImageWrapper}>
+                      <img
+                        z-index='-1'
+                        className="img-fluid rounded"
+                        src={this.props.src}
+                        style={{ minHeight: '100%', verticalAlign: 'middle', horizontalAlign: 'top' }}
+                        alt="Repo thumbnail"
+                      />
+                    </div>
+                  }
                 </div>
               </div>
             </div>
