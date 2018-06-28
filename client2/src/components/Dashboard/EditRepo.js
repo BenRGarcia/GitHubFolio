@@ -8,9 +8,10 @@ const EditRepo = ({ handleChange, repositories, isDisabled }) => {
     const { _id, name, imageUrl, description, deployedUrl } = repo;
     return (
       <fieldset key={_id} className='card'>
-        <div className="card-header" id="headingOne">
+        <div className="card-header" id="headingOne" style={{ backgroundColor: '#28314b' }}>
           <button
             className="btn btn-link"
+            style={{ color: '#fff' }}
             type="button"
             data-toggle="collapse"
             data-target={`#collapse${_id}`}
