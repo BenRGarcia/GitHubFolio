@@ -9,6 +9,17 @@ const styleTitleName = {
   letterSpacing: '-0.04px'
 }
 
+const footer = {
+  position: "fixed",
+  left: "0",
+  bottom: "0",
+  width: "100%"
+}
+
+const footerText = {
+  float: 'left'
+}
+
 module.exports = createReactClass({
   render () {
     const { repositories, bio, profileName, email, location, profileImageUrl, profilePageUrl } = this.props.userData
@@ -33,16 +44,19 @@ module.exports = createReactClass({
                 </div>
                 <p className='mb-0'>{repo.name}</p>
               </div>
-              <a href={profilePageUrl} target='_blank'>
-                <i class="fab fa-github-square fa-2x pr-2"></i>
-              </a>
-              <a href={`mailto:${email}`} target='_top' className='secondary'>
-                <i class='fab fas fa-envelope-square fa-2x pl-2'></i>
-              </a>
             </div>
           ))
           }
-        </div>
+        </div>    
+        <footer className="footer navbar-bottom" style={footer}>
+          <p style= {footerText}>Powered by GitHubFolio</p>
+          <a href={profilePageUrl} target='_blank'>
+            <i class="fab fa-github-square fa-2x pr-2"></i>
+          </a>
+          <a href={`mailto:${email}`} target='_top' className='secondary'>
+            <i class='fab fas fa-envelope-square fa-2x pl-2'></i>
+          </a>
+        </footer>  
       </div>
     )
   }

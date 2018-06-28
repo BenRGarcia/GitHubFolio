@@ -1,6 +1,6 @@
 require('dotenv').config()
 const GitHubStrategy = require('passport-github').Strategy
-const User = require('../controllers/user')
+const User = require('../controllers/User.js')
 
 // https://github.com/jaredhanson/passport-github
 
