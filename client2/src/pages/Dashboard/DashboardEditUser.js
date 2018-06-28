@@ -73,30 +73,36 @@ class DashboardEditUser extends Component {
 
   render() {
     return (
-      <div className="row" style={{ minHeight: '100vh' }}>
+      <div className="row" style={{ minHeight: '90vh' }}>
         <div className="col d-flex justify-content-center align-items-center">
-          <div className="flex-fill px-5">
-            <h1>
-              Profile Data
-            </h1>
-            <form
-              onSubmit={this.handleSubmit}
-            >
-              {this.renderInputs()}
-              <button
-                type='submit'
-                className={'mt-3 btn btn-outline-dark'}
-                disabled={this.prevStateIsNextState()}
-              >
-                {
-                  this.prevStateIsNextState()
-                  ?
-                  'Saved!'
-                  :
-                  'Save Changes'
-                }
-            </button>
-            </form>
+          <div className="flex-fill">
+          <div className="card">
+            <div className="card-header text-white" style={{ backgroundColor: '#28314b' }}>
+              <h1 className='h2 mb-0' style={{ fontFamily: 'Roboto'  }}>
+                Profile Data
+              </h1>
+            </div>
+            <div className="card-body bg-light">
+                <form
+                  onSubmit={this.handleSubmit}
+                >
+                  {this.renderInputs()}
+                  <button
+                    type='submit'
+                    className={'mt-3 btn btn-outline-dark'}
+                    disabled={this.prevStateIsNextState()}
+                  >
+                    {
+                      this.prevStateIsNextState()
+                        ?
+                        'Saved!'
+                        :
+                        'Save Changes'
+                    }
+                  </button>
+                </form>
+            </div>
+          </div>
           </div>
         </div>
       </div>
