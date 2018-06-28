@@ -4,7 +4,7 @@ const uuidv4 = require('uuid/v4')
 const fs = require('fs')
 const s3 = require('../controllers/awsS3')
 const repository = require('../controllers/Repository')
-const user = require('./user')
+const user = require('./User')
 
 // Set location in which to save images
 const tempFolder = path.join(__dirname, '../temp/')
