@@ -27,7 +27,7 @@ const EditRepo = ({ handleChange, repositories, isDisabled }) => {
           aria-labelledby="headingOne"
           data-parent="#accordionExample"
         >
-          <div className="card-body py-2">
+          <div className="card-body py-2 bg-light">
 
           {/* Image component */}
           <ImageUpload
