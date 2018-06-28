@@ -22,7 +22,7 @@ const style = {
 
   topPanel: {
     width: '100vw',
-    marginLeft: 'calc(-50vw + 50%)',
+    marginLeft: 'calc(-50vw + 50%)'
     // height: '300px'
   },
 
@@ -34,7 +34,7 @@ const style = {
     transform: 'translate(-50%, -10%)',
     width: '150px'
   }
-};
+}
 
 module.exports = createReactClass({
   render () {
@@ -64,9 +64,9 @@ module.exports = createReactClass({
             </ul>
           </div>
         </nav>
-        
+
         <div className='section bg-light pb-5 pt-2' style={style.topPanel}>
-          <div><img src={profileImageUrl} alt="Profile" 
+          <div style={{ position: 'relative' }}><img src={profileImageUrl} alt="Profile"
             className='rounded-circle mx-auto d-block justify-content-center mt-2 mb-2 border bg-white p-2'
             style={style.profilePic} />
           </div>
