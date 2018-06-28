@@ -14,13 +14,19 @@ const styleImageWrapper = {
   overflow: 'hidden'
 }
 
+const styleImage = {
+  minHeight: '100%',
+  verticalAlign: 'middle',
+  horizontalAlign: 'top'
+}
+
 module.exports = createReactClass({
   render () {
     const { repositories, bio, profileName, email, location, profileImageUrl, profilePageUrl } = this.props.userData
     return (
       <div className='container'>
         <div className="row" style={{ minHeight: '88vh' }}>
-          <div className="col-12 d-flex justify-content-center align-items-center px-0">
+          <div className="col-12 d-flex justify-content-center align-items-center">
             <div className='row'>
               <div className="col-12">
                 <h1
@@ -36,7 +42,7 @@ module.exports = createReactClass({
                     repositories &&
                     repositories.map(repo => (
                       <div className='col-12 col-md-6 col-lg-4 mb-3' key={profilePageUrl}>
-                        <div className='mb-0' style={styleImageWrapper}>
+                        <div className='mb-0 bg-secondary' style={styleImageWrapper}>
                           <a
                             href={repo.repositoryUrl}
                             target='_blank'
@@ -45,7 +51,7 @@ module.exports = createReactClass({
                               src={repo.imageUrl || 'https://s3.us-east-2.amazonaws.com/githubfolio.dn7kwp92pdrmtdefnyz6uka5/placeholder.png'}
                               alt="Profile"
                               className='img-fluid'
-                              style={{ minHeight: '100%', verticalAlign: 'middle', horizontalAlign: 'top' }}
+                              style={styleImage}
                             />
                           </a>
                         </div>
@@ -59,9 +65,9 @@ module.exports = createReactClass({
           </div>
         </div>
         <div className="row">
-          <div className="col-12 px-0">
+          <div className="col-12">
             <footer className="py-2">
-              <div className="container px-0">
+              <div className="container">
                 <span className='float-left'>
                       Powered by GitHubFolio
                 </span>
