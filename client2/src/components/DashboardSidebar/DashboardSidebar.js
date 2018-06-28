@@ -25,7 +25,7 @@ const styleLinks = {
 }
 
 const leftBorder = {
-  backgroundImage: 'linear-gradient(-180deg, #9A48E3 0%, #FB697B 100%)',
+  backgroundImage: 'linear-gradient(-180deg, #FB697B 0%, #9A48E3 100%)',
   width: '4px',
   height: '50px',
   maxWidth: '100%',
