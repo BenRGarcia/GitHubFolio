@@ -1,0 +1,22 @@
+a:hover {
+  text-decoration: none !important;
+}
+
+.btn-link {
+  color: #979799 !important;
+}
+
+.btn-link:hover {
+  text-decoration: none !important;
+  color: #fff !important;
+}
+
+.btn-link:active {
+  text-decoration: none !important;
+  color: #fff !important;
+}
+
+.btn-link:focus {
+  text-decoration: none !important;
+  color: #fff !important;
+}
