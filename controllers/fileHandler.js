@@ -3,8 +3,8 @@ const multer = require('multer')
 const uuidv4 = require('uuid/v4')
 const fs = require('fs')
 const s3 = require('../controllers/awsS3')
-const repository = require('../controllers/repository')
-const user = require('./user')
+const repository = require('../controllers/Repository.js')
+const user = require('./User.js')
 
 // Set location in which to save images
 const tempFolder = path.join(__dirname, '../temp/')
