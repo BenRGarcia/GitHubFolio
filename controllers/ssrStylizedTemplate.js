@@ -4,19 +4,22 @@ const createReactClass = require('create-react-class')
 const style = {
 
   styleTitleName: {
-    fontFamily: 'Oswald-SemiBold',
+    fontFamily: 'Oswald',
+    fontWeight: '600',
     fontSize: '2.2rem',
     color: '#3a4145',
     paddingTop: '130px'
   },
 
   styleBio: {
-    fontFamily: 'Oswald-SemiBold',
+    fontFamily: 'Oswald',
+    fontWeight: '600',
     color: '#666666'
   },
 
   styleDescriptions: {
-    fontFamily: 'Oswald-SemiBold',
+    fontFamily: 'Oswald',
+    fontWeight: '600',
     color: '#3a4145'
   },
 

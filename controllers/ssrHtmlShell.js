@@ -28,7 +28,7 @@ module.exports = createReactClass({
             crossOrigin="anonymous"
           />
           <link
-            href="https://fonts.googleapis.com/css?family=Lora|Oswald|Roboto"
+            href="https://fonts.googleapis.com/css?family=Lora:400,700|Oswald:600|Roboto:400,700"
             rel="stylesheet"
           />
           <title>

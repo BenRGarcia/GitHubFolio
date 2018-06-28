@@ -3,7 +3,8 @@ const createReactClass = require('create-react-class')
 
 const styleTitleName = {
   textAlign: 'left',
-  fontFamily: 'Oswald-SemiBold',
+  fontFamily: 'Oswald',
+  fontWeight: '600',
   fontSize: '2.5rem',
   color: '#666666',
   letterSpacing: '-0.04px'
