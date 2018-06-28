@@ -10,8 +10,7 @@ const listFontStyle = {
   fontSize: '22px',
   color: '#D8D8D8',
   letterSpacing: '-0.05px',
-  textAlign: 'left',
-  float: 'left'
+  textAlign: 'left'
 }
 
 const outerDiv = {
@@ -26,53 +25,51 @@ const ListInfo = () => (
       <h2 className='d-none d-lg-block mb-5 display-4' style={listTitleFontStyle}>Everything You Need For Your Portfolio</h2>
     </div>
   </div>
-  <div className='container' style= {listFontStyle}> 
-    <div className = 'row'>
-      <div className = 'col-2'>
-        <p><i className='fas fa-code-branch mx-3 mr-5'></i></p>
+  <div className="col d-flex justify-content-center align-items-center">
+      <div className='container' style={listFontStyle}>
+        <div className='row'>
+          <div className='col-2'>
+            <p className='text-right'><i className='fas fa-code-branch'></i></p>
+          </div>
+          <div className='col-10'>
+            <p>Retrieve your pinned repositories from GitHub.</p>
+          </div>
+        </div>
+        <div className='row'>
+          <div className='col-2'>
+            <p className='text-right'><i className='fas fa-file-alt'></i></p>
+          </div>
+          <div className='col-10'>
+            <p>Choose a beautiful template and preview your portfolio.</p>
+          </div>
+        </div>
+        <div className='row'>
+          <div className='col-2'>
+            <p className='text-right'><i className='far fa-edit'></i></p>
+          </div>
+          <div className='col-10'>
+            <p>Edit your personal information and mission.</p>
+          </div>
+        </div>
+        <div className='row'>
+          <div className='col-2'>
+            <p className='text-right'><i className='fas fa-wrench'></i></p>
+          </div>
+          <div className='col-10'>
+            <p>Edit your repository information and upload photos.</p>
+          </div>
+        </div>
+        <div className='row'>
+          <div className='col-2'>
+            <p className='text-right'><i className='fas fa-th-large'></i></p>
+          </div>
+          <div className='col-10'>
+            <p>Receive a public URL and download the source code.</p>
+          </div>
+        </div>
       </div>
-      <div className = 'col-10'>
-        <p>Retrieve your pinned repositories from GitHub.</p>
-      </div>
-    </div>
-    <div className = 'row'>
-      <div className = 'col-2'>
-        <p><i className='fas fa-file-alt mx-3 mr-5'></i></p>
-      </div>
-      <div className = 'col-10'>
-        <p>Choose a beautiful template and preview your portfolio.</p>
-      </div>
-    </div>
-    <div className = 'row'>
-      <div className = 'col-2'>
-        <p><i className='far fa-edit mx-3 mr-5'></i></p>
-      </div>
-      <div className = 'col-10'>
-        <p>Edit your personal information and mission.</p>
-      </div>
-    </div>
-    <div className = 'row'>
-      <div className = 'col-2'>
-        <p><i className='fas fa-wrench mx-3 mr-5'></i></p>
-      </div>
-      <div className = 'col-10'>
-        <p>Edit your repository information and upload photos.</p>
-      </div>
-    </div>
-    <div className = 'row'>
-      <div className = 'col-2'>
-        <p><i className='fas fa-th-large mx-3 mr-5'></i></p>
-      </div>
-      <div className = 'col-10'>
-        <p>Receive a public URL and download the source code.</p>
-      </div>
-    </div>
   </div>
 </div>
 );
 
 export default ListInfo;
-
-
-
-
