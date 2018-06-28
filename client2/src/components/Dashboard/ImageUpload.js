@@ -8,7 +8,8 @@ import axios from 'axios';
 require('./ImageUpload.css')
 
 const styleImageWrapper = {
-  height: '300px',
+  height: '290px',
+  width: '348px',
   overflow: 'hidden'
 }
 
@@ -52,49 +53,45 @@ class ImageUpload extends Component {
           Repository Image:
         </label>
         <div className=' col-sm-9'>
-          <div className="border rounded">
-            <div className="row" style={{ height: '250px', overflow: 'hidden' }}>
-              <div className="col d-flex justify-content-center align-items-center">
-                <div className="flex-fill">
-                  {
-                    this.state.loading
-                    ?
-                    <div className='image-loading mx-auto'></div>
-                    :
-                    <div style={styleImageWrapper}>
-                      <img
-                        z-index='-1'
-                        className="img-fluid rounded"
-                        src={this.props.src}
-                        style={{ minHeight: '100%', verticalAlign: 'middle', horizontalAlign: 'top' }}
-                        alt="Repo thumbnail"
-                      />
-                    </div>
-                  }
+          <div className="row" style={{ height: '250px', overflow: 'hidden' }}>
+            <div className="col d-flex justify-content-center align-items-center">
+              {
+                this.state.loading
+                ?
+                <div className='image-loading'></div>
+                :
+                <div style={styleImageWrapper}>
+                  <img
+                    z-index='-1'
+                    className="img-fluid mx-auto"
+                    src={this.props.src}
+                    style={{ minHeight: '100%', verticalAlign: 'middle', horizontalAlign: 'top' }}
+                    alt="Repo thumbnail"
+                  />
                 </div>
-              </div>
+              }
             </div>
-            {
-              this.state.warning
-              &&
-              <small className='text-danger'>
-                {this.state.warning}
-              </small>
-            }
-            <div className="custom-file">
-              <input
-                onChange={e => this.handleChange(e, this.props._id)}
-                type="file"
-                className="custom-file-input"
-                id="validatedCustomFile"
-              />
-              <label
-                className="custom-file-label"
-                htmlFor="validatedCustomFile"
-              >
-                Upload New Image&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              </label>
-            </div>
+          </div>
+          {
+            this.state.warning
+            &&
+            <small className='text-danger'>
+              {this.state.warning}
+            </small>
+          }
+          <div className="custom-file">
+            <input
+              onChange={e => this.handleChange(e, this.props._id)}
+              type="file"
+              className="custom-file-input"
+              id="validatedCustomFile"
+            />
+            <label
+              className="custom-file-label"
+              htmlFor="validatedCustomFile"
+            >
+              Upload New Image&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </label>
           </div>
         </div>
       </div>
