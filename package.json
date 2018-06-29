@@ -62,7 +62,6 @@
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "redis": "^2.8.0",
-    "serve-favicon": "^2.5.0",
     "uuid": "^3.2.1"
   },
   "devDependencies": {
