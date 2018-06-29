@@ -36,7 +36,11 @@
   },
   "scripts": {
     "start": "node ./bin/www",
-    "postinstall": "cd client && yarn build"
+    "heroku-postbuild": "cd client && yarn build"
+  },
+  "engines": {
+    "node": "8.11.2",
+    "yarn": "1.6.0"
   },
   "dependencies": {
     "aws-sdk": "^2.259.1",
