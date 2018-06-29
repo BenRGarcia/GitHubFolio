@@ -1,8 +1,8 @@
 require('dotenv').config()
-const path = require('path')
+// const path = require('path')
 const AWS = require('aws-sdk')
 const awsS3Bucket = process.env.AWS_S3_BUCKET
-AWS.config.loadFromPath(path.join(__dirname, '../config/awsS3.json'))
+// AWS.config.loadFromPath(path.join(__dirname, '../config/awsS3.json'))
 const s3 = new AWS.S3()
 
 /**

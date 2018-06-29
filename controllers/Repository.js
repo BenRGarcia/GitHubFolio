@@ -1,5 +1,5 @@
 const { Repository } = require('../models')
-const user = require('./user')
+const user = require('./User.js')
 
 const deleteOldRepositories = async ({ _id }) => {
   const userData = await user.getRepositoryIds({ _id })

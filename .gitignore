@@ -1,8 +1,13 @@
+<<<<<<< HEAD
 # Old client folder
 archivedClient
 
 # build
 build
+=======
+# production (remove and commit `/build` before deployment to Heroku)
+
+>>>>>>> 69af7f8b080bf1d422dab918f187c9bf7517f6af
 
 # OS files
 .DS_Store
