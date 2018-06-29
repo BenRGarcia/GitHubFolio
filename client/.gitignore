@@ -1,10 +1,16 @@
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
+# Nested build/ contents
+/build
+
 # dependencies
 /node_modules
 
 # testing
 /coverage
+
+# production
+
 
 # misc
 .DS_Store
