@@ -29,11 +29,12 @@ Users can edit their information and download the source code for their convenie
 ![]()
 
 ### Dashboard and subpages
+#### Choose a template
+![choosetemplate](https://user-images.githubusercontent.com/30028034/42115825-a1e3767c-7bc2-11e8-84a5-9cc4beebfdfb.gif)
 
-![]()
-![]()
-![]()
-![]()
+#### Edit Information
+![editinfo](https://user-images.githubusercontent.com/30028034/42115832-a980a030-7bc2-11e8-9d2d-f136a9784c25.gif)
+
 
 ### Preview Page with source download button
 
