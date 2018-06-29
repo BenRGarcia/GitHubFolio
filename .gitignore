@@ -1,4 +1,7 @@
-# production (remove and commit `/build` before deployment to Heroku)
+# Old client folder
+archivedClient
+
+# build
 build
 
 # OS files
