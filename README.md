@@ -10,12 +10,12 @@ Users can edit their information and download the source code for their convenie
 
 ## Tools
 
-**MERN stack:** Mongo, Express, React, and Node
-**Design and Responsiveness:** Bootstrap, Sketch, Adobe Illustrator?
-**Front-end:** Redux and Redux-thunk
-**User Template Source Code:** SSR (server-side rendering)
-**User data:** GitHub GraphQL API
-**File Upload/storage:** Multer/Amazon S3
+**MERN stack:** Mongo, Express, React, and Node <br>
+**Design and Responsiveness:** Bootstrap, Sketch, Adobe Illustrator? <br>
+**Front-end:** Redux and Redux-thunk <br>
+**User Template Source Code:** SSR (server-side rendering) <br>
+**User data:** GitHub GraphQL API <br>
+**File Upload/storage:** Multer/Amazon S3 <br>
 **Authentication & Session Mgmt:** Passport, OAuth2 GitHub Strategy, Express-Session, Redis-Server, Helmet, Express-Limiter
 
 ## Demo
